@@ -1,40 +1,39 @@
-[![Create a Slack Account with us][create_slack_svg]][slack_invite]
-[![Slack Status][slack_status_svg]][slack_status]
-[![DOI][doi_svg]][doi]
+---
+editor: 
+  markdown: 
+    wrap: 72
+---
 
-# shell-novice
+## Introduction
 
-An introduction to the Unix shell for people who have never used the command line before.
-Please see [https://swcarpentry.github.io/shell-novice/](https://swcarpentry.github.io/shell-novice/)
-for a rendered version of this material, [the lesson template documentation][lesson-example]
-for instructions on formatting, building, and submitting material.
+This workshop introduces the Unix shell (Bash) as a practical tool for working with files, automating repetitive tasks, and building reproducible workflows. You will learn how the shell relates to your operating system and applications, and how to efficiently navigate directories, inspect and manipulate files, chain commands with pipes and filters, iterate with loops, and write simple shell scripts. By the end, you’ll be comfortable using core command-line patterns to explore data, transform text, and compose small, simple pipelines.
 
-## Maintainers
+## Learning Objectives
 
-[Current Maintainers][current_maintainers]
+By the end of this workshop, you will know how to:
 
-- Benson Muite
-- Ahmed Unshur
-- Pariksheet Nanda
+- Understand what the shell is and when to use it.
+- Move around folders and find your way to files.
+- Make, copy, rename, and delete files and folders.
+- Join simple commands together to get the result you want.
+- Repeat actions on many files without retyping.
+- Save steps in small scripts so you can reuse them.
+- Search for files and for text inside files quickly.
 
-[Maintainers Alumni][maintainers_alumni]
+## Prerequisites
 
-- Gerard Capes
-- Jacob Deppen
-  
-## Contributing
+This lesson guides you through the basics of file systems and the shell. If you have stored files on a computer at all and recognize the word “file” and either “directory” or “folder” (two common words for the same thing), you’re ready for this lesson.
 
-If you would like to contribute to the development of the lesson, you can find details in our
-[CONTRIBUTING guide](https://github.com/swcarpentry/shell-novice/blob/main/CONTRIBUTING.md).
-Contributions can come in many different forms: typo and formatting fixes, additions or subtractions
-of content, suggestions, clarifications, and more.
+If you’re already comfortable manipulating files and directories, searching for files with `grep` and `find`, and writing simple loops and scripts, you probably want to skip this workshop. 
 
-[slack_invite]: https://slack-invite.carpentries.org/
-[create_slack_svg]: https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg
-[slack_status]: https://carpentries.slack.com/messages/C9X3XTHJ8
-[slack_status_svg]: https://img.shields.io/badge/Slack_Channel-swc--shell-E01563.svg
-[doi]: https://doi.org/10.5281/zenodo.3266823
-[doi_svg]: https://zenodo.org/badge/DOI/10.5281/zenodo.3266823.svg
-[lesson-example]: https://carpentries.github.io/sandpaper-docs/
-[current_maintainers]: https://carpentries.org/community/maintainers/
-[maintainers_alumni]: https://carpentries.org/community/maintainer-alumni/
+## Course Outline
+
+{{< include _includes/syllabus.qmd >}}
+
+## Credits and Acknowledgement
+
+These content were adapted from the following course materials:
+
+-   [The Carpentries Incubator - The Unix Shell](https://swcarpentry.github.io/shell-novice/index.html)
+
+------------------------------------------------------------------------
