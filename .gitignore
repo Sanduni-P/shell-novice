@@ -55,4 +55,5 @@ Gemfile.lock
 .*history
 
 /.quarto/
-_freeze/
+/_freeze/
+/_site/
