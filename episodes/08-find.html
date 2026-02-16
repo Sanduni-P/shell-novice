@@ -4960,9 +4960,9 @@ Overview
 </div>
 <p>In the same way that many of us now use ‘Google’ as a verb meaning ‘to find’, Unix programmers often use the word ‘grep’. ‘grep’ is a contraction of ‘global/regular expression/print’, a common sequence of operations in early Unix text editors. It is also the name of a very useful command-line program.</p>
 <p><code>grep</code> finds and prints lines in files that match a pattern. For our examples, we will use a file that contains three haiku taken from a <a href="https://web.archive.org/web/19991201042211/http://salon.com/21st/chal/1998/01/26chal.html">1998 competition</a> in <em>Salon</em> magazine (Credit to authors Bill Torcaso, Howard Korder, and Margaret Segall, respectively. See Haiku Error Messages archived <a href="https://web.archive.org/web/20000310061355/http://www.salon.com/21st/chal/1998/02/10chal2.html">Page 1</a> and <a href="https://web.archive.org/web/20000229135138/http://www.salon.com/21st/chal/1998/02/10chal3.html">Page 2</a> .). For this set of examples, we’re going to be working in the writing subdirectory:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd Desktop/shell-lesson-data/exercise-data/writing</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/shell-lesson-data/exercise-data/writing</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>The Tao that is seen
 Is not the true Tao, until
 You bring fresh toner.
@@ -4975,7 +4975,7 @@ Yesterday it worked
 Today it is not working
 Software is like that.</code></pre>
 <p>Let’s find lines that contain the word ‘not’:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep not haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> not haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Is not the true Tao, until
 &quot;My Thesis&quot; not found
 Today it is not working</code></pre>
@@ -4983,35 +4983,35 @@ Today it is not working</code></pre>
 <p>The output is the three lines in the file that contain the letters ‘not’.</p>
 <p>By default, grep searches for a pattern in a case-sensitive way. In addition, the search pattern we have selected does not have to form a complete word, as we will see in the next example.</p>
 <p>Let’s search for the pattern: ‘The’.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep The haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> The haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>The Tao that is seen
 &quot;My Thesis&quot; not found.</code></pre>
 <p>This time, two lines that include the letters ‘The’ are outputted, one of which contained our search pattern within a larger word, ‘Thesis’.</p>
 <p>To restrict matches to lines containing the word ‘The’ on its own, we can give <code>grep</code> the <code>-w</code> option. This will limit matches to word boundaries.</p>
 <p>Later in this lesson, we will also see how we can change the search behavior of grep with respect to its case sensitivity.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-w</span> The haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-w</span> The haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>The Tao that is seen</code></pre>
 <p>Note that a ‘word boundary’ includes the start and end of a line, so not just letters surrounded by spaces. Sometimes we don’t want to search for a single word, but a phrase. We can also do this with <code>grep</code> by putting the phrase in quotes.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-w</span> <span class="st">&quot;is not&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-w</span> <span class="st">&quot;is not&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Today it is not working</code></pre>
 <p>We’ve now seen that you don’t have to have quotes around single words, but it is useful to use quotes when searching for multiple words. It also helps to make it easier to distinguish between the search term or phrase and the file being searched. We will use quotes in the remaining examples.</p>
 <p>Another useful option is <code>-n</code>, which numbers the lines that match:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="st">&quot;it&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> <span class="st">&quot;it&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>5:With searching comes loss
 9:Yesterday it worked
 10:Today it is not working</code></pre>
 <p>Here, we can see that lines 5, 9, and 10 contain the letters ‘it’.</p>
 <p>We can combine options (i.e. flags) as we do with other Unix commands. For example, let’s find the lines that contain the word ‘the’. We can combine the option <code>-w</code> to find the lines that contain the word ‘the’ and <code>-n</code> to number the lines that match:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> <span class="at">-w</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>2:Is not the true Tao, until
 6:and the presence of absence:</code></pre>
 <p>Now we want to use the option <code>-i</code> to make our search case-insensitive:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-i</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> <span class="at">-w</span> <span class="at">-i</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>1:The Tao that is seen
 2:Is not the true Tao, until
 6:and the presence of absence:</code></pre>
 <p>Now, we want to use the option <code>-v</code> to invert our search, i.e., we want to output the lines that do not contain the word ‘the’.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-v</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> <span class="at">-w</span> <span class="at">-v</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>1:The Tao that is seen
 3:You bring fresh toner.
 4:
@@ -5023,13 +5023,13 @@ Today it is not working</code></pre>
 11:Software is like that.</code></pre>
 <p>If we use the <code>-r</code> (recursive) option, <code>grep</code> can search for a pattern recursively through a set of files in subdirectories.</p>
 <p>Let’s search recursively for <code>Yesterday</code> in the <code>shell-lesson-data/exercise-data/writing</code> directory:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-r</span> Yesterday .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> Yesterday .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>./LittleWomen.txt:&quot;Yesterday, when Aunt was asleep and I was trying to be as still as a
 ./LittleWomen.txt:Yesterday at dinner, when an Austrian officer stared at us and then
 ./LittleWomen.txt:Yesterday was a quiet day spent in teaching, sewing, and writing in my
 ./haiku.txt:Yesterday it worked</code></pre>
 <p><code>grep</code> has lots of other options. To find out what they are, we can type:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Usage: grep [OPTION]... PATTERN [FILE]...
 Search for PATTERN in each FILE or standard input.
 PATTERN is, by default, a basic regular expression (BRE).
@@ -5096,7 +5096,7 @@ Wildcards
 </div>
 <div class="callout-body-container callout-body">
 <p><code>grep</code>‘s real power doesn’t come from its options, though; it comes from the fact that patterns can include wildcards. (The technical name for these is <strong>regular expressions</strong>, which is what the ’re’ in ‘grep’ stands for.) Regular expressions are both complex and powerful; if you want to do complex searches, please look at the lesson on <a href="https://librarycarpentry.org/lc-data-intro/01-regular-expressions.html">our website</a>. As a taster, we can find lines that have an ‘o’ in the second position like this:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">&quot;^.o&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-E</span> <span class="st">&quot;^.o&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>You bring fresh toner.
 Today it is not working
 Software is like that.</code></pre>
@@ -5107,10 +5107,10 @@ Software is like that.</code></pre>
 <h3 class="anchored" data-anchor-id="finding-by-permissions">Finding by Permissions</h3>
 <p><code>find</code> can filter by file permissions using <code>-perm</code>. This is handy for locating executables or overly open files.</p>
 <p>Find regular files the owner can execute:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-type</span> f <span class="at">-perm</span> <span class="at">-u</span><span class="op">=</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-perm</span> <span class="at">-u</span><span class="op">=</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Find files writable by the group or readable by others:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-type</span> f <span class="at">-perm</span> <span class="at">-g</span><span class="op">=</span>w      <span class="co"># group has write</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-type</span> f <span class="at">-perm</span> <span class="at">-o</span><span class="op">=</span>r      <span class="co"># others have read</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-perm</span> <span class="at">-g</span><span class="op">=</span>w      <span class="co"># group has write</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-perm</span> <span class="at">-o</span><span class="op">=</span>r      <span class="co"># others have read</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The leading <code>-</code> before each mode (e.g., <code>-u=x</code>) means “match if these bits are set”, not exactly equal to the mode.</p>
 <div class="challenge-callout callout callout-style-default callout-note no-icon callout-titled" style="border-left: 4px solid #ffc107;">
 <div class="callout-header d-flex align-content-center">
@@ -5162,7 +5162,7 @@ Solution
 <pre class="source"><code>grep -w $1 -r $2 | cut -d : -f 2 | cut -d , -f 1,3 &gt; $1.txt</code></pre>
 <p>Actually, you can swap the order of the two cut commands and it still works. At the command line, try changing the order of the cut commands, and have a look at the output from each step to see why this is the case.</p>
 <p>You would call the script above like this:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bash count-species.sh bear .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> count-species.sh bear .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -5229,7 +5229,7 @@ done</code></pre>
     └── LittleWomen.txt</code></pre>
 <p>The <code>exercise-data</code> directory contains one file, <code>numbers.txt</code> and four directories: <code>animal-counts</code>, <code>creatures</code>, <code>alkanes</code> and <code>writing</code> containing various files.</p>
 <p>For our first command, let’s run <code>find .</code> (remember to run this command from the <code>shell-lesson-data/exercise-data</code> folder).</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>.
 ./writing
 ./writing/LittleWomen.txt
@@ -5250,14 +5250,14 @@ done</code></pre>
 ./alkanes/cubane.pdb</code></pre>
 <p>As always, the <code>.</code> on its own means the current working directory, which is where we want our search to start. <code>find</code>’s output is the names of every file <strong>and</strong> directory under the current working directory. This can seem useless at first but <code>find</code> has many options to filter the output and in this lesson we will discover some of them.</p>
 <p>The first option in our list is <code>-type d</code> that means ‘things that are directories’. Sure enough, <code>find</code>’s output is the names of the five directories (including <code>.</code>):</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-type</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>.
 ./writing
 ./creatures
 ./animal-counts
 ./alkanes</code></pre>
 <p>Notice that the objects <code>find</code> finds are not listed in any particular order. If we change <code>-type d</code> to <code>-type f</code>, we get a listing of all the files instead:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-type</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>./writing/LittleWomen.txt
 ./writing/haiku.txt
 ./creatures/basilisk.dat
@@ -5272,13 +5272,13 @@ done</code></pre>
 ./alkanes/methane.pdb
 ./alkanes/cubane.pdb</code></pre>
 <p>Now let’s try matching by name:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-name</span> <span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>./numbers.txt</code></pre>
 <p>We expected it to find all the text files, but it only prints out <code>./numbers.txt</code>. The problem is that the shell expands wildcard characters like <code>*</code> <em>before</em> commands run. Since <code>*.txt</code> in the current directory expands to <code>./numbers.txt</code>, the command we actually ran was:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-name</span> numbers.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> numbers.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>find</code> did what we asked; we just asked for the wrong thing.</p>
 <p>To get what we want, let’s do what we did with <code>grep</code>: put <code>*.txt</code> in quotes to prevent the shell from expanding the <code>*</code> wildcard. This way, <code>find</code> actually gets the pattern <code>*.txt</code>, not the expanded filename <code>numbers.txt</code>:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>./writing/LittleWomen.txt
 ./writing/haiku.txt
 ./numbers.txt</code></pre>
@@ -5297,16 +5297,16 @@ Listing vs. Finding
 </div>
 <p>As we said earlier, the command line’s power lies in combining tools. We’ve seen how to do that with pipes; let’s look at another technique. As we just saw, <code>find . -name &quot;*.txt&quot;</code> gives us a list of all text files in or below the current directory. How can we combine that with <code>wc -l</code> to count the lines in all those files?</p>
 <p>The simplest way is to put the <code>find</code> command inside <code>$()</code>:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>  21022 ./writing/LittleWomen.txt
      11 ./writing/haiku.txt
       5 ./numbers.txt
   21038 total</code></pre>
 <p>When the shell executes this command, the first thing it does is run whatever is inside the <code>$()</code>. It then replaces the <code>$()</code> expression with that command’s output. Since the output of <code>find</code> is the three filenames <code>./writing/LittleWomen.txt</code>, <code>./writing/haiku.txt</code>, and <code>./numbers.txt</code>, the shell constructs the command:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> ./writing/LittleWomen.txt ./writing/haiku.txt ./numbers.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> ./writing/LittleWomen.txt ./writing/haiku.txt ./numbers.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>which is what we wanted. This expansion is exactly what the shell does when it expands wildcards like <code>*</code> and <code>?</code>, but lets us use any command we want as our own ‘wildcard’.</p>
 <p>It’s very common to use <code>find</code> and <code>grep</code> together. The first finds files that match a pattern; the second looks for lines inside those files that match another pattern. Here, for example, we can find txt files that contain the word “searching” by looking for the string ‘searching’ in all the <code>.txt</code> files in the current directory:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">&quot;searching&quot;</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&quot;searching&quot;</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>./writing/LittleWomen.txt:sitting on the top step, affected to be searching for her book, but was
 ./writing/haiku.txt:With searching comes loss</code></pre>
 <div class="challenge-callout callout callout-style-default callout-note no-icon callout-titled" style="border-left: 4px solid #ffc107;">
@@ -5341,7 +5341,7 @@ Solution
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Option 1 is correct. Putting the match expression in quotes prevents the shell expanding it, so it gets passed to the <code>find</code> command.</p>
-<p>Option 2 also works in this instance because the shell tries to expand <code>*.dat</code> but there are no <code>*.dat</code> files in the current directory, so the wildcard expression gets passed to <code>find</code>. We first encountered this in <a href="03-create.md">episode 3</a>.</p>
+<p>Option 2 also works in this instance because the shell tries to expand <code>*.dat</code> but there are no <code>*.dat</code> files in the current directory, so the wildcard expression gets passed to <code>find</code>. We first encountered this in <a href="../episodes/03-create.html">episode 3</a>.</p>
 <p>Option 3 is incorrect because it searches the contents of the files for lines which do not match ‘unicorn’, rather than searching the file names.</p>
 </div>
 </div>

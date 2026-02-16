@@ -4980,9 +4980,9 @@ Overview
 <p>The comma puts a space between the printed values. Strings of text should be enclosed in double quotes. In this case we are printing the text “chr”, the second and the fourth column for each row in the table.</p>
 <p>So, <code>$0</code> is the whole line, <code>$1</code> the first field, <code>$2</code> the second and so on. What if we want to print the last column, but we don’t know its number? Maybe it is a huge table, or maybe different lines have a different number of columns.</p>
 <p>Awk helps us thanks to the variable NF. NF stores the number of fields (our columns) in the row. Let’s see for our table:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">&#39;{print NF}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print NF}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can see that some lines contain 6 fields while others contain 7 of them. Since NF is the number of the last field, <code>$NF</code> contains its value.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">&#39;{print &quot;This line has&quot;,NF,&quot;columns. The last one contains&quot;,$NF}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print &quot;This line has&quot;,NF,&quot;columns. The last one contains&quot;,$NF}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4997,14 +4997,14 @@ Field separator
 </div>
 </div>
 <p>To specify the field separator, we should provide it at command line like:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="at">-F</span> <span class="st">&quot;,&quot;</span> <span class="st">&#39;{print $2}&#39;</span> example2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">&quot;,&quot;</span> <span class="st">&#39;{print $2}&#39;</span> example2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case, we are printing the second field in each line, using comma as separator. Please notice that the character space is now part of the field value, since it is no longer the separator.</p>
 <section id="pattern-action-model" class="level2">
 <h2 class="anchored" data-anchor-id="pattern-action-model">Pattern-Action Model</h2>
 <p>AWK reads a file line by line, splits each line into fields, and then applies <code>pattern { action }</code> rules.</p>
 <p>Maybe we would like to perform different instruction on different lines. Awk allows you to specify a matching pattern, like the command grep does.</p>
 <p>Let’s look at the file content</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> awk <span class="st">&#39;{print $0}&#39;</span> example.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print $0}&#39;</span> example.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>It seems an abriged PDB file. If we would like to print only lines starting with the word “ATOM”, we type:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/^ATOM/ {print $0}&#39;</span> example.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case, we specify the pattern before the instructions: only lines starting with the text “ATOM”. As you remember, <code>^</code> means “at the beginning of the line”.</p>

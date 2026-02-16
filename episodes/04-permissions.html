@@ -5042,8 +5042,8 @@ no
 <li>everybody else can do nothing with it at all.</li>
 </ul>
 <p>Let’s look at this model in action. If we <code>cd</code> into the <code>labs</code> directory and run <code>ls -F</code>, it puts a <code>*</code> at the end of <code>setup</code>’s name. This is its way of telling us that <code>setup</code> is executable, i.e., that it’s (probably) something the computer can run.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd labs</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> labs</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>safety.txt    setup*     waiver.txt</code></pre>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -5061,7 +5061,7 @@ Necessary But Not Sufficient
 <section id="permission-strings" class="level3">
 <h3 class="anchored" data-anchor-id="permission-strings">Permission Strings</h3>
 <p>Now let’s run the command <code>ls -l</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>-rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
 -rwxr-xr-x 1 nnemo bio 31988  2010-07-23 20:04 setup
 -rw-rw-r-- 1 nnemo bio  2312  2010-07-11 08:23 waiver.txt</code></pre>
@@ -5071,21 +5071,21 @@ Necessary But Not Sufficient
 <p>Let’s have a closer look at one of those permission strings: <code>-rwxr-xr-x</code>. The first character tells us what type of thing this is: ‘-’ means it’s a regular file, while ‘d’ means it’s a directory, and other characters mean more esoteric things.</p>
 <p>The next three characters tell us what permissions the file’s owner has. Here, the owner can read, write, and execute the file: <code>rwx</code>. The middle triplet shows us the group’s permissions. If the permission is turned off, we see a dash, so <code>r-x</code> means “read and execute, but not write”. The final triplet shows us what everyone who isn’t the file’s owner, or in the file’s group, can do. In this case, it’s ‘r-x’ again, so everyone on the system can look at the file’s contents and run it.</p>
 <p>To change permissions, we use the <code>chmod</code> command (whose name stands for “change mode”). Here’s a long-form listing showing the permissions on the final grades in the course Nelle is teaching:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>-rwxrwxrwx 1 nnemo bio  4215  2010-08-29 22:30 final.grd</code></pre>
 <p>Whoops: everyone in the world can read it—and what’s worse, modify it! (They could also try to run the grades file as a program, which would almost certainly not work.)</p>
 <p>The command to change the owner’s permissions to <code>rw-</code> is:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod u=rw final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u=rw final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The ‘u’ signals that we’re changing the privileges of the user (i.e., the file’s owner), and <code>rw</code> is the new set of permissions. A quick <code>ls -l</code> shows us that it worked, because the owner’s permissions are now set to read and write:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>-rw-rwxrwx 1 nnemo bio  4215  2010-08-30 08:19 final.grd</code></pre>
 <p>Let’s run <code>chmod</code> again to give the group read-only permission:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod g=r final.grd</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> g=r final.grd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>-rw-r--rw- 1 nnemo bio  4215  2010-08-30 08:19 final.grd</code></pre>
 <p>And finally, let’s give “all” (everyone on the system who isn’t the file’s owner or in its group) no permissions at all:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod a= final.grd</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a= final.grd</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> final.grd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>-rw-r----- 1 nnemo bio  4215  2010-08-30 08:20 final.grd</code></pre>
 <p>Here, the ‘a’ signals that we’re changing permissions for “all”, and since there’s nothing on the right of the “=”, “all”’s new permissions are empty.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -5099,8 +5099,8 @@ Octal Modes (Shortcut)
 </div>
 <div class="callout-body-container callout-body">
 <p>Symbolic modes like <code>u=rw</code> are clear, but you’ll often see octal numbers:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod 755 script.sh   <span class="co"># owner rwx (7), group r-x (5), others r-x (5)</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod 644 notes.txt   <span class="co"># owner rw- (6), group r-- (4), others r-- (4)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 script.sh   <span class="co"># owner rwx (7), group r-x (5), others r-x (5)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 644 notes.txt   <span class="co"># owner rw- (6), group r-- (4), others r-- (4)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Each digit is a sum: read=4, write=2, execute=1.</p>
 </div>
 </div>
@@ -5136,7 +5136,7 @@ Solution
 <ul>
 <li>Owner rwx → 7, group r-x → 5, others — → 0, so the octal is <code>750</code>.</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod 750 script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 750 script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Variants you may see:</p>
 <ul>
 <li><code>chmod 750 ./script.sh</code> (explicit path)</li>
@@ -5146,7 +5146,7 @@ Solution
 </div>
 </div>
 <p>Before we go any further, let’s run <code>ls -a -l</code> to get a long-form listing that includes directory entries that are normally hidden:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>drwxr-xr-x 1 nnemo bio     0  2010-08-14 09:55 .
 drwxr-xr-x 1 nnemo bio  8192  2010-08-27 23:11 ..
 -rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt

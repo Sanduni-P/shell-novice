@@ -1,43 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/00-intro-overview.html</loc>
+    <lastmod>2026-02-16T00:15:17.112Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/02-filedir.html</loc>
+    <lastmod>2026-02-12T04:11:07.081Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/03-create.html</loc>
+    <lastmod>2026-02-12T04:38:43.810Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/05-pipefilter.html</loc>
+    <lastmod>2026-02-12T02:46:45.099Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/04-permissions.html</loc>
+    <lastmod>2026-02-16T00:16:30.248Z</lastmod>
+  </url>
+  <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/index.html</loc>
-    <lastmod>2025-12-02T07:29:23.605Z</lastmod>
+    <lastmod>2026-02-12T01:06:11.362Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/02-filedir.html</loc>
-    <lastmod>2025-12-02T06:28:04.760Z</lastmod>
+    <lastmod>2026-02-12T03:12:03.654Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/03-create.html</loc>
-    <lastmod>2025-12-02T06:23:42.743Z</lastmod>
+    <lastmod>2026-02-12T01:02:37.766Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/05-pipefilter.html</loc>
-    <lastmod>2025-12-02T06:26:04.749Z</lastmod>
+    <lastmod>2026-02-12T01:02:37.772Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/04-permissions.html</loc>
-    <lastmod>2025-12-02T06:25:48.884Z</lastmod>
+    <lastmod>2026-02-16T22:59:04.581Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/08-find.html</loc>
-    <lastmod>2025-12-02T07:14:20.543Z</lastmod>
+    <lastmod>2026-02-12T01:02:37.787Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/01-intro.html</loc>
-    <lastmod>2025-11-24T05:28:45.787Z</lastmod>
+    <lastmod>2026-02-12T02:54:52.226Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/06-loop.html</loc>
-    <lastmod>2025-12-02T06:26:28.102Z</lastmod>
+    <lastmod>2026-02-12T01:02:37.780Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/07-script.html</loc>
-    <lastmod>2025-12-02T06:26:37.110Z</lastmod>
+    <lastmod>2026-02-12T01:02:37.784Z</lastmod>
   </url>
   <url>
     <loc>git@github-work:Sanduni-P/shell-novice.git/episodes/09-awk.html</loc>
-    <lastmod>2025-12-02T07:22:30.993Z</lastmod>
+    <lastmod>2026-02-12T01:02:37.790Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/08-find.html</loc>
+    <lastmod>2026-02-12T02:46:46.640Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/01-intro.html</loc>
+    <lastmod>2026-02-12T03:05:02.180Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/06-loop.html</loc>
+    <lastmod>2026-02-12T02:46:45.544Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/07-script.html</loc>
+    <lastmod>2026-02-12T02:46:46.081Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github-work:Sanduni-P/shell-novice.git/slides/09-awk.html</loc>
+    <lastmod>2026-02-12T02:46:47.163Z</lastmod>
   </url>
 </urlset>
