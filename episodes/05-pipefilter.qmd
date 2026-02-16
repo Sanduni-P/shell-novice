@@ -33,7 +33,7 @@ The `.pdb` extension indicates that these files are in Protein Data Bank format,
 a simple text format that specifies the type and position of each atom in the molecule.
 
 ```bash
-$ ls
+ls
 ```
 
 ```output
@@ -44,7 +44,7 @@ ethane.pdb    octane.pdb     propane.pdb
 Let's run an example command:
 
 ```bash
-$ wc cubane.pdb
+wc cubane.pdb
 ```
 
 ```output
@@ -59,7 +59,7 @@ If we run the command `wc *.pdb`, the `*` in `*.pdb` matches zero or more charac
 so the shell turns `*.pdb` into a list of all `.pdb` files in the current directory:
 
 ```bash
-$ wc *.pdb
+wc *.pdb
 ```
 
 ```output
@@ -78,7 +78,7 @@ If we run `wc -l` instead of just `wc`,
 the output shows only the number of lines per file:
 
 ```bash
-$ wc -l *.pdb
+wc -l *.pdb
 ```
 
 ```output
@@ -102,7 +102,7 @@ What happens if a command is supposed to process a file, but we
 don't give it a filename? For example, what if we type:
 
 ```bash
-$ wc -l
+wc -l
 ```
 
 but don't type `*.pdb` (or anything else) after the command?
@@ -126,7 +126,7 @@ but what if there were 6000?
 Our first step toward a solution is to run the command:
 
 ```bash
-$ wc -l *.pdb > lengths.txt
+wc -l *.pdb > lengths.txt
 ```
 
 The greater than symbol, `>`, tells the shell to **redirect** the command's output to a
@@ -139,7 +139,7 @@ Thus, **redirect** commands require caution.
 `ls lengths.txt` confirms that the file exists:
 
 ```bash
-$ ls lengths.txt
+ls lengths.txt
 ```
 
 ```output
@@ -153,7 +153,7 @@ There's only one file in this case,
 so `cat` just shows us what it contains:
 
 ```bash
-$ cat lengths.txt
+cat lengths.txt
 ```
 
 ```output
@@ -238,7 +238,7 @@ This does *not* change the file;
 instead, it sends the sorted result to the screen:
 
 ```bash
-$ sort -n lengths.txt
+sort -n lengths.txt
 ```
 
 ```output
@@ -258,8 +258,8 @@ Once we've done that,
 we can run another command called `head` to get the first few lines in `sorted-lengths.txt`:
 
 ```bash
-$ sort -n lengths.txt > sorted-lengths.txt
-$ head -n 1 sorted-lengths.txt
+sort -n lengths.txt > sorted-lengths.txt
+head -n 1 sorted-lengths.txt
 ```
 
 ```output
@@ -282,7 +282,7 @@ the output of a command that operates on a file
 to the same file. For example:
 
 ```bash
-$ sort -n lengths.txt > lengths.txt
+sort -n lengths.txt > lengths.txt
 ```
 
 Doing something like this may give you
@@ -302,7 +302,7 @@ We'll learn about the differences between these two operators by printing some s
 We can use the `echo` command to print strings e.g.
 
 ```bash
-$ echo The echo command prints text
+echo The echo command prints text
 ```
 
 ```output
@@ -312,13 +312,13 @@ The echo command prints text
 Now test the commands below to reveal the difference between the two operators:
 
 ```bash
-$ echo hello > testfile01.txt
+echo hello > testfile01.txt
 ```
 
 and:
 
 ```bash
-$ echo hello >> testfile02.txt
+echo hello >> testfile02.txt
 ```
 
 Hint: Try executing each command twice in a row and then examining the output files.
@@ -352,8 +352,8 @@ After these commands, select the answer that
 corresponds to the file `animals-subset.csv`:
 
 ```bash
-$ head -n 3 animals.csv > animals-subset.csv
-$ tail -n 2 animals.csv >> animals-subset.csv
+head -n 3 animals.csv > animals-subset.csv
+tail -n 2 animals.csv >> animals-subset.csv
 ```
 
 1. The first three lines of `animals.csv`
@@ -388,7 +388,7 @@ those intermediate files make it hard to follow what's going on.
 We can make it easier to understand by running `sort` and `head` together:
 
 ```bash
-$ sort -n lengths.txt | head -n 1
+sort -n lengths.txt | head -n 1
 ```
 
 ```output
@@ -412,7 +412,7 @@ This removes the need for any intermediate files.
 We'll start by using a pipe to send the output of `wc` to `sort`:
 
 ```bash
-$ wc -l *.pdb | sort -n
+wc -l *.pdb | sort -n
 ```
 
 ```output
@@ -428,7 +428,7 @@ $ wc -l *.pdb | sort -n
 We can then send that output through another pipe, to `head`, so that the full pipeline becomes:
 
 ```bash
-$ wc -l *.pdb | sort -n | head -n 1
+wc -l *.pdb | sort -n | head -n 1
 ```
 
 ```output
@@ -517,7 +517,7 @@ What text passes through each of the pipes and the final redirect in the pipelin
 Note, the `sort -r` command sorts in reverse order.
 
 ```bash
-$ cat animals.csv | head -n 5 | tail -n 3 | sort -r > final.txt
+cat animals.csv | head -n 5 | tail -n 3 | sort -r > final.txt
 ```
 
 Hint: build the pipeline up one command at a time to test your understanding
@@ -551,7 +551,7 @@ The file should contain the following lines:
 For the file `animals.csv` from the previous exercise, consider the following command:
 
 ```bash
-$ cut -d , -f 2 animals.csv
+cut -d , -f 2 animals.csv
 ```
 
 The `cut` command is used to select or 'cut out' certain sections of each line in the file for
@@ -586,7 +586,7 @@ names)?
 ## Solution
 
 ```bash
-$ cut -d , -f 2 animals.csv | sort | uniq
+cut -d , -f 2 animals.csv | sort | uniq
 ```
 
 
@@ -641,8 +641,8 @@ and created 17 files in the `north-pacific-gyre` directory described earlier.
 As a quick check, starting from the `shell-lesson-data` directory, Nelle types:
 
 ```bash
-$ cd north-pacific-gyre
-$ wc -l *.txt
+cd north-pacific-gyre
+wc -l *.txt
 ```
 
 The output is 18 lines that look like this:
@@ -660,7 +660,7 @@ The output is 18 lines that look like this:
 Now she types this:
 
 ```bash
-$ wc -l *.txt | sort -n | head -n 5
+wc -l *.txt | sort -n | head -n 5
 ```
 
 ```output
@@ -680,7 +680,7 @@ Before re-running that sample,
 she checks to see if any files have too much data:
 
 ```bash
-$ wc -l *.txt | sort -n | tail -n 5
+wc -l *.txt | sort -n | tail -n 5
 ```
 
 ```output
@@ -698,7 +698,7 @@ her lab uses 'Z' to indicate samples with missing information.
 To find others like it, she does this:
 
 ```bash
-$ ls *Z.txt
+ls *Z.txt
 ```
 
 ```output

@@ -1,0 +1,984 @@
+
+
+# Episode 3: Working With Files and Directories
+
+::: {.callout-tip icon="false" .nonincremental}
+## Questions
+
+- How can I create, copy, and delete files and directories?
+- How can I edit files?
+:::
+
+::: {.callout-tip icon="false" .nonincremental}
+## Objectives
+
+- Delete, copy and move specified files and/or directories.
+- Create files in that hierarchy using an editor or by copying and renaming existing files.
+- Create a directory hierarchy that matches a given diagram.
+:::
+
+## Creating Directories
+
+We now know how to explore files and directories, but how do we create them?
+
+### Where Are We?
+
+First, check where we are:
+
+```bash
+pwd
+```
+
+```output
+/Users/nelle/Desktop/shell-lesson-data
+```
+
+Move to `exercise-data/writing` and see what's there:
+
+```bash
+cd exercise-data/writing/
+ls -F
+```
+
+```output
+haiku.txt  LittleWomen.txt
+```
+
+## Creating a Directory
+
+Create a new directory called `thesis`:
+
+```bash
+mkdir thesis
+```
+
+`mkdir` means "make directory"
+
+Check it was created:
+
+```bash
+ls -F
+```
+
+```output
+haiku.txt  LittleWomen.txt  thesis/
+```
+
+## Verify the Directory is Empty
+
+Since we just created it:
+
+```bash
+ls -F thesis
+```
+
+No output means the directory is empty.
+
+## Creating Nested Directories
+
+The `-p` option creates nested subdirectories in one operation:
+
+```bash
+mkdir -p ../project/data ../project/results
+```
+
+Use `ls -FR` to recursively list the new hierarchy:
+
+```bash
+ls -FR ../project
+```
+
+```output
+../project/:
+data/  results/
+
+../project/data:
+
+../project/results:
+```
+
+## Two Ways of Doing the Same Thing
+
+::: {.callout-note icon="true"}
+
+Using the shell to create a directory is no different than using a file explorer.
+
+If you open the current directory using your operating system's graphical file explorer, the `thesis` directory will appear there too.
+
+The shell and the file explorer are two different ways of interacting with the files, but the files and directories themselves are the same.
+
+:::
+
+## Good Names for Files and Directories
+
+::: {.callout-tip icon="true"}
+
+**Tips for naming files and directories:**
+
+1. **Don't use spaces** - Use `-` or `_` instead
+   - Good: `north-pacific-gyre/`
+   - Bad: `north pacific gyre/`
+
+2. **Don't begin with `-`** - Commands treat these as options
+
+3. **Stick with:** lowercase letters, numbers, `.`, `-`, `_`
+   - Many special characters have special meanings
+
+:::
+
+## Spaces and Special Characters
+
+If you need to refer to names with spaces or special characters, surround the name in quotes:
+
+```bash
+'my file with spaces.txt'
+```
+
+**Best practice:**
+
+::: {.nonincremental}
+- Use all lowercase letters
+- Windows and macOS are typically case insensitive
+- Can't distinguish between `thesis` and `Thesis` in same directory
+
+:::
+
+## Creating a Text File
+
+Change to `thesis` directory and create a file with `nano`:
+
+```bash
+cd thesis
+nano draft.txt
+```
+
+`nano` is a simple text editor that runs in your terminal.
+
+## Which Editor?
+
+::: {.callout-note icon="true" .nonincremental}
+
+`nano` is a text editor - it only works with plain character data.
+
+**Other options:**
+
+- Unix: [Emacs](https://www.gnu.org/software/emacs/), [Vim](https://www.vim.org/), [Gedit](https://projects.gnome.org/gedit/), [VSCode](https://code.visualstudio.com/)
+- Windows: [Notepad++](https://notepad-plus-plus.org/), `notepad`
+
+**Important:** Know where your editor searches for and saves files!
+
+:::
+
+## Using nano
+
+Type some text, 
+
+![](../episodes/fig/nano-screenshot.png){alt="screenshot of nano text editor in action with the text It's not publish or perish any more, it's share and thrive"}
+
+Then, 
+
+1. Press <kbd>Ctrl</kbd>+<kbd>O</kbd> to write data to disk
+2. Press <kbd>Return</kbd> to accept filename `draft.txt`
+3. Press <kbd>Ctrl</kbd>+<kbd>X</kbd> to quit and return to shell
+
+## Control Key Notation
+
+::: {.callout-tip icon="true" .nonincremental}
+
+The Control key can be described in various ways:
+
+- `Control-X`, `Control+X`
+- `Ctrl-X`, `Ctrl+X`
+- `^X`
+- `C-x`
+
+In nano, the bottom shows: `^G Get Help ^O WriteOut`
+
+This means <kbd>Ctrl</kbd>+<kbd>G</kbd> for help, <kbd>Ctrl</kbd>+<kbd>O</kbd> to save.
+
+:::
+
+## Verify File Creation
+
+`nano` doesn't leave output, but `ls` confirms the file exists:
+
+```bash
+ls
+```
+
+```output
+draft.txt
+```
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## Creating Files a Different Way
+
+Try this command:
+
+```bash
+touch my_file.txt
+```
+
+1. What did the `touch` command do? When you look at your current directory using the GUI file explorer, does the file show up?
+
+2. Use `ls -l` to inspect the files. How large is `my_file.txt`?
+
+3. When might you want to create a file this way?
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## Solution
+
+1. The `touch` command generates a new file called `my_file.txt` in your current directory. You can observe this newly generated file by typing `ls` at the command line prompt. `my_file.txt` can also be viewed in your GUI file explorer.
+
+2. When you inspect the file with `ls -l`, note that the size of `my_file.txt` is 0 bytes. In other words, it contains no data. If you open `my_file.txt` using your text editor it is blank.
+
+3. Some programs do not generate output files themselves, but instead require that empty files have already been generated. When the program is run, it searches for an existing file to populate with its output. The touch command allows you to efficiently generate a blank text file to be used by such programs.
+
+
+To avoid confusion later on,
+we suggest removing the file you've just created before proceeding with the rest
+of the episode, otherwise future outputs may vary from those given in the lesson.
+To do this, use the following command:
+
+```bash
+rm my_file.txt
+```
+
+
+:::
+
+## What's In A Name?
+
+::: {.callout-note icon="true" .nonincremental}
+
+Most file names are `something.extension`:
+
+- `.txt` = plain text file
+- `.pdf` = PDF document
+- `.cfg` = configuration file
+- `.png` = PNG image
+
+**Important:** This is just a convention! Files contain bytes. Naming `whale.png` as `whale.mp3` doesn't make it a sound file - it might just confuse programs trying to open it.
+
+:::
+
+## Moving Files and Directories
+
+Return to the `writing` directory:
+
+```bash
+cd ~/Desktop/shell-lesson-data/exercise-data/writing
+```
+
+`draft.txt` isn't a very informative name. Let's rename it using `mv`:
+
+```bash
+mv thesis/draft.txt thesis/quotes.txt
+```
+
+## How `mv` Works
+
+`mv [old] [new]` moves or renames files
+
+Check the result:
+
+```bash
+ls thesis
+```
+
+```output
+quotes.txt
+```
+
+**Warning:** `mv` will silently overwrite existing files with the same name!
+
+Use `mv -i` or `mv --interactive` to ask for confirmation before overwriting.
+
+## Moving to Current Directory
+
+Move `quotes.txt` to the current working directory:
+
+```bash
+mv thesis/quotes.txt .
+```
+
+The `.` means "current directory"
+
+Verify `thesis` is now empty:
+
+```bash
+ls thesis
+```
+
+```output
+$
+```
+
+## Confirming File Location
+
+Try to list the file in `thesis`:
+
+```bash
+ls thesis/quotes.txt
+```
+
+```error
+ls: cannot access 'thesis/quotes.txt': No such file or directory
+```
+
+Confirm it's in current directory:
+
+```bash
+ls quotes.txt
+```
+
+```output
+quotes.txt
+```
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Moving Files to a new folder
+
+After running the following commands, Jamie realizes that she put the files `sucrose.dat` and `maltose.dat` into the wrong folder. The files should have been placed in the `raw` folder.
+
+```bash
+ls -F
+ analyzed/ raw/
+ls -F analyzed
+fructose.dat glucose.dat maltose.dat sucrose.dat
+cd analyzed
+```
+
+Fill in the blanks to move these files to the `raw/` folder (i.e. the one she forgot to put them in)
+
+```bash
+mv sucrose.dat maltose.dat ____/____
+```
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+```bash
+mv sucrose.dat maltose.dat ../raw
+```
+
+Recall that `..` refers to the parent directory (i.e. one above the current directory) and that `.` refers to the current directory.
+
+:::
+
+## Copying Files and Directories
+
+The `cp` command copies instead of moving:
+
+```bash
+cp quotes.txt thesis/quotations.txt
+ls quotes.txt thesis/quotations.txt
+```
+
+```output
+quotes.txt   thesis/quotations.txt
+```
+
+`ls` can take multiple paths to show multiple files at once.
+
+## Copying Directories
+
+Use the `-r` (recursive) option to copy directories:
+
+```bash
+cp -r thesis thesis_backup
+```
+
+Check both directories:
+
+```bash
+ls thesis thesis_backup
+```
+
+```output
+thesis:
+quotations.txt
+
+thesis_backup:
+quotations.txt
+```
+
+## Forgetting `-r` When Copying Directories
+
+If you omit `-r` when copying a directory:
+
+```bash
+cp thesis thesis_backup
+```
+
+```error
+cp: -r not specified; omitting directory 'thesis'
+```
+
+The `-r` flag is **required** to copy directories.
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## Renaming Files
+
+Suppose that you created a plain-text file in your current directory to contain a list of the statistical tests you will need to do to analyze your data, and named it `statstics.txt`
+
+After creating and saving this file you realize you misspelled the filename! You want to correct the mistake, which of the following commands could you use to do so?
+
+1. `cp statstics.txt statistics.txt`
+2. `mv statstics.txt statistics.txt`
+3. `mv statstics.txt .`
+4. `cp statstics.txt .`
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+1. No. While this would create a file with the correct name, the incorrectly named file still exists in the directory and would need to be deleted.
+2. Yes, this would work to rename the file.
+3. No, the period(.) indicates where to move the file, but does not provide a new file name; identical file names cannot be created.
+4. No, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names cannot be created.
+
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## Moving and Copying
+
+What is the output of the closing `ls` command in the sequence shown below?
+
+```bash
+pwd
+```
+
+```output
+/Users/jamie/data
+```
+
+```bash
+ls
+```
+
+```output
+proteins.dat
+```
+
+```bash
+mkdir recombined
+mv proteins.dat recombined/
+cp recombined/proteins.dat ../proteins-saved.dat
+ls
+```
+
+1. `proteins-saved.dat recombined`
+2. `recombined`
+3. `proteins.dat recombined`
+4. `proteins-saved.dat`
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## Solution
+
+We start in the `/Users/jamie/data` directory, and create a new folder called `recombined`. The second line moves (`mv`) the file `proteins.dat` to the new folder (`recombined`). The third line makes a copy of the file we just moved. The tricky part here is where the file was copied to. Recall that `..` means 'go up a level', so the copied file is now in `/Users/jamie`. Notice that `..` is interpreted with respect to the current working directory, **not** with respect to the location of the file being copied. So, the only thing that will show using ls (in `/Users/jamie/data`) is the recombined folder.
+
+1. No, see explanation above. `proteins-saved.dat` is located at `/Users/jamie`
+2. Yes
+3. No, see explanation above. `proteins.dat` is located at `/Users/jamie/data/recombined`
+4. No, see explanation above. `proteins-saved.dat` is located at `/Users/jamie`
+
+:::
+
+## Removing Files and Directories
+
+Return to the `writing` directory and remove `quotes.txt`:
+
+```bash
+rm quotes.txt
+```
+
+Confirm it's gone:
+
+```bash
+ls quotes.txt
+```
+
+```error
+ls: cannot access 'quotes.txt': No such file or directory
+```
+
+## Deleting Is Forever
+
+::: {.callout-caution icon="true"}
+
+**The Unix shell doesn't have a trash bin!**
+
+When we delete files, they are unlinked from the file system so their storage space can be recycled.
+
+Tools for finding and recovering deleted files exist, but there's no guarantee they'll work - the computer may recycle the file's disk space right away.
+
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Using `rm` Safely
+
+What happens when we execute `rm -i thesis_backup/quotations.txt`? Why would we want this protection when using `rm`?
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+```output
+rm: remove regular file 'thesis_backup/quotations.txt'? y
+```
+
+The `-i` option will prompt before (every) removal (use <kbd>Y</kbd> to confirm deletion or <kbd>N</kbd> to keep the file). The Unix shell doesn't have a trash bin, so all the files removed will disappear forever. By using the `-i` option, we have the chance to check that we are deleting only the files that we want to remove.
+
+:::
+
+## Removing Directories
+
+If we try to remove a directory with just `rm`:
+
+```bash
+rm thesis
+```
+
+```error
+rm: cannot remove 'thesis': Is a directory
+```
+
+`rm` by default only works on files, not directories.
+
+## Removing Directories with `-r`
+
+Use `-r` (recursive) to remove a directory and all contents:
+
+```bash
+rm -r thesis
+```
+
+**⚠️ Warning:** This works without confirmation prompts!
+
+Given that files can't be retrieved, use `rm -r` with **great caution**.
+
+Consider using `rm -r -i` for interactive confirmation.
+
+## Operations with Multiple Files {.nonincremental}
+
+Oftentimes we need to copy or move several files at once.
+
+This can be done by:
+
+::: {.nonincremental}
+
+- Providing a list of individual filenames
+- Specifying a naming pattern using **wildcards**
+
+:::
+
+**Wildcards** are special characters that represent unknown characters or sets of characters.
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Copy with Multiple Filenames
+
+
+For this exercise, you can test the commands in the `shell-lesson-data/exercise-data` directory.
+
+We have seen how `cp` behaves when given two arguments,
+but `cp` behaves differently when given three or more arguments.
+Let's try giving `cp` three arguments.
+In the example below, what does `cp` do when given several filenames and a directory name?
+
+```bash
+mkdir backup
+cp creatures/minotaur.dat creatures/unicorn.dat backup/
+```
+
+In the example below, what does `cp` do when given three or more file names?
+
+```bash
+cd creatures
+ls -F
+```
+
+```output
+basilisk.dat  minotaur.dat  unicorn.dat
+```
+
+```bash
+cp minotaur.dat unicorn.dat basilisk.dat
+```
+
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+When `cp` is given two arguments and the second is a destination directory, `cp` copies the files to the destination directory.
+
+If given three or more arguments, `cp` throws an error such as the one below, because it is expecting a destination directory name as the last argument.
+
+```error
+cp: target 'basilisk.dat' is not a directory
+```
+
+:::
+
+## Using Wildcards
+
+::: {.callout-note icon="true" .nonincremental}
+
+**`*` is a wildcard** - represents zero or more characters.
+
+In `shell-lesson-data/exercise-data/alkanes`:
+
+- `*.pdb` matches `ethane.pdb`, `propane.pdb`, and all files ending in `.pdb`
+- `p*.pdb` only matches `pentane.pdb` and `propane.pdb`
+
+**`?` is also a wildcard** 
+
+- represents exactly one character.
+- `?ethane.pdb` matches `methane.pdb`
+- `*ethane.pdb` matches `ethane.pdb` and `methane.pdb`
+
+:::
+
+## Wildcards in Combination {.nonincremental}
+
+Wildcards can be used together:
+
+::: {.nonincremental}
+
+- `???ane.pdb` = three characters followed by `ane.pdb`
+  - Matches: `cubane.pdb`, `ethane.pdb`, `octane.pdb`
+
+:::
+
+**How wildcards work:**
+
+The shell expands wildcards to create a list of matching filenames **before** running the command.
+
+Exception: If no files match, Bash passes the expression as-is to the command.
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## List filenames matching a pattern
+
+When run in the `alkanes` directory, which `ls` command(s) will produce this output?
+
+`ethane.pdb   methane.pdb`
+
+1. `ls *t*ane.pdb`
+2. `ls *t?ne.*`
+3. `ls *t??ne.pdb`
+4. `ls ethane.*`
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## Solution
+
+The solution is `3.`
+
+`1.` shows all files whose names contain zero or more characters (`*`) followed by the letter `t`, then zero or more characters (`*`) followed by `ane.pdb`. This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`.
+
+`2.` shows all files whose names start with zero or more characters (`*`) followed by the letter `t`, then a single character (`?`), then `ne.` followed by zero or more characters (`*`). This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything which ends in `thane.pdb`.
+
+`3.` fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. This is the solution.
+
+`4.` only shows files starting with `ethane.`.
+
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## More on Wildcards
+
+
+Sam has a directory containing calibration data, datasets, and descriptions of
+the datasets:
+
+```bash
+.
+├── 2015-10-23-calibration.txt
+├── 2015-10-23-dataset1.txt
+├── 2015-10-23-dataset2.txt
+├── 2015-10-23-dataset_overview.txt
+├── 2015-10-26-calibration.txt
+├── 2015-10-26-dataset1.txt
+├── 2015-10-26-dataset2.txt
+├── 2015-10-26-dataset_overview.txt
+├── 2015-11-23-calibration.txt
+├── 2015-11-23-dataset1.txt
+├── 2015-11-23-dataset2.txt
+├── 2015-11-23-dataset_overview.txt
+├── backup
+│   ├── calibration
+│   └── datasets
+└── send_to_bob
+    ├── all_datasets_created_on_a_23rd
+    └── all_november_files
+```
+
+Before heading off to another field trip, she wants to back up her data and
+send some datasets to her colleague Bob. Sam uses the following commands
+to get the job done:
+
+```bash
+cp *dataset* backup/datasets
+cp ____calibration____ backup/calibration
+cp 2015-____-____ send_to_bob/all_november_files/
+cp ____ send_to_bob/all_datasets_created_on_a_23rd/
+```
+
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;" .nonincremental}
+
+## More on Wildcards
+
+Help Sam by filling in the blanks.
+
+The resulting directory structure should look like this
+
+```bash
+.
+├── 2015-10-23-calibration.txt
+├── 2015-10-23-dataset1.txt
+├── 2015-10-23-dataset2.txt
+├── 2015-10-23-dataset_overview.txt
+├── 2015-10-26-calibration.txt
+├── 2015-10-26-dataset1.txt
+├── 2015-10-26-dataset2.txt
+├── 2015-10-26-dataset_overview.txt
+├── 2015-11-23-calibration.txt
+├── 2015-11-23-dataset1.txt
+├── 2015-11-23-dataset2.txt
+├── 2015-11-23-dataset_overview.txt
+├── backup
+│   ├── calibration
+│   │   ├── 2015-10-23-calibration.txt
+│   │   ├── 2015-10-26-calibration.txt
+│   │   └── 2015-11-23-calibration.txt
+│   └── datasets
+│       ├── 2015-10-23-dataset1.txt
+│       ├── 2015-10-23-dataset2.txt
+│       ├── 2015-10-23-dataset_overview.txt
+│       ├── 2015-10-26-dataset1.txt
+│       ├── 2015-10-26-dataset2.txt
+│       ├── 2015-10-26-dataset_overview.txt
+│       ├── 2015-11-23-dataset1.txt
+│       ├── 2015-11-23-dataset2.txt
+│       └── 2015-11-23-dataset_overview.txt
+└── send_to_bob
+    ├── all_datasets_created_on_a_23rd
+    │   ├── 2015-10-23-dataset1.txt
+    │   ├── 2015-10-23-dataset2.txt
+    │   ├── 2015-10-23-dataset_overview.txt
+    │   ├── 2015-11-23-dataset1.txt
+    │   ├── 2015-11-23-dataset2.txt
+    │   └── 2015-11-23-dataset_overview.txt
+    └── all_november_files
+        ├── 2015-11-23-calibration.txt
+        ├── 2015-11-23-dataset1.txt
+        ├── 2015-11-23-dataset2.txt
+        └── 2015-11-23-dataset_overview.txt
+```
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+```bash
+cp *calibration.txt backup/calibration
+cp 2015-11-* send_to_bob/all_november_files/
+cp *-23-dataset* send_to_bob/all_datasets_created_on_a_23rd/
+```
+
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Organizing Directories and Files
+
+Jamie is working on a project, and she sees that her files aren't very well organized:
+
+```bash
+ls -F
+```
+
+```output
+analyzed/  fructose.dat    raw/   sucrose.dat
+```
+
+The `fructose.dat` and `sucrose.dat` files contain output from her data analysis. What command(s) covered in this lesson does she need to run so that the commands below will produce the output shown?
+
+```bash
+ls -F
+```
+
+```output
+analyzed/   raw/
+```
+
+```bash
+ls analyzed
+```
+
+```output
+fructose.dat    sucrose.dat
+```
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+```bash
+mv *.dat analyzed
+```
+
+Jamie needs to move her files `fructose.dat` and `sucrose.dat` to the `analyzed` directory. The shell will expand \*.dat to match all .dat files in the current directory. The `mv` command then moves the list of .dat files to the 'analyzed' directory.
+
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Reproduce a folder structure
+
+You're starting a new experiment and would like to duplicate the directory structure from your previous experiment so you can add new data.
+
+Assume that the previous experiment is in a folder called `2016-05-18`,
+which contains a `data` folder that in turn contains folders named `raw` and
+`processed` that contain data files.  The goal is to copy the folder structure
+of the `2016-05-18` folder into a folder called `2016-05-20`
+so that your final directory structure looks like this:
+
+```output
+2016-05-20/
+└── data
+   ├── processed
+   └── raw
+```
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Reproduce a folder structure
+
+Which of the following set of commands would achieve this objective?
+What would the other commands do?
+
+```bash
+mkdir 2016-05-20
+mkdir 2016-05-20/data
+mkdir 2016-05-20/data/processed
+mkdir 2016-05-20/data/raw
+```
+
+```bash
+mkdir 2016-05-20
+cd 2016-05-20
+mkdir data
+cd data
+mkdir raw processed
+```
+
+```bash
+mkdir 2016-05-20/data/raw
+mkdir 2016-05-20/data/processed
+```
+
+```bash
+mkdir -p 2016-05-20/data/raw
+mkdir -p 2016-05-20/data/processed
+```
+
+```bash
+mkdir 2016-05-20
+cd 2016-05-20
+mkdir data
+mkdir raw processed
+```
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+The first two sets of commands achieve this objective. The first set uses relative paths to create the top-level directory before the subdirectories.
+
+The third set of commands will give an error because the default behavior of `mkdir` won't create a subdirectory of a non-existent directory: the intermediate level folders must be created first.
+
+The fourth set of commands achieve this objective. Remember, the `-p` option, followed by a path of one or more directories, will cause `mkdir` to create any intermediate subdirectories as required.
+
+The final set of commands generates the 'raw' and 'processed' directories at the same level as the 'data' directory.
+
+:::

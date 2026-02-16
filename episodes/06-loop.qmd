@@ -41,7 +41,7 @@ presented on the first three lines, with DNA sequences on the following lines.
 Let's look at the files:
 
 ```bash
-$ head -n 5 basilisk.dat minotaur.dat unicorn.dat
+head -n 5 basilisk.dat minotaur.dat unicorn.dat
 ```
 
 We would like to print out the classification for each species, which is given on the second
@@ -64,7 +64,7 @@ done
 and we can apply this to our example like this:
 
 ```bash
-$ for filename in basilisk.dat minotaur.dat unicorn.dat
+for filename in basilisk.dat minotaur.dat unicorn.dat
 > do
 >     echo $filename
 >     head -n 2 $filename | tail -n 1
@@ -150,7 +150,7 @@ The shell itself doesn't care what the variable is called;
 if we wrote this loop as:
 
 ```bash
-$ for x in basilisk.dat minotaur.dat unicorn.dat
+for x in basilisk.dat minotaur.dat unicorn.dat
 > do
 >     head -n 2 $x | tail -n 1
 > done
@@ -159,7 +159,7 @@ $ for x in basilisk.dat minotaur.dat unicorn.dat
 or:
 
 ```bash
-$ for temperature in basilisk.dat minotaur.dat unicorn.dat
+for temperature in basilisk.dat minotaur.dat unicorn.dat
 > do
 >     head -n 2 $temperature | tail -n 1
 > done
@@ -191,7 +191,7 @@ How would you write a loop that echoes all 10 numbers from 0 to 9?
 ## Solution
 
 ```bash
-$ for loop_variable in 0 1 2 3 4 5 6 7 8 9
+for loop_variable in 0 1 2 3 4 5 6 7 8 9
 > do
 >     echo $loop_variable
 > done
@@ -227,7 +227,7 @@ cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 What is the output of the following code?
 
 ```bash
-$ for datafile in *.pdb
+for datafile in *.pdb
 > do
 >     ls *.pdb
 > done
@@ -236,7 +236,7 @@ $ for datafile in *.pdb
 Now, what is the output of the following code?
 
 ```bash
-$ for datafile in *.pdb
+for datafile in *.pdb
 > do
 >     ls $datafile
 > done
@@ -258,7 +258,7 @@ and then lists them using `ls`.
 The expanded loop would look like this:
 
 ```bash
-$ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > do
 >     ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > done
@@ -297,7 +297,7 @@ What would be the output of running the following loop in the
 `shell-lesson-data/exercise-data/alkanes` directory?
 
 ```bash
-$ for filename in c*
+for filename in c*
 > do
 >     ls $filename
 > done
@@ -325,7 +325,7 @@ the letter c, followed by zero or more other characters will be matched.
 How would the output differ from using this command instead?
 
 ```bash
-$ for filename in *c*
+for filename in *c*
 > do
 >     ls $filename
 > done
@@ -426,7 +426,7 @@ Let's continue with our example in the `shell-lesson-data/exercise-data/creature
 Here's another example:
 
 ```bash
-$ for filename in *.dat
+for filename in *.dat
 > do
 >     echo $filename
 >     head -n 100 $filename | tail -n 20
@@ -460,7 +460,7 @@ purple unicorn.dat
 To loop over these files, we would need to add double quotes like so:
 
 ```bash
-$ for filename in "red dragon.dat" "purple unicorn.dat"
+for filename in "red dragon.dat" "purple unicorn.dat"
 > do
 >     head -n 100 "$filename" | tail -n 20
 > done
@@ -498,13 +498,13 @@ but also save a version of the original files. We want to copy the original file
 files named `original-basilisk.dat` and `original-unicorn.dat`, for example. We can't use:
 
 ```bash
-$ cp *.dat original-*.dat
+cp *.dat original-*.dat
 ```
 
 because that would expand to:
 
 ```bash
-$ cp basilisk.dat minotaur.dat unicorn.dat original-*.dat
+cp basilisk.dat minotaur.dat unicorn.dat original-*.dat
 ```
 
 This wouldn't back up our files, instead we get an error:
@@ -520,7 +520,7 @@ no directory named `original-*.dat` in the `creatures` directory, we get an erro
 Instead, we can use a loop:
 
 ```bash
-$ for filename in *.dat
+for filename in *.dat
 > do
 >     cp $filename original-$filename
 > done
@@ -575,9 +575,9 @@ these are ones whose names end in 'A' or 'B', rather than 'Z'.
 Moving to the `north-pacific-gyre` directory, Nelle types:
 
 ```bash
-$ cd
-$ cd Desktop/shell-lesson-data/north-pacific-gyre
-$ for datafile in NENE*A.txt NENE*B.txt
+cd
+cd Desktop/shell-lesson-data/north-pacific-gyre
+for datafile in NENE*A.txt NENE*B.txt
 > do
 >     echo $datafile
 > done
@@ -599,7 +599,7 @@ Prefixing each input file's name with 'stats' seems simple,
 so she modifies her loop to do that:
 
 ```bash
-$ for datafile in NENE*A.txt NENE*B.txt
+for datafile in NENE*A.txt NENE*B.txt
 > do
 >     echo $datafile stats-$datafile
 > done
@@ -627,14 +627,14 @@ the shell redisplays the whole loop on one line
 (using semi-colons to separate the pieces):
 
 ```bash
-$ for datafile in NENE*A.txt NENE*B.txt; do echo $datafile stats-$datafile; done
+for datafile in NENE*A.txt NENE*B.txt; do echo $datafile stats-$datafile; done
 ```
 
 Using the <kbd>←</kbd>,
 Nelle navigates to the `echo` command and changes it to `bash goostats.sh`:
 
 ```bash
-$ for datafile in NENE*A.txt NENE*B.txt; do bash goostats.sh $datafile stats-$datafile; done
+for datafile in NENE*A.txt NENE*B.txt; do bash goostats.sh $datafile stats-$datafile; done
 ```
 
 When she presses <kbd>Enter</kbd>,
@@ -647,7 +647,7 @@ uses <kbd>↑</kbd> to repeat the command,
 and edits it to read:
 
 ```bash
-$ for datafile in NENE*A.txt NENE*B.txt; do echo $datafile;
+for datafile in NENE*A.txt NENE*B.txt; do echo $datafile;
 bash goostats.sh $datafile stats-$datafile; done
 ```
 
@@ -692,7 +692,7 @@ then to use `!123` (where '123' is replaced by the command number) to
 repeat one of those commands. For example, if Nelle types this:
 
 ```bash
-$ history | tail -n 5
+history | tail -n 5
 ```
 
 ```output
@@ -744,7 +744,7 @@ Suppose we want to preview the commands the following loop will execute
 without actually running those commands:
 
 ```bash
-$ for datafile in *.pdb
+for datafile in *.pdb
 > do
 >     cat $datafile >> all.pdb
 > done
@@ -755,7 +755,7 @@ want to run?
 
 ```bash
 # Version 1
-$ for datafile in *.pdb
+for datafile in *.pdb
 > do
 >     echo cat $datafile >> all.pdb
 > done
@@ -763,7 +763,7 @@ $ for datafile in *.pdb
 
 ```bash
 # Version 2
-$ for datafile in *.pdb
+for datafile in *.pdb
 > do
 >     echo "cat $datafile >> all.pdb"
 > done
@@ -803,7 +803,7 @@ some experiments measuring reaction rate constants with different compounds
 result of the following code:
 
 ```bash
-$ for species in cubane ethane methane
+for species in cubane ethane methane
 > do
 >     for temperature in 25 30 37 40
 >     do

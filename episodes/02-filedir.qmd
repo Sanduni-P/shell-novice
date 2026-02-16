@@ -47,7 +47,7 @@ current working directory, i.e. 'here', so knowing where you are before running
 a command is important. `pwd` shows you where you are:
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```output
@@ -138,7 +138,7 @@ Now let's learn the command that will let us see the contents of our
 own filesystem.  We can see what's in our home directory by running `ls`:
 
 ```bash
-$ ls
+ls
 ```
 
 ```output
@@ -163,7 +163,7 @@ the shell might also use colors to indicate whether each entry is a file or
 directory.
 
 ```bash
-$ ls -F
+ls -F
 ```
 
 ```output
@@ -230,7 +230,7 @@ run from within bash, support a `--help` option that displays more
 information on how to use the command or program.
 
 ```bash
-$ ls --help
+ls --help
 ```
 
 ```output
@@ -281,7 +281,7 @@ If you try to use an option that is not supported, `ls` and other commands
 will usually print an error message similar to:
 
 ```bash
-$ ls -j
+ls -j
 ```
 
 ```error
@@ -296,7 +296,7 @@ Try 'ls --help' for more information.
 The other way to learn about `ls` is to type
 
 ```bash
-$ man ls
+man ls
 ```
 
 This command will turn your terminal into a page with a description
@@ -392,7 +392,7 @@ The argument `Desktop` tells `ls` that
 we want a listing of something other than our current working directory:
 
 ```bash
-$ ls -F Desktop
+ls -F Desktop
 ```
 
 ```output
@@ -404,8 +404,7 @@ this command will return an error. Typically, a `Desktop` directory exists in yo
 home directory, which we assume is the current working directory of your bash shell.
 
 Your output should be a list of all the files and sub-directories in your
-Desktop directory, including the `shell-lesson-data` directory you downloaded at
-the [setup for this lesson](../learners/setup.md). (On most systems, the
+Desktop directory, including the `shell-lesson-data` directory you downloaded at the [prerequisites for this lesson](../index.qmd#prerequisites). (On most systems, the
 contents of the `Desktop` directory in the shell will show up as icons in a graphical
 user interface behind all the open windows. See if this is the case for you.)
 
@@ -421,7 +420,7 @@ First, using the same strategy as before, we can look at its contents by passing
 a directory name to `ls`:
 
 ```bash
-$ ls -F Desktop/shell-lesson-data
+ls -F Desktop/shell-lesson-data
 ```
 
 ```output
@@ -446,9 +445,9 @@ Let's say we want to move into the `exercise-data` directory we saw above. We ca
 use the following series of commands to get there:
 
 ```bash
-$ cd Desktop
-$ cd shell-lesson-data
-$ cd exercise-data
+cd Desktop
+cd shell-lesson-data
+cd exercise-data
 ```
 
 These commands will move us from our home directory into our Desktop directory, then into
@@ -463,7 +462,7 @@ it lists the contents of `/Users/nelle/Desktop/shell-lesson-data/exercise-data`,
 because that's where we now are:
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```output
@@ -471,7 +470,7 @@ $ pwd
 ```
 
 ```bash
-$ ls -F
+ls -F
 ```
 
 ```output
@@ -483,7 +482,7 @@ but how do we go up (i.e. how do we leave a directory and go into its parent dir
 We might try the following:
 
 ```bash
-$ cd shell-lesson-data
+cd shell-lesson-data
 ```
 
 ```error
@@ -500,7 +499,7 @@ with the simplest.
 There is a shortcut in the shell to move up one directory level. It works as follows:
 
 ```bash
-$ cd ..
+cd ..
 ```
 
 `..` is a special directory name meaning
@@ -511,7 +510,7 @@ Sure enough,
 if we run `pwd` after running `cd ..`, we're back in `/Users/nelle/Desktop/shell-lesson-data`:
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```output
@@ -522,7 +521,7 @@ The special directory `..` doesn't usually show up when we run `ls`. If we want
 to display it, we can add the `-a` option to `ls -F`:
 
 ```bash
-$ ls -F -a
+ls -F -a
 ```
 
 ```output
@@ -563,13 +562,13 @@ if you type `cd` on its own, without giving
 a directory?
 
 ```bash
-$ cd
+cd
 ```
 
 How can you check what happened? `pwd` gives us the answer!
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```output
@@ -584,7 +583,7 @@ three commands, but we can actually string together the list of directories
 to move to `exercise-data` in one step:
 
 ```bash
-$ cd Desktop/shell-lesson-data/exercise-data
+cd Desktop/shell-lesson-data/exercise-data
 ```
 
 Check that we've moved to the right place by running `pwd` and `ls -F`.
@@ -610,7 +609,7 @@ we're looking for, we can use `pwd` and then extract the piece we need
 to move to `shell-lesson-data`.
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```output
@@ -618,7 +617,7 @@ $ pwd
 ```
 
 ```bash
-$ cd /Users/nelle/Desktop/shell-lesson-data
+cd /Users/nelle/Desktop/shell-lesson-data
 ```
 
 Run `pwd` and `ls -F` to ensure that we're in the directory we expect.
@@ -648,19 +647,19 @@ Try it!
 First navigate to `~/Desktop/shell-lesson-data` (you should already be there).
 
 ```bash
-$ cd ~/Desktop/shell-lesson-data
+cd ~/Desktop/shell-lesson-data
 ```
 
 Then `cd` into the `exercise-data/creatures` directory
 
 ```bash
-$ cd exercise-data/creatures
+cd exercise-data/creatures
 ```
 
 Now if you run
 
 ```bash
-$ cd -
+cd -
 ```
 
 you'll see you're back in `~/Desktop/shell-lesson-data`.
@@ -783,7 +782,7 @@ Consider the command below as a general example of a command,
 which we will dissect into its component parts:
 
 ```bash
-$ ls -F /
+ls -F /
 ```
 
 ![](fig/shell_command_syntax.svg){alt='General syntax of a shell command' fig-align="center"}
@@ -810,8 +809,8 @@ For example, `ls -s` will display the size of files and directories alongside th
 while `ls -S` will sort the files and directories by size, as shown below:
 
 ```bash
-$ cd ~/Desktop/shell-lesson-data
-$ ls -s exercise-data
+cd ~/Desktop/shell-lesson-data
+ls -s exercise-data
 ```
 
 ```output
@@ -824,7 +823,7 @@ As these are defined differently for different operating systems,
 you may not obtain the same figures as in the example.
 
 ```bash
-$ ls -S exercise-data
+ls -S exercise-data
 ```
 
 ```output
@@ -836,7 +835,7 @@ of files and directories in the root directory `/`.
 An example of the output you might get from the above command is given below:
 
 ```bash
-$ ls -F /
+ls -F /
 ```
 
 ```output
@@ -869,7 +868,7 @@ Now in her current directory `shell-lesson-data`,
 Nelle can see what files she has using the command:
 
 ```bash
-$ ls north-pacific-gyre/
+ls north-pacific-gyre/
 ```
 
 This command is a lot to type,
@@ -877,14 +876,14 @@ but she can let the shell do most of the work through what is called **tab compl
 If she types:
 
 ```bash
-$ ls nor
+ls nor
 ```
 
 and then presses <kbd>Tab</kbd> (the tab key on her keyboard),
 the shell automatically completes the directory name for her:
 
 ```bash
-$ ls north-pacific-gyre/
+ls north-pacific-gyre/
 ```
 
 Pressing <kbd>Tab</kbd> again does nothing,
@@ -896,7 +895,7 @@ the shell will append 'goo' since all files that start with 'g' share
 the first three characters 'goo'.
 
 ```bash
-$ ls north-pacific-gyre/goo
+ls north-pacific-gyre/goo
 ```
 
 To see all of those files, she can press <kbd>Tab</kbd> twice more.

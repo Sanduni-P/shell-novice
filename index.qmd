@@ -20,11 +20,75 @@ By the end of this workshop, you will know how to:
 - Save steps in small scripts so you can reuse them.
 - Search for files and for text inside files quickly.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 This lesson guides you through the basics of file systems and the shell. If you have stored files on a computer at all and recognize the word “file” and either “directory” or “folder” (two common words for the same thing), you’re ready for this lesson.
 
 If you’re already comfortable manipulating files and directories, searching for files with `grep` and `find`, and writing simple loops and scripts, you probably want to skip this workshop. 
+
+### Download files 
+
+You need to download some files to follow this lesson.
+
+1. Download [shell-lesson-data.zip](episodes/data/shell-lesson-data.zip) and move the file to your Desktop.
+2. Unzip/extract the file. You should end up with a new folder called **`shell-lesson-data`** on your Desktop.
+
+### Install software
+
+If you do not already have the shell software installed, you will need to
+download and install it.
+
+::: {.panel-tabset}
+
+### For macOS
+
+For a Mac computer running macOS Mojave or earlier releases, the default Unix Shell is Bash.
+For a Mac computer running macOS Catalina or later releases, the default Unix Shell is Zsh.
+Your default shell is available via the Terminal program within your Utilities folder.
+
+1. To open Terminal, try one or both of the following:
+
+    - In Finder, select the Go menu, then select Utilities.
+    Locate Terminal in the Utilities folder and open it.
+    - Use the Mac 'Spotlight' computer search function.
+    Search for: `Terminal` and press <kbd>Return</kbd>.
+
+2. To check if your machine is set up to use something other than Bash,
+type `echo $SHELL` in your terminal window.
+
+3. If your machine is set up to use something other than Bash,
+you can run it by opening a terminal and typing `bash`.
+
+### For Linux
+
+1. The default Unix Shell for Linux operating systems is usually Bash.
+On most versions of Linux, it is accessible by running the
+Gnome Terminal or KDE Konsole or xterm,
+which can be found via the applications menu or the search bar.
+2. If your machine is set up to use something other than Bash,
+you can run it by opening a terminal and typing `bash`.
+
+### For Windows
+
+Computers with Windows operating systems do not automatically have a Unix Shell program
+installed.
+In this lesson, we encourage you to use an emulator included in Git for Windows
+which gives you access to both Bash shell commands and Git or Visual Studio Code which gives you access to Bash shell commands.
+
+#### Option 1: Git for Windows
+1. Download and install Git for Windows from [gitforwindows.org](https://gitforwindows.org/).
+2. During installation, ensure that the option to use Git from the Windows Command Prompt is selected.
+3. After installation, open Git Bash from the Start menu.
+
+#### Option 2: Visual Studio Code
+1. Download and install Visual Studio Code from [code.visualstudio.com](https://code.visualstudio.com/).
+2. Install the "Remote - WSL" extension from the Extensions Marketplace.
+3. Open a new terminal in VS Code, and select the Bash shell.
+
+**Note for Peter Mac Windows Users: **
+If you need to install new software on Peter Mac Windows computers, you will need to [Create a Snow Ticket](https://rchauprod.service-now.com/snow?id=sc_cat_item&sys_id=8a4eb4091b3c95501a0964ab274bcb9f&sysparm_category=d6b631be1b836d10e40598a7b04bcb19) for installation. 
+
+:::
 
 ## Course Outline
 
@@ -36,4 +100,3 @@ These content were adapted from the following course materials:
 
 -   [The Carpentries Incubator - The Unix Shell](https://swcarpentry.github.io/shell-novice/index.html)
 
-------------------------------------------------------------------------

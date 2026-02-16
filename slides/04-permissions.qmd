@@ -1,0 +1,413 @@
+
+
+# Episode 4: File Permissions
+
+::: {.callout-tip icon="false" .nonincremental}
+## Questions
+
+- How do file and directory permissions work?
+:::
+
+::: {.callout-tip icon="false" .nonincremental}
+## Objectives
+
+- What are file and directory permissions?
+- How to view permissions?
+- How to change permissions?
+- What are permission differences on Windows?
+:::
+
+## File Permissions in Unix {.nonincremental}
+
+Unix controls who can read, modify, and run files using **permissions**.
+
+Let's start with Nelle:
+
+- Unique user name: `nnemo`
+- User ID: 1404
+
+Users can belong to multiple groups, each with a name and numeric group ID.
+
+::: {.callout-note icon="true"}
+
+## Why Integer IDs?
+
+In early Unix, integers were faster and smaller to store and compare than strings.
+
+Systems often keep numeric IDs internally and map them to human-friendly names when displaying information.
+
+:::
+
+## File Ownership {.nonincremental}
+
+Every file and directory on a Unix computer:
+
+- Belongs to **one owner**
+- Belongs to **one group**
+
+The operating system stores the numeric IDs of the user and group that own it.
+
+## Three User Categories
+
+For each file, every user falls into one of three categories:
+
+1. **Owner** of the file
+2. Someone in the **file's group**
+3. **Everyone else**
+
+## Three Permission Types
+
+For each category, the computer tracks whether people can:
+
+1. **Read** the file
+2. **Write** to the file
+3. **Execute** the file (run it if it's a program)
+
+## Example Permission Table
+
+<table class="table table-striped">
+<tr><td></td><th>user</th><th>group</th><th>all</th></tr>
+<tr><th>read</th><td>yes</td><td>yes</td><td>no</td></tr>
+<tr><th>write</th><td>yes</td><td>no</td><td>no</td></tr>
+<tr><th>execute</th><td>no</td><td>no</td><td>no</td></tr>
+</table>
+
+This means:
+
+- Owner can read and write, but not run it
+- Group can read, but not modify or run it
+- Everyone else can do nothing with it
+
+## Permissions in Action
+
+`cd` into the `labs` directory and run `ls -F`:
+
+```bash
+cd labs
+ls -F
+```
+
+```output
+safety.txt    setup*     waiver.txt
+```
+
+The `*` at the end of `setup` tells us it's **executable** - probably something the computer can run.
+
+## Necessary But Not Sufficient
+
+::: {.callout-note icon="true"}
+
+The fact that something is marked as executable doesn't actually mean it contains a runnable program.
+
+Marking an HTML file executable won't make it run as a program; the OS may instead open it in the associated application.
+
+:::
+
+## Permission Strings
+
+Run `ls -l` for a long-form listing:
+
+```bash
+ls -l
+```
+
+```output
+-rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
+-rwxr-xr-x 1 nnemo bio 31988  2010-07-23 20:04 setup
+-rw-rw-r-- 1 nnemo bio  2312  2010-07-11 08:23 waiver.txt
+```
+
+The `-l` flag gives us detailed information.
+
+## Reading ls -l Output
+
+Let's examine the columns from right to left:
+
+```output
+-rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
+```
+
+- **Right side:** Filename
+- **Next left:** Last modified time and date
+- **Next:** File size in bytes
+- **Next:** Owner (`nnemo`) and group (`bio`)
+- **Second column:** Number of links (skip for now)
+- **First column:** **Permissions** (most important!)
+
+## Understanding Permission Strings
+
+Let's examine: `-rwxr-xr-x`
+
+**First character:** Type of thing
+- `-` = regular file
+- `d` = directory
+- Other characters for esoteric things
+
+**Next 9 characters in groups of 3:**
+- **Owner permissions:** `rwx` (read, write, execute)
+- **Group permissions:** `r-x` (read, execute, no write)
+- **Others permissions:** `r-x` (read, execute, no write)
+
+## Permission String Breakdown
+
+```
+-rwxr-xr-x
+```
+
+- `-` = regular file
+- `rwx` = owner can read, write, and execute
+- `r-x` = group can read and execute (dash means permission is off)
+- `r-x` = everyone else can read and execute
+
+So everyone on the system can look at the file's contents and run it.
+
+## Changing Permissions with chmod
+
+Here's a file with problematic permissions:
+
+```bash
+ls -l final.grd
+```
+
+```output
+-rwxrwxrwx 1 nnemo bio  4215  2010-08-29 22:30 final.grd
+```
+
+**Whoops!** Everyone can read it—and worse, modify it!
+
+(They could also try to run it as a program, which wouldn't work.)
+
+## chmod - Change Owner Permissions
+
+Change owner's permissions to `rw-`:
+
+```bash
+chmod u=rw final.grd
+```
+
+- `u` = changing privileges of the **user** (file's owner)
+- `rw` = new set of permissions
+
+Verify it worked:
+
+```bash
+ls -l final.grd
+```
+
+```output
+-rw-rwxrwx 1 nnemo bio  4215  2010-08-30 08:19 final.grd
+```
+
+## chmod - Change Group Permissions
+
+Give the group read-only permission:
+
+```bash
+chmod g=r final.grd
+ls -l final.grd
+```
+
+```output
+-rw-r--rw- 1 nnemo bio  4215  2010-08-30 08:19 final.grd
+```
+
+Group now has `r--` (read only).
+
+## chmod - Change All Permissions
+
+Give "all" (everyone else) no permissions:
+
+```bash
+chmod a= final.grd
+ls -l final.grd
+```
+
+```output
+-rw-r----- 1 nnemo bio  4215  2010-08-30 08:20 final.grd
+```
+
+- `a` = changing permissions for "all"
+- Nothing after `=` means "all" has empty permissions
+
+## Octal Modes (Shortcut)
+
+::: {.callout-tip icon="true"}
+
+Symbolic modes like `u=rw` are clear, but you'll often see octal numbers:
+
+```bash
+chmod 755 script.sh   # owner rwx (7), group r-x (5), others r-x (5)
+chmod 644 notes.txt   # owner rw- (6), group r-- (4), others r-- (4)
+```
+
+Each digit is a sum: **read=4, write=2, execute=1**.
+
+:::
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Octal `chmod`
+
+Set the permissions for `script.sh` so that the owner can read, write, and execute; the group can read and execute; and others have no permissions. Use octal mode.
+
+1. Which octal number represents these permissions?
+2. Which command will apply it to `script.sh`?
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+- Owner rwx → 7, group r-x → 5, others --- → 0, so the octal is `750`.
+
+```bash
+chmod 750 script.sh
+```
+
+Variants you may see:
+
+- `chmod 750 ./script.sh` (explicit path)
+- `chmod 0750 script.sh` (leading 0 sometimes used, effect is the same)
+
+:::
+
+## Hidden Directory Entries
+
+Run `ls -a -l` to include normally hidden entries:
+
+```bash
+ls -a -l
+```
+
+```output
+drwxr-xr-x 1 nnemo bio     0  2010-08-14 09:55 .
+drwxr-xr-x 1 nnemo bio  8192  2010-08-27 23:11 ..
+-rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
+-rwxr-xr-x 1 nnemo bio 31988  2010-07-23 20:04 setup
+-rw-rw-r-- 1 nnemo bio  2312  2010-07-11 08:23 waiver.txt
+```
+
+Notice `.` and `..` start with `d` (directory).
+
+## What Does 'x' Mean for Directories?
+
+The permissions for `.` and `..` show 'x' (execute) is on.
+
+**What does that mean?** A directory isn't a program—how can we "run" it?
+
+For directories, **'x' means something different:**
+- Gives the right to **traverse** the directory
+- But not to look at its contents
+
+The distinction is subtle...
+
+## Directory Permission Example
+
+Nelle's home directory has three subdirectories:
+
+![](../episodes/fig/x-for-directories.png){width="500" fig-align="center"}
+
+Each has a `notes` subdirectory with various files.
+
+## Different Permission Scenarios
+
+**If permissions on `venus` are `r-x`:**
+- User can see contents of both `venus` and `venus/notes`
+
+**If permissions on `mars` are `r--`:**
+- User can read contents of both `mars` and `mars/notes`
+
+**If permissions on `pluto` are `--x`:**
+- Cannot see what's in `pluto`: `ls pluto` denied
+- **But** can look in `pluto/notes` if she knows it exists!
+- Allowed to go **through** `pluto`, but not look at what's there
+
+## Making Directories Selectively Visible
+
+This trick gives people a way to make some of their directories visible to the world without opening up everything else.
+
+Useful for:
+- Sharing specific subdirectories
+- Keeping parent directory contents private
+- Allowing access to known paths only
+
+## What About Windows?
+
+Things work differently on Windows.
+
+**Windows uses Access Control Lists (ACLs):**
+- A list of pairs: "who" + "what"
+- Example: Give Mummy permission to append without reading/deleting
+- Example: Give Frankenstein permission to delete without seeing contents
+
+More flexible than Unix, but more complex to administer.
+
+## Unix vs Windows Permissions
+
+::: {.callout-note icon="true"}
+
+**Unix:** owner/group/others with `rwx` triplets
+
+**Windows:** ACLs grant fine-grained rights per user or group
+
+Same ideas, different mechanisms.
+
+:::
+
+Some modern Unix variants support ACLs, but hardly anyone uses them.
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+If `ls -l myfile.php` returns the following details:
+
+```output
+-rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
+```
+
+Which of the following statements is true?
+
+1. caro (the owner) can read, write, and execute `myfile.php`
+2. caro (the owner) cannot write to `myfile.php`
+3. members of `caro` (a group) can read, write, and execute `myfile.php`
+4. members of `zoo` (a group) cannot execute `myfile.php`
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Option 1 is correct.**
+
+The mode `-rwxr-xr--` gives:
+- Owner: `rwx` (read, write, execute)
+- Group: `r-x` (read, execute, no write)
+- Others: `r--` (read only)
+
+Therefore the owner can read, write, and execute; group members can read and execute (not write); others can only read.
+
+:::
+
+## Key Points {.nonincremental}
+
+::: {.incremental}
+- Correct permissions are critical for the security of a system.
+- File permissions describe who and what can read, write, modify, and access a file.
+- Use `ls -l` to view the permissions for a specific file.
+- Use `chmod` to change permissions on a file or directory.
+:::
+
+---
+
+**Next: Episode 5 - Pipes and Filters →**

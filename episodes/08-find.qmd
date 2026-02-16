@@ -41,9 +41,9 @@ and
 we're going to be working in the writing subdirectory:
 
 ```bash
-$ cd
-$ cd Desktop/shell-lesson-data/exercise-data/writing
-$ cat haiku.txt
+cd
+cd Desktop/shell-lesson-data/exercise-data/writing
+cat haiku.txt
 ```
 
 ```output
@@ -63,7 +63,7 @@ Software is like that.
 Let's find lines that contain the word 'not':
 
 ```bash
-$ grep not haiku.txt
+grep not haiku.txt
 ```
 
 ```output
@@ -86,7 +86,7 @@ as we will see in the next example.
 Let's search for the pattern: 'The'.
 
 ```bash
-$ grep The haiku.txt
+grep The haiku.txt
 ```
 
 ```output
@@ -105,7 +105,7 @@ Later in this lesson, we will also see how we can change the search behavior of 
 with respect to its case sensitivity.
 
 ```bash
-$ grep -w The haiku.txt
+grep -w The haiku.txt
 ```
 
 ```output
@@ -119,7 +119,7 @@ want to search for a single word, but a phrase. We can also do this with
 `grep` by putting the phrase in quotes.
 
 ```bash
-$ grep -w "is not" haiku.txt
+grep -w "is not" haiku.txt
 ```
 
 ```output
@@ -135,7 +135,7 @@ We will use quotes in the remaining examples.
 Another useful option is `-n`, which numbers the lines that match:
 
 ```bash
-$ grep -n "it" haiku.txt
+grep -n "it" haiku.txt
 ```
 
 ```output
@@ -152,7 +152,7 @@ We can combine the option `-w` to find the lines that contain the word 'the'
 and `-n` to number the lines that match:
 
 ```bash
-$ grep -n -w "the" haiku.txt
+grep -n -w "the" haiku.txt
 ```
 
 ```output
@@ -163,7 +163,7 @@ $ grep -n -w "the" haiku.txt
 Now we want to use the option `-i` to make our search case-insensitive:
 
 ```bash
-$ grep -n -w -i "the" haiku.txt
+grep -n -w -i "the" haiku.txt
 ```
 
 ```output
@@ -176,7 +176,7 @@ Now, we want to use the option `-v` to invert our search, i.e., we want to outpu
 the lines that do not contain the word 'the'.
 
 ```bash
-$ grep -n -w -v "the" haiku.txt
+grep -n -w -v "the" haiku.txt
 ```
 
 ```output
@@ -197,7 +197,7 @@ If we use the `-r` (recursive) option,
 Let's search recursively for `Yesterday` in the `shell-lesson-data/exercise-data/writing` directory:
 
 ```bash
-$ grep -r Yesterday .
+grep -r Yesterday .
 ```
 
 ```output
@@ -210,7 +210,7 @@ $ grep -r Yesterday .
 `grep` has lots of other options. To find out what they are, we can type:
 
 ```bash
-$ grep --help
+grep --help
 ```
 
 ```output
@@ -277,7 +277,7 @@ on [our website](https://librarycarpentry.org/lc-data-intro/01-regular-expressio
 find lines that have an 'o' in the second position like this:
 
 ```bash
-$ grep -E "^.o" haiku.txt
+grep -E "^.o" haiku.txt
 ```
 
 ```output
@@ -303,14 +303,14 @@ matches an actual 'o'.
 Find regular files the owner can execute:
 
 ```bash
-$ find . -type f -perm -u=x
+find . -type f -perm -u=x
 ```
 
 Find files writable by the group or readable by others:
 
 ```bash
-$ find . -type f -perm -g=w      # group has write
-$ find . -type f -perm -o=r      # others have read
+find . -type f -perm -g=w      # group has write
+find . -type f -perm -o=r      # others have read
 ```
 
 The leading `-` before each mode (e.g., `-u=x`) means "match if these bits are set", not exactly equal to the mode.
@@ -380,7 +380,7 @@ from each step to see why this is the case.
 You would call the script above like this:
 
 ```bash
-$ bash count-species.sh bear .
+bash count-species.sh bear .
 ```
 
 
@@ -481,7 +481,7 @@ For our first command,
 let's run `find .` (remember to run this command from the `shell-lesson-data/exercise-data` folder).
 
 ```bash
-$ find .
+find .
 ```
 
 ```output
@@ -518,7 +518,7 @@ The first option in our list is
 Sure enough, `find`'s output is the names of the five directories (including `.`):
 
 ```bash
-$ find . -type d
+find . -type d
 ```
 
 ```output
@@ -534,7 +534,7 @@ If we change `-type d` to `-type f`,
 we get a listing of all the files instead:
 
 ```bash
-$ find . -type f
+find . -type f
 ```
 
 ```output
@@ -556,7 +556,7 @@ $ find . -type f
 Now let's try matching by name:
 
 ```bash
-$ find . -name *.txt
+find . -name *.txt
 ```
 
 ```output
@@ -570,7 +570,7 @@ Since `*.txt` in the current directory expands to `./numbers.txt`,
 the command we actually ran was:
 
 ```bash
-$ find . -name numbers.txt
+find . -name numbers.txt
 ```
 
 `find` did what we asked; we just asked for the wrong thing.
@@ -582,7 +582,7 @@ This way,
 `find` actually gets the pattern `*.txt`, not the expanded filename `numbers.txt`:
 
 ```bash
-$ find . -name "*.txt"
+find . -name "*.txt"
 ```
 
 ```output
@@ -614,7 +614,7 @@ How can we combine that with `wc -l` to count the lines in all those files?
 The simplest way is to put the `find` command inside `$()`:
 
 ```bash
-$ wc -l $(find . -name "*.txt")
+wc -l $(find . -name "*.txt")
 ```
 
 ```output
@@ -631,7 +631,7 @@ Since the output of `find` is the three filenames `./writing/LittleWomen.txt`,
 `./writing/haiku.txt`, and `./numbers.txt`, the shell constructs the command:
 
 ```bash
-$ wc -l ./writing/LittleWomen.txt ./writing/haiku.txt ./numbers.txt
+wc -l ./writing/LittleWomen.txt ./writing/haiku.txt ./numbers.txt
 ```
 
 which is what we wanted.
@@ -645,7 +645,7 @@ Here, for example, we can find txt files that contain the word "searching"
 by looking for the string 'searching' in all the `.txt` files in the current directory:
 
 ```bash
-$ grep "searching" $(find . -name "*.txt")
+grep "searching" $(find . -name "*.txt")
 ```
 
 ```output
@@ -682,7 +682,7 @@ Option 2 also works in this instance because the shell tries to expand `*.dat`
 but there are no `*.dat` files in the current directory,
 so the wildcard expression gets passed to `find`.
 We first encountered this in
-[episode 3](03-create.md).
+[episode 3](../episodes/03-create.qmd).
 
 Option 3 is incorrect because it searches the contents of the files for lines which
 do not match 'unicorn', rather than searching the file names.

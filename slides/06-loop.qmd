@@ -1,0 +1,413 @@
+---
+title: "Episode 6: Loops"
+subtitle: "Automating repetitive tasks with loops"
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    background-transition: fade
+    incremental: true
+    slide-number: true
+---
+
+# Episode 6: Loops
+
+::: {.callout-tip icon="false" .nonincremental}
+## Questions
+
+- How can I perform the same actions on many different files?
+:::
+
+::: {.callout-tip icon="false" .nonincremental}
+## Objectives
+
+- Write a loop that applies one or more commands separately to each file in a set of files.
+- Trace the values taken on by a loop variable during execution of the loop.
+- Explain the difference between a variable's name and its value.
+- Explain why spaces and some punctuation characters shouldn't be used in file names.
+- Demonstrate how to see what commands have recently been executed.
+- Re-run recently executed commands without retyping them.
+:::
+
+## Why Loops Matter
+
+**Automation saves time and prevents errors!**
+
+Imagine processing 300 files:
+
+- **Without loops**: type the command 300 times
+- **With loops**: write once, runs 300 times
+
+Perfect for **repetitive tasks**.
+
+## The for Loop Structure
+
+```bash
+for thing in list_of_things
+do
+    operation_using/command $thing
+done
+```
+
+Three keywords:
+- `for` = start the loop
+- `do` = begin the action
+- `done` = end the loop
+
+## Simple Loop Example
+
+**Display three filenames:**
+
+```bash
+$ for filename in basilisk.dat minotaur.dat unicorn.dat
+> do
+>     echo $filename
+> done
+```
+
+```output
+basilisk.dat
+minotaur.dat
+unicorn.dat
+```
+
+Notice the `>` prompt changes to `>` while typing the loop.
+
+## Using Variables in Loops
+
+The **variable** holds each value in turn:
+
+- **First iteration**: `$filename` = `basilisk.dat`
+- **Second iteration**: `$filename` = `minotaur.dat`
+- **Third iteration**: `$filename` = `unicorn.dat`
+
+## Real Practical Loop
+
+**Get the classification from creature files:**
+
+```bash
+$ for filename in basilisk.dat minotaur.dat unicorn.dat
+> do
+>     echo $filename
+>     head -n 2 $filename | tail -n 1
+> done
+```
+
+```output
+basilisk.dat
+CLASSIFICATION: basiliscus vulgaris
+minotaur.dat
+CLASSIFICATION: bos hominus
+unicorn.dat
+CLASSIFICATION: equus monoceros
+```
+
+## Expanding Wildcards in Loops
+
+Instead of listing every file:
+
+```bash
+$ for filename in *.dat
+> do
+>     echo $filename
+> done
+```
+
+The shell expands `*.dat` to all matching files!
+
+## Variable Syntax
+
+Two ways to use variables:
+
+```bash
+$ echo $filename      # Simple
+$ echo ${filename}    # With braces
+```
+
+The braces are useful when the variable is next to text:
+
+```bash
+$ echo ${filename}.bak
+```
+
+Without braces, `$filename.bak` looks for variable `filename.bak`!
+
+## Good vs Bad Filenames
+
+### Files that work fine:
+- `data_2024.txt`
+- `results-v1.csv`
+- `file1.dat`
+
+### Files that break loops:
+- `my file.txt` (space breaks it!)
+- `data (2024).csv` (parentheses)
+- `file@#.txt` (special characters)
+
+## Why Spaces Break Things
+
+Shell interprets spaces as **separators**!
+
+```bash
+$ for filename in my file.txt
+> do ...
+```
+
+The shell sees THREE items: `my`, `file.txt`!
+
+**Best practice**: use `-` or `_` instead of spaces.
+
+## Quoting Variables
+
+To safely handle filenames with spaces:
+
+```bash
+$ for filename in "my file.txt" "another file.txt"
+> do
+>     echo "$filename"
+> done
+```
+
+**Always quote variables** to be safe!
+
+## Command History
+
+**Re-run previous commands:**
+
+Press **Up arrow** to see last command.
+
+Press **Up arrow** multiple times to go back further.
+
+Press **Down arrow** to go forward.
+
+## History Shortcuts
+
+| Shortcut | What it does |
+|----------|-------------|
+| `↑` / `↓` | Previous/next command |
+| `Ctrl-R` | Search command history |
+| `history` | Show all previous commands |
+| `!number` | Run command #123 from history |
+
+## Search History with Ctrl-R
+
+Press `Ctrl-R`:
+
+```
+(reverse-i-search)`':
+```
+
+Type part of a command:
+
+```
+(reverse-i-search)`for': for filename in *.dat
+```
+
+Press Enter to run it!
+
+## Executing Commands from History
+
+View history:
+
+```bash
+$ history
+```
+
+Shows numbered list of commands.
+
+Run command #42:
+
+```bash
+$ !42
+```
+
+## Loop Execution Trace
+
+**Understanding what happens step-by-step:**
+
+```bash
+for file in a.txt b.txt c.txt
+do
+    echo $file
+done
+```
+
+| Iteration | Value of `$file` | Output |
+|-----------|------------------|--------|
+| 1 | `a.txt` | `a.txt` |
+| 2 | `b.txt` | `b.txt` |
+| 3 | `c.txt` | `c.txt` |
+
+## Nested Information in Loops
+
+Use multiple variables:
+
+```bash
+$ for file in *.pdb
+> do
+>     echo "Processing $file"
+>     wc -l "$file"
+> done
+```
+
+```output
+Processing cubane.pdb
+  20 cubane.pdb
+Processing ethane.pdb
+  12 ethane.pdb
+...
+```
+
+## One-liner Loop
+
+Put loop on one line using semicolon:
+
+```bash
+$ for file in *.dat; do echo $file; done
+```
+
+Same as:
+```bash
+for file in *.dat
+do
+    echo $file
+done
+```
+
+## Try It Yourself - Question 1
+
+**Trace execution of this loop:**
+
+```bash
+for num in 1 2 3
+do
+    echo "Number is $num"
+done
+```
+
+What will be printed?
+
+## Try It Yourself - Solution 1
+
+**Output:**
+
+```output
+Number is 1
+Number is 2
+Number is 3
+```
+
+The loop runs 3 times:
+- First: `$num` = `1`
+- Second: `$num` = `2`
+- Third: `$num` = `3`
+
+## Try It Yourself - Question 2
+
+**Write a loop that:**
+
+1. Processes all `.txt` files
+2. Prints the filename
+3. Counts lines in each
+
+## Try It Yourself - Solution 2
+
+**Solution:**
+
+```bash
+$ for file in *.txt
+> do
+>     echo "File: $file"
+>     wc -l "$file"
+> done
+```
+
+**Why the quotes?** To handle filenames with spaces safely!
+
+## Try It Yourself - Question 3
+
+**You have 100 data files: `data_1.csv` to `data_100.csv`**
+
+Write a command to process all of them.
+
+(Hint: use wildcards!)
+
+## Try It Yourself - Solution 3
+
+**Simple with wildcards:**
+
+```bash
+$ for file in data_*.csv
+> do
+>     # Your commands here
+>     echo "Processing $file"
+> done
+```
+
+The shell expands `data_*.csv` to all matching files!
+
+## Try It Yourself - Question 4
+
+**Use the up arrow or history to:**
+
+1. Find a `for` loop you ran before
+2. Modify it slightly
+3. Run the new version
+
+(This is how professionals work!)
+
+## Try It Yourself - Solution 4
+
+**Steps:**
+
+1. Press `Ctrl-R` to search
+2. Type part of the loop: `for file`
+3. Press Enter to bring it back
+4. Edit it as needed
+5. Press Enter to run
+
+**Much faster than retyping!**
+
+## Important Tips for Loops
+
+::: {.incremental}
+1. **Quote your variables**: `"$filename"`
+2. **Use sensible names**: `filename` not `x`
+3. **Test on a few files first**, not all 300
+4. **Save loop commands** in scripts for reuse
+5. **Comments help**: `# This processes all .txt files`
+:::
+
+## Key Points
+
+::: {.fragment}
+`for` loops **repeat commands on lists**
+:::
+
+::: {.fragment}
+Loop variable holds **each value in turn**
+:::
+
+::: {.fragment}
+Use `$` to access **variable value**
+:::
+
+::: {.fragment}
+Wildcards **expand to multiple files**
+:::
+
+::: {.fragment}
+Quote variables to handle **spaces safely**
+:::
+
+::: {.fragment}
+Use **history** to reuse and modify commands
+:::
+
+::: {.fragment}
+Loops enable **powerful automation**
+:::
+
+---
+
+**Next: Episode 7 - Shell Scripts →**

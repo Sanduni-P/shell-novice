@@ -57,3 +57,5 @@ Gemfile.lock
 /.quarto/
 /_freeze/
 /_site/
+slides/*.html
+

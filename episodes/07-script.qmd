@@ -37,8 +37,8 @@ Let's start by going back to `alkanes/` and creating a new file, `middle.sh` whi
 become our shell script:
 
 ```bash
-$ cd alkanes
-$ nano middle.sh
+cd alkanes
+nano middle.sh
 ```
 
 The command `nano middle.sh` opens the file `middle.sh` within the text editor 'nano'
@@ -62,7 +62,7 @@ we can ask the shell to execute the commands it contains.
 Our shell is called `bash`, so we run the following command:
 
 ```bash
-$ bash middle.sh
+bash middle.sh
 ```
 
 ```output
@@ -100,7 +100,7 @@ in the shell and executing it with a new file name.
 Instead, let's edit `middle.sh` and make it more versatile:
 
 ```bash
-$ nano middle.sh
+nano middle.sh
 ```
 
 Now, within "nano", replace the text `octane.pdb` with the special variable called `$1`:
@@ -114,7 +114,7 @@ Inside a shell script,
 We can now run our script like this:
 
 ```bash
-$ bash middle.sh octane.pdb
+bash middle.sh octane.pdb
 ```
 
 ```output
@@ -128,7 +128,7 @@ ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
 or on a different file like this:
 
 ```bash
-$ bash middle.sh pentane.pdb
+bash middle.sh pentane.pdb
 ```
 
 ```output
@@ -161,7 +161,7 @@ Knowing this, we can use additional arguments to define the range of lines to
 be passed to `head` and `tail` respectively:
 
 ```bash
-$ nano middle.sh
+nano middle.sh
 ```
 
 ```source
@@ -171,7 +171,7 @@ head -n "$2" "$1" | tail -n "$3"
 We can now run:
 
 ```bash
-$ bash middle.sh pentane.pdb 15 5
+bash middle.sh pentane.pdb 15 5
 ```
 
 ```output
@@ -186,7 +186,7 @@ By changing the arguments to our command, we can change our script's
 behaviour:
 
 ```bash
-$ bash middle.sh pentane.pdb 20 5
+bash middle.sh pentane.pdb 20 5
 ```
 
 ```output
@@ -202,7 +202,7 @@ but it may take the next person who reads `middle.sh` a moment to figure out wha
 We can improve our script by adding some **comments** at the top:
 
 ```bash
-$ nano middle.sh
+nano middle.sh
 ```
 
 ```source
@@ -222,7 +222,7 @@ What if we want to process many files in a single pipeline?
 For example, if we want to sort our `.pdb` files by length, we would type:
 
 ```bash
-$ wc -l *.pdb | sort -n
+wc -l *.pdb | sort -n
 ```
 
 because `wc -l` lists the number of lines in the files
@@ -244,7 +244,7 @@ to handle the case of arguments containing spaces
 Here's an example:
 
 ```bash
-$ nano sorted.sh
+nano sorted.sh
 ```
 
 ```source
@@ -254,7 +254,7 @@ wc -l "$@" | sort -n
 ```
 
 ```bash
-$ bash sorted.sh *.pdb ../creatures/*.dat
+bash sorted.sh *.pdb ../creatures/*.dat
 ```
 
 ```output
@@ -330,7 +330,7 @@ Instead of typing them in again
 we can do this:
 
 ```bash
-$ history | tail -n 5 > redo-figure-3.sh
+history | tail -n 5 > redo-figure-3.sh
 ```
 
 The file `redo-figure-3.sh` now contains:
@@ -354,7 +354,7 @@ we have a completely accurate record of how we created that figure.
 If you run the command:
 
 ```bash
-$ history | tail -n 5 > recent.sh
+history | tail -n 5 > recent.sh
 ```
 
 the last command in the file is the `history` command itself, i.e.,
@@ -394,13 +394,13 @@ The easiest way to capture all the steps is in a script.
 First we return to Nelle's project directory:
 
 ```bash
-$ cd ../../north-pacific-gyre/
+cd ../../north-pacific-gyre/
 ```
 
 She creates a file using `nano` ...
 
 ```bash
-$ nano do-stats.sh
+nano do-stats.sh
 ```
 
 ...which contains the following:
@@ -418,13 +418,13 @@ She saves this in a file called `do-stats.sh`
 so that she can now re-do the first stage of her analysis by typing:
 
 ```bash
-$ bash do-stats.sh NENE*A.txt NENE*B.txt
+bash do-stats.sh NENE*A.txt NENE*B.txt
 ```
 
 She can also do this:
 
 ```bash
-$ bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l
+bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l
 ```
 
 so that the output is just the number of files processed
@@ -469,7 +469,7 @@ tail -n $3 $1
 While you are in the `alkanes` directory, you type the following command:
 
 ```bash
-$ bash script.sh '*.pdb' 1 1
+bash script.sh '*.pdb' 1 1
 ```
 
 Which of the following outputs would you expect to see?
@@ -492,8 +492,8 @@ The special variables `$1`, `$2` and `$3` represent the command line arguments g
 script, such that the commands run are:
 
 ```bash
-$ head -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
-$ tail -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+head -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+tail -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
 ```
 
 The shell does not expand `'*.pdb'` because it is enclosed by quote marks.
@@ -514,7 +514,7 @@ out the name of the file with the most lines in that directory
 with that extension. For example:
 
 ```bash
-$ bash longest.sh shell-lesson-data/exercise-data/alkanes pdb
+bash longest.sh shell-lesson-data/exercise-data/alkanes pdb
 ```
 
 would print the name of the `.pdb` file in `shell-lesson-data/exercise-data/alkanes` that has
@@ -523,7 +523,7 @@ the most lines.
 Feel free to test your script on another directory e.g.
 
 ```bash
-$ bash longest.sh shell-lesson-data/exercise-data/writing txt
+bash longest.sh shell-lesson-data/exercise-data/writing txt
 ```
 :::
 
@@ -626,14 +626,14 @@ done
 When you run it from the `north-pacific-gyre` directory:
 
 ```bash
-$ bash do-errors.sh NENE*A.txt NENE*B.txt
+bash do-errors.sh NENE*A.txt NENE*B.txt
 ```
 
 the output is blank.
 To figure out why, re-run the script using the `-x` option:
 
 ```bash
-$ bash -x do-errors.sh NENE*A.txt NENE*B.txt
+bash -x do-errors.sh NENE*A.txt NENE*B.txt
 ```
 
 What is the output showing you?

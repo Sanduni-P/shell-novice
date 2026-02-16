@@ -1,0 +1,426 @@
+---
+title: "Episode 5: Pipes and Filters"
+subtitle: "Combining commands to create powerful workflows"
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    background-transition: fade
+    incremental: true
+    slide-number: true
+---
+
+# Episode 5: Pipes and Filters
+
+::: {.callout-tip icon="false" .nonincremental}
+## Questions
+
+- How can I combine existing commands to produce a desired output?
+- How can I show only part of the output?
+:::
+
+::: {.callout-tip icon="false" .nonincremental}
+## Objectives
+
+- Explain the advantage of linking commands with pipes and filters.
+- Combine sequences of commands to get new output.
+- Redirect a command's output to a file.
+- Explain what usually happens if a program or pipeline isn't given any input to process.
+:::
+
+## The Power of Pipes
+
+**Combine simple programs into powerful workflows!**
+
+Instead of:
+- Create intermediate files
+- Run separate commands
+- Clean up temporary files
+
+We can:
+- Chain commands together
+- Process data in steps
+- Keep everything clean
+
+## Sample Data
+
+We have 6 molecular data files:
+
+```bash
+$ ls *.pdb
+```
+
+```output
+cubane.pdb    methane.pdb    pentane.pdb
+ethane.pdb    octane.pdb     propane.pdb
+```
+
+## Command 1: wc - Count Lines, Words, Characters
+
+```bash
+$ wc cubane.pdb
+```
+
+```output
+20  156  1158  cubane.pdb
+```
+
+- **20** = lines
+- **156** = words  
+- **1158** = characters
+
+## Using Wildcards with wc
+
+Count all `.pdb` files:
+
+```bash
+$ wc *.pdb
+```
+
+```output
+  20  156  1158  cubane.pdb
+  12   84   622  ethane.pdb
+   9   57   422  methane.pdb
+  30  246  1828  octane.pdb
+  21  165  1226  pentane.pdb
+  15  111   825  propane.pdb
+ 107  819  6081  total
+```
+
+## wc with Options
+
+**Count only lines:**
+
+```bash
+$ wc -l *.pdb
+```
+
+```output
+  20  cubane.pdb
+  12  ethane.pdb
+  ...
+ 107  total
+```
+
+Other options: `-m` (characters), `-w` (words)
+
+## Command 2: cat - Display File Contents
+
+```bash
+$ cat cubane.pdb
+```
+
+Outputs the entire file contents to the terminal.
+
+**Use with wildcards:**
+
+```bash
+$ cat *.pdb
+```
+
+Displays all files sequentially.
+
+## Command 3: sort - Sort Lines
+
+```bash
+$ sort names.txt
+```
+
+Sorts lines in **alphabetical order**.
+
+## Command 4: head - First Lines
+
+Show **first 10 lines** by default:
+
+```bash
+$ head cubane.pdb
+```
+
+Show first 5 lines:
+
+```bash
+$ head -n 5 cubane.pdb
+```
+
+## Command 5: tail - Last Lines
+
+Show **last 10 lines** by default:
+
+```bash
+$ tail cubane.pdb
+```
+
+Show last 3 lines:
+
+```bash
+$ tail -n 3 cubane.pdb
+```
+
+## The Pipe: `|`
+
+**Connect two commands!**
+
+Output of first command becomes input of second:
+
+```bash
+$ command1 | command2
+```
+
+Think of it like a **water pipe** carrying data.
+
+## Pipe Example
+
+Show last 5 lines of a file:
+
+```bash
+$ wc -l cubane.pdb
+```
+
+```output
+20  cubane.pdb
+```
+
+vs.
+
+```bash
+$ head -n 5 cubane.pdb | tail -n 5
+```
+
+## Multiple Pipes
+
+Chain as many as you want:
+
+```bash
+$ cat *.pdb | wc -l
+```
+
+Count total lines in all files.
+
+```bash
+$ cat species.txt | head -n 20 | tail -n 5
+```
+
+Get lines 16-20.
+
+## Filtering with grep (Preview)
+
+**Find lines matching a pattern:**
+
+```bash
+$ grep ATOM example.pdb
+```
+
+Displays all lines containing "ATOM".
+
+**In a pipeline:**
+
+```bash
+$ cat *.pdb | grep ATOM | wc -l
+```
+
+Count all ATOM entries in all files!
+
+## Redirecting Output: `>`
+
+**Save output to a file** (overwrites):
+
+```bash
+$ wc -l *.pdb > line-counts.txt
+$ cat line-counts.txt
+```
+
+```output
+  20  cubane.pdb
+  ...
+ 107  total
+```
+
+⚠️ **Warning**: `>` overwrites existing files!
+
+## Appending Output: `>>`
+
+**Add to a file** (doesn't overwrite):
+
+```bash
+$ echo "New entry" >> log.txt
+```
+
+Adds text to the end of the file.
+
+## Practical Example
+
+Count lines in all files and save:
+
+```bash
+$ wc -l *.pdb > line-counts.txt
+```
+
+Sort them:
+
+```bash
+$ sort -n line-counts.txt
+```
+
+```output
+   9 methane.pdb
+  12 ethane.pdb
+  15 propane.pdb
+  20 cubane.pdb
+  21 pentane.pdb
+  30 octane.pdb
+ 107 total
+```
+
+## Real-World Pipeline
+
+**Problem**: Find all ATOM lines, count them, save to file
+
+**Solution:**
+
+```bash
+$ cat *.pdb | grep ATOM | wc -l > atom-count.txt
+```
+
+Breaking it down:
+1. `cat *.pdb` = show all files
+2. `grep ATOM` = filter for ATOM lines only
+3. `wc -l` = count the lines
+4. `> atom-count.txt` = save result
+
+## Try It Yourself - Question 1
+
+**You have a file called `data.txt` with 100 lines**
+
+Write a command to:
+1. Show the middle 10 lines (lines 46-55)
+
+## Try It Yourself - Solution 1
+
+**Using pipes:**
+
+```bash
+$ head -n 55 data.txt | tail -n 10
+```
+
+Breaking it down:
+- `head -n 55` = first 55 lines
+- `tail -n 10` = last 10 of those = lines 46-55
+
+## Try It Yourself - Question 2
+
+**Sort molecular files by size (largest first)**
+
+You have: `cubane.pdb`, `ethane.pdb`, etc.
+
+Hint: You already know `wc -l` and `sort -n`
+
+## Try It Yourself - Solution 2
+
+**Using pipes and redirection:**
+
+```bash
+$ wc -l *.pdb | sort -rn > sorted-sizes.txt
+$ cat sorted-sizes.txt
+```
+
+```output
+ 107 total
+  30 octane.pdb
+  21 pentane.pdb
+  20 cubane.pdb
+  15 propane.pdb
+  12 ethane.pdb
+   9 methane.pdb
+```
+
+`sort -rn` sorts in **reverse numeric** order.
+
+## Try It Yourself - Question 3
+
+**You want to save the 3 longest files to a list**
+
+Using the output from above, extract just the filenames
+(no "total" line, no line counts).
+
+## Try It Yourself - Solution 3
+
+**Using pipes and redirection:**
+
+```bash
+$ wc -l *.pdb | sort -rn | head -n 4 | tail -n 3
+```
+
+Or more precisely with grep to exclude "total":
+
+```bash
+$ wc -l *.pdb | grep -v total | sort -rn | head -n 3
+```
+
+## Try It Yourself - Question 4
+
+**Combine and count**
+
+Write a command that:
+1. Shows all `.pdb` files
+2. Filters for lines starting with "ATOM"
+3. Counts them
+
+## Try It Yourself - Solution 4
+
+**Using pipes:**
+
+```bash
+$ cat *.pdb | grep ^ATOM | wc -l
+```
+
+Breaking it down:
+- `cat *.pdb` = display all files
+- `grep ^ATOM` = filter for lines starting with ATOM
+- `wc -l` = count the lines
+
+The result is the total number of atoms!
+
+## Filter Philosophy
+
+**Unix philosophy: Do one thing well**
+
+Each command:
+- Does **one job** well
+- Takes input and produces output
+- Can be combined with others
+
+Think of them as **LEGO blocks** you snap together!
+
+## Key Points
+
+::: {.fragment}
+`wc` **counts** lines, words, characters
+:::
+
+::: {.fragment}
+`head` and `tail` show **beginning and end**
+:::
+
+::: {.fragment}
+`sort` **arranges** data in order
+:::
+
+::: {.fragment}
+**Pipe** `|` connects commands
+:::
+
+::: {.fragment}
+`>` **saves** output (overwrites)
+:::
+
+::: {.fragment}
+`>>` **appends** to a file
+:::
+
+::: {.fragment}
+Combine simple commands into **powerful pipelines**
+:::
+
+---
+
+**Next: Episode 6 - Loops →**

@@ -1,0 +1,444 @@
+---
+title: "Episode 7: Shell Scripts"
+subtitle: "Saving and reusing commands in scripts"
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    background-transition: fade
+    incremental: true
+    slide-number: true
+---
+
+# Episode 7: Shell Scripts
+
+::: {.callout-tip icon="false" .nonincremental}
+## Questions
+
+- How can I save and re-use commands?
+:::
+
+::: {.callout-tip icon="false" .nonincremental}
+## Objectives
+
+- Write a shell script that runs a command or series of commands for a fixed set of files.
+- Run a shell script from the command line.
+- Write a shell script that operates on a set of files defined by the user on the command line.
+- Create pipelines that include shell scripts you, and others, have written.
+:::
+
+## What is a Shell Script?
+
+**A file containing shell commands**
+
+- Run the same commands repeatedly
+- No need to retype
+- More reliable (fewer typos)
+- Can be shared with others
+- Essential for **automation**
+
+## Creating Your First Script
+
+Create a file called `middle.sh`:
+
+```bash
+$ nano middle.sh
+```
+
+In the editor, type:
+
+```bash
+head -n 15 octane.pdb | tail -n 5
+```
+
+Save (`Ctrl-O`, `Enter`, `Ctrl-X`).
+
+## Running Your Script
+
+Execute the script:
+
+```bash
+$ bash middle.sh
+```
+
+```output
+ATOM      9  H           1      -4.502   0.681   0.785  1.00  0.00
+ATOM     10  H           1      -5.254  -0.243  -0.537  1.00  0.00
+ATOM     11  H           1      -4.357   1.252  -0.895  1.00  0.00
+ATOM     12  H           1      -3.009  -0.741  -1.467  1.00  0.00
+ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
+```
+
+Output is exactly what we'd get from running manually!
+
+## Problem: Not Reusable
+
+Our script only works on `octane.pdb`.
+
+What if we want to use it on other files?
+
+**Solution**: Use command-line arguments!
+
+## Making Scripts Flexible
+
+Edit `middle.sh`:
+
+```bash
+head -n 15 "$1" | tail -n 5
+```
+
+- `$1` = first argument provided by user
+
+## Using Arguments
+
+Now run with different files:
+
+```bash
+$ bash middle.sh octane.pdb
+$ bash middle.sh ethane.pdb
+$ bash middle.sh methane.pdb
+```
+
+Each uses the argument you provide!
+
+## Argument Variables
+
+| Variable | Meaning |
+|----------|---------|
+| `$1` | First argument |
+| `$2` | Second argument |
+| `$3` | Third argument |
+| `$@` | All arguments |
+| `$#` | Number of arguments |
+
+## Multiple Arguments Example
+
+Script: `combine.sh`
+
+```bash
+cat "$1" "$2" > "$3"
+```
+
+Usage:
+
+```bash
+$ bash combine.sh file1.txt file2.txt combined.txt
+```
+
+This combines two files into a third!
+
+## All Arguments: `$@`
+
+Script: `process-all.sh`
+
+```bash
+for file in "$@"
+do
+    echo "Processing $file"
+    wc -l "$file"
+done
+```
+
+Usage:
+
+```bash
+$ bash process-all.sh *.pdb
+```
+
+Processes all files passed in!
+
+## Quoting Arguments
+
+**Always quote your variables!**
+
+Safe:
+```bash
+head -n 15 "$1" | tail -n 5
+```
+
+Unsafe (breaks with spaces in filenames):
+```bash
+head -n 15 $1 | tail -n 5
+```
+
+## Comments in Scripts
+
+Add comments with `#`:
+
+```bash
+#!/bin/bash
+# This script extracts the middle 5 lines
+# of a PDB file (lines 11-15)
+# Usage: bash middle.sh filename
+
+head -n 15 "$1" | tail -n 5
+```
+
+Comments **document** your script for future use.
+
+## The Shebang Line
+
+First line of many scripts:
+
+```bash
+#!/bin/bash
+```
+
+This tells the system: **Use bash to run this script**
+
+Allows you to run:
+```bash
+$ ./middle.sh octane.pdb
+```
+
+Instead of:
+```bash
+$ bash middle.sh octane.pdb
+```
+
+## Making Scripts Executable
+
+To use `./script.sh` directly:
+
+```bash
+$ chmod u+x middle.sh
+$ ./middle.sh octane.pdb
+```
+
+Now the script is **executable** by you!
+
+## Practical Example: Batch Processing
+
+Script: `count-atoms.sh`
+
+```bash
+#!/bin/bash
+# Count ATOM lines in PDB files
+
+for file in "$@"
+do
+    count=$(grep -c "^ATOM" "$file")
+    echo "$file: $count atoms"
+done
+```
+
+Usage:
+
+```bash
+$ bash count-atoms.sh *.pdb
+```
+
+```output
+cubane.pdb: 10 atoms
+ethane.pdb: 8 atoms
+...
+```
+
+## Variable Assignment
+
+Create variables with `=` (no spaces!):
+
+```bash
+count=$(grep -c "^ATOM" "$file")
+```
+
+Use command output as a variable!
+
+```bash
+filename=$(basename "$1")
+directory=$(dirname "$1")
+```
+
+## Common Pitfalls
+
+❌ Space around `=`:
+```bash
+count = 5  # WRONG!
+```
+
+✅ No spaces:
+```bash
+count=5    # Correct
+```
+
+❌ Missing quotes:
+```bash
+head "$1"  # What if $1 has spaces?
+```
+
+✅ Always quote:
+```bash
+head "$1"  # Safe!
+```
+
+## Script Debugging
+
+Print what's happening:
+
+```bash
+#!/bin/bash
+echo "Processing $1"
+head -n 15 "$1" | tail -n 5
+echo "Done!"
+```
+
+## Try It Yourself - Question 1
+
+**Write a script called `show-lines.sh` that:**
+
+1. Takes a filename as argument
+2. Shows the number of lines
+3. Displays the first 5 lines
+
+Hint: Use `wc -l` and `head`
+
+## Try It Yourself - Solution 1
+
+**Script: `show-lines.sh`**
+
+```bash
+#!/bin/bash
+# Show file info
+
+wc -l "$1"
+head -n 5 "$1"
+```
+
+Usage:
+
+```bash
+$ bash show-lines.sh myfile.txt
+```
+
+## Try It Yourself - Question 2
+
+**Write a script `process-data.sh` that:**
+
+1. Takes multiple data files as arguments
+2. For each file, shows the filename
+3. Counts lines in that file
+
+## Try It Yourself - Solution 2
+
+**Script: `process-data.sh`**
+
+```bash
+#!/bin/bash
+# Process multiple files
+
+for file in "$@"
+do
+    echo "File: $file"
+    wc -l "$file"
+done
+```
+
+Usage:
+
+```bash
+$ bash process-data.sh data1.txt data2.txt data3.txt
+```
+
+## Try It Yourself - Question 3
+
+**You have a script:**
+
+```bash
+#!/bin/bash
+head -n 10 "$1" | tail -n 5
+```
+
+**What's wrong with this approach for production use?**
+
+## Try It Yourself - Solution 3
+
+**Issues:**
+
+1. ❌ No comments - what does it do?
+2. ❌ No error checking - what if file doesn't exist?
+3. ❌ Not flexible - hardcoded to lines 10 and 5
+
+**Better version:**
+
+```bash
+#!/bin/bash
+# Extract lines N to M from a file
+# Usage: bash extract.sh N M filename
+
+start=$1
+end=$2
+file=$3
+
+head -n "$end" "$file" | tail -n $(($end - $start + 1))
+```
+
+## Try It Yourself - Question 4
+
+**You want to use arithmetic in a script.**
+
+How do you calculate `5 + 3`?
+
+## Try It Yourself - Solution 4
+
+**Using `$(( ))`:**
+
+```bash
+result=$((5 + 3))
+echo $result  # Prints 8
+```
+
+**In a script:**
+
+```bash
+#!/bin/bash
+start=$1
+end=$2
+middle=$(( ($start + $end) / 2 ))
+echo "Middle is $middle"
+```
+
+## Best Practices for Scripts
+
+::: {.incremental}
+1. **Use comments** to explain what the script does
+2. **Quote variables** always: `"$1"`
+3. **Use meaningful names**: `filename` not `x`
+4. **Check errors**: Does the file exist?
+5. **Test thoroughly** before using on real data
+6. **Document usage** with examples
+7. **Version control** your scripts (git!)
+:::
+
+## Key Points
+
+::: {.fragment}
+Scripts **save and reuse commands**
+:::
+
+::: {.fragment}
+`$1`, `$2`, etc. are **command-line arguments**
+:::
+
+::: {.fragment}
+`$@` means **all arguments**
+:::
+
+::: {.fragment}
+**Always quote variables**: `"$var"`
+:::
+
+::: {.fragment}
+**Comments** document your work
+:::
+
+::: {.fragment}
+`chmod u+x` makes scripts **executable**
+:::
+
+::: {.fragment}
+Scripts are **essential for automation**
+:::
+
+---
+
+**Next: Episode 8 - Finding Things →**

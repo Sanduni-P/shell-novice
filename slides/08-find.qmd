@@ -1,0 +1,497 @@
+---
+title: "Episode 8: Finding Things"
+subtitle: "Using grep and find to search files and text"
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    background-transition: fade
+    incremental: true
+    slide-number: true
+---
+
+# Episode 8: Finding Things
+
+::: {.callout-tip icon="false" .nonincremental}
+## Questions
+
+- How can I find files?
+- How can I find things in files?
+:::
+
+::: {.callout-tip icon="false" .nonincremental}
+## Objectives
+
+- Use `grep` to select lines from text files that match simple patterns.
+- Use `find` to find files and directories whose names match simple patterns.
+- Use the output of one command as the command-line argument(s) to another command.
+- Explain what is meant by 'text' and 'binary' files, and why many common tools don't handle the latter well.
+:::
+
+## Two Types of Searching
+
+**1. Find files**: by name, type, size, date
+
+**2. Find text**: search inside file contents
+
+We'll use `find` and `grep` respectively.
+
+## Sample Data
+
+We have haiku files:
+
+```bash
+$ cat haiku.txt
+```
+
+```output
+The Tao that is seen
+Is not the true Tao, until
+You bring fresh toner.
+
+With searching comes loss
+and the presence of absence:
+"My Thesis" not found.
+
+Yesterday it worked
+Today it is not working
+Software is like that.
+```
+
+## Command 1: grep - Search Text
+
+**Find lines matching a pattern**
+
+```bash
+$ grep not haiku.txt
+```
+
+```output
+Is not the true Tao, until
+"My Thesis" not found
+Today it is not working
+```
+
+The output shows **all lines containing "not"**.
+
+## grep is Case-Sensitive
+
+Search for "The":
+
+```bash
+$ grep The haiku.txt
+```
+
+```output
+The Tao that is seen
+"My Thesis" not found.
+```
+
+"Thesis" contains "The" but with different case!
+
+## grep with `-i` Flag
+
+**Ignore case:**
+
+```bash
+$ grep -i the haiku.txt
+```
+
+Now matches: "The", "the", "THE", etc.
+
+## Whole Word Matching: `-w`
+
+**Match whole word only**
+
+Find "Thesis":
+
+```bash
+$ grep -w Thesis haiku.txt
+```
+
+```output
+"My Thesis" not found.
+```
+
+Doesn't match if "Thesis" is part of another word.
+
+## Negation: `-v`
+
+**Show lines that DON'T match:**
+
+```bash
+$ grep -v not haiku.txt
+```
+
+```output
+The Tao that is seen
+You bring fresh toner.
+
+With searching comes loss
+and the presence of absence:
+
+Yesterday it worked
+Software is like that.
+```
+
+## Regular Expressions
+
+**Patterns beyond simple text**
+
+| Pattern | Matches |
+|---------|---------|
+| `^word` | word at start of line |
+| `word$` | word at end of line |
+| `.` | any single character |
+| `.*` | any characters |
+
+## Finding Lines Starting with Text
+
+```bash
+$ grep ^The haiku.txt
+```
+
+```output
+The Tao that is seen
+```
+
+The `^` means "start of line".
+
+## Finding Lines Ending with Text
+
+```bash
+$ grep working$ haiku.txt
+```
+
+```output
+Today it is not working
+```
+
+The `$` means "end of line".
+
+## Counting Matches: `-c`
+
+**Count matching lines instead of showing them:**
+
+```bash
+$ grep -c "not" haiku.txt
+```
+
+```output
+3
+```
+
+Three lines contain "not".
+
+## Finding Files: Command 1 - find
+
+**Search for files by various properties**
+
+```bash
+$ find . -type f -name "*.txt"
+```
+
+Shows all `.txt` files in current directory and below.
+
+## find Options
+
+| Option | Meaning |
+|--------|---------|
+| `-type f` | Regular files |
+| `-type d` | Directories |
+| `-name "*.txt"` | Matching filename |
+| `-size +1M` | Larger than 1 megabyte |
+| `-mtime -7` | Modified in last 7 days |
+
+## Finding by Name
+
+```bash
+$ find . -name "*.pdb"
+```
+
+All `.pdb` files anywhere under current directory.
+
+```bash
+$ find . -name "haiku*"
+```
+
+All files starting with "haiku".
+
+## Finding by Type
+
+All directories:
+
+```bash
+$ find . -type d
+```
+
+All regular files:
+
+```bash
+$ find . -type f
+```
+
+## Finding Large Files
+
+Larger than 1 megabyte:
+
+```bash
+$ find . -type f -size +1M
+```
+
+Smaller than 100 kilobytes:
+
+```bash
+$ find . -type f -size -100k
+```
+
+## Finding Recently Modified
+
+Modified in last 7 days:
+
+```bash
+$ find . -type f -mtime -7
+```
+
+Modified in last 24 hours:
+
+```bash
+$ find . -type f -mtime -1
+```
+
+## Combining grep and find
+
+**Find files, then search inside them**
+
+Find all `.pdb` files containing "ATOM":
+
+```bash
+$ find . -name "*.pdb" -exec grep -l "ATOM" {} \;
+```
+
+Breaking it down:
+- `find . -name "*.pdb"` = find all `.pdb` files
+- `-exec command {} \;` = run command on each
+- `grep -l` = show filenames with matches
+- `{}` = the found file
+- `\;` = end of exec
+
+## Command Substitution: `$()`
+
+**Use output of one command as input to another**
+
+```bash
+$ echo "Files found: $(find . -name "*.txt")"
+```
+
+Output:
+```
+Files found: haiku.txt notes.txt
+```
+
+## Practical Example
+
+Count all ATOM lines in all PDB files:
+
+```bash
+$ grep -c "^ATOM" $(find . -name "*.pdb")
+```
+
+Or more safely:
+
+```bash
+$ find . -name "*.pdb" -exec grep -c "^ATOM" {} \;
+```
+
+## Text vs Binary Files
+
+**Text files**: human-readable (`.txt`, `.csv`, `.py`)
+
+**Binary files**: encoded (`.pdf`, `.jpg`, `.exe`)
+
+**Why it matters**: `grep` works on text, not binary!
+
+```bash
+$ grep pattern document.pdf
+```
+
+Won't work well - PDF is binary.
+
+## grep on Binary Files
+
+By default, grep warns about binary:
+
+```bash
+$ grep text image.jpg
+grep: image.jpg: binary file matches
+```
+
+To search anyway:
+
+```bash
+$ grep -a text image.jpg
+```
+
+But results are usually gibberish!
+
+## Try It Yourself - Question 1
+
+**Search haiku.txt for lines containing "it"**
+
+1. Just find them
+2. Count them
+3. Show only lines that DON'T contain "it"
+
+## Try It Yourself - Solution 1
+
+**Find lines with "it":**
+
+```bash
+$ grep "it" haiku.txt
+```
+
+**Count them:**
+
+```bash
+$ grep -c "it" haiku.txt
+```
+
+```output
+3
+```
+
+**Lines without "it":**
+
+```bash
+$ grep -v "it" haiku.txt
+```
+
+## Try It Yourself - Question 2
+
+**Find all files modified in the last 3 days**
+
+Where should you search? Try your current directory.
+
+## Try It Yourself - Solution 2
+
+**Files modified in last 3 days:**
+
+```bash
+$ find . -type f -mtime -3
+```
+
+Or more recently (last 24 hours):
+
+```bash
+$ find . -type f -mtime -1
+```
+
+## Try It Yourself - Question 3
+
+**Find all Python files that contain "import"**
+
+(Assume they're somewhere under current directory)
+
+## Try It Yourself - Solution 3
+
+**Using find and grep:**
+
+```bash
+$ find . -name "*.py" -exec grep -l "import" {} \;
+```
+
+Or using command substitution:
+
+```bash
+$ grep -l "import" $(find . -name "*.py")
+```
+
+**What `-l` does**: show just the filename, not the matching lines.
+
+## Try It Yourself - Question 4
+
+**You want to find all `.log` files containing "ERROR"**
+
+And show both the filename and the error lines.
+
+## Try It Yourself - Solution 4
+
+**Show filename and lines with errors:**
+
+```bash
+$ grep -n "ERROR" *.log
+```
+
+Or to search subdirectories:
+
+```bash
+$ find . -name "*.log" -exec grep "ERROR" {} +
+```
+
+**What `-n` does**: shows line numbers.
+
+## Advanced: -E for Extended Regex
+
+Regular expressions with `-E`:
+
+```bash
+$ grep -E "^(A|B|C)" haiku.txt
+```
+
+Find lines starting with A, B, or C.
+
+```bash
+$ grep -E "[0-9]{3}" data.txt
+```
+
+Find lines with 3 consecutive digits.
+
+## Useful Combinations
+
+**Find and process files:**
+
+```bash
+$ find . -name "*.bak" -delete
+```
+
+Delete all `.bak` files!
+
+```bash
+$ find . -name "*.txt" -exec wc -l {} +
+```
+
+Count lines in all text files.
+
+## Key Points
+
+::: {.fragment}
+`grep` **searches inside files**
+:::
+
+::: {.fragment}
+`find` **searches for files**
+:::
+
+::: {.fragment}
+`grep -v` shows **non-matching** lines
+:::
+
+::: {.fragment}
+`grep -c` **counts** matches
+:::
+
+::: {.fragment}
+Regular expressions provide **powerful patterns**
+:::
+
+::: {.fragment}
+`$(command)` substitutes **command output**
+:::
+
+::: {.fragment}
+Combine tools to **solve complex problems**
+:::
+
+---
+
+**Next: Episode 9 - AWK for Text Processing →**

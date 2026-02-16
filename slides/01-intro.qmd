@@ -1,0 +1,181 @@
+
+# Episode 1: Introducing the Shell {.nonincremental}
+
+::: {.callout-tip icon="false" .nonincremental}
+## Questions
+
+- What is a command shell and why would I use one?
+:::
+
+::: {.callout-tip icon="false" .nonincremental}
+## Objectives
+
+- Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.
+- Explain when and why command-line interfaces should be used instead of graphical interfaces.
+:::
+
+## Why Use the Shell?
+
+### The Problem with GUIs
+
+Imagine: Copy the 3rd line from 1,000 text files across 1,000 folders into one file.
+
+::: {.fragment}
+**Using a GUI:**
+
+- Hours of clicking
+- High chance of error
+- Repetitive and tedious
+:::
+
+::: {.fragment}
+**Using the Shell:**
+
+- A few commands
+- Repeatable
+- Fast and accurate (seconds!)
+:::
+
+## What is the Shell?
+
+::: {.incremental}
+- A **program** that reads commands you type
+- A **command-line interface (CLI)** - text-based
+- Also a **scripting language** for automation
+- Allows combining simple programs into powerful workflows
+- The default way to interact with servers and supercomputers
+:::
+
+## Bash: The Shell We're Using
+
+**Bash** = **B**ourne **A**gain **S**Hell
+
+::: {.incremental}
+- Most popular Unix shell
+- Default on macOS, Linux, and Windows (via Git Bash)
+- The standard for shell scripting
+- Small number of "words" (commands) gets you far!
+:::
+
+## The Prompt
+
+When you open the shell, you see:
+
+```bash
+$
+```
+
+The prompt indicates the shell is **waiting for input**.
+
+::: {.callout-note}
+Your prompt might look different:
+```bash
+nelle@localhost $
+```
+or even:
+
+```bash
+user@computer:~$
+```
+
+This shows your username and computer name.
+:::
+
+## Typing Commands
+
+::: {.incremental}
+- **Type** a command after the `$`
+- **Press Enter** to execute
+- Results appear below
+- **Never type the `$`** - it's just the prompt!
+:::
+
+## Example: Your First Command
+
+::: {.nonincremental}
+- `ls` is short for listing.
+- This command will list the contents of the current directory:
+:::
+
+```bash
+ls
+```
+
+```output
+Desktop     Downloads   Movies      Pictures
+Documents   Library     Music       Public
+```
+
+::: {.fragment}
+
+::: {.callout-caution}
+
+## Command not found
+
+If the shell can't find a program whose name is the command you typed, it
+will print an error message such as:
+
+```bash
+ks
+```
+
+```output
+ks: command not found
+```
+
+This might happen if the command was mis-typed or if the program corresponding to that command
+is not installed.
+
+:::
+
+:::
+
+## Nelle's Pipeline: A Typical Problem
+
+### 🧪 The Scenario
+
+Nelle Nemo, a marine biologist, has:
+
+-  🌊 Returned from a 6-month North Pacific Gyre survey
+-   🧫 Collected 1520 samples
+-   🧬 Measured 300 proteins per sample
+-   💻 Needs to process all files using `goostats.sh`
+-   📝 Must submit her paper by the end of the month
+
+## Nelle's Pipeline: A Typical Problem
+
+### 🚨 The Challenge
+
+If Nelle runs `goostats.sh` manually (GUI):
+
+-  Open & process 1520 files
+-  ⏱ 30 seconds per file
+-  🕒 12+ hours of manual work
+-  ❌ Time lost that could be spent writing her paper
+
+## Nelle's Pipeline: A Typical Problem
+
+### 💡 The Solution: Use the Shell
+
+With a command shell, Nelle can:
+
+- Automate repetitive processing
+- Use loops to iterate over files
+-   Run the pipeline once and reuse it
+-   Let the computer work while she writes
+
+
+## Nelle's Pipeline: A Typical Problem
+
+### 🛠 Skills Nelle Needs
+
+To build her pipeline, she must know how to:
+
+-   Navigate to a file/directory
+-   Create a file/directory
+-   Check the length of a file
+-   Chain commands together
+-   Retrieve a set of files
+-   Iterate over files
+-   Run a shell script containing her pipeline
+

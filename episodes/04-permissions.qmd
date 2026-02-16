@@ -18,6 +18,7 @@ keypoints:
 
 {{< include ../_includes/header.qmd >}}
 
+
 Unix controls who can read, modify, and run files using *permissions*.
 We'll discuss how Windows handles permissions at the end of the section:
 the concepts are similar,
@@ -82,8 +83,8 @@ i.e.,
 that it's (probably) something the computer can run.
 
 ```bash
-$ cd labs
-$ ls -F
+cd labs
+ls -F
 ```
 
 ```output
@@ -101,7 +102,7 @@ The fact that something is marked as executable doesn't actually mean it contain
 Now let's run the command `ls -l`:
 
 ```bash
-$ ls -l
+ls -l
 ```
 ```output
 -rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
@@ -149,14 +150,14 @@ Here's a long-form listing showing the permissions on the final grades
 in the course Nelle is teaching:
 
 ```bash
-$ ls -l final.grd
+ls -l final.grd
 ```
 
 ```output
 -rwxrwxrwx 1 nnemo bio  4215  2010-08-29 22:30 final.grd
 ```
 
-Whoops: everyone in the world can read it&mdash;and what's worse,
+Whoops: everyone in the world can read it—and what's worse,
 modify it!
 (They could also try to run the grades file as a program,
 which would almost certainly not work.)
@@ -164,7 +165,7 @@ which would almost certainly not work.)
 The command to change the owner's permissions to `rw-` is:
 
 ```bash
-$ chmod u=rw final.grd
+chmod u=rw final.grd
 ```
 
 The 'u' signals that we're changing the privileges
@@ -174,7 +175,7 @@ A quick `ls -l` shows us that it worked,
 because the owner's permissions are now set to read and write:
 
 ```bash
-$ ls -l final.grd
+ls -l final.grd
 ```
 ```output
 -rw-rwxrwx 1 nnemo bio  4215  2010-08-30 08:19 final.grd
@@ -183,8 +184,8 @@ $ ls -l final.grd
 Let's run `chmod` again to give the group read-only permission:
 
 ```bash
-$ chmod g=r final.grd
-$ ls -l final.grd
+chmod g=r final.grd
+ls -l final.grd
 ```
 ```output
 -rw-r--rw- 1 nnemo bio  4215  2010-08-30 08:19 final.grd
@@ -194,8 +195,8 @@ And finally,
 let's give "all" (everyone on the system who isn't the file's owner or in its group) no permissions at all:
 
 ```bash
-$ chmod a= final.grd
-$ ls -l final.grd
+chmod a= final.grd
+ls -l final.grd
 ```
 ```output
 -rw-r----- 1 nnemo bio  4215  2010-08-30 08:20 final.grd
@@ -212,8 +213,8 @@ and since there's nothing on the right of the "=",
 Symbolic modes like `u=rw` are clear, but you’ll often see octal numbers:
 
 ```bash
-$ chmod 755 script.sh   # owner rwx (7), group r-x (5), others r-x (5)
-$ chmod 644 notes.txt   # owner rw- (6), group r-- (4), others r-- (4)
+chmod 755 script.sh   # owner rwx (7), group r-x (5), others r-x (5)
+chmod 644 notes.txt   # owner rw- (6), group r-- (4), others r-- (4)
 ```
 
 Each digit is a sum: read=4, write=2, execute=1.
@@ -235,7 +236,7 @@ Set the permissions for `script.sh` so that the owner can read, write, and execu
 - Owner rwx → 7, group r-x → 5, others --- → 0, so the octal is `750`.
 
 ```bash
-$ chmod 750 script.sh
+chmod 750 script.sh
 ```
 
 Variants you may see:
@@ -252,7 +253,7 @@ let's run `ls -a -l`
 to get a long-form listing that includes directory entries that are normally hidden:
 
 ```bash
-$ ls -a -l
+ls -a -l
 ```
 ```output
 drwxr-xr-x 1 nnemo bio     0  2010-08-14 09:55 .
@@ -266,7 +267,7 @@ The permissions for `.` and `..` (this directory and its parent) start with a 'd
 But look at the rest of their permissions:
 the 'x' means that "execute" is turned on.
 What does that mean?
-A directory isn't a program&mdash;how can we "run" it?
+A directory isn't a program—how can we "run" it?
 
 In fact, 'x' means something different for directories.
 It gives someone the right to *traverse* the directory, but not to look at its contents.

@@ -109,7 +109,7 @@ So let's try our first command, `ls`, which is short for listing.
 This command will list the contents of the current directory:
 
 ```bash
-$ ls
+ls
 ```
 
 ```output
@@ -125,7 +125,7 @@ If the shell can't find a program whose name is the command you typed, it
 will print an error message such as:
 
 ```bash
-$ ks
+ks
 ```
 
 ```output

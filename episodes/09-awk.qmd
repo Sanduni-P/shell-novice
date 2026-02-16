@@ -87,14 +87,14 @@ Awk helps us thanks to the variable NF. NF stores the number of fields (our colu
 row. Let's see for our table:
 
 ``` {.bash}
-$ awk '{print NF}' example.txt
+awk '{print NF}' example.txt
 ```
 
 We can see that some lines contain 6 fields while others contain 7 of them.
 Since NF is the number of the last field, `$NF` contains its value.
 
 ``` {.bash}
-$ awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.txt
+awk '{print "This line has",NF,"columns. The last one contains",$NF}' example.txt
 ```
 
 ::: {.callout-note}
@@ -107,7 +107,7 @@ tab separated (tsv), by semicolon or by any other character.
 To specify the field separator, we should provide it at command line like:
 
 ``` {.bash}
-$ awk -F "," '{print $2}' example2.txt
+awk -F "," '{print $2}' example2.txt
 ```
 
 In this case, we are printing the second field in each line, using comma as separator.
@@ -125,7 +125,7 @@ Awk allows you to specify a matching pattern, like the command grep does.
 Let's look at the file content
 
 ``` {.bash}
-$ awk '{print $0}' example.pdb
+awk '{print $0}' example.pdb
 ```
 
 It seems an abriged PDB file. If we would like to print only lines starting with the word

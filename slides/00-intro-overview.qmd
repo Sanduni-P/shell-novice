@@ -1,0 +1,94 @@
+---
+title: "Unix Shell Workshop"
+subtitle: ""
+author: "Sanduni Rajapaksa"
+date: "2026-02-25"
+format:
+  revealjs:
+    theme: [default, utils/custom.scss]
+    css: utils/custom.css
+    transition: fade
+    background-transition: fade
+    incremental: true
+    slide-number: true
+    preview-links: true
+    overview: true
+    controls: true
+    progress: true
+    code-overflow: wrap
+    fig-align: center
+    width: 1440
+    height: 810
+execute: 
+  echo: true
+---
+
+## Workshop Overview
+
+**Master the Unix shell (Bash) to:**
+
+- Navigate your file system efficiently
+- Create, copy, move, and delete files and directories
+- Combine commands with pipes and filters
+- Automate repetitive tasks with loops
+- Write and execute shell scripts
+- Search files and text patterns
+
+## Learning Objectives
+
+By the end of this workshop, you will know how to:
+
+::: {.incremental}
+- Understand what the shell is and when to use it
+- Move around folders and find your way to files
+- Make, copy, rename, and delete files and folders
+- Join simple commands together to get the result you want
+- Repeat actions on many files without retyping
+- Save steps in small scripts so you can reuse them
+- Search for files and for text inside files quickly
+:::
+
+## Prerequisites
+
+#### Step 1: Download Files
+
+Download [shell-lesson-data.zip](../episodes/data/shell-lesson-data.zip) and move it to your Desktop.
+
+#### Step 2: Extract the Archive
+
+Unzip/extract the file. You should end up with a new folder called:
+
+**`shell-lesson-data`** on your Desktop
+
+#### Step 3: You're Ready!
+
+All data files will be in this directory for use throughout the workshop.
+
+## Workshop Structure
+
+| Episode | Topic |
+|---------|-------|
+| 1 | Introducing the Shell |
+| 2 | Navigating Files and Directories |
+| 3 | Working With Files and Directories |
+| 4 | File Permissions |
+| 5 | Pipes and Filters |
+| 6 | Loops |
+| 7 | Shell Scripts |
+| 8 | Finding Things |
+| 9 | AWK for Text Processing |
+
+## Before We Begin...
+
+You can copy any command directly from the slides by clicking the **clipboard icon** on the right-hand side of each code block. Then paste it straight into your terminal.
+
+![](../episodes/fig/copy-code.png){alt="Clipboard icon on the right side of a code block" width=720}
+
+
+<!-- {{< include 01-intro.qmd >}} -->
+
+<!-- {{< include 02-filedir.qmd >}} -->
+
+<!-- {{< include 03-create.qmd >}} -->
+
+{{< include 04-permissions.qmd >}}
