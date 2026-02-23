@@ -37,3 +37,17 @@ $presentation-font-size-root: 40px !default;
   color: #72B57D;
 }
 
+
+/* Keyboard element styling */
+kbd {
+  background-color: #f0f0f0 !important;
+  border: 1px solid #ccc !important;
+  border-radius: 3px !important;
+  padding: 2px 6px !important;
+  font-size: 0.9em !important;
+  font-family: monospace !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+

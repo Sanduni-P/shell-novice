@@ -46,7 +46,7 @@ Imagine: Copy the 3rd line from 1,000 text files across 1,000 folders into one f
 - The default way to interact with servers and supercomputers
 :::
 
-## Bash: The Shell We're Using
+## `Bash`: The Shell We're Using
 
 **Bash** = **B**ourne **A**gain **S**Hell
 
@@ -63,6 +63,12 @@ When you open the shell, you see:
 
 ```bash
 $
+```
+
+or 
+
+```bash
+%
 ```
 
 The prompt indicates the shell is **waiting for input**.
@@ -84,10 +90,10 @@ This shows your username and computer name.
 ## Typing Commands
 
 ::: {.incremental}
-- **Type** a command after the `$`
+- **Type** a command after the `$`/`%`
 - **Press Enter** to execute
 - Results appear below
-- **Never type the `$`** - it's just the prompt!
+- **Never type the `$`/`%`** - it's just the prompt!
 :::
 
 ## Example: Your First Command

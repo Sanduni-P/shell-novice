@@ -1,14 +1,3 @@
----
-title: "Episode 9: AWK for Text Processing"
-subtitle: "Advanced text processing with AWK"
-format:
-  revealjs:
-    theme: default
-    transition: slide
-    background-transition: fade
-    incremental: true
-    slide-number: true
----
 
 # Episode 9: AWK for Text Processing
 
@@ -23,428 +12,402 @@ format:
 ::: {.callout-tip icon="false" .nonincremental}
 ## Objectives
 
-- Select and print fields with `$0`, `$1`, `$2`, `$NF`, and `NF`.
-- Use a field separator with `-F` to handle CSV input.
-- Match lines using simple regex like `/^ATOM/`.
-- Count total or matching lines with a counter and the `END` block.
-- Explain the difference between `wc -l` and `awk 'END {print NR}'` for line counting.
+- Select and print fields with `$0`, `$1`, `$2`, `$NF`, and `NF`
+- Use field separator (`-F`) to handle CSV input
+- Match lines using regex like `/^ATOM/`
+- Count lines with counter and `END` block
+- Explain difference between `wc -l` and `awk 'END {print NR}'`
 :::
 
-## What is AWK?
+## Counting Lines: The Problem
 
-**AWK** = Text processing program
-
-- Reads files line by line
-- Splits each line into fields
-- Applies pattern-action rules
-- Performs calculations and aggregations
-
-Perfect for **CSV and tabular data**!
-
-## Sample Data
-
-A simple data file:
-
-```
-chr1  100  200  feature1
-chr2  150  300  feature2
-chr3  200  400  feature3
-```
-
-Columns separated by spaces.
-
-## Basic AWK Pattern
+**Using `wc -l`:**
 
 ```bash
-awk '{action}' file.txt
+wc -l example.txt
 ```
 
-The `{action}` applies to **every line**.
+**The issue**: `wc` counts newlines only.
 
-## Simplest Action: Print Everything
+If last line has **no carriage return**, result is **off by one**.
+
+## `awk`: A Better Solution
+
+**AWK** = command-line program for text processing.
+
+- Takes instructions and one or more files
+- Executes on each line
+- Instructions in single quotes or from file
+
+## Basic `awk` Syntax
 
 ```bash
-$ awk '{print $0}' data.txt
+awk '{print $0}' example.txt
 ```
 
-`$0` = the entire line
+Same output as `cat example.txt`.
 
-Same as `cat data.txt`!
+Structure:
+- `{}` surrounds instructions
+- `print` sends output to terminal
+- `$0` = **entire current line** (variable)
 
-## Field Variables: `$1`, `$2`, etc.
+## How `awk` Works
 
-Each column is a **field**:
+AWK **automatically splits** each line by spaces.
 
+Columns stored in variables:
 - `$1` = first column
 - `$2` = second column
 - `$3` = third column
-- `$NF` = last column
+- And so on...
 
-## Print Specific Columns
-
-**Show first and third columns:**
+## Printing Entire Line
 
 ```bash
-$ awk '{print $1, $3}' data.txt
+awk '{print $0}' example.txt
+```
+
+`$0` means "the whole line".
+
+Same as `cat` but using AWK!
+
+## Printing Specific Columns
+
+Print only second column:
+
+```bash
+awk '{print $2}' example.txt
+```
+
+Print multiple columns (second and fourth):
+
+```bash
+awk '{print $2, $4}' example.txt
+```
+
+**Commas add spaces** between output values.
+
+## Adding Text to Output
+
+Print with custom text:
+
+```bash
+awk '{print "chr", $2, $4}' example.txt
 ```
 
 ```output
-chr1 200
-chr2 300
-chr3 400
+chr value2 value4
+chr value2 value4
+chr value2 value4
 ```
 
-**Commas add spaces** between columns!
-
-## Print with Custom Text
-
-```bash
-$ awk '{print "chr",$2,$4}' data.txt
-```
-
-```output
-chr 100 feature1
-chr 150 feature2
-chr 200 feature3
-```
-
-Strings go in **quotes**.
+**Text must be in quotes**.
 
 ## The NF Variable
 
-**NF** = Number of Fields
+**NF** = Number of Fields (columns)
 
 ```bash
-$ awk '{print NF}' data.txt
+awk '{print NF}' example.txt
 ```
 
-```output
-4
-4
-4
-```
+Shows how many columns in each row.
 
-Each line has 4 fields.
+Useful when files have **variable column counts**.
 
-## Last Field: `$NF`
+## Example: Lines with Different Columns
 
-Print the **last field** of each line:
+Some lines have 6 fields, others have 7:
 
 ```bash
-$ awk '{print $NF}' data.txt
+awk '{print "This line has", NF, "columns. The last one contains", $NF}' example.txt
 ```
 
-```output
-feature1
-feature2
-feature3
+`NF` gives column count for **current line**.
+
+## The Last Column: `$NF`
+
+Print the **last column** without knowing its number:
+
+```bash
+awk '{print $NF}' example.txt
 ```
 
-Works even if lines have **different numbers** of fields!
+Perfect when:
+- Files are huge
+- Lines have different column counts
+- You only need the final value
 
-## Handling Different Field Separators
+## Field Separator Formats
+
+::: {.callout-note}
+Out there we have different file formats: our data may be comma separated (CSV), tab separated (TSV), by semicolon or by any other character.
+:::
+
+## Field Separators: Default Behavior
 
 By default, AWK splits on **spaces and tabs**.
 
-For **comma-separated** (CSV) files:
+For other separators, use `-F` flag.
+
+## Field Separator: Comma (-F ",")
+
+For **CSV files**:
 
 ```bash
-$ awk -F "," '{print $2}' data.csv
+awk -F "," '{print $2}' example.csv
 ```
 
-The `-F` flag sets the field separator!
+Note: comma becomes the **separator**, not part of field!
 
-## Field Separator Examples
+Spaces in fields are now **part of the value**.
 
-| Command | Purpose |
-|---------|---------|
-| `awk -F ":" '{print $1}'` | Colon separator |
-| `awk -F "\t" '{print $2}'` | Tab separator |
-| `awk -F "," '{print $3}'` | Comma separator |
-| `awk '{print $2}'` | Default (space/tab) |
+## Field Separator: Other Examples
+
+**Colon separator:**
+
+```bash
+awk -F ":" '{print $1}' /etc/passwd
+```
+
+**Tab separator:**
+
+```bash
+awk -F "\t" '{print $2}' file.tsv
+```
 
 ## Pattern-Action Model
 
-Apply action **only** to matching lines:
+**Run action only on matching lines**
 
 ```bash
 awk '/PATTERN/ {action}' file
 ```
 
-- **Pattern**: lines to match (regex)
-- **Action**: what to do with matching lines
+- **Pattern**: regex to match
+- **Action**: what to do if matched
 
-## Pattern Example: Start of Line
+## Regex Pattern: Start of Line (^)
 
-Find lines starting with "ATOM":
-
-```bash
-$ awk '/^ATOM/ {print}' protein.pdb
-```
-
-Shows **only** lines beginning with "ATOM".
-
-## Pattern Example: Specific Column
-
-Process lines where column 2 > 100:
+Print only lines starting with "ATOM":
 
 ```bash
-$ awk '$2 > 100 {print $0}' data.txt
+awk '/^ATOM/ {print $0}' example.pdb
 ```
 
-```output
-chr1  150  300  feature2
-chr3  200  400  feature3
-```
+`^` means **beginning of line**.
 
 ## Multiple Patterns
 
 Apply different actions to different patterns:
 
 ```bash
-awk '/^ATOM/ {count++} /^HETATM/ {other++} \
-    END {print count, other}' protein.pdb
+awk '/^ATOM/ {count1++} /^HEADER/ {count2++}' file.pdb
+```
+
+Or print specific fields from matching lines:
+
+```bash
+awk '/^ATOM/ {print $7, $8, $9}' file.pdb
+```
+
+**Example**: Print x, y, z coordinates of atoms.
+
+Combined patterns printing fields and header last field (from episode example):
+
+```bash
+awk '/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}' example.pdb
 ```
 
 ## The END Block
 
-**Run after all lines are processed**
+**Runs after all lines are processed**
 
-Perfect for **printing totals**:
+Perfect for **printing totals and summaries**.
 
 ```bash
-$ awk '{sum += $2} END {print sum}' data.txt
+awk '{sum += $2} END {print sum}' file.txt
 ```
 
-Sums all values in column 2.
+Sums values from column 2 across all lines.
 
 ## The NR Variable
 
-**NR** = Number of Records (lines)
+**NR** = Number of Records (total lines processed)
 
-Total lines in a file:
-
-```bash
-$ awk 'END {print NR}' data.txt
-```
-
-```output
-3
-```
-
-More reliable than `wc -l`!
-
-## Counting Lines Robustly
-
-Compare approaches:
+After file is read, `NR` = **line count**:
 
 ```bash
-$ wc -l file.txt        # May undercount if no final newline
-$ awk 'END {print NR}' file.txt  # Always accurate
+awk 'END {print NR}' example.txt
 ```
 
-## Conditional Counting
+More **robust than `wc -l`** (handles missing final newline).
 
-Count **matching** lines:
+## Comparing Line Counting Methods
+
+**Using wc:**
 
 ```bash
-$ awk '/^ATOM/ {count++} END {print count}' protein.pdb
+wc -l file.txt
 ```
 
-Increment counter only for matching lines.
+May undercount if last line lacks newline!
+
+**Using AWK:**
+
+```bash
+awk 'END {print NR}' file.txt
+```
+
+Always counts correctly!
+
+## Counting Matching Lines
+
+Count only lines starting with "ATOM":
+
+```bash
+awk '/^ATOM/ {count++} END {print count}' file.pdb
+```
+
+- `/^ATOM/` = match lines starting with ATOM
+- `count++` = increment counter
+- `END` = print final count
 
 ## Safe Counter Initialization
 
-Avoid undefined variable errors:
+Avoid errors if no lines match:
 
 ```bash
-$ awk '/^ATOM/ {c++} END {print c+0}' protein.pdb
+awk '/^ATOM/ {c++} END {print c+0}' file.pdb
 ```
 
-Adding `+0` safely prints 0 if no matches.
+Adding `+0` safely prints **0 if no matches**.
 
-## Field Extraction Example
+## Multiple Counters in a Pattern
 
-Extract coordinates from PDB:
+Count atoms and sum their coordinates:
 
 ```bash
-$ awk '/^ATOM/ {print $7,$8,$9}' protein.pdb
+awk '/^ATOM/ {count++; x += $7; y += $8; z += $9} \
+    END {print count, x, y, z}' file.pdb
 ```
 
-Shows x, y, z coordinates of each atom.
+- `count++` = count atoms
+- `x += $7` = sum x coordinates
+- `END` = print all totals
 
-## Arithmetic in AWK
+## Challenge: Counting and Selecting (Simple)
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Using only the ideas covered above (field selection, patterns, `NF`, and `END`):
+
+1. Write an `awk` command that prints the number of lines in `example.txt`.
+2. Write an `awk` command that prints the number of lines in `example.pdb` that start with `ATOM`.
+3. Write an `awk` command that prints the last field of each `ATOM` line in `example.pdb` (just the values, one per line).
+
+Bonus (optional): Print both the count of `ATOM` lines and, at the end, the total number of characters across all those last fields.
+
+:::
+
+## Solution: Counting and Selecting
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**1) Total lines (robust):**
 
 ```bash
-$ awk '{sum += $1} END {print sum}' numbers.txt
+awk 'END {print NR}' example.txt
 ```
 
-Calculate **average**:
+**2) Count lines starting with `ATOM`:**
 
 ```bash
-$ awk '{sum += $1; count++} \
-       END {print sum/count}' numbers.txt
+awk '/^ATOM/ {c++} END {print c+0}' example.pdb
 ```
 
-## String Operations
-
-**Length** of a field:
+**3) Last field of each `ATOM` line:**
 
 ```bash
-$ awk '{print length($1)}' data.txt
+awk '/^ATOM/ {print $NF}' example.pdb
 ```
 
-**Concatenation**:
+**Bonus (count and accumulate character lengths of last field):**
 
 ```bash
-$ awk '{print $1 "_" $2}' data.txt
+awk '/^ATOM/ {c++; total += length($NF)} END {print "ATOM lines:", c+0; print "Total chars in last field:", total+0}' example.pdb
 ```
 
-## Try It Yourself - Question 1
+Explanation:
+- `NR` gives total lines after reading the file.
+- `/^ATOM/` pattern restricts actions to lines starting with `ATOM`.
+- `$NF` is the last field; `length($NF)` measures its size.
+- Counters (`c`, `total`) are printed in `END`.
 
-**Given a file with 3 columns of numbers:**
+:::
 
-```
-10 20 30
-5  15 25
-```
+## Built-in Functions
 
-Write an AWK command to print:
-1. Just the second column
-2. Just the last column
-3. All three columns
-
-## Try It Yourself - Solution 1
-
-**Second column only:**
+**length()**: measure string length
 
 ```bash
-$ awk '{print $2}' file.txt
+awk '{print length($1)}' file.txt
 ```
 
-```output
-20
-15
-```
-
-**Last column:**
+**String concatenation**:
 
 ```bash
-$ awk '{print $NF}' file.txt
+awk '{print $1 "_" $2}' file.txt
 ```
 
-**All three:**
+Joins fields with underscore.
+
+## Arithmetic and Aggregation
+
+**Sum values:**
 
 ```bash
-$ awk '{print $1, $2, $3}' file.txt
+awk '{sum += $1} END {print sum}' numbers.txt
 ```
 
-## Try It Yourself - Question 2
-
-**Count total number of lines in a file**
-
-(Use AWK to be sure about the count)
-
-## Try It Yourself - Solution 2
-
-**Robust line counting:**
+**Calculate average:**
 
 ```bash
-$ awk 'END {print NR}' file.txt
+awk '{sum += $1; count++} END {print sum/count}' numbers.txt
 ```
 
-This is more reliable than `wc -l`!
+## Variable Assignment
 
-## Try It Yourself - Question 3
-
-**You have a CSV file with salary data:**
-
-```
-name,salary
-Alice,50000
-Bob,60000
-Charlie,55000
-```
-
-Calculate the **total salary**.
-
-## Try It Yourself - Solution 3
-
-**Using AWK with CSV:**
+Set variables in AWK:
 
 ```bash
-$ awk -F "," 'NR > 1 {sum += $2} \
-              END {print sum}' salaries.csv
+awk '{x = $2 * 2; print x}' file.txt
 ```
 
-Breaking it down:
-- `-F ","` = comma separator
-- `NR > 1` = skip header line
-- `sum += $2` = add salary column
-- `END` = print total
+Use variables in calculations throughout.
 
-## Try It Yourself - Question 4
+## BEGIN Block (Advanced)
 
-**Find lines where column 1 equals "chr1"**
-
-Hint: Use pattern matching
-
-## Try It Yourself - Solution 4
-
-**Matching first column:**
+Initialize variables **before processing**:
 
 ```bash
-$ awk '$1 == "chr1" {print}' data.txt
+awk 'BEGIN {total=0} {total += $1} END {print total}' file.txt
 ```
 
-Or shorter:
-
-```bash
-$ awk '$1 == "chr1"' data.txt
-```
-
-(Default action is print)
-
-## Try It Yourself - Question 5
-
-**Count atoms in a PDB file**
-
-(Only count lines starting with "ATOM")
-
-## Try It Yourself - Solution 5
-
-**Count ATOM records:**
-
-```bash
-$ awk '/^ATOM/ {count++} END {print count+0}' protein.pdb
-```
-
-Or use `grep`:
-
-```bash
-$ grep -c "^ATOM" protein.pdb
-```
-
-Both work!
-
-## Advanced: Variables in AWK
-
-Define your own variables:
-
-```bash
-$ awk 'BEGIN {total=0} {total += $1} \
-       END {print total}' data.txt
-```
-
-- `BEGIN` runs before processing
-- `{total += $1}` in main loop
+- `BEGIN` runs first (before any lines)
+- `{total += $1}` processes each line
 - `END` prints result
 
-## AWK Programs from Files
+## `awk` Programs from Files
 
-For complex AWK scripts, use a file:
+For complex scripts, save to file.
 
-Create `count-atoms.awk`:
+Create `script.awk`:
 
 ```awk
 /^ATOM/ {
@@ -456,74 +419,70 @@ Create `count-atoms.awk`:
 
 END {
     print "Atoms:", count
-    print "Avg X:", x/count
-    print "Avg Y:", y/count
-    print "Avg Z:", z/count
+    if (count > 0) {
+        print "Avg X:", x/count
+        print "Avg Y:", y/count
+        print "Avg Z:", z/count
+    }
 }
 ```
 
 Run it:
 
 ```bash
-$ awk -f count-atoms.awk protein.pdb
+awk -f script.awk protein.pdb
 ```
 
-## Key Points
+## Real-World Example 1
 
-::: {.fragment}
-`$1`, `$2` access **columns**
-:::
+Extract chromosome and position from BED file:
 
-::: {.fragment}
-`$NF` is the **last column**
-:::
+```bash
+awk -F "\t" '{print $1, $2, $3}' file.bed
+```
 
-::: {.fragment}
-`$0` is the **entire line**
-:::
+## Real-World Example 2
 
-::: {.fragment}
-`-F` sets **field separator**
-:::
+Count records by type:
 
-::: {.fragment}
-Patterns select **matching lines**
-:::
+```bash
+awk '{type[$1]++} END {for (t in type) print t, type[t]}' data.txt
+```
 
-::: {.fragment}
-`END` block runs **after all lines**
-:::
+## Real-World Example 3
 
-::: {.fragment}
-`NR` counts **total lines**
-:::
+Filter and sum:
 
-::: {.fragment}
-Use `count++` for **aggregation**
-:::
+```bash
+awk '$3 > 1000 {sum += $3} END {print sum}' file.txt
+```
 
----
+Only sum values in column 3 greater than 1000.
 
-## Thank You!
+## Key Concepts Summary
 
-You've completed the Unix Shell Workshop!
-
-**You now know how to:**
-
-✓ Navigate the file system  
-✓ Manage files and directories  
-✓ Combine commands with pipes  
-✓ Automate with loops and scripts  
-✓ Find files and search text  
-✓ Process data with AWK  
-
-**Next steps:**
-
-- Practice on your own data
-- Read `man` pages for more options
-- Build useful scripts for your work
-- Share what you learn!
+| Concept | Meaning |
+|---------|---------|
+| `$0` | Entire line |
+| `$1, $2, ...` | Columns (fields) |
+| `NF` | Number of fields |
+| `$NF` | Last field |
+| `NR` | Line number / total lines |
+| `-F` | Field separator |
+| `/pattern/` | Regex match |
+| `END` | After all lines |
 
 ---
+
+## You've Completed the Unix Shell Workshop!
 
 **Congratulations! 🎉**
+
+You now know how to:
+
+✓ Navigate files and directories  
+✓ Manage and create files  
+✓ Combine commands with pipes  
+✓ Write loops and shell scripts  
+✓ Find files and search text  
+✓ Process data with AWK  

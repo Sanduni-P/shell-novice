@@ -183,7 +183,7 @@ or back one by pressing `b`.  Press `q` to quit.
 ## Filtering output
 
 Next we'll use the `sort` command to sort the contents of the `lengths.txt` file.
-But first we'll do an exercise to learn a little about the sort command:
+But first we'll do an exercise to learn a little about the `sort` command:
 
 ::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
 

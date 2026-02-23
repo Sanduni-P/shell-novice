@@ -1,47 +1,41 @@
----
-title: "Episode 8: Finding Things"
-subtitle: "Using grep and find to search files and text"
-format:
-  revealjs:
-    theme: default
-    transition: slide
-    background-transition: fade
-    incremental: true
-    slide-number: true
----
 
 # Episode 8: Finding Things
 
 ::: {.callout-tip icon="false" .nonincremental}
 ## Questions
 
-- How can I find files?
 - How can I find things in files?
 :::
 
 ::: {.callout-tip icon="false" .nonincremental}
 ## Objectives
 
-- Use `grep` to select lines from text files that match simple patterns.
-- Use `find` to find files and directories whose names match simple patterns.
-- Use the output of one command as the command-line argument(s) to another command.
-- Explain what is meant by 'text' and 'binary' files, and why many common tools don't handle the latter well.
+- Use `grep` to select lines from text files matching patterns
+- Explain 'global/regular expression/print' (grep origin)
+- Use `find` to find files and directories with pattern matching
+- Explain text vs binary files and why many tools don't handle binary well
 :::
 
-## Two Types of Searching
+## Why "`grep`"?
 
-**1. Find files**: by name, type, size, date
+"grep" is a contraction of **global/regular expression/print**.
 
-**2. Find text**: search inside file contents
+Common sequence in early Unix text editors.
 
-We'll use `find` and `grep` respectively.
+Now a very useful command-line program.
 
-## Sample Data
+## What `grep` Does
 
-We have haiku files:
+`grep` **finds and prints lines** in files that match a pattern.
+
+Works on any text file you can think of.
+
+## Sample Haiku File
+
+Three haikus from 1998 Salon magazine poetry competition:
 
 ```bash
-$ cat haiku.txt
+cat haiku.txt
 ```
 
 ```output
@@ -58,12 +52,10 @@ Today it is not working
 Software is like that.
 ```
 
-## Command 1: grep - Search Text
-
-**Find lines matching a pattern**
+## Finding Lines with "not"
 
 ```bash
-$ grep not haiku.txt
+grep not haiku.txt
 ```
 
 ```output
@@ -72,14 +64,28 @@ Is not the true Tao, until
 Today it is not working
 ```
 
-The output shows **all lines containing "not"**.
+**Pattern**: `not`
 
-## grep is Case-Sensitive
+**Result**: All lines containing the word "not"
+
+## Understanding `grep` Syntax
+
+```bash
+grep pattern filename
+```
+
+- `grep`: the command
+- `pattern`: what to search for
+- `filename`: which file to search in
+
+Searches line by line, outputs matching lines.
+
+## `grep` is Case-Sensitive
 
 Search for "The":
 
 ```bash
-$ grep The haiku.txt
+grep The haiku.txt
 ```
 
 ```output
@@ -87,94 +93,249 @@ The Tao that is seen
 "My Thesis" not found.
 ```
 
-"Thesis" contains "The" but with different case!
+Matched "The" at start AND "The" inside "Thesis".
 
-## grep with `-i` Flag
+Didn't match lowercase "the".
 
-**Ignore case:**
+## Case Matters
 
-```bash
-$ grep -i the haiku.txt
-```
+By default: **case-sensitive**
 
-Now matches: "The", "the", "THE", etc.
+- "The" ≠ "the" ≠ "THE"
+- Search pattern must match exactly
 
-## Whole Word Matching: `-w`
+## Searching Phrases
 
-**Match whole word only**
-
-Find "Thesis":
+Searching for multiple words? Use quotes:
 
 ```bash
-$ grep -w Thesis haiku.txt
-```
-
-```output
-"My Thesis" not found.
-```
-
-Doesn't match if "Thesis" is part of another word.
-
-## Negation: `-v`
-
-**Show lines that DON'T match:**
-
-```bash
-$ grep -v not haiku.txt
-```
-
-```output
-The Tao that is seen
-You bring fresh toner.
-
-With searching comes loss
-and the presence of absence:
-
-Yesterday it worked
-Software is like that.
-```
-
-## Regular Expressions
-
-**Patterns beyond simple text**
-
-| Pattern | Matches |
-|---------|---------|
-| `^word` | word at start of line |
-| `word$` | word at end of line |
-| `.` | any single character |
-| `.*` | any characters |
-
-## Finding Lines Starting with Text
-
-```bash
-$ grep ^The haiku.txt
-```
-
-```output
-The Tao that is seen
-```
-
-The `^` means "start of line".
-
-## Finding Lines Ending with Text
-
-```bash
-$ grep working$ haiku.txt
+grep -w "is not" haiku.txt
 ```
 
 ```output
 Today it is not working
 ```
 
-The `$` means "end of line".
+Quotes distinguish search term from filename.
 
-## Counting Matches: `-c`
+Important when phrase contains spaces.
+
+## Option: -w (Word Boundaries)
+
+**Match whole words only**
+
+Without `-w`:
+```bash
+grep The haiku.txt
+```
+
+Matches "The" in "The Tao" AND "the" in "Thesis".
+
+With `-w`:
+```bash
+grep -w The haiku.txt
+```
+
+```output
+The Tao that is seen
+```
+
+Only "The" as complete word (not part of "Thesis").
+
+## Option: -i (Ignore Case)
+
+**Case-insensitive search:**
+
+```bash
+grep -i the haiku.txt
+```
+
+Matches "The", "the", "THE", etc.
+
+```output
+The Tao that is seen
+Is not the true Tao, until
+and the presence of absence:
+```
+
+## Option: -n (Line Numbers)
+
+**Show line numbers with matches:**
+
+```bash
+grep -n "it" haiku.txt
+```
+
+```output
+5:With searching comes loss
+9:Yesterday it worked
+10:Today it is not working
+```
+
+Lines 5, 9, 10 contain "it".
+
+## Combining Options
+
+**Use multiple flags together:**
+
+```bash
+grep -n -w "the" haiku.txt
+```
+
+```output
+2:Is not the true Tao, until
+6:and the presence of absence:
+```
+
+**Or shorter form**: `grep -nw "the" haiku.txt`
+
+## More Option Combinations
+
+Find whole word "the" case-insensitive:
+
+```bash
+grep -n -w -i "the" haiku.txt
+```
+
+```output
+1:The Tao that is seen
+2:Is not the true Tao, until
+6:and the presence of absence:
+```
+
+## Option: -v (Invert Match)
+
+**Show lines that DON'T match:**
+
+```bash
+grep -n -w -v "the" haiku.txt
+```
+
+```output
+1:The Tao that is seen
+3:You bring fresh toner.
+4:
+5:With searching comes loss
+7:"My Thesis" not found.
+8:
+9:Yesterday it worked
+10:Today it is not working
+11:Software is like that.
+```
+
+All lines without the word "the".
+
+## Option: -r (Recursive)
+
+**Search through subdirectories:**
+
+```bash
+grep -r Yesterday .
+```
+
+```output
+./LittleWomen.txt:"Yesterday, when Aunt was asleep and I was trying to be as still as a
+./LittleWomen.txt:Yesterday at dinner, when an Austrian officer stared at us and then
+./LittleWomen.txt:Yesterday was a quiet day spent in teaching, sewing, and writing in my
+./haiku.txt:Yesterday it worked
+```
+
+Searches all files under current directory.
+
+## Getting Help with `grep`
+
+**See all options:**
+
+```bash
+grep --help
+```
+
+Shows usage, all flags, and examples.
+
+Also: `man grep` for full documentation.
+
+## Wildcards and Regular Expressions
+
+**Simple patterns vs complex patterns**
+
+Search pattern can include **wildcards**:
+- `^` = start of line
+- `$` = end of line
+- `.` = any single character
+- `*` = previous character zero or more times
+
+Technical name: **regular expressions** (regex)
+
+## Regex: Start of Line (^)
+
+Find lines starting with specific text:
+
+```bash
+grep -E "^.o" haiku.txt
+```
+
+```output
+You bring fresh toner.
+Today it is not working
+Software is like that.
+```
+
+- `^` = start of line
+- `.` = any one character
+- `o` = literal letter o
+
+So: any line with 'o' in second position.
+
+## Option: -E (Extended Regex)
+
+**Use more powerful pattern syntax:**
+
+```bash
+grep -E "^The" haiku.txt
+```
+
+Lines starting with "The".
+
+```bash
+grep -E ".aw|.ew" haiku.txt
+```
+
+Lines containing "aw" or "ew".
+
+## Text vs Binary Files
+
+**Text files**: human-readable
+- `.txt`, `.csv`, `.py`, `.json`, `.sh`
+
+**Binary files**: encoded/compiled
+- `.pdf`, `.jpg`, `.png`, `.exe`, `.so`
+
+**`grep` works on text, not binary!**
+
+## Using `grep` on Binary
+
+Binary files cause issues:
+
+```bash
+grep pattern document.pdf
+```
+
+May show garbage or "binary file matches".
+
+Use `-a` flag to search anyway:
+
+```bash
+grep -a pattern document.pdf
+```
+
+Results usually useless (binary format gibberish).
+
+## Option: -c (Count Matches)
 
 **Count matching lines instead of showing them:**
 
 ```bash
-$ grep -c "not" haiku.txt
+grep -c "not" haiku.txt
 ```
 
 ```output
@@ -183,105 +344,147 @@ $ grep -c "not" haiku.txt
 
 Three lines contain "not".
 
-## Finding Files: Command 1 - find
+## Finding Files with `find`
 
-**Search for files by various properties**
+**Two types of searching:**
+1. Find **text** in files → use `grep`
+2. Find **files themselves** → use `find`
+
+`find` searches by: name, type, size, date, permissions.
+
+## `find` Basic Syntax
 
 ```bash
-$ find . -type f -name "*.txt"
+find . -type f -name "*.txt"
 ```
 
-Shows all `.txt` files in current directory and below.
+- `.` = start from current directory
+- `-type f` = search for regular files
+- `-name "*.txt"` = matching this pattern
 
-## find Options
+Shows all `.txt` files under current directory.
 
-| Option | Meaning |
-|--------|---------|
-| `-type f` | Regular files |
-| `-type d` | Directories |
-| `-name "*.txt"` | Matching filename |
-| `-size +1M` | Larger than 1 megabyte |
-| `-mtime -7` | Modified in last 7 days |
+## Option: -type
 
-## Finding by Name
+**Search by file type:**
 
 ```bash
-$ find . -name "*.pdb"
+find . -type f        # Regular files
+find . -type d        # Directories
+```
+
+Most common types: `f` (file) and `d` (directory).
+
+## Option: -name
+
+**Search by filename pattern:**
+
+```bash
+find . -name "*.pdb"
 ```
 
 All `.pdb` files anywhere under current directory.
 
 ```bash
-$ find . -name "haiku*"
+find . -name "haiku*"
 ```
 
 All files starting with "haiku".
 
-## Finding by Type
+## Option: -size
 
-All directories:
+**Search by file size:**
 
 ```bash
-$ find . -type d
+find . -type f -size +1M
 ```
 
-All regular files:
+Files **larger than** 1 megabyte.
 
 ```bash
-$ find . -type f
+find . -type f -size -100k
 ```
 
-## Finding Large Files
+Files **smaller than** 100 kilobytes.
 
-Larger than 1 megabyte:
+Units: `k` (kilobyte), `M` (megabyte), `G` (gigabyte).
+
+`+` means "larger than", `-` means "smaller than".
+
+## Option: -mtime
+
+**Search by modification date:**
 
 ```bash
-$ find . -type f -size +1M
+find . -type f -mtime -7
 ```
 
-Smaller than 100 kilobytes:
+Modified in **last 7 days**.
 
 ```bash
-$ find . -type f -size -100k
+find . -type f -mtime -1
 ```
 
-## Finding Recently Modified
+Modified **last 24 hours**.
 
-Modified in last 7 days:
+`-` means "less than" (more recent).
+
+## Option: -perm (Permissions)
+
+**Find by file permissions:**
 
 ```bash
-$ find . -type f -mtime -7
+find . -type f -perm -u=x
 ```
 
-Modified in last 24 hours:
+Regular files owner can execute.
 
 ```bash
-$ find . -type f -mtime -1
+find . -type f -perm -g=w
 ```
 
-## Combining grep and find
-
-**Find files, then search inside them**
-
-Find all `.pdb` files containing "ATOM":
+Files where group has write permission.
 
 ```bash
-$ find . -name "*.pdb" -exec grep -l "ATOM" {} \;
+find . -type f -perm -o=r
 ```
 
-Breaking it down:
-- `find . -name "*.pdb"` = find all `.pdb` files
-- `-exec command {} \;` = run command on each
-- `grep -l` = show filenames with matches
-- `{}` = the found file
-- `\;` = end of exec
+Files where others can read.
 
-## Command Substitution: `$()`
+`-` before permission means "bits are set".
 
-**Use output of one command as input to another**
+## Combining `find` Options
+
+**Filter by multiple criteria:**
 
 ```bash
-$ echo "Files found: $(find . -name "*.txt")"
+find . -type f -name "*.log" -mtime -3
+```
+
+All `.log` files modified in last 3 days.
+
+Options work together (AND logic).
+
+## Using `find` Output with Other Commands
+
+**Problem**: Found files, now what?
+
+**Solution**: `-exec` to run command on each
+
+```bash
+find . -name "*.pdb" -exec grep -l "ATOM" {} \;
+```
+
+- `{}` = the found file (placeholder)
+- `\;` = end of exec command
+- `grep -l` = show filename only if match found
+
+## Command Substitution: $()
+
+**Use output of one command as input to another:**
+
+```bash
+echo "Files found: $(find . -name "*.txt")"
 ```
 
 Output:
@@ -289,209 +492,269 @@ Output:
 Files found: haiku.txt notes.txt
 ```
 
+Replace `$()` with command's output.
+
 ## Practical Example
 
-Count all ATOM lines in all PDB files:
+Count all "ATOM" lines in all PDB files:
 
 ```bash
-$ grep -c "^ATOM" $(find . -name "*.pdb")
+grep -c "^ATOM" $(find . -name "*.pdb")
 ```
 
-Or more safely:
-
-```bash
-$ find . -name "*.pdb" -exec grep -c "^ATOM" {} \;
-```
-
-## Text vs Binary Files
-
-**Text files**: human-readable (`.txt`, `.csv`, `.py`)
-
-**Binary files**: encoded (`.pdf`, `.jpg`, `.exe`)
-
-**Why it matters**: `grep` works on text, not binary!
-
-```bash
-$ grep pattern document.pdf
-```
-
-Won't work well - PDF is binary.
-
-## grep on Binary Files
-
-By default, grep warns about binary:
-
-```bash
-$ grep text image.jpg
-grep: image.jpg: binary file matches
-```
-
-To search anyway:
-
-```bash
-$ grep -a text image.jpg
-```
-
-But results are usually gibberish!
-
-## Try It Yourself - Question 1
-
-**Search haiku.txt for lines containing "it"**
-
-1. Just find them
-2. Count them
-3. Show only lines that DON'T contain "it"
-
-## Try It Yourself - Solution 1
-
-**Find lines with "it":**
-
-```bash
-$ grep "it" haiku.txt
-```
-
-**Count them:**
-
-```bash
-$ grep -c "it" haiku.txt
-```
+Lists count for each file:
 
 ```output
-3
+file1.pdb:1523
+file2.pdb:2104
+file3.pdb:1876
 ```
 
-**Lines without "it":**
+## Challenge: Using `grep`
 
-```bash
-$ grep -v "it" haiku.txt
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Which command results in this output?
+
+```output
+and the presence of absence:
 ```
 
-## Try It Yourself - Question 2
+1. `grep "of" haiku.txt`
+2. `grep -E "of" haiku.txt`
+3. `grep -w "of" haiku.txt`
+4. `grep -i "of" haiku.txt`
 
-**Find all files modified in the last 3 days**
-
-Where should you search? Try your current directory.
-
-## Try It Yourself - Solution 2
-
-**Files modified in last 3 days:**
-
-```bash
-$ find . -type f -mtime -3
-```
-
-Or more recently (last 24 hours):
-
-```bash
-$ find . -type f -mtime -1
-```
-
-## Try It Yourself - Question 3
-
-**Find all Python files that contain "import"**
-
-(Assume they're somewhere under current directory)
-
-## Try It Yourself - Solution 3
-
-**Using find and grep:**
-
-```bash
-$ find . -name "*.py" -exec grep -l "import" {} \;
-```
-
-Or using command substitution:
-
-```bash
-$ grep -l "import" $(find . -name "*.py")
-```
-
-**What `-l` does**: show just the filename, not the matching lines.
-
-## Try It Yourself - Question 4
-
-**You want to find all `.log` files containing "ERROR"**
-
-And show both the filename and the error lines.
-
-## Try It Yourself - Solution 4
-
-**Show filename and lines with errors:**
-
-```bash
-$ grep -n "ERROR" *.log
-```
-
-Or to search subdirectories:
-
-```bash
-$ find . -name "*.log" -exec grep "ERROR" {} +
-```
-
-**What `-n` does**: shows line numbers.
-
-## Advanced: -E for Extended Regex
-
-Regular expressions with `-E`:
-
-```bash
-$ grep -E "^(A|B|C)" haiku.txt
-```
-
-Find lines starting with A, B, or C.
-
-```bash
-$ grep -E "[0-9]{3}" data.txt
-```
-
-Find lines with 3 consecutive digits.
-
-## Useful Combinations
-
-**Find and process files:**
-
-```bash
-$ find . -name "*.bak" -delete
-```
-
-Delete all `.bak` files!
-
-```bash
-$ find . -name "*.txt" -exec wc -l {} +
-```
-
-Count lines in all text files.
-
-## Key Points
-
-::: {.fragment}
-`grep` **searches inside files**
 :::
 
-::: {.fragment}
-`find` **searches for files**
+## Solution: Using `grep`
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Answer: 3** (`grep -w "of" haiku.txt`)
+
+`-w` flag searches for **whole words only**.
+
+Options 1, 2, 4 match "of" inside other words (like "of" in "presence of absence", "perfect", etc.).
+
+Only `-w` ensures "of" stands alone.
+
 :::
 
-::: {.fragment}
-`grep -v` shows **non-matching** lines
+## Challenge: Tracking a Species
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Leah has hundreds of data files on species sightings:
+
+```
+2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-06,fox,4
+2012-11-07,rabbit,16
+2012-11-07,bear,1
+```
+
+She wants a script taking:
+- Species name (argument 1)
+- Directory (argument 2)
+
+Output: File `<species>.txt` with dates and counts:
+
+```
+2012-11-05,22
+2012-11-06,19
+2012-11-07,16
+```
+
+**Arrange these in correct order:**
+
+```bash
+cut -d : -f 2
+>
+|
+grep -w $1 -r $2
+|
+$1.txt
+cut -d , -f 1,3
+```
+
+Hint: Use `man grep` for recursive search, `man cut` for multiple fields.
+
+Example: `shell-lesson-data/exercise-data/animal-counts/animals.csv`
+
 :::
 
-::: {.fragment}
-`grep -c` **counts** matches
+## Solution: Tracking a Species
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+```bash
+grep -w $1 -r $2 | cut -d : -f 2 | cut -d , -f 1,3 > $1.txt
+```
+
+**How it works:**
+
+1. `grep -w $1 -r $2` = find species name in all files under directory
+2. `cut -d : -f 2` = extract filename and data (remove grep's first field)
+3. `cut -d , -f 1,3` = extract date (field 1) and count (field 3)
+4. `> $1.txt` = save to output file
+
+**Two `cut` commands can be swapped** - same result!
+
+**Usage example:**
+
+```bash
+bash count-species.sh bear .
+```
+
+This creates file `bear.txt` with all bear sightings.
+
 :::
 
-::: {.fragment}
-Regular expressions provide **powerful patterns**
+## Challenge: Little Women
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+You've finished reading *Little Women* by Louisa May Alcott.
+
+Argument with friend: Which sister mentioned most?
+- Jo, Meg, Beth, or Amy?
+
+File available: `shell-lesson-data/exercise-data/writing/LittleWomen.txt`
+
+**Using a `for` loop, tabulate mentions of each sister.**
+
+Hint: Combine `grep` and `wc` with `|`, or use `grep` options.
+
+Multiple solutions exist - choose for correctness, elegance, readability, and speed.
+
 :::
 
-::: {.fragment}
-`$(command)` substitutes **command output**
+## Solution: Little Women
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Solution 1: Using pipe with wc**
+
+```bash
+for sis in Jo Meg Beth Amy
+do
+    grep -ow $sis LittleWomen.txt | wc -l
+done
+```
+
+Output shows count for each sister.
+
+**Solution 2: Using `grep -c` option**
+
+```bash
+for sis in Jo Meg Beth Amy
+do
+    grep -ocw $sis LittleWomen.txt
+done
+```
+
+**Flags explained:**
+- `-o` = show matches only
+- `-c` = count them
+- `-w` = whole words only
+
+Both count sister mentions correctly!
+
+:::
+## Listing vs. Finding
+
+`ls` and `find` can be made to do similar things given the right options, but under normal circumstances:
+
+- `ls` **lists** everything it can
+- `find` **searches** for things with certain properties and shows them
+
+## Challenge: Matching and Subtracting
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+The `-v` option to `grep` inverts pattern matching, so that only lines which do **not** match the pattern are printed.
+
+Given that, which of the following commands will find all `.dat` files in `creatures` except `unicorn.dat`?
+
+1. `find creatures -name "*.dat" | grep -v unicorn`
+2. `find creatures -name *.dat | grep -v unicorn`
+3. `grep -v "unicorn" $(find creatures -name "*.dat")`
+4. None of the above
+
+Once you have thought about your answer, you can test the commands in the `shell-lesson-data/exercise-data` directory.
+
 :::
 
-::: {.fragment}
-Combine tools to **solve complex problems**
+## Solution: Matching and Subtracting
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Option 1 is correct**: `find creatures -name "*.dat" | grep -v unicorn`
+
+Putting the match expression in quotes prevents the shell expanding it, so it gets passed to the `find` command.
+
+Option 2 also works in this instance because the shell tries to expand `*.dat` but there are no `*.dat` files in the current directory, so the wildcard expression gets passed to `find`.
+
+Option 3 is incorrect because it searches the **contents** of the files for lines which do not match 'unicorn', rather than searching the **file names**.
+
 :::
 
----
+## Challenge: find Pipeline Reading Comprehension
 
-**Next: Episode 9 - AWK for Text Processing →**
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Write a short explanatory comment for the following shell script:
+
+```bash
+wc -l $(find . -name "*.dat") | sort -n
+```
+:::
+
+## Solution: find Pipeline Reading Comprehension
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+1. Find all files with a `.dat` extension recursively from the current directory
+2. Count the number of lines each of these files contains
+3. Sort the output from step 2. numerically
+  
+:::
+
+## Binary Files
+
+We have focused exclusively on finding patterns in text files. What if your data is stored as images, in databases, or in some other format?
+
+A handful of tools extend `grep` to handle a few non-text formats. But a more generalizable approach is to convert the data to text or extract the text-like elements from the data.
+
+On one hand, it makes simple things easy to do. On the other hand, complex things are usually impossible. For example:
+- **Easy**: Write a program that extracts X and Y dimensions from image files for `grep` to use
+- **Hard**: Find values in a spreadsheet whose cells contained formulas
+
+A last option: recognize that the shell and text processing have their limits, and use another programming language.
+
+Many modern programming languages have borrowed ideas from the shell, and imitation is the sincerest form of praise.

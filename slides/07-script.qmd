@@ -1,14 +1,3 @@
----
-title: "Episode 7: Shell Scripts"
-subtitle: "Saving and reusing commands in scripts"
-format:
-  revealjs:
-    theme: default
-    transition: slide
-    background-transition: fade
-    incremental: true
-    slide-number: true
----
 
 # Episode 7: Shell Scripts
 
@@ -21,44 +10,73 @@ format:
 ::: {.callout-tip icon="false" .nonincremental}
 ## Objectives
 
-- Write a shell script that runs a command or series of commands for a fixed set of files.
-- Run a shell script from the command line.
-- Write a shell script that operates on a set of files defined by the user on the command line.
-- Create pipelines that include shell scripts you, and others, have written.
+- Write shell script that runs commands for fixed file set
+- Run shell script from command line
+- Write shell script that operates on user-defined file set
+- Create pipelines with shell scripts you and others wrote
 :::
 
-## What is a Shell Script?
+## Why Shell Scripts?
 
-**A file containing shell commands**
+**A file containing shell commands = a small program**
 
-- Run the same commands repeatedly
-- No need to retype
-- More reliable (fewer typos)
-- Can be shared with others
-- Essential for **automation**
+Benefits of shell scripts:
+
+- **Speed**: No retyping commands
+- **Accuracy**: Fewer chances for typos
+- **Reproducibility**: Same results every time
+- **Documentation**: Shows what was done
+- **Sharing**: Others can use your work
+
+Let's turn repeated commands into reusable programs!
 
 ## Creating Your First Script
 
-Create a file called `middle.sh`:
+Navigate to `alkanes/` directory and create a script:
 
 ```bash
-$ nano middle.sh
+cd alkanes
+nano middle.sh
 ```
 
-In the editor, type:
+The `nano` command opens a text editor in the shell.
+
+## Text Editors vs. Word Processors
+
+::: {.callout-note icon="true"}
+
+## Text vs. Whatever
+
+Word processors (Microsoft Word, LibreOffice) store **formatting information** about fonts, headings, etc.
+
+Shell commands need **plain text only** — no formatting codes.
+
+When editing programs, **save as plain text**, not `.docx` or `.odt`!
+
+:::
+
+## Your First Script Content
+
+In nano, type this pipe that selects lines 11-15:
 
 ```bash
 head -n 15 octane.pdb | tail -n 5
 ```
 
-Save (`Ctrl-O`, `Enter`, `Ctrl-X`).
+Save with: `Ctrl-O`, then `Enter`, then `Ctrl-X` to exit
+
+Verify it was created:
+
+```bash
+ls -l middle.sh
+```
 
 ## Running Your Script
 
 Execute the script:
 
 ```bash
-$ bash middle.sh
+bash middle.sh
 ```
 
 ```output
@@ -69,116 +87,269 @@ ATOM     12  H           1      -3.009  -0.741  -1.467  1.00  0.00
 ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
 ```
 
-Output is exactly what we'd get from running manually!
+Output matches running the command manually!
 
-## Problem: Not Reusable
+## Problem: Not Flexible
 
-Our script only works on `octane.pdb`.
+**Current issue**: Script only works on `octane.pdb`
 
-What if we want to use it on other files?
+**Solution**: Make it accept **command-line arguments**!
 
-**Solution**: Use command-line arguments!
+Then same script works on any file.
 
-## Making Scripts Flexible
+## Making Scripts Flexible: Using $1
 
-Edit `middle.sh`:
+Edit `middle.sh` to use a variable:
+
+```bash
+nano middle.sh
+```
+
+Replace `octane.pdb` with special variable `$1`:
 
 ```bash
 head -n 15 "$1" | tail -n 5
 ```
 
-- `$1` = first argument provided by user
+`$1` means: **first command-line argument**
 
-## Using Arguments
+## Using the $1 Argument
 
-Now run with different files:
+Now the script works on any file:
 
 ```bash
-$ bash middle.sh octane.pdb
-$ bash middle.sh ethane.pdb
-$ bash middle.sh methane.pdb
+bash middle.sh octane.pdb
 ```
 
-Each uses the argument you provide!
+```output
+ATOM      9  H           1      -4.502   0.681   0.785  1.00  0.00
+ATOM     10  H           1      -5.254  -0.243  -0.537  1.00  0.00
+ATOM     11  H           1      -4.357   1.252  -0.895  1.00  0.00
+ATOM     12  H           1      -3.009  -0.741  -1.467  1.00  0.00
+ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
+```
 
-## Argument Variables
+Or with a different file:
+
+```bash
+bash middle.sh pentane.pdb
+```
+
+Same script, different results!
+
+## Quoting Arguments Matters
+
+::: {.callout-note icon="true"}
+
+## Double-Quotes Around Arguments
+
+Always put double-quotes around variables to handle filenames with spaces:
+
+```bash
+head "$1" | tail -n 5     # Safe!
+head $1 | tail -n 5       # Breaks if spaces in filename!
+```
+
+This also protects special characters in filenames.
+
+:::
+
+## Making It More Flexible: $2, $3
+
+Make the script control **all parameters**:
+
+```bash
+nano middle.sh
+```
+
+Edit to:
+
+```bash
+head -n "$2" "$1" | tail -n "$3"
+```
+
+Now:
+- `$1` = filename
+- `$2` = lines for `head`
+- `$3` = lines for `tail`
+
+## Using Multiple Arguments
+
+With three parameters, we can change behavior:
+
+```bash
+bash middle.sh pentane.pdb 15 5
+```
+
+```output
+ATOM      9  H           1       1.324   0.350  -1.332  1.00  0.00
+ATOM     10  H           1       1.271   1.378   0.122  1.00  0.00
+ATOM     11  H           1      -0.074  -0.384   1.288  1.00  0.00
+ATOM     12  H           1      -0.048  -1.362  -0.205  1.00  0.00
+ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00
+```
+
+Or with different numbers:
+
+```bash
+bash middle.sh pentane.pdb 20 5
+```
+
+```output
+ATOM     14  H           1      -1.259   1.420   0.112  1.00  0.00
+ATOM     15  H           1      -2.608  -0.407   1.130  1.00  0.00
+ATOM     16  H           1      -2.540  -1.303  -0.404  1.00  0.00
+ATOM     17  H           1      -3.393   0.254  -0.321  1.00  0.00
+TER      18              1
+```
+
+## Adding Comments for Documentation
+
+The next reader won't know what `$2` and `$3` mean!
+
+Edit `middle.sh` to add helpful comments:
+
+```bash
+nano middle.sh
+```
+
+```bash
+# Select lines from the middle of a file.
+# Usage: bash middle.sh filename end_line num_lines
+head -n "$2" "$1" | tail -n "$3"
+```
+
+Comments start with `#` and run to end of line.
+
+## Comment Best Practices
+
+**Keep comments accurate and up-to-date!**
+
+An inaccurate comment is **worse than no comment**.
+
+Update comments whenever you change code.
+
+## All Arguments: Using $@
+
+**Challenge**: Process many files at once.
+
+Example: sort `.pdb` files by line count:
+
+```bash
+wc -l *.pdb | sort -n
+```
+
+We need a way to pass **any number of filenames**.
+
+Solution: `$@` = **all command-line arguments**
+
+## Using $@ in a Script
+
+Create a new script that accepts **many files**:
+
+```bash
+nano sorted.sh
+```
+
+```bash
+# Sort files by their length.
+# Usage: bash sorted.sh one_or_more_filenames
+wc -l "$@" | sort -n
+```
+
+`$@` automatically expands to all arguments!
+
+## Running Script with Multiple Files
+
+```bash
+bash sorted.sh *.pdb ../creatures/*.dat
+```
+
+```output
+9 methane.pdb
+12 ethane.pdb
+15 propane.pdb
+20 cubane.pdb
+21 pentane.pdb
+30 octane.pdb
+163 ../creatures/basilisk.dat
+163 ../creatures/minotaur.dat
+163 ../creatures/unicorn.dat
+596 total
+```
+
+Works with any number of files!
+
+## Script Arguments Reference
 
 | Variable | Meaning |
 |----------|---------|
 | `$1` | First argument |
 | `$2` | Second argument |
 | `$3` | Third argument |
-| `$@` | All arguments |
+| `$@` | **All arguments** |
 | `$#` | Number of arguments |
 
-## Multiple Arguments Example
+## Challenge: List Unique Species
 
-Script: `combine.sh`
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
 
-```bash
-cat "$1" "$2" > "$3"
+## Challenge
+
+Leah has hundreds of data files formatted like `animals.csv`:
+
+```output
+2013-11-05,deer,5
+2013-11-05,rabbit,22
+2013-11-05,raccoon,7
+2013-11-06,rabbit,19
+2013-11-06,deer,2
+2013-11-06,fox,1
+2013-11-07,rabbit,18
+2013-11-07,bear,1
 ```
 
-Usage:
+Command to extract unique species (second field, separated by commas):
 
 ```bash
-$ bash combine.sh file1.txt file2.txt combined.txt
+cut -d , -f 2 animals.csv | sort | uniq
 ```
 
-This combines two files into a third!
+Write a shell script called `species.sh` that takes **any number of filenames** as arguments and prints the unique species in each file (one file per section).
 
-## All Arguments: `$@`
+:::
 
-Script: `process-all.sh`
+## Solution: List Unique Species
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+Create `species.sh`:
 
 ```bash
-for file in "$@"
+# Script to find unique species in csv files 
+# where species is the second data field
+# This script accepts any number of file names as command line arguments
+
+# Loop over all files
+for file in $@
 do
-    echo "Processing $file"
-    wc -l "$file"
+    cut -d , -f 2 $file | sort | uniq
 done
 ```
 
 Usage:
 
 ```bash
-$ bash process-all.sh *.pdb
+bash species.sh animals.csv other-animals.csv
 ```
 
-Processes all files passed in!
+:::
 
-## Quoting Arguments
+## The Shebang: #!/bin/bash
 
-**Always quote your variables!**
-
-Safe:
-```bash
-head -n 15 "$1" | tail -n 5
-```
-
-Unsafe (breaks with spaces in filenames):
-```bash
-head -n 15 $1 | tail -n 5
-```
-
-## Comments in Scripts
-
-Add comments with `#`:
-
-```bash
-#!/bin/bash
-# This script extracts the middle 5 lines
-# of a PDB file (lines 11-15)
-# Usage: bash middle.sh filename
-
-head -n 15 "$1" | tail -n 5
-```
-
-Comments **document** your script for future use.
-
-## The Shebang Line
-
-First line of many scripts:
+Most scripts start with a **shebang** line:
 
 ```bash
 #!/bin/bash
@@ -186,259 +357,376 @@ First line of many scripts:
 
 This tells the system: **Use bash to run this script**
 
-Allows you to run:
+Then you can run the script directly:
+
 ```bash
-$ ./middle.sh octane.pdb
+./middle.sh octane.pdb
 ```
 
-Instead of:
+Instead of always typing:
+
 ```bash
-$ bash middle.sh octane.pdb
+bash middle.sh octane.pdb
 ```
 
 ## Making Scripts Executable
 
-To use `./script.sh` directly:
-
-```bash
-$ chmod u+x middle.sh
-$ ./middle.sh octane.pdb
-```
-
-Now the script is **executable** by you!
-
-## Practical Example: Batch Processing
-
-Script: `count-atoms.sh`
+Add shebang as first line:
 
 ```bash
 #!/bin/bash
-# Count ATOM lines in PDB files
-
-for file in "$@"
-do
-    count=$(grep -c "^ATOM" "$file")
-    echo "$file: $count atoms"
-done
+# Select lines from middle of file
+head -n "$2" "$1" | tail -n "$3"
 ```
 
-Usage:
+Then make it executable:
 
 ```bash
-$ bash count-atoms.sh *.pdb
+chmod u+x middle.sh
 ```
+
+Now run it directly:
+
+```bash
+./middle.sh pentane.pdb 15 5
+```
+
+Congratulations! You've created a true **executable program**!
+
+## Saving Command History
+
+You've run useful commands — save them for later!
+
+```bash
+history | tail -n 5 > redo-figure-3.sh
+```
+
+The file `redo-figure-3.sh` now contains:
 
 ```output
-cubane.pdb: 10 atoms
-ethane.pdb: 8 atoms
-...
+297 bash goostats.sh NENE01729B.txt stats-NENE01729B.txt
+298 bash goodiff.sh stats-NENE01729B.txt /data/validated/01729.txt > 01729-differences.txt
+299 cut -d ',' -f 2-3 01729-differences.txt > 01729-time-series.txt
+300 ygraph --format scatter --color bw --borders none 01729-time-series.txt figure-3.png
+301 history | tail -n 5 > redo-figure-3.sh
 ```
 
-## Variable Assignment
+Edit to remove line numbers and the `history` command itself.
 
-Create variables with `=` (no spaces!):
+Result: **Perfect reproduction record!**
+
+## Challenge: Why Record Commands in the History Before Running Them?
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+If you run the command:
 
 ```bash
-count=$(grep -c "^ATOM" "$file")
+history | tail -n 5 > recent.sh
 ```
 
-Use command output as a variable!
+the last command in the file is the `history` command itself, i.e., the shell has added `history` to the command log before actually running it.
+
+In fact, the shell *always* adds commands to the log before running them.
+
+**Why do you think it does this?**
+
+:::
+
+## Solution: Why Record Commands in the History Before Running Them?
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+If a command causes something to crash or hang, it might be useful to know what that command was, in order to investigate the problem.
+
+Were the command only be recorded after running it, we would not have a record of the last command run in the event of a crash.
+
+:::
+
+## Developing Shell Scripts
+
+In practice, most people develop shell scripts by running commands at the shell prompt a few times to make sure they're doing the right thing, then saving them in a file for re-use.
+
+This style of work allows people to recycle what they discover about their data and their workflow with one call to `history` and a bit of editing to clean up the output and save it as a shell script.
+
+## Nelle's Pipeline: Creating a Script
+
+Nelle's supervisor insisted that all her analytics must be reproducible.
+
+The easiest way to capture all the steps is in a script.
+
+First we return to Nelle's project directory:
 
 ```bash
-filename=$(basename "$1")
-directory=$(dirname "$1")
+cd ../../north-pacific-gyre/
 ```
 
-## Common Pitfalls
+## Nelle Creates do-stats.sh
 
-❌ Space around `=`:
+She creates a file using `nano`:
+
 ```bash
-count = 5  # WRONG!
+nano do-stats.sh
 ```
 
-✅ No spaces:
-```bash
-count=5    # Correct
-```
-
-❌ Missing quotes:
-```bash
-head "$1"  # What if $1 has spaces?
-```
-
-✅ Always quote:
-```bash
-head "$1"  # Safe!
-```
-
-## Script Debugging
-
-Print what's happening:
+...which contains the following:
 
 ```bash
-#!/bin/bash
-echo "Processing $1"
-head -n 15 "$1" | tail -n 5
-echo "Done!"
-```
-
-## Try It Yourself - Question 1
-
-**Write a script called `show-lines.sh` that:**
-
-1. Takes a filename as argument
-2. Shows the number of lines
-3. Displays the first 5 lines
-
-Hint: Use `wc -l` and `head`
-
-## Try It Yourself - Solution 1
-
-**Script: `show-lines.sh`**
-
-```bash
-#!/bin/bash
-# Show file info
-
-wc -l "$1"
-head -n 5 "$1"
-```
-
-Usage:
-
-```bash
-$ bash show-lines.sh myfile.txt
-```
-
-## Try It Yourself - Question 2
-
-**Write a script `process-data.sh` that:**
-
-1. Takes multiple data files as arguments
-2. For each file, shows the filename
-3. Counts lines in that file
-
-## Try It Yourself - Solution 2
-
-**Script: `process-data.sh`**
-
-```bash
-#!/bin/bash
-# Process multiple files
-
-for file in "$@"
+# Calculate stats for data files.
+for datafile in "$@"
 do
-    echo "File: $file"
-    wc -l "$file"
+    echo $datafile
+    bash goostats.sh $datafile stats-$datafile
 done
 ```
 
-Usage:
+## Running Nelle's Script
+
+She saves this in a file called `do-stats.sh` so that she can now re-do the first stage of her analysis by typing:
 
 ```bash
-$ bash process-data.sh data1.txt data2.txt data3.txt
+bash do-stats.sh NENE*A.txt NENE*B.txt
 ```
 
-## Try It Yourself - Question 3
-
-**You have a script:**
+She can also do this:
 
 ```bash
-#!/bin/bash
-head -n 10 "$1" | tail -n 5
+bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l
 ```
 
-**What's wrong with this approach for production use?**
+so that the output is just the number of files processed rather than the names of the files that were processed.
 
-## Try It Yourself - Solution 3
+## Script Design Tradeoffs
 
-**Issues:**
+One thing to note about Nelle's script is that it lets the person running it decide what files to process.
 
-1. ❌ No comments - what does it do?
-2. ❌ No error checking - what if file doesn't exist?
-3. ❌ Not flexible - hardcoded to lines 10 and 5
-
-**Better version:**
+She could have written it as:
 
 ```bash
-#!/bin/bash
-# Extract lines N to M from a file
-# Usage: bash extract.sh N M filename
-
-start=$1
-end=$2
-file=$3
-
-head -n "$end" "$file" | tail -n $(($end - $start + 1))
+# Calculate stats for Site A and Site B data files.
+for datafile in NENE*A.txt NENE*B.txt
+do
+    echo $datafile
+    bash goostats.sh $datafile stats-$datafile
+done
 ```
 
-## Try It Yourself - Question 4
+## Hardcoded vs. Flexible Scripts
 
-**You want to use arithmetic in a script.**
+**Advantage**: This always selects the right files — she doesn't have to remember to exclude the 'Z' files.
 
-How do you calculate `5 + 3`?
+**Disadvantage**: It *always* selects just those files — she can't run it on all files (including the 'Z' files), or on the 'G' or 'H' files her colleagues in Antarctica are producing, without editing the script.
 
-## Try It Yourself - Solution 4
+If she wanted to be more adventurous, she could modify her script to check for command-line arguments, and use `NENE*A.txt NENE*B.txt` if none were provided.
 
-**Using `$(( ))`:**
+Of course, this introduces another tradeoff between flexibility and complexity.
+
+## Challenge: Variables in Shell Scripts
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+In the `alkanes` directory, imagine you have a shell script called `script.sh` containing the following commands:
 
 ```bash
-result=$((5 + 3))
-echo $result  # Prints 8
+head -n $2 $1
+tail -n $3 $1
 ```
 
-**In a script:**
+While you are in the `alkanes` directory, you type the following command:
 
 ```bash
-#!/bin/bash
-start=$1
-end=$2
-middle=$(( ($start + $end) / 2 ))
-echo "Middle is $middle"
+bash script.sh '*.pdb' 1 1
 ```
 
-## Best Practices for Scripts
+Which of the following outputs would you expect to see?
 
-::: {.incremental}
-1. **Use comments** to explain what the script does
-2. **Quote variables** always: `"$1"`
-3. **Use meaningful names**: `filename` not `x`
-4. **Check errors**: Does the file exist?
-5. **Test thoroughly** before using on real data
-6. **Document usage** with examples
-7. **Version control** your scripts (git!)
+1. All of the lines between the first and the last lines of each file ending in `.pdb` in the `alkanes` directory
+2. The first and the last line of each file ending in `.pdb` in the `alkanes` directory
+3. The first and the last line of each file in the `alkanes` directory
+4. An error because of the quotes around `*.pdb`
+
 :::
 
-## Key Points
+## Solution: Variables in Shell Scripts
 
-::: {.fragment}
-Scripts **save and reuse commands**
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**The correct answer is 2.**
+
+The special variables `$1`, `$2` and `$3` represent the command line arguments given to the script, such that the commands run are:
+
+```bash
+head -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+tail -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+```
+
+The shell does not expand `'*.pdb'` because it is enclosed by quote marks.
+
+As such, the first argument to the script is `'*.pdb'` which gets expanded within the script by `head` and `tail`.
+
 :::
 
-::: {.fragment}
-`$1`, `$2`, etc. are **command-line arguments**
+## Challenge: Find the Longest File With a Given Extension
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Write a shell script called `longest.sh` that takes the name of a directory and a filename extension as its arguments, and prints out the name of the file with the most lines in that directory with that extension.
+
+For example:
+
+```bash
+bash longest.sh shell-lesson-data/exercise-data/alkanes pdb
+```
+
+would print the name of the `.pdb` file in `shell-lesson-data/exercise-data/alkanes` that has the most lines.
+
+Feel free to test your script on another directory e.g.
+
+```bash
+bash longest.sh shell-lesson-data/exercise-data/writing txt
+```
+
 :::
 
-::: {.fragment}
-`$@` means **all arguments**
+## Solution: Find the Longest File With a Given Extension
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+```bash
+# Shell script which takes two arguments:
+#    1. a directory name
+#    2. a file extension
+# and prints the name of the file in that directory
+# with the most lines which matches the file extension.
+
+wc -l $1/*.$2 | sort -n | tail -n 2 | head -n 1
+```
+
+**Explanation:**
+
+The first part of the pipeline, `wc -l $1/*.$2 | sort -n`, counts the lines in each file and sorts them numerically (largest last).
+
+When there's more than one file, `wc` also outputs a final summary line, giving the total number of lines across *all* files.
+
+We use `tail -n 2 | head -n 1` to throw away this last line.
+
+With `wc -l $1/*.$2 | sort -n | tail -n 1` we'll see the final summary line: we can build our pipeline up in pieces to be sure we understand the output.
+
 :::
 
-::: {.fragment}
-**Always quote variables**: `"$var"`
+## Challenge: Script Reading Comprehension
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+For this question, consider the `shell-lesson-data/exercise-data/alkanes` directory once again. This contains a number of `.pdb` files in addition to any other files you may have created.
+
+Explain what each of the following three scripts would do when run as `bash script1.sh *.pdb`, `bash script2.sh *.pdb`, and `bash script3.sh *.pdb` respectively.
+
+**Script 1:**
+```bash
+echo *.*
+```
+
+**Script 2:**
+```bash
+for filename in $1 $2 $3
+do
+    cat $filename
+done
+```
+
+**Script 3:**
+```bash
+echo $@.pdb
+```
+
 :::
 
-::: {.fragment}
-**Comments** document your work
+## Solution: Script Reading Comprehension
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solutions
+
+In each case, the shell expands the wildcard in `*.pdb` before passing the resulting
+list of file names as arguments to the script.
+
+Script 1 would print out a list of all files containing a dot in their name.
+The arguments passed to the script are not actually used anywhere in the script.
+
+Script 2 would print the contents of the first 3 files with a `.pdb` file extension.
+`$1`, `$2`, and `$3` refer to the first, second, and third argument respectively.
+
+Script 3 would print all the arguments to the script (i.e. all the `.pdb` files),
+followed by `.pdb`.
+`$@` refers to *all* the arguments given to a shell script.
+
+```output
+cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb.pdb
+```
+
 :::
 
-::: {.fragment}
-`chmod u+x` makes scripts **executable**
+## Challenge: Debugging Scripts
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Suppose you have saved the following script in a file called `do-errors.sh`
+in Nelle's `north-pacific-gyre` directory:
+
+```bash
+# Calculate stats for data files.
+for datafile in "$@"
+do
+    echo $datfile
+    bash goostats.sh $datafile stats-$datafile
+done
+```
+
+When you run it from the `north-pacific-gyre` directory:
+
+```bash
+bash do-errors.sh NENE*A.txt NENE*B.txt
+```
+
+the output is blank.
+To figure out why, re-run the script using the `-x` option:
+
+```bash
+bash -x do-errors.sh NENE*A.txt NENE*B.txt
+```
+
+What is the output showing you?
+Which line is responsible for the error?
+
 :::
 
-::: {.fragment}
-Scripts are **essential for automation**
+## Solution: Debugging Scripts
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+The `-x` option causes `bash` to run in debug mode.
+This prints out each command as it is run, which will help you to locate errors.
+In this example, we can see that `echo` isn't printing anything. We have made a typo
+in the loop variable name, and the variable `datfile` doesn't exist, hence returning
+an empty string.
+
 :::
-
----
-
-**Next: Episode 8 - Finding Things →**

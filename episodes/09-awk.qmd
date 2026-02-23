@@ -120,7 +120,7 @@ longer the separator.
 AWK reads a file line by line, splits each line into fields, and then applies `pattern { action }` rules.
 
 Maybe we would like to perform different instruction on different lines.
-Awk allows you to specify a matching pattern, like the command grep does.
+Awk allows you to specify a matching pattern, like the command `grep` does.
 
 Let's look at the file content
 

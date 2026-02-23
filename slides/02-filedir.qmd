@@ -233,7 +233,7 @@ To navigate through the `man` pages,
 
 ## Manual pages on the web
 
-- Thea third way to access help for commands is to search for the manual page on the web. 
+- The third way to access help for commands is to search for the manual page on the web. 
 - When using internet search, including the phrase `unix man page` in your search
 query will help to find relevant results.
 
@@ -245,10 +245,6 @@ query will help to find relevant results.
 
 You can also use two options at the same time. What does the command `ls` do when used
 with the `-l` option? What about if you use both the `-l` and the `-h` option?
-
-Some of its output is about properties that we do not cover in this lesson (such
-as file permissions and ownership), but the rest should be useful
-nevertheless.
 
 :::
 

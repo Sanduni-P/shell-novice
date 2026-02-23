@@ -1,69 +1,36 @@
 
-
 # Episode 4: File Permissions
 
 ::: {.callout-tip icon="false" .nonincremental}
 ## Questions
 
-- How do file and directory permissions work?
+- How does Linux know who can access files?
+- How can I see what permissions a file has?
+- How can I set or change the permissions on a file?
 :::
 
 ::: {.callout-tip icon="false" .nonincremental}
 ## Objectives
 
-- What are file and directory permissions?
-- How to view permissions?
-- How to change permissions?
-- What are permission differences on Windows?
+- View file permissions
+- Understand the structure of the permissions string
+- Change owners and permissions of files
+- Use binary references to change permissions of files
 :::
 
-## File Permissions in Unix {.nonincremental}
+## File Permissions {.nonincremental}
 
-Unix controls who can read, modify, and run files using **permissions**.
+Every file/folder has permissions defining who can access them
 
-Let's start with Nelle:
+Three permission categories:
 
-- Unique user name: `nnemo`
-- User ID: 1404
+- **owner** - applies only to file owner
+- **group** - applies only to assigned group
+- **all users** - applies to all other users (watch this closely!)
 
-Users can belong to multiple groups, each with a name and numeric group ID.
+## Permission Example
 
-::: {.callout-note icon="true"}
-
-## Why Integer IDs?
-
-In early Unix, integers were faster and smaller to store and compare than strings.
-
-Systems often keep numeric IDs internally and map them to human-friendly names when displaying information.
-
-:::
-
-## File Ownership {.nonincremental}
-
-Every file and directory on a Unix computer:
-
-- Belongs to **one owner**
-- Belongs to **one group**
-
-The operating system stores the numeric IDs of the user and group that own it.
-
-## Three User Categories
-
-For each file, every user falls into one of three categories:
-
-1. **Owner** of the file
-2. Someone in the **file's group**
-3. **Everyone else**
-
-## Three Permission Types
-
-For each category, the computer tracks whether people can:
-
-1. **Read** the file
-2. **Write** to the file
-3. **Execute** the file (run it if it's a program)
-
-## Example Permission Table
+For example, if a file had the following set of permissions:
 
 <table class="table table-striped">
 <tr><td></td><th>user</th><th>group</th><th>all</th></tr>
@@ -72,175 +39,67 @@ For each category, the computer tracks whether people can:
 <tr><th>execute</th><td>no</td><td>no</td><td>no</td></tr>
 </table>
 
-This means:
+## Viewing Permissions
 
-- Owner can read and write, but not run it
-- Group can read, but not modify or run it
-- Everyone else can do nothing with it
-
-## Permissions in Action
-
-`cd` into the `labs` directory and run `ls -F`:
+View file permissions with `ls -l`:
 
 ```bash
-cd labs
-ls -F
+cd alkanes
+ls -l methane.pdb
 ```
 
 ```output
-safety.txt    setup*     waiver.txt
+-rw-r--r--  1 nelle  bio   422B  8 Aug  2019 methane.pdb
 ```
 
-The `*` at the end of `setup` tells us it's **executable** - probably something the computer can run.
-
-## Necessary But Not Sufficient
-
-::: {.callout-note icon="true"}
-
-The fact that something is marked as executable doesn't actually mean it contains a runnable program.
-
-Marking an HTML file executable won't make it run as a program; the OS may instead open it in the associated application.
-
-:::
-
-## Permission Strings
-
-Run `ls -l` for a long-form listing:
-
-```bash
-ls -l
-```
+## Understanding `ls -l` Output {.nonincremental}
 
 ```output
--rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
--rwxr-xr-x 1 nnemo bio 31988  2010-07-23 20:04 setup
--rw-rw-r-- 1 nnemo bio  2312  2010-07-11 08:23 waiver.txt
+-rw-r--r--  1 nelle  bio   422B  8 Aug  2019 methane.pdb
 ```
 
-The `-l` flag gives us detailed information.
+1. A set of ten permission flags
+2. Link count (which is irrelevant to this course)
+3. The owner of the file
+4. The associated group
+5. The size of the file in bytes
+6. The date that the file was last modified
+7. The name of the file
 
-## Reading ls -l Output
+## Permission Flags
 
-Let's examine the columns from right to left:
+Three basic permission types:
 
-```output
--rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
-```
+- **Read (r)** - capability to read file contents
+- **Write (w)** - capability to write/modify files or directories
+- **Execute (x)** - capability to execute files or view directory contents
 
-- **Right side:** Filename
-- **Next left:** Last modified time and date
-- **Next:** File size in bytes
-- **Next:** Owner (`nnemo`) and group (`bio`)
-- **Second column:** Number of links (skip for now)
-- **First column:** **Permissions** (most important!)
+## Permission String Structure
 
-## Understanding Permission Strings
+`_rwxrwxrwx` breakdown:
 
-Let's examine: `-rwxr-xr-x`
+- **First character** - special permission flag (e.g., `d` = directory)
+- **First `rwx`** - owner permissions
+- **Second `rwx`** - group permissions
+- **Third `rwx`** - all users permissions
 
-**First character:** Type of thing
-- `-` = regular file
-- `d` = directory
-- Other characters for esoteric things
+## Users and Groups
 
-**Next 9 characters in groups of 3:**
-- **Owner permissions:** `rwx` (read, write, execute)
-- **Group permissions:** `r-x` (read, execute, no write)
-- **Others permissions:** `r-x` (read, execute, no write)
+::: {.callout-note}
 
-## Permission String Breakdown
+## On users and groups
 
-```
--rwxr-xr-x
-```
-
-- `-` = regular file
-- `rwx` = owner can read, write, and execute
-- `r-x` = group can read and execute (dash means permission is off)
-- `r-x` = everyone else can read and execute
-
-So everyone on the system can look at the file's contents and run it.
-
-## Changing Permissions with chmod
-
-Here's a file with problematic permissions:
+When listing the contents of a directory you may come across files that 
+have the same text for both the user and group.
+An example of this is in the output: 
 
 ```bash
-ls -l final.grd
+-rw-r--r--  1 nelle  nelle   422B  1 Sep  2019 test.txt
 ```
 
-```output
--rwxrwxrwx 1 nnemo bio  4215  2010-08-29 22:30 final.grd
-```
-
-**Whoops!** Everyone can read it—and worse, modify it!
-
-(They could also try to run it as a program, which wouldn't work.)
-
-## chmod - Change Owner Permissions
-
-Change owner's permissions to `rw-`:
-
-```bash
-chmod u=rw final.grd
-```
-
-- `u` = changing privileges of the **user** (file's owner)
-- `rw` = new set of permissions
-
-Verify it worked:
-
-```bash
-ls -l final.grd
-```
-
-```output
--rw-rwxrwx 1 nnemo bio  4215  2010-08-30 08:19 final.grd
-```
-
-## chmod - Change Group Permissions
-
-Give the group read-only permission:
-
-```bash
-chmod g=r final.grd
-ls -l final.grd
-```
-
-```output
--rw-r--rw- 1 nnemo bio  4215  2010-08-30 08:19 final.grd
-```
-
-Group now has `r--` (read only).
-
-## chmod - Change All Permissions
-
-Give "all" (everyone else) no permissions:
-
-```bash
-chmod a= final.grd
-ls -l final.grd
-```
-
-```output
--rw-r----- 1 nnemo bio  4215  2010-08-30 08:20 final.grd
-```
-
-- `a` = changing permissions for "all"
-- Nothing after `=` means "all" has empty permissions
-
-## Octal Modes (Shortcut)
-
-::: {.callout-tip icon="true"}
-
-Symbolic modes like `u=rw` are clear, but you'll often see octal numbers:
-
-```bash
-chmod 755 script.sh   # owner rwx (7), group r-x (5), others r-x (5)
-chmod 644 notes.txt   # owner rw- (6), group r-- (4), others r-- (4)
-```
-
-Each digit is a sum: **read=4, write=2, execute=1**.
+In Linux, users will usually have a group associated with them that shares the same name that the user does. 
+While this can seem strange, make sure that you understand the difference in the output so you 
+know who has access to your files.
 
 :::
 
@@ -248,12 +107,38 @@ Each digit is a sum: **read=4, write=2, execute=1**.
 
 ::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
 
-## Octal `chmod`
+## Can you spot the difference here? What does it mean?
 
-Set the permissions for `script.sh` so that the owner can read, write, and execute; the group can read and execute; and others have no permissions. Use octal mode.
+Let's take a look at some files in a different folder.
 
-1. Which octal number represents these permissions?
-2. Which command will apply it to `script.sh`?
+```bash
+cd Desktop/data-shell/north-pacific-gyre/2012-07-03
+ls -l
+```
+
+```output
+-rw-r--r-- 1 nelle  bio  4406  8 Aug  2019 NENE01729A.txt
+-rw-r--r-- 1 nelle  bio  4400  8 Aug  2019 NENE01729B.txt
+-rw-r--r-- 1 nelle  bio  4371  8 Aug  2019 NENE01736A.txt
+-rw-r--r-- 1 nelle  bio  4411  8 Aug  2019 NENE01751A.txt
+-rw-r--r-- 1 nelle  bio  4409  8 Aug  2019 NENE01751B.txt
+-rw-r--r-- 1 nelle  bio  4401  8 Aug  2019 NENE01812A.txt
+-rw-r--r-- 1 nelle  bio  4395  8 Aug  2019 NENE01843A.txt
+-rw-r--r-- 1 nelle  bio  4375  8 Aug  2019 NENE01843B.txt
+-rw-r--r-- 1 nelle  bio  4372  8 Aug  2019 NENE01971Z.txt
+-rw-r--r-- 1 nelle  bio  4381  8 Aug  2019 NENE01978A.txt
+-rw-r--r-- 1 nelle  bio  4389  8 Aug  2019 NENE01978B.txt
+-rw-r--r-- 1 nelle  bio  3517  8 Aug  2019 NENE02018B.txt
+-rw-r--r-- 1 nelle  bio  4391  8 Aug  2019 NENE02040A.txt
+-rw-r--r-- 1 nelle  bio  4367  8 Aug  2019 NENE02040B.txt
+-rw-r--r-- 1 nelle  bio  4381  8 Aug  2019 NENE02040Z.txt
+-rw-r--r-- 1 nelle  bio  4386  8 Aug  2019 NENE02043A.txt
+-rw-r--r-- 1 nelle  bio  4393  8 Aug  2019 NENE02043B.txt
+-rwxr-xr-x 1 nelle  bio   345  8 Aug  2019 goodiff
+-rwxr-xr-x 1 nelle  bio   218  8 Aug  2019 goostats
+```
+
+The data files in this folder, e.g `NENE01978A.txt` have a different permission set to `goodiff`. Can you tell why this is and explain what this might mean for the `goodiff` file?
 
 :::
 
@@ -263,151 +148,318 @@ Set the permissions for `script.sh` so that the owner can read, write, and execu
 
 ## Solution
 
-- Owner rwx → 7, group r-x → 5, others --- → 0, so the octal is `750`.
-
-```bash
-chmod 750 script.sh
-```
-
-Variants you may see:
-
-- `chmod 750 ./script.sh` (explicit path)
-- `chmod 0750 script.sh` (leading 0 sometimes used, effect is the same)
+The `goodiff` file has the execution flags set for user, group and all. Which will allow anyone to execute the file. It's therefore likely that `goodiff` is a script that performs some actions. In theory you could run this script using `./goodiff`
 
 :::
 
-## Hidden Directory Entries
+## Challenge
 
-Run `ls -a -l` to include normally hidden entries:
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Lets take a further look at things by looking at in the folder above this.
+
+```bash
+cd ..
+ls -l
+```
+
+```output
+drwxr-xr-x 21 nelle  bio  672  8 Aug  2019 2012-07-03
+```
+
+Can you guess what the `d` at the beginning of the output line means?
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+The `d` indicates whether the file has any special type associated with it. In this case it's indicating that this is a directory.
+
+:::
+
+## Modifying Permissions
+
+Let's say we want to modify who can access some of the files in the `alkanes/` directory.
+
+We'll assume here that we're members of the `bio` group on our system.
+
+On the cluster, all users must be members of cluster group to run jobs on the system. Each lab has a group associated with it, so we can use this method to share files with other members of the same lab.
+
+## Groups Note
+
+::: {.callout-note icon="true"}
+
+## Groups
+
+You'll find that if you try to assign a group to a file and the group does not exist you'll get something similar to the following output.
+
+```output
+chown: bio: illegal group name
+```
+
+If you're trying to do this locally, you can list the groups you're currently a member of using the `groups` command like so:
+
+```bash
+groups
+```
+
+Just pick one of these groups to demonstrate the method shown below.
+
+:::
+
+## Using `chown`
+
+Change ownership to allow `compbio` group to read file:
+
+```bash
+cd Desktop/shell-lesson-data/exercise-data/alkanes
+chown nelle:compbio methane.pdb
+```
+
+`chown` breakdown:
+
+- **chown** - command
+- **nelle** - user
+- **compbio** - group
+- **methane.pdb** - filename
+
+## After `chown`
+
+When we list the contents of the directory again, we would see the change reflected like so:
+
+```output
+total 48
+-rw-r--r-- 1 nelle  bio    1158  8 Aug  2019 cubane.pdb
+-rw-r--r-- 1 nelle  bio     622  8 Aug  2019 ethane.pdb
+-rw-r--r-- 1 nelle  compbio 422  8 Aug  2019 methane.pdb
+-rw-r--r-- 1 nelle  bio    1828  8 Aug  2019 octane.pdb
+-rw-r--r-- 1 nelle  bio    1226  8 Aug  2019 pentane.pdb
+-rw-r--r-- 1 nelle  bio     825  8 Aug  2019 propane.pdb
+```
+
+## Changing Permissions with `chmod`
+
+- `chmod` = change mode = change permissions
+- Allow members of the group to make changes to `methane.pdb`, but not others.
+- To explicitly define permissions, reference the **Permission Group** and **Permission Types**.
+
+## Permission Groups
+
+The Permission Groups used are:
+
+- **u** - Owner
+- **g** - Group
+- **o** - Other / All Users
+- **a** - All (Owner, Group and All Users)
+
+## Permission Types
+
+The Permission Types that are used are:
+
+- **r** - Read
+- **w** - Write
+- **x** - Execute
+
+The potential Assignment Operators are **+** (plus) and **-** (minus); these are used to tell the system whether to add or remove the specific permissions.
+
+## `chmod` - Remove - Other Read {.nonincremental}
+
+To remove the ability for other users to read the `methane.pdb` file,
+
+```bash
+chmod o-r methane.pdb
+```
+
+
+```bash
+-rw-r--r-- 1 nelle  bio    1158  8 Aug  2019 cubane.pdb
+-rw-r--r-- 1 nelle  bio     622  8 Aug  2019 ethane.pdb
+-rw-r----- 1 nelle  compbio 422  8 Aug  2019 methane.pdb
+-rw-r--r-- 1 nelle  bio    1828  8 Aug  2019 octane.pdb
+-rw-r--r-- 1 nelle  bio    1226  8 Aug  2019 pentane.pdb
+-rw-r--r-- 1 nelle  bio     825  8 Aug  2019 propane.pdb
+```
+
+The **r** flag removed from other users section.
+
+## `chmod` - Add Group Write
+
+Allow group members to write/edit:
+
+```bash
+chmod g+w methane.pdb
+```
+
+Checking this has gone through using `ls -l`:
+
+```output
+total 48
+-rw-r--r-- 1 nelle  bio    1158  8 Aug  2019 cubane.pdb
+-rw-r--r-- 1 nelle  bio     622  8 Aug  2019 ethane.pdb
+-rw-rw---- 1 nelle  compbio 422  8 Aug  2019 methane.pdb
+-rw-r--r-- 1 nelle  bio    1828  8 Aug  2019 octane.pdb
+-rw-r--r-- 1 nelle  bio    1226  8 Aug  2019 pentane.pdb
+-rw-r--r-- 1 nelle  bio     825  8 Aug  2019 propane.pdb
+```
+
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Changing permissions for all files in a directory?
+
+Say we want to change the permissions for all the files in the `alkanes/` directory, how we would do this? Let's try and give apply what we've just learnt to give all other users write permissions over the files.
+
+:::
+
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+There's actually a few ways we can go about this and it really depends on how we target the files to change. First, we could use the wildcards we learnt about previously to target files based on a specific pattern. In this case a simple `*` would suffice to pick out every file in the current folder, e.g:
+
+```bash
+chmod o+w *
+```
+
+We could also use the recursive flag available to the `chmod` command to run through every file in a directory **(including sub-directories)** and apply a set of permissions to every file. E.g:
+
+```bash
+cd ..
+chmod -R o+w alkanes/
+```
+
+Either method works in this case, however be wary that as the `-R` flag works through the folder and all sub-folders, you may end up changing the permission on something you didn't intend.
+
+:::
+
+## Using Binary References to Set Permissions {.nonincremental}
+
+- Another way to set the permission using **binary references**. 
+- This replaces the explicitly defined permissions with binary references to these.
+- While more complex than the previous method, we can use this to define multiple different permissions to all three permissions groups with a single command.
+
+## Binary References Example
+
+An example permission string would be `chmod 764 methane.pdb`, which means:
+
+![](../episodes/fig/binary-perm.png){fig-align="center"}
+
+- the owner has read, write and execute permissions
+- the group has read and write permissions
+- all other users have read permissions to the file
+
+
+## Challenge
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Using binary references, how can you make a file executable?
+
+Now we've seen how to use binary references to change permissions on a file. Can you change the `methane.pdb` file to make it executable? In this case, you can't actually execute the file as it doesn't contain the right data to do this, but it will teach you how to do this for other files in future, most notably scripts.
+
+:::
+
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+To ensure that we don't make unintended changes to the other permissions currently assigned to the 
+file, we need to first check what permissions it currently has
+```bash
+ls -l methane.pdb
+```
+
+```output
+-rw-r--r--  1 nelle  compbio   422B  8 Aug  2019 methane.pdb
+```
+
+We can see that both the read permission flags are set for groups and others. This makes creating the binary reference here easy as we only need to take the integer 4 for both these flags.
+
+Now we have the end of the binary reference, we need to add up the rest to give execute permissions to the file. As we already have read and write permissions as the owner of the file, we only need to add 1 to the binary reference to get 7. Therefore, the full binary reference we need to set is 744.
+
+```bash
+cd ..
+chmod 744 methane.pdb
+```
+
+```output
+-rwxr--r--  1 nelle  compbio   422B  8 Aug  2019 methane.pdb
+```
+
+Here, the first 7 assigns **read, write, execute** to owner, the first 4 adds **read** to the group, and the last 4 adds **read** permissions to others.
+
+:::
+
+## Necessary But Not Sufficient
+
+::: {.callout-note icon="true"}
+
+The fact that something is marked as executable doesn't actually mean it contains a runnable program. Marking an HTML file executable won't make it run as a program; the OS may instead open it in the associated application.
+
+:::
+
+## Directory Permissions
+
+Let's run `ls -a -l` to get a long-form listing that includes directories that are hidden:
 
 ```bash
 ls -a -l
 ```
 
 ```output
-drwxr-xr-x 1 nnemo bio     0  2010-08-14 09:55 .
-drwxr-xr-x 1 nnemo bio  8192  2010-08-27 23:11 ..
--rw-rw-r-- 1 nnemo bio  1158  2010-07-11 08:22 safety.txt
--rwxr-xr-x 1 nnemo bio 31988  2010-07-23 20:04 setup
--rw-rw-r-- 1 nnemo bio  2312  2010-07-11 08:23 waiver.txt
+total 48
+drwxr-xr-x 1 nelle  bio        0  8 Aug  2019 .
+drwxr-xr-x 1 nelle  bio     8192  8 Aug  2019 ..
+-rw-r--rw- 1 nelle  bio     1158  8 Aug  2019 cubane.pdb
+-rw-r--rw- 1 nelle  bio      622  8 Aug  2019 ethane.pdb
+-rwxr--r-- 1 nelle  compbio  422  8 Aug  2019 methane.pdb
+-rw-r--rw- 1 nelle  bio     1828  8 Aug  2019 octane.pdb
+-rw-r--rw- 1 nelle  bio     1226  8 Aug  2019 pentane.pdb
+-rw-r--rw- 1 nelle  bio      825  8 Aug  2019 propane.pdb
 ```
 
-Notice `.` and `..` start with `d` (directory).
+- The permissions for `.` and `..` (this directory and its parent) start with a `d`.
+- **'x'** means that "execute" is turned on.
+- A directory isn't a program—how can we "run" it?
+- It gives someone the right to **traverse** the directory, but not to look at its contents.
 
-## What Does 'x' Mean for Directories?
+## Nelle's Directory Example
 
-The permissions for `.` and `..` show 'x' (execute) is on.
-
-**What does that mean?** A directory isn't a program—how can we "run" it?
-
-For directories, **'x' means something different:**
-- Gives the right to **traverse** the directory
-- But not to look at its contents
-
-The distinction is subtle...
-
-## Directory Permission Example
-
-Nelle's home directory has three subdirectories:
+Nelle's home directory has three subdirectories called `venus`, `mars`, and `pluto`:
 
 ![](../episodes/fig/x-for-directories.png){width="500" fig-align="center"}
 
-Each has a `notes` subdirectory with various files.
+Each of these has a subdirectory in turn called `notes`, and those sub-subdirectories contain various files.
 
-## Different Permission Scenarios
+## Scenario 1: r-x on venus
 
-**If permissions on `venus` are `r-x`:**
-- User can see contents of both `venus` and `venus/notes`
+![](../episodes/fig/x-for-directories.png){height="400" fig-align="center"}
 
-**If permissions on `mars` are `r--`:**
-- User can read contents of both `mars` and `mars/notes`
+If a user's permissions on `venus` are **'r-x'**, then if she tries to see the contents of `venus` and `venus/notes` using `ls`, the computer lets her see both.
 
-**If permissions on `pluto` are `--x`:**
-- Cannot see what's in `pluto`: `ls pluto` denied
-- **But** can look in `pluto/notes` if she knows it exists!
-- Allowed to go **through** `pluto`, but not look at what's there
+## Scenario 2: r-- on mars
 
-## Making Directories Selectively Visible
+![](../episodes/fig/x-for-directories.png){height="400" fig-align="center"}
 
-This trick gives people a way to make some of their directories visible to the world without opening up everything else.
+If her permissions on `mars` are just **'r--'**, then she is allowed to read the contents of both `mars` and `mars/notes`.
 
-Useful for:
-- Sharing specific subdirectories
-- Keeping parent directory contents private
-- Allowing access to known paths only
+## Scenario 3: --x on pluto
 
-## What About Windows?
+![](../episodes/fig/x-for-directories.png){height="400" fig-align="center"}
 
-Things work differently on Windows.
+But if her permissions on `pluto` are only **'--x'**, she cannot see what's in the `pluto` directory: `ls pluto` will tell her she doesn't have permission to view its contents.
 
-**Windows uses Access Control Lists (ACLs):**
-- A list of pairs: "who" + "what"
-- Example: Give Mummy permission to append without reading/deleting
-- Example: Give Frankenstein permission to delete without seeing contents
-
-More flexible than Unix, but more complex to administer.
-
-## Unix vs Windows Permissions
-
-::: {.callout-note icon="true"}
-
-**Unix:** owner/group/others with `rwx` triplets
-
-**Windows:** ACLs grant fine-grained rights per user or group
-
-Same ideas, different mechanisms.
-
-:::
-
-Some modern Unix variants support ACLs, but hardly anyone uses them.
-
-## Challenge
-
-::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
-
-## Challenge
-
-If `ls -l myfile.php` returns the following details:
-
-```output
--rwxr-xr-- 1 caro zoo  2312  2014-10-25 18:30 myfile.php
-```
-
-Which of the following statements is true?
-
-1. caro (the owner) can read, write, and execute `myfile.php`
-2. caro (the owner) cannot write to `myfile.php`
-3. members of `caro` (a group) can read, write, and execute `myfile.php`
-4. members of `zoo` (a group) cannot execute `myfile.php`
-
-:::
-
-## Solution
-
-::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
-
-## Solution
-
-**Option 1 is correct.**
-
-The mode `-rwxr-xr--` gives:
-- Owner: `rwx` (read, write, execute)
-- Group: `r-x` (read, execute, no write)
-- Others: `r--` (read only)
-
-Therefore the owner can read, write, and execute; group members can read and execute (not write); others can only read.
-
-:::
-
-## Key Points {.nonincremental}
-
-::: {.incremental}
-- Correct permissions are critical for the security of a system.
-- File permissions describe who and what can read, write, modify, and access a file.
-- Use `ls -l` to view the permissions for a specific file.
-- Use `chmod` to change permissions on a file or directory.
-:::
-
----
-
-**Next: Episode 5 - Pipes and Filters →**
+If she tries to look in `pluto/notes`, though, the computer will let her do that. She's allowed to go **through** `pluto`, but not to look at what's there.

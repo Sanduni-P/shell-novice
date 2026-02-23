@@ -73,7 +73,7 @@ Today it is not working
 ```
 
 Here, `not` is the pattern we're searching for.
-The grep command searches through the file, looking for matches to the pattern specified.
+The `grep` command searches through the file, looking for matches to the pattern specified.
 To use it type `grep`, then the pattern we're searching for and finally
 the name of the file (or files) we're searching in.
 
@@ -373,8 +373,8 @@ An example of such a file is provided in
 grep -w $1 -r $2 | cut -d : -f 2 | cut -d , -f 1,3 > $1.txt
 ```
 
-Actually, you can swap the order of the two cut commands and it still works. At the
-command line, try changing the order of the cut commands, and have a look at the output
+Actually, you can swap the order of the two `cut` commands and it still works. At the
+command line, try changing the order of the `cut` commands, and have a look at the output
 from each step to see why this is the case.
 
 You would call the script above like this:

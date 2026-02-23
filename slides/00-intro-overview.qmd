@@ -9,7 +9,7 @@ format:
     css: utils/custom.css
     transition: fade
     background-transition: fade
-    incremental: true
+    incremental: false
     slide-number: true
     preview-links: true
     overview: true
@@ -34,19 +34,6 @@ execute:
 - Write and execute shell scripts
 - Search files and text patterns
 
-## Learning Objectives
-
-By the end of this workshop, you will know how to:
-
-::: {.incremental}
-- Understand what the shell is and when to use it
-- Move around folders and find your way to files
-- Make, copy, rename, and delete files and folders
-- Join simple commands together to get the result you want
-- Repeat actions on many files without retyping
-- Save steps in small scripts so you can reuse them
-- Search for files and for text inside files quickly
-:::
 
 ## Prerequisites
 
@@ -85,10 +72,20 @@ You can copy any command directly from the slides by clicking the **clipboard ic
 ![](../episodes/fig/copy-code.png){alt="Clipboard icon on the right side of a code block" width=720}
 
 
-<!-- {{< include 01-intro.qmd >}} -->
+{{< include 01-intro.qmd >}} 
 
-<!-- {{< include 02-filedir.qmd >}} -->
+{{< include 02-filedir.qmd >}} 
 
-<!-- {{< include 03-create.qmd >}} -->
+{{< include 03-create.qmd >}} 
 
 {{< include 04-permissions.qmd >}}
+
+{{< include 05-pipefilter.qmd >}}
+
+{{< include 06-loop.qmd >}}
+
+{{< include 07-script.qmd >}}
+
+{{< include 08-find.qmd >}}
+
+{{< include 09-awk.qmd >}}

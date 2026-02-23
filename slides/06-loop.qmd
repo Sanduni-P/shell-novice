@@ -1,14 +1,3 @@
----
-title: "Episode 6: Loops"
-subtitle: "Automating repetitive tasks with loops"
-format:
-  revealjs:
-    theme: default
-    transition: slide
-    background-transition: fade
-    incremental: true
-    slide-number: true
----
 
 # Episode 6: Loops
 
@@ -21,48 +10,66 @@ format:
 ::: {.callout-tip icon="false" .nonincremental}
 ## Objectives
 
-- Write a loop that applies one or more commands separately to each file in a set of files.
-- Trace the values taken on by a loop variable during execution of the loop.
-- Explain the difference between a variable's name and its value.
-- Explain why spaces and some punctuation characters shouldn't be used in file names.
-- Demonstrate how to see what commands have recently been executed.
-- Re-run recently executed commands without retyping them.
+- Write a loop that applies one or more commands to each file in a set
+- Trace loop variable values during execution
+- Explain difference between variable name and value
+- Explain why spaces and special characters shouldn't be in filenames
+- Demonstrate how to view recently executed commands
+- Re-run recently executed commands without retyping
 :::
 
-## Why Loops Matter
+## What Are Loops?
 
-**Automation saves time and prevents errors!**
+**Loops** are a programming construct which allow us to repeat a command or set of commands for each item in a list.
 
-Imagine processing 300 files:
+As such they are key to productivity improvements through automation.
 
-- **Without loops**: type the command 300 times
-- **With loops**: write once, runs 300 times
+Similar to wildcards and tab completion, using loops also reduces the amount of typing required (and hence reduces the number of typing mistakes).
 
-Perfect for **repetitive tasks**.
-
-## The for Loop Structure
+## Loop Structure
 
 ```bash
+# The word "for" indicates the start of a "For-loop" command
 for thing in list_of_things
+# The word "do" indicates the start of job execution list
 do
+    # Execute command(s) using the variable
     operation_using/command $thing
+# The word "done" indicates the end of a loop
 done
 ```
 
-Three keywords:
-- `for` = start the loop
-- `do` = begin the action
-- `done` = end the loop
+Three keywords: `for`, `do`, `done`
 
-## Simple Loop Example
+## Example Files
 
-**Display three filenames:**
+Suppose we have several hundred genome data files named `basilisk.dat`, `minotaur.dat`, and `unicorn.dat`.
+
+For this example, we'll use the `exercise-data/creatures` directory which only has three example files, but the principles can be applied to many many more files at once.
+
+The structure of these files is the same: the common name, classification, and updated date are presented on the first three lines, with DNA sequences on the following lines.
+
+## Looking at the Files
+
+Let's look at the files:
 
 ```bash
-$ for filename in basilisk.dat minotaur.dat unicorn.dat
-> do
->     echo $filename
-> done
+head -n 5 basilisk.dat minotaur.dat unicorn.dat
+```
+
+We would like to print out the classification for each species, which is given on the second line of each file.
+
+For each file, we would need to execute the command `head -n 2` and pipe this to `tail -n 1`.
+
+## General Form of a Loop
+
+We'll use a loop to solve this problem, but first let's look at the general form of a loop:
+
+```bash
+for filename in basilisk.dat minotaur.dat unicorn.dat
+do
+    echo $filename
+done
 ```
 
 ```output
@@ -71,26 +78,56 @@ minotaur.dat
 unicorn.dat
 ```
 
-Notice the `>` prompt changes to `>` while typing the loop.
+## Follow the Prompt
 
-## Using Variables in Loops
-
-The **variable** holds each value in turn:
-
-- **First iteration**: `$filename` = `basilisk.dat`
-- **Second iteration**: `$filename` = `minotaur.dat`
-- **Third iteration**: `$filename` = `unicorn.dat`
-
-## Real Practical Loop
-
-**Get the classification from creature files:**
+When typing a loop, shell prompt changes:
 
 ```bash
 $ for filename in basilisk.dat minotaur.dat unicorn.dat
 > do
 >     echo $filename
->     head -n 2 $filename | tail -n 1
 > done
+```
+
+The `>` prompt reminds you the command isn't complete yet.
+
+A semicolon `;` can separate commands on one line.
+
+## Same Symbols, Different Meanings
+
+- **Shell prints `>` or `$`**: it's a prompt (expects input)
+- **You type `>` or `$`**: it's an instruction (redirect or variable)
+
+Context matters!
+
+## Loop Iteration
+
+Each time loop runs, variable holds next value:
+
+- **First**: `$filename` = `basilisk.dat`
+- **Second**: `$filename` = `minotaur.dat`
+- **Third**: `$filename` = `unicorn.dat`
+
+Then shell exits loop (no more items).
+
+## Variable Substitution
+
+Use `$varname` to access the value.
+
+The `$` tells shell: **treat this as a variable, not literal text**.
+
+Replace with actual value before executing command.
+
+## Practical Loop Example
+
+Get classification line from creature files:
+
+```bash
+for filename in basilisk.dat minotaur.dat unicorn.dat
+do
+    echo $filename
+    head -n 2 $filename | tail -n 1
+done
 ```
 
 ```output
@@ -102,312 +139,632 @@ unicorn.dat
 CLASSIFICATION: equus monoceros
 ```
 
-## Expanding Wildcards in Loops
+## Variable Name vs Value
 
-Instead of listing every file:
+Variable name: `filename` (the name)
 
-```bash
-$ for filename in *.dat
-> do
->     echo $filename
-> done
-```
+Variable value: `basilisk.dat` (the data)
 
-The shell expands `*.dat` to all matching files!
+Use `$filename` to get the **value**, not the name.
 
-## Variable Syntax
+## Variable Naming
 
-Two ways to use variables:
+Two syntaxes:
 
 ```bash
-$ echo $filename      # Simple
-$ echo ${filename}    # With braces
+echo $filename      # Simple
+echo ${filename}    # With braces (clearer)
 ```
 
-The braces are useful when the variable is next to text:
+Braces useful when variable next to text:
 
 ```bash
-$ echo ${filename}.bak
+echo ${filename}.bak    # Shows: basilisk.dat.bak
+echo $filename.bak      # Looks for variable "filename.bak"!
 ```
 
-Without braces, `$filename.bak` looks for variable `filename.bak`!
+## Variable Naming Tips
 
-## Good vs Bad Filenames
+- Use **meaningful names**: `filename`, not `x`
+- Helps others (and future you) understand code
+- Increases odds people interpret it correctly
 
-### Files that work fine:
-- `data_2024.txt`
-- `results-v1.csv`
-- `file1.dat`
+The shell doesn't care---only we do!
 
-### Files that break loops:
-- `my file.txt` (space breaks it!)
-- `data (2024).csv` (parentheses)
-- `file@#.txt` (special characters)
+## Loops with Numbers
 
-## Why Spaces Break Things
-
-Shell interprets spaces as **separators**!
+Loops work with any list, not just filenames:
 
 ```bash
-$ for filename in my file.txt
-> do ...
+for number in 0 1 2 3 4 5
+do
+    echo $number
+done
 ```
 
-The shell sees THREE items: `my`, `file.txt`!
+## Challenge: Write Your Own Loop
 
-**Best practice**: use `-` or `_` instead of spaces.
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
 
-## Quoting Variables
+## Challenge
 
-To safely handle filenames with spaces:
+How would you write a loop that echoes all 10 numbers from 0 to 9?
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
 
 ```bash
-$ for filename in "my file.txt" "another file.txt"
-> do
->     echo "$filename"
-> done
+for loop_variable in 0 1 2 3 4 5 6 7 8 9
+do
+    echo $loop_variable
+done
 ```
 
-**Always quote variables** to be safe!
+```output
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+Alternatively, try replacing the enumeration of integers `0 1 2 3 4 5 6 7 8 9` by `{0..9}` to obtain an identical output.
+
+:::
+
+## Challenge: Variables in Loops
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+In `shell-lesson-data/exercise-data/alkanes`, `ls *.pdb` gives:
+
+```output
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+```
+
+**First code:**
+
+```bash
+for datafile in *.pdb
+do
+    ls *.pdb
+done
+```
+
+**Second code:**
+
+```bash
+for datafile in *.pdb
+do
+    ls $datafile
+done
+```
+
+What's the difference?
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**First code:** lists ALL `.pdb` files **each iteration** (6 times total).
+
+Shell expands `*.pdb` in loop body for each iteration.
+
+**Second code:** lists ONE file **per iteration** (6 different files).
+
+Variable `$datafile` evaluates to current file each time.
+
+Second code is cleaner and what we usually want!
+
+:::
+
+## Challenge: Limiting Sets of Files (c*)
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+In `shell-lesson-data/exercise-data/alkanes`, what does this loop output?
+
+```bash
+for filename in c*
+do
+    ls $filename
+done
+```
+
+1. No files listed
+2. All files are listed
+3. Only `cubane.pdb`, `octane.pdb`, `pentane.pdb`
+4. Only `cubane.pdb`
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Option 4 is correct.**
+
+`*` matches zero or more characters.
+
+`c*` matches any filename **starting with 'c'** (only `cubane.pdb`).
+
+:::
+
+## Challenge: Limiting Sets (*c*)
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+How different is this loop?
+
+```bash
+for filename in *c*
+do
+    ls $filename
+done
+```
+
+1. Same files listed
+2. All files are listed now
+3. No files listed now
+4. `cubane.pdb` and `octane.pdb`
+5. Only `octane.pdb`
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Option 4 is correct.**
+
+`*c*` matches filename with 'c' **anywhere in name** (before or after).
+
+Matches: `cubane.pdb` (c at start) and `octane.pdb` (c in middle).
+
+:::
+
+## Challenge: Saving to File with >
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+In `shell-lesson-data/exercise-data/alkanes`, what does this loop do?
+
+```bash
+for alkanes in *.pdb
+do
+    echo $alkanes
+    cat $alkanes > alkanes.pdb
+done
+```
+
+1. Prints all 6 files; only `propane.pdb` saved to `alkanes.pdb`
+2. Prints 3 files; all concatenated and saved to `alkanes.pdb`
+3. Prints 5 files; only `propane.pdb` saved to `alkanes.pdb`
+4. None of the above
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Option 1 is correct.**
+
+Each iteration: `>` **overwrites** (not appends).
+
+Last file processed (`propane.pdb`) is final content.
+
+Use `>>` to append instead!
+
+:::
+
+## Challenge: Saving to File with >>
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+In `shell-lesson-data/exercise-data/alkanes`, what does this loop do?
+
+```bash
+for datafile in *.pdb
+do
+    cat $datafile >> all.pdb
+done
+```
+
+1. All files up to `pentane.pdb` concatenated
+2. Only `ethane.pdb` saved
+3. All 6 files concatenated to `all.pdb`
+4. All 5 files concatenated
+
+:::
+
+## Solution
+
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+**Option 3 is correct.**
+
+`>>` **appends** each file (doesn't overwrite).
+
+All 6 files concatenated to `all.pdb`.
+
+Nothing printed (output redirected to file).
+
+:::
+
+## Another Practical Example
+
+In `shell-lesson-data/exercise-data/creatures`:
+
+```bash
+for filename in *.dat
+do
+    echo $filename
+    head -n 100 $filename | tail -n 20
+done
+```
+
+**Loop body:** two commands
+- Echo filename
+- Select lines 81-100 (or all if fewer than 100)
+
+## Spaces in Filenames
+
+Shell uses spaces to **separate items**!
+
+Filenames with spaces: `red dragon.dat`, `purple unicorn.dat`
+
+Must quote them:
+
+```bash
+for filename in "red dragon.dat" "purple unicorn.dat"
+do
+    head -n 100 "$filename" | tail -n 20
+done
+```
+
+**Always quote variables** to be safe: `"$filename"`
+
+It is simpler to **avoid using spaces** (or other special characters) in filenames.
+
+## What Happens Without Quotes?
+
+The files `red dragon.dat` and `purple unicorn.dat` don't exist, so if we run the code without quotes around `$filename`, we get errors:
+
+```error
+head: cannot open 'red' for reading: No such file or directory
+head: cannot open 'dragon.dat' for reading: No such file or directory
+head: cannot open 'purple' for reading: No such file or directory
+```
+
+With quotes, we'd see:
+
+```error
+head: cannot open 'red dragon.dat' for reading: No such file or directory
+head: cannot open 'purple unicorn.dat' for reading: No such file or directory
+```
+
+## Why Quote Variables?
+
+Without quotes:
+- Shell splits by spaces
+- `"red dragon.dat"` becomes two items: `red`, `dragon.dat`
+- Commands fail
+
+With quotes:
+- Treated as single item
+- Commands work correctly
+
+**Best practice**: Avoid spaces in filenames entirely (use `-` or `_`).
+
+## Backing Up Files in a Loop
+
+**Problem**: Copy all `.dat` files to `original-` versions.
+
+**Can't do this:**
+
+```bash
+cp *.dat original-*.dat  # ERROR!
+```
+
+Expands to: `cp basilisk.dat minotaur.dat unicorn.dat original-*.dat`
+
+Shell sees 4 arguments, expects last to be directory!
+
+## Solution: Use a Loop
+
+```bash
+for filename in *.dat
+do
+    cp $filename original-$filename
+done
+```
+
+Each iteration:
+- `$filename` = `basilisk.dat` → `cp basilisk.dat original-basilisk.dat`
+- `$filename` = `minotaur.dat` → `cp minotaur.dat original-minotaur.dat`
+- `$filename` = `unicorn.dat` → `cp unicorn.dat original-unicorn.dat`
+
+## Testing Loops with `echo`
+
+**Hard to verify** loop did what you want (no output from `cp`).
+
+**Solution**: Use `echo` to print commands without executing:
+
+```bash
+for filename in *.dat
+do
+    echo cp $filename original-$filename
+done
+```
+
+See what **would** run, verify correctness, then remove `echo`!
+
+The judicious use of `echo` is a good **debugging technique**.
+
+## Loop Flow Chart
+
+The following diagram shows what happens when the modified loop is executed, and demonstrates how the judicious use of `echo` is a good debugging technique.
+
+![](../episodes/fig/shell_script_for_loop_flow_chart.svg){alt='For loop flow chart showing variable assignment and iteration'}
+
+## Nelle's Pipeline: Processing Files
+
+Nelle is now ready to process her data files using `goostats.sh` --- a shell script written by her supervisor.
+
+This calculates some **statistics from a protein sample file** and takes two arguments:
+
+1. an input file (containing the raw data)
+2. an output file (to store the calculated statistics)
+
+Since she's still learning how to use the shell, she decides to **build up the required commands in stages**.
+
+## Nelle Tests File Selection
+
+Her first step is to make sure that she can select the right input files --- remember, these are ones whose names end in 'A' or 'B', rather than 'Z'.
+
+Moving to the `north-pacific-gyre` directory, Nelle types:
+
+```bash
+cd
+cd Desktop/shell-lesson-data/north-pacific-gyre
+for datafile in NENE*A.txt NENE*B.txt
+do
+    echo $datafile
+done
+```
+
+```output
+NENE01729A.txt
+NENE01736A.txt
+NENE01751A.txt
+...
+NENE02040B.txt
+NENE02043B.txt
+```
+
+Good! Selects correct files.
+
+## Nelle Builds Output Filenames
+
+Her next step is to decide what to call the files that the `goostats.sh` analysis program will create.
+
+Prefixing each input file's name with 'stats' seems simple, so she modifies her loop:
+
+```bash
+for datafile in NENE*A.txt NENE*B.txt
+do
+    echo $datafile stats-$datafile
+done
+```
+
+```output
+NENE01729A.txt stats-NENE01729A.txt
+NENE01736A.txt stats-NENE01736A.txt
+NENE01751A.txt stats-NENE01751A.txt
+...
+NENE02040B.txt stats-NENE02040B.txt
+NENE02043B.txt stats-NENE02043B.txt
+```
+
+Perfect! Ready to process.
+
+She hasn't actually run `goostats.sh` yet, but now she's sure she can select the right files and generate the right output filenames.
 
 ## Command History
 
-**Re-run previous commands:**
+**Typing same command repeatedly is tedious!**
 
-Press **Up arrow** to see last command.
+Shell remembers recent commands.
 
-Press **Up arrow** multiple times to go back further.
-
-Press **Down arrow** to go forward.
-
-## History Shortcuts
-
-| Shortcut | What it does |
-|----------|-------------|
-| `↑` / `↓` | Previous/next command |
-| `Ctrl-R` | Search command history |
-| `history` | Show all previous commands |
-| `!number` | Run command #123 from history |
-
-## Search History with Ctrl-R
-
-Press `Ctrl-R`:
-
-```
-(reverse-i-search)`':
-```
-
-Type part of a command:
-
-```
-(reverse-i-search)`for': for filename in *.dat
-```
-
-Press Enter to run it!
-
-## Executing Commands from History
-
-View history:
+**View history:**
 
 ```bash
-$ history
+history
 ```
 
-Shows numbered list of commands.
+Shows numbered list of previous commands.
 
-Run command #42:
+## Accessing History
+
+| Method | What it does |
+|--------|-------------|
+| `↑` | Previous command |
+| `↓` | Next command |
+| `!42` | Run command #42 |
+| `Ctrl-R` | Search history |
+
+## One-Liner Loop
+
+Press **Up arrow**:
 
 ```bash
-$ !42
+for datafile in NENE*A.txt NENE*B.txt; do echo $datafile stats-$datafile; done
 ```
 
-## Loop Execution Trace
+Entire loop on one line using semicolons `;`
 
-**Understanding what happens step-by-step:**
+Same as multi-line version!
+
+## Beginning and End
+
+::: {.callout-note}
+
+## Beginning and End
+
+We can move to the beginning of a line in the shell by typing <kbd>Ctrl</kbd>+<kbd>A</kbd> and to the end using <kbd>Ctrl</kbd>+<kbd>E</kbd>.
+
+:::
+
+## Those Who Know History
+
+::: {.callout-note}
+
+## Those Who Know History Can Choose to Repeat It
+
+Another way to repeat previous work is to use the `history` command to get a list of the last few hundred commands that have been executed, and then to use `!123` (where `123` is replaced by the command number) to repeat one of those commands. For example, if Nelle types this:
 
 ```bash
-for file in a.txt b.txt c.txt
-do
-    echo $file
-done
-```
-
-| Iteration | Value of `$file` | Output |
-|-----------|------------------|--------|
-| 1 | `a.txt` | `a.txt` |
-| 2 | `b.txt` | `b.txt` |
-| 3 | `c.txt` | `c.txt` |
-
-## Nested Information in Loops
-
-Use multiple variables:
-
-```bash
-$ for file in *.pdb
-> do
->     echo "Processing $file"
->     wc -l "$file"
-> done
+history | tail -n 5
 ```
 
 ```output
-Processing cubane.pdb
-  20 cubane.pdb
-Processing ethane.pdb
-  12 ethane.pdb
-...
+  456  for datafile in NENE*A.txt NENE*B.txt; do echo $datafile stats-$datafile; done
+  457  for datafile in NENE*A.txt NENE*B.txt; do bash goostats.sh $datafile stats-$datafile; done
+  458  for datafile in NENE*A.txt NENE*B.txt; do echo $datafile; done
+  459  cd ..
+  460  history | tail -n 5
 ```
 
-## One-liner Loop
+then she can re-run `bash goostats.sh` on all her files by typing `!457`.
 
-Put loop on one line using semicolon:
+:::
+
+## Other history Commands
+
+::: {.callout-note}
+
+## Other history Commands
+
+There are a number of other shortcut commands for getting at the history:
+
+- <kbd>Ctrl</kbd>+<kbd>R</kbd> enters a history search mode 'reverse-i-search' and finds the most recent command in your history that matches the text you enter next. Press <kbd>Ctrl</kbd>+<kbd>R</kbd> one or more additional times to search for earlier matches. You can then use the left and right arrow keys to choose that line and edit it then hit <kbd>Return</kbd> to run the command.
+- `!!` retrieves the immediately preceding command (you may or may not find this more convenient than using <kbd>↑</kbd>)
+- `!$` retrieves the last word of the last command. That's useful more often than you might expect: after `bash goostats.sh NENE01729B.txt stats-NENE01729B.txt`, you can type `less !$` to look at the file `stats-NENE01729B.txt`, which is quicker than doing <kbd>↑</kbd> and editing the command-line.
+
+:::
+
+## Challenge: Doing a Dry Run
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+A loop is a way to do many things at once --- or to make many mistakes at once if it does the wrong thing. One way to check what a loop *would* do is to `echo` the commands it would run instead of actually running them.
+
+Suppose we want to preview the commands the following loop will execute without actually running those commands:
 
 ```bash
-$ for file in *.dat; do echo $file; done
-```
-
-Same as:
-```bash
-for file in *.dat
+for datafile in *.pdb
 do
-    echo $file
+    cat $datafile >> all.pdb
 done
 ```
 
-## Try It Yourself - Question 1
-
-**Trace execution of this loop:**
+What is the difference between the two loops below, and which one would we want to run?
 
 ```bash
-for num in 1 2 3
+# Version 1
+for datafile in *.pdb
 do
-    echo "Number is $num"
+    echo cat $datafile >> all.pdb
 done
 ```
 
-What will be printed?
-
-## Try It Yourself - Solution 1
-
-**Output:**
-
-```output
-Number is 1
-Number is 2
-Number is 3
+```bash
+# Version 2
+for datafile in *.pdb
+do
+    echo "cat $datafile >> all.pdb"
+done
 ```
 
-The loop runs 3 times:
-- First: `$num` = `1`
-- Second: `$num` = `2`
-- Third: `$num` = `3`
+:::
 
-## Try It Yourself - Question 2
+## Solution
 
-**Write a loop that:**
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
 
-1. Processes all `.txt` files
-2. Prints the filename
-3. Counts lines in each
+## Solution
 
-## Try It Yourself - Solution 2
+The second version is the one we want to run. This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign. It also *does not* modify nor create the file `all.pdb`, as the `>>` is treated literally as part of a string rather than as a redirection instruction.
 
-**Solution:**
+The first version appends the output from the command `echo cat $datafile` to the file, `all.pdb`. This file will just contain the list; `cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
+
+Try both versions for yourself to see the output! Be sure to open the `all.pdb` file to view its contents.
+
+:::
+
+## Challenge: Nested Loops
+
+::: {.callout-note .challenge-callout icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Challenge
+
+Suppose we want to set up a directory structure to organize some experiments measuring reaction rate constants with different compounds *and* different temperatures.  What would be the result of the following code:
 
 ```bash
-$ for file in *.txt
-> do
->     echo "File: $file"
->     wc -l "$file"
-> done
+for species in cubane ethane methane
+do
+    for temperature in 25 30 37 40
+    do
+        mkdir $species-$temperature
+    done
+done
 ```
 
-**Why the quotes?** To handle filenames with spaces safely!
-
-## Try It Yourself - Question 3
-
-**You have 100 data files: `data_1.csv` to `data_100.csv`**
-
-Write a command to process all of them.
-
-(Hint: use wildcards!)
-
-## Try It Yourself - Solution 3
-
-**Simple with wildcards:**
-
-```bash
-$ for file in data_*.csv
-> do
->     # Your commands here
->     echo "Processing $file"
-> done
-```
-
-The shell expands `data_*.csv` to all matching files!
-
-## Try It Yourself - Question 4
-
-**Use the up arrow or history to:**
-
-1. Find a `for` loop you ran before
-2. Modify it slightly
-3. Run the new version
-
-(This is how professionals work!)
-
-## Try It Yourself - Solution 4
-
-**Steps:**
-
-1. Press `Ctrl-R` to search
-2. Type part of the loop: `for file`
-3. Press Enter to bring it back
-4. Edit it as needed
-5. Press Enter to run
-
-**Much faster than retyping!**
-
-## Important Tips for Loops
-
-::: {.incremental}
-1. **Quote your variables**: `"$filename"`
-2. **Use sensible names**: `filename` not `x`
-3. **Test on a few files first**, not all 300
-4. **Save loop commands** in scripts for reuse
-5. **Comments help**: `# This processes all .txt files`
 :::
 
-## Key Points
+## Solution
 
-::: {.fragment}
-`for` loops **repeat commands on lists**
+::: {.callout-tip .solution-callout collapse="true" icon="false" style="border-left: 4px solid #ffc107;"}
+
+## Solution
+
+We have a nested loop, i.e. contained within another loop, so for each species in the outer loop, the inner loop (the nested loop) iterates over the list of temperatures, and creates a new directory for each combination.
+
+Try running the code for yourself to see which directories are created!
+
 :::
-
-::: {.fragment}
-Loop variable holds **each value in turn**
-:::
-
-::: {.fragment}
-Use `$` to access **variable value**
-:::
-
-::: {.fragment}
-Wildcards **expand to multiple files**
-:::
-
-::: {.fragment}
-Quote variables to handle **spaces safely**
-:::
-
-::: {.fragment}
-Use **history** to reuse and modify commands
-:::
-
-::: {.fragment}
-Loops enable **powerful automation**
-:::
-
----
-
-**Next: Episode 7 - Shell Scripts →**
