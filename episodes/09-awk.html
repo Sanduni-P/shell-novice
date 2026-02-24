@@ -5002,7 +5002,7 @@ Field separator
 <section id="pattern-action-model" class="level2">
 <h2 class="anchored" data-anchor-id="pattern-action-model">Pattern-Action Model</h2>
 <p>AWK reads a file line by line, splits each line into fields, and then applies <code>pattern { action }</code> rules.</p>
-<p>Maybe we would like to perform different instruction on different lines. Awk allows you to specify a matching pattern, like the command grep does.</p>
+<p>Maybe we would like to perform different instruction on different lines. Awk allows you to specify a matching pattern, like the command <code>grep</code> does.</p>
 <p>Let’s look at the file content</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print $0}&#39;</span> example.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>It seems an abriged PDB file. If we would like to print only lines starting with the word “ATOM”, we type:</p>

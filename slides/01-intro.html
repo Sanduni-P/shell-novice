@@ -4911,7 +4911,7 @@ padding-top: 4px !important;
   <li><a href="#the-problem-with-guis" id="toc-the-problem-with-guis" class="nav-link" data-scroll-target="#the-problem-with-guis">The Problem with GUIs</a></li>
   </ul></li>
   <li><a href="#what-is-the-shell" id="toc-what-is-the-shell" class="nav-link" data-scroll-target="#what-is-the-shell">What is the Shell?</a></li>
-  <li><a href="#bash-the-shell-were-using" id="toc-bash-the-shell-were-using" class="nav-link" data-scroll-target="#bash-the-shell-were-using">Bash: The Shell We’re Using</a></li>
+  <li><a href="#bash-the-shell-were-using" id="toc-bash-the-shell-were-using" class="nav-link" data-scroll-target="#bash-the-shell-were-using"><code>Bash</code>: The Shell We’re Using</a></li>
   <li><a href="#the-prompt" id="toc-the-prompt" class="nav-link" data-scroll-target="#the-prompt">The Prompt</a></li>
   <li><a href="#typing-commands" id="toc-typing-commands" class="nav-link" data-scroll-target="#typing-commands">Typing Commands</a></li>
   <li><a href="#example-your-first-command" id="toc-example-your-first-command" class="nav-link" data-scroll-target="#example-your-first-command">Example: Your First Command</a></li>
@@ -5010,7 +5010,7 @@ Objectives
 </div>
 </section>
 <section id="bash-the-shell-were-using" class="level2">
-<h2 class="anchored" data-anchor-id="bash-the-shell-were-using">Bash: The Shell We’re Using</h2>
+<h2 class="anchored" data-anchor-id="bash-the-shell-were-using"><code>Bash</code>: The Shell We’re Using</h2>
 <p><strong>Bash</strong> = <strong>B</strong>ourne <strong>A</strong>gain <strong>S</strong>Hell</p>
 <div class="incremental">
 <ul class="incremental">
@@ -5025,6 +5025,8 @@ Objectives
 <h2 class="anchored" data-anchor-id="the-prompt">The Prompt</h2>
 <p>When you open the shell, you see:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The prompt indicates the shell is <strong>waiting for input</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -5037,9 +5039,9 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Your prompt might look different:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nelle@localhost</span> $</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nelle@localhost</span> $</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or even:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">user@computer:~$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">user@computer:~$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This shows your username and computer name.</p>
 </div>
 </div>
@@ -5048,10 +5050,10 @@ Note
 <h2 class="anchored" data-anchor-id="typing-commands">Typing Commands</h2>
 <div class="incremental">
 <ul class="incremental">
-<li><strong>Type</strong> a command after the <code>$</code></li>
+<li><strong>Type</strong> a command after the <code>$</code>/<code>%</code></li>
 <li><strong>Press Enter</strong> to execute</li>
 <li>Results appear below</li>
-<li><strong>Never type the <code>$</code></strong> - it’s just the prompt!</li>
+<li><strong>Never type the <code>$</code>/<code>%</code></strong> - it’s just the prompt!</li>
 </ul>
 </div>
 </section>
@@ -5063,7 +5065,7 @@ Note
 <li>This command will list the contents of the current directory:</li>
 </ul>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Desktop     Downloads   Movies      Pictures
 Documents   Library     Music       Public</code></pre>
 <div class="fragment">
@@ -5078,7 +5080,7 @@ Command not found
 </div>
 <div class="callout-body-container callout-body">
 <p>If the shell can’t find a program whose name is the command you typed, it will print an error message such as:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ks</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ks</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>ks: command not found</code></pre>
 <p>This might happen if the command was mis-typed or if the program corresponding to that command is not installed.</p>
 </div>
