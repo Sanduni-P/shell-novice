@@ -24,7 +24,7 @@ Common sequence in early Unix text editors.
 
 Now a very useful command-line program.
 
-## What `grep` Does
+### What `grep` Does
 
 `grep` **finds and prints lines** in files that match a pattern.
 
@@ -52,7 +52,7 @@ Today it is not working
 Software is like that.
 ```
 
-## Finding Lines with "not"
+### Finding Lines with "not"
 
 ```bash
 grep not haiku.txt
@@ -97,7 +97,7 @@ Matched "The" at start AND "The" inside "Thesis".
 
 Didn't match lowercase "the".
 
-## Case Matters
+### Case Matters
 
 By default: **case-sensitive**
 
@@ -142,7 +142,7 @@ The Tao that is seen
 
 Only "The" as complete word (not part of "Thesis").
 
-## Option: -i (Ignore Case)
+### Option: -i (Ignore Case)
 
 **Case-insensitive search:**
 
@@ -189,7 +189,7 @@ grep -n -w "the" haiku.txt
 
 **Or shorter form**: `grep -nw "the" haiku.txt`
 
-## More Option Combinations
+### More Option Combinations
 
 Find whole word "the" case-insensitive:
 
@@ -286,7 +286,7 @@ Software is like that.
 
 So: any line with 'o' in second position.
 
-## Option: -E (Extended Regex)
+### Option: -E (Extended Regex)
 
 **Use more powerful pattern syntax:**
 
@@ -312,7 +312,7 @@ Lines containing "aw" or "ew".
 
 **`grep` works on text, not binary!**
 
-## Using `grep` on Binary
+### Using `grep` on Binary
 
 Binary files cause issues:
 
@@ -344,7 +344,7 @@ grep -c "not" haiku.txt
 
 Three lines contain "not".
 
-## Finding Files with `find`
+### Finding Files with `find`
 
 **Two types of searching:**
 1. Find **text** in files → use `grep`
@@ -411,7 +411,7 @@ Units: `k` (kilobyte), `M` (megabyte), `G` (gigabyte).
 
 `+` means "larger than", `-` means "smaller than".
 
-## Option: -mtime
+### Option: -mtime
 
 **Search by modification date:**
 
@@ -453,7 +453,7 @@ Files where others can read.
 
 `-` before permission means "bits are set".
 
-## Combining `find` Options
+### Combining `find` Options
 
 **Filter by multiple criteria:**
 
@@ -494,7 +494,7 @@ Files found: haiku.txt notes.txt
 
 Replace `$()` with command's output.
 
-## Practical Example
+### Practical Example
 
 Count all "ATOM" lines in all PDB files:
 
@@ -678,9 +678,9 @@ done
 Both count sister mentions correctly!
 
 :::
-## Listing vs. Finding
+### Listing vs. Finding
 
-`ls` and `find` can be made to do similar things given the right options, but under normal circumstances:
+- `ls` and `find` can overlap with the right options, but typically:
 
 - `ls` **lists** everything it can
 - `find` **searches** for things with certain properties and shows them
@@ -745,16 +745,15 @@ wc -l $(find . -name "*.dat") | sort -n
   
 :::
 
-## Binary Files
+### Binary Files
 
-We have focused exclusively on finding patterns in text files. What if your data is stored as images, in databases, or in some other format?
-
-A handful of tools extend `grep` to handle a few non-text formats. But a more generalizable approach is to convert the data to text or extract the text-like elements from the data.
-
-On one hand, it makes simple things easy to do. On the other hand, complex things are usually impossible. For example:
+- So far, we focused on text files.
+- If data is in images, databases, or other formats:
+    - some tools extend `grep` to a few non-text formats
+    - a general approach is to convert data to text first
+- Text extraction has tradeoffs:
 - **Easy**: Write a program that extracts X and Y dimensions from image files for `grep` to use
 - **Hard**: Find values in a spreadsheet whose cells contained formulas
 
-A last option: recognize that the shell and text processing have their limits, and use another programming language.
-
-Many modern programming languages have borrowed ideas from the shell, and imitation is the sincerest form of praise.
+- Another option: use another programming language when shell/text tools are not enough.
+- Many modern languages borrow core ideas from the shell.

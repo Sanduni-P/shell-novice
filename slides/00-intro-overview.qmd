@@ -67,7 +67,8 @@ All data files will be in this directory for use throughout the workshop.
 
 ## Before We Begin...
 
-You can copy any command directly from the slides by clicking the **clipboard icon** on the right-hand side of each code block. Then paste it straight into your terminal.
+- Click the **clipboard icon** on the right side of any code block to copy a command
+- Paste it directly into your terminal
 
 ![](../episodes/fig/copy-code.png){alt="Clipboard icon on the right side of a code block" width=720}
 

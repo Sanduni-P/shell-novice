@@ -46,7 +46,7 @@ haiku.txt  LittleWomen.txt
 
 ## Creating a Directory
 
-Create a new directory called `thesis`:
+- Create a new directory called `thesis`:
 
 ```bash
 mkdir thesis
@@ -54,7 +54,7 @@ mkdir thesis
 
 `mkdir` means "make directory"
 
-Check it was created:
+- Check it was created:
 
 ```bash
 ls -F
@@ -64,9 +64,7 @@ ls -F
 haiku.txt  LittleWomen.txt  thesis/
 ```
 
-## Verify the Directory is Empty
-
-Since we just created it:
+- Verify the directory is empty (since we just created it):
 
 ```bash
 ls -F thesis
@@ -128,7 +126,7 @@ The shell and the file explorer are two different ways of interacting with the f
 
 ## Spaces and Special Characters
 
-If you need to refer to names with spaces or special characters, surround the name in quotes:
+- For names with spaces or special characters, wrap the name in quotes:
 
 ```bash
 'my file with spaces.txt'
@@ -154,7 +152,7 @@ nano draft.txt
 
 `nano` is a simple text editor that runs in your terminal.
 
-## Which Editor?
+### Which Editor?
 
 ::: {.callout-note icon="true" .nonincremental}
 
@@ -180,23 +178,6 @@ Then,
 1. Press <kbd>Ctrl</kbd>+<kbd>O</kbd> to write data to disk
 2. Press <kbd>Return</kbd> to accept filename `draft.txt`
 3. Press <kbd>Ctrl</kbd>+<kbd>X</kbd> to quit and return to shell
-
-## Control Key Notation
-
-::: {.callout-tip icon="true" .nonincremental}
-
-The Control key can be described in various ways:
-
-- `Control-X`, `Control+X`
-- `Ctrl-X`, `Ctrl+X`
-- `^X`
-- `C-x`
-
-In nano, the bottom shows: `^G Get Help ^O WriteOut`
-
-This means <kbd>Ctrl</kbd>+<kbd>G</kbd> for help, <kbd>Ctrl</kbd>+<kbd>O</kbd> to save.
-
-:::
 
 ## Verify File Creation
 
@@ -284,7 +265,7 @@ cd ~/Desktop/shell-lesson-data/exercise-data/writing
 mv thesis/draft.txt thesis/quotes.txt
 ```
 
-## How `mv` Works
+### How `mv` Works
 
 `mv [old] [new]` moves or renames files
 
@@ -304,7 +285,7 @@ Use `mv -i` or `mv --interactive` to ask for confirmation before overwriting.
 
 ## Moving to Current Directory
 
-Move `quotes.txt` to the current working directory:
+- Move `quotes.txt` to the current working directory:
 
 ```bash
 mv thesis/quotes.txt .
@@ -312,7 +293,7 @@ mv thesis/quotes.txt .
 
 The `.` means "current directory"
 
-Verify `thesis` is now empty:
+- Verify `thesis` is now empty:
 
 ```bash
 ls thesis
@@ -322,9 +303,7 @@ ls thesis
 $
 ```
 
-## Confirming File Location
-
-Try to list the file in `thesis`:
+- Try to list the file in `thesis`:
 
 ```bash
 ls thesis/quotes.txt
@@ -334,7 +313,7 @@ ls thesis/quotes.txt
 ls: cannot access 'thesis/quotes.txt': No such file or directory
 ```
 
-Confirm it's in current directory:
+- Confirm it's in current directory:
 
 ```bash
 ls quotes.txt
@@ -399,13 +378,13 @@ quotes.txt   thesis/quotations.txt
 
 ## Copying Directories
 
-Use the `-r` (recursive) option to copy directories:
+- Use the `-r` (recursive) option to copy directories:
 
 ```bash
 cp -r thesis thesis_backup
 ```
 
-Check both directories:
+- Check both directories:
 
 ```bash
 ls thesis thesis_backup
@@ -419,9 +398,7 @@ thesis_backup:
 quotations.txt
 ```
 
-## Forgetting `-r` When Copying Directories
-
-If you omit `-r` when copying a directory:
+- If you omit `-r` when copying a directory:
 
 ```bash
 cp thesis thesis_backup
@@ -534,9 +511,9 @@ ls quotes.txt
 ls: cannot access 'quotes.txt': No such file or directory
 ```
 
-## Deleting Is Forever
-
 ::: {.callout-caution icon="true"}
+
+### Deleting Is Forever
 
 **The Unix shell doesn't have a trash bin!**
 
@@ -572,7 +549,7 @@ The `-i` option will prompt before (every) removal (use <kbd>Y</kbd> to confirm 
 
 ## Removing Directories
 
-If we try to remove a directory with just `rm`:
+- If we try to remove a directory with just `rm`:
 
 ```bash
 rm thesis
@@ -584,9 +561,7 @@ rm: cannot remove 'thesis': Is a directory
 
 `rm` by default only works on files, not directories.
 
-## Removing Directories with `-r`
-
-Use `-r` (recursive) to remove a directory and all contents:
+- Use `-r` (recursive) to remove a directory and all contents:
 
 ```bash
 rm -r thesis
@@ -611,7 +586,7 @@ This can be done by:
 
 :::
 
-**Wildcards** are special characters that represent unknown characters or sets of characters.
+- **Wildcards** represent unknown characters or character sets.
 
 ## Challenge
 
@@ -689,16 +664,12 @@ In `shell-lesson-data/exercise-data/alkanes`:
 
 Wildcards can be used together:
 
-::: {.nonincremental}
-
 - `???ane.pdb` = three characters followed by `ane.pdb`
-  - Matches: `cubane.pdb`, `ethane.pdb`, `octane.pdb`
-
-:::
+- Matches: `cubane.pdb`, `ethane.pdb`, `octane.pdb`
 
 **How wildcards work:**
 
-The shell expands wildcards to create a list of matching filenames **before** running the command.
+- The shell expands wildcards to matching filenames **before** running a command.
 
 Exception: If no files match, Bash passes the expression as-is to the command.
 

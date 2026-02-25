@@ -16,46 +16,37 @@
 
 ## Why Use the Shell?
 
-### The Problem with GUIs
-
 Imagine: Copy the 3rd line from 1,000 text files across 1,000 folders into one file.
 
-::: {.fragment}
 **Using a GUI:**
 
 - Hours of clicking
 - High chance of error
 - Repetitive and tedious
-:::
 
-::: {.fragment}
 **Using the Shell:**
 
 - A few commands
 - Repeatable
 - Fast and accurate (seconds!)
-:::
+
 
 ## What is the Shell?
 
-::: {.incremental}
 - A **program** that reads commands you type
 - A **command-line interface (CLI)** - text-based
 - Also a **scripting language** for automation
 - Allows combining simple programs into powerful workflows
 - The default way to interact with servers and supercomputers
-:::
 
-## `Bash`: The Shell We're Using
+### `Bash`: The Shell We're Using
 
 **Bash** = **B**ourne **A**gain **S**Hell
 
-::: {.incremental}
 - Most popular Unix shell
 - Default on macOS, Linux, and Windows (via Git Bash)
 - The standard for shell scripting
-- Small number of "words" (commands) gets you far!
-:::
+
 
 ## The Prompt
 
@@ -89,19 +80,19 @@ This shows your username and computer name.
 
 ## Typing Commands
 
-::: {.incremental}
+
 - **Type** a command after the `$`/`%`
 - **Press Enter** to execute
 - Results appear below
 - **Never type the `$`/`%`** - it's just the prompt!
-:::
+
 
 ## Example: Your First Command
 
-::: {.nonincremental}
+
 - `ls` is short for listing.
 - This command will list the contents of the current directory:
-:::
+
 
 ```bash
 ls
@@ -169,19 +160,3 @@ With a command shell, Nelle can:
 - Use loops to iterate over files
 -   Run the pipeline once and reuse it
 -   Let the computer work while she writes
-
-
-## Nelle's Pipeline: A Typical Problem
-
-### 🛠 Skills Nelle Needs
-
-To build her pipeline, she must know how to:
-
--   Navigate to a file/directory
--   Create a file/directory
--   Check the length of a file
--   Chain commands together
--   Retrieve a set of files
--   Iterate over files
--   Run a shell script containing her pipeline
-

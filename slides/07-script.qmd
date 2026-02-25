@@ -41,7 +41,7 @@ nano middle.sh
 
 The `nano` command opens a text editor in the shell.
 
-## Text Editors vs. Word Processors
+### Text Editors vs. Word Processors
 
 ::: {.callout-note icon="true"}
 
@@ -71,7 +71,7 @@ Verify it was created:
 ls -l middle.sh
 ```
 
-## Running Your Script
+### Running Your Script
 
 Execute the script:
 
@@ -89,7 +89,7 @@ ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
 
 Output matches running the command manually!
 
-## Problem: Not Flexible
+### Problem: Not Flexible
 
 **Current issue**: Script only works on `octane.pdb`
 
@@ -113,7 +113,7 @@ head -n 15 "$1" | tail -n 5
 
 `$1` means: **first command-line argument**
 
-## Using the $1 Argument
+### Using the $1 Argument
 
 Now the script works on any file:
 
@@ -137,7 +137,7 @@ bash middle.sh pentane.pdb
 
 Same script, different results!
 
-## Quoting Arguments Matters
+### Quoting Arguments Matters
 
 ::: {.callout-note icon="true"}
 
@@ -221,7 +221,7 @@ head -n "$2" "$1" | tail -n "$3"
 
 Comments start with `#` and run to end of line.
 
-## Comment Best Practices
+### Comment Best Practices
 
 **Keep comments accurate and up-to-date!**
 
@@ -280,7 +280,7 @@ bash sorted.sh *.pdb ../creatures/*.dat
 
 Works with any number of files!
 
-## Script Arguments Reference
+### Script Arguments Reference
 
 | Variable | Meaning |
 |----------|---------|
@@ -447,19 +447,19 @@ Were the command only be recorded after running it, we would not have a record o
 
 :::
 
-## Developing Shell Scripts
+### Developing Shell Scripts
 
-In practice, most people develop shell scripts by running commands at the shell prompt a few times to make sure they're doing the right thing, then saving them in a file for re-use.
-
-This style of work allows people to recycle what they discover about their data and their workflow with one call to `history` and a bit of editing to clean up the output and save it as a shell script.
+- In practice, people usually:
+    - test commands interactively at the shell prompt
+    - confirm behavior on real files
+    - save proven commands into a reusable script
+- `history` + light editing is a common way to bootstrap scripts.
 
 ## Nelle's Pipeline: Creating a Script
 
-Nelle's supervisor insisted that all her analytics must be reproducible.
-
-The easiest way to capture all the steps is in a script.
-
-First we return to Nelle's project directory:
+- Nelle's supervisor requires reproducible analytics.
+- She captures all steps in a script.
+- First, return to the project directory:
 
 ```bash
 cd ../../north-pacific-gyre/
@@ -486,7 +486,7 @@ done
 
 ## Running Nelle's Script
 
-She saves this in a file called `do-stats.sh` so that she can now re-do the first stage of her analysis by typing:
+- She saves the script as `do-stats.sh` and reruns stage one with:
 
 ```bash
 bash do-stats.sh NENE*A.txt NENE*B.txt
@@ -498,11 +498,11 @@ She can also do this:
 bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l
 ```
 
-so that the output is just the number of files processed rather than the names of the files that were processed.
+- This variant reports only the number of processed files.
 
-## Script Design Tradeoffs
+### Script Design Tradeoffs
 
-One thing to note about Nelle's script is that it lets the person running it decide what files to process.
+- This script lets the user decide which files to process.
 
 She could have written it as:
 
@@ -515,15 +515,15 @@ do
 done
 ```
 
-## Hardcoded vs. Flexible Scripts
+### Hardcoded vs. Flexible Scripts
 
-**Advantage**: This always selects the right files — she doesn't have to remember to exclude the 'Z' files.
+- **Advantage:** Always selects the intended files and avoids accidental `Z` inclusion.
 
-**Disadvantage**: It *always* selects just those files — she can't run it on all files (including the 'Z' files), or on the 'G' or 'H' files her colleagues in Antarctica are producing, without editing the script.
+- **Disadvantage:** It is rigid.
+- She cannot include `Z` files (or colleagues’ `G`/`H` files) without editing the script.
 
-If she wanted to be more adventurous, she could modify her script to check for command-line arguments, and use `NENE*A.txt NENE*B.txt` if none were provided.
-
-Of course, this introduces another tradeoff between flexibility and complexity.
+- She could add argument checking and default to `NENE*A.txt NENE*B.txt` when no args are passed.
+- That adds flexibility, but also adds complexity.
 
 ## Challenge: Variables in Shell Scripts
 

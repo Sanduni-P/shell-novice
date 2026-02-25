@@ -31,7 +31,7 @@ wc -l example.txt
 
 If last line has **no carriage return**, result is **off by one**.
 
-## `awk`: A Better Solution
+### `awk`: A Better Solution
 
 **AWK** = command-line program for text processing.
 
@@ -52,7 +52,7 @@ Structure:
 - `print` sends output to terminal
 - `$0` = **entire current line** (variable)
 
-## How `awk` Works
+### How `awk` Works
 
 AWK **automatically splits** each line by spaces.
 
@@ -62,7 +62,7 @@ Columns stored in variables:
 - `$3` = third column
 - And so on...
 
-## Printing Entire Line
+### Printing Entire Line
 
 ```bash
 awk '{print $0}' example.txt
@@ -88,7 +88,7 @@ awk '{print $2, $4}' example.txt
 
 **Commas add spaces** between output values.
 
-## Adding Text to Output
+### Adding Text to Output
 
 Print with custom text:
 
@@ -116,7 +116,7 @@ Shows how many columns in each row.
 
 Useful when files have **variable column counts**.
 
-## Example: Lines with Different Columns
+### Example: Lines with Different Columns
 
 Some lines have 6 fields, others have 7:
 
@@ -126,7 +126,7 @@ awk '{print "This line has", NF, "columns. The last one contains", $NF}' example
 
 `NF` gives column count for **current line**.
 
-## The Last Column: `$NF`
+### The Last Column: `$NF`
 
 Print the **last column** without knowing its number:
 
@@ -145,7 +145,7 @@ Perfect when:
 Out there we have different file formats: our data may be comma separated (CSV), tab separated (TSV), by semicolon or by any other character.
 :::
 
-## Field Separators: Default Behavior
+### Field Separators: Default Behavior
 
 By default, AWK splits on **spaces and tabs**.
 
@@ -163,7 +163,7 @@ Note: comma becomes the **separator**, not part of field!
 
 Spaces in fields are now **part of the value**.
 
-## Field Separator: Other Examples
+### Field Separator: Other Examples
 
 **Colon separator:**
 
@@ -198,7 +198,7 @@ awk '/^ATOM/ {print $0}' example.pdb
 
 `^` means **beginning of line**.
 
-## Multiple Patterns
+### Multiple Patterns
 
 Apply different actions to different patterns:
 
@@ -244,7 +244,7 @@ awk 'END {print NR}' example.txt
 
 More **robust than `wc -l`** (handles missing final newline).
 
-## Comparing Line Counting Methods
+### Comparing Line Counting Methods
 
 **Using wc:**
 
@@ -274,7 +274,7 @@ awk '/^ATOM/ {count++} END {print count}' file.pdb
 - `count++` = increment counter
 - `END` = print final count
 
-## Safe Counter Initialization
+### Safe Counter Initialization
 
 Avoid errors if no lines match:
 
@@ -284,7 +284,7 @@ awk '/^ATOM/ {c++} END {print c+0}' file.pdb
 
 Adding `+0` safely prints **0 if no matches**.
 
-## Multiple Counters in a Pattern
+### Multiple Counters in a Pattern
 
 Count atoms and sum their coordinates:
 
@@ -381,7 +381,7 @@ awk '{sum += $1} END {print sum}' numbers.txt
 awk '{sum += $1; count++} END {print sum/count}' numbers.txt
 ```
 
-## Variable Assignment
+### Variable Assignment
 
 Set variables in AWK:
 
@@ -391,7 +391,7 @@ awk '{x = $2 * 2; print x}' file.txt
 
 Use variables in calculations throughout.
 
-## BEGIN Block (Advanced)
+### BEGIN Block (Advanced)
 
 Initialize variables **before processing**:
 
@@ -441,7 +441,7 @@ Extract chromosome and position from BED file:
 awk -F "\t" '{print $1, $2, $3}' file.bed
 ```
 
-## Real-World Example 2
+### Real-World Example 2
 
 Count records by type:
 
@@ -449,7 +449,7 @@ Count records by type:
 awk '{type[$1]++} END {for (t in type) print t, type[t]}' data.txt
 ```
 
-## Real-World Example 3
+### Real-World Example 3
 
 Filter and sum:
 

@@ -20,13 +20,11 @@
 
 ## What Are Loops?
 
-**Loops** are a programming construct which allow us to repeat a command or set of commands for each item in a list.
+- **Loops** repeat commands for each item in a list.
+- They improve productivity through automation.
+- Like wildcards and tab completion, loops reduce typing and mistakes.
 
-As such they are key to productivity improvements through automation.
-
-Similar to wildcards and tab completion, using loops also reduces the amount of typing required (and hence reduces the number of typing mistakes).
-
-## Loop Structure
+### Loop Structure
 
 ```bash
 # The word "for" indicates the start of a "For-loop" command
@@ -43,13 +41,12 @@ Three keywords: `for`, `do`, `done`
 
 ## Example Files
 
-Suppose we have several hundred genome data files named `basilisk.dat`, `minotaur.dat`, and `unicorn.dat`.
+- Imagine hundreds of genome files like `basilisk.dat`, `minotaur.dat`, and `unicorn.dat`.
+- We use `exercise-data/creatures` (three files) for a small demonstration.
+- The same approach scales to many files.
+- Each file has common name, classification, and update date at the top.
 
-For this example, we'll use the `exercise-data/creatures` directory which only has three example files, but the principles can be applied to many many more files at once.
-
-The structure of these files is the same: the common name, classification, and updated date are presented on the first three lines, with DNA sequences on the following lines.
-
-## Looking at the Files
+### Looking at the Files
 
 Let's look at the files:
 
@@ -57,13 +54,13 @@ Let's look at the files:
 head -n 5 basilisk.dat minotaur.dat unicorn.dat
 ```
 
-We would like to print out the classification for each species, which is given on the second line of each file.
-
-For each file, we would need to execute the command `head -n 2` and pipe this to `tail -n 1`.
+- Goal: print the classification (line 2) for each species.
+- Per file, use `head -n 2` piped to `tail -n 1`.
 
 ## General Form of a Loop
 
-We'll use a loop to solve this problem, but first let's look at the general form of a loop:
+- We’ll solve this with a loop.
+- First, look at the general loop form:
 
 ```bash
 for filename in basilisk.dat minotaur.dat unicorn.dat
@@ -78,7 +75,7 @@ minotaur.dat
 unicorn.dat
 ```
 
-## Follow the Prompt
+### Follow the Prompt
 
 When typing a loop, shell prompt changes:
 
@@ -93,7 +90,7 @@ The `>` prompt reminds you the command isn't complete yet.
 
 A semicolon `;` can separate commands on one line.
 
-## Same Symbols, Different Meanings
+### Same Symbols, Different Meanings
 
 - **Shell prints `>` or `$`**: it's a prompt (expects input)
 - **You type `>` or `$`**: it's an instruction (redirect or variable)
@@ -110,7 +107,7 @@ Each time loop runs, variable holds next value:
 
 Then shell exits loop (no more items).
 
-## Variable Substitution
+### Variable Substitution
 
 Use `$varname` to access the value.
 
@@ -139,7 +136,7 @@ unicorn.dat
 CLASSIFICATION: equus monoceros
 ```
 
-## Variable Name vs Value
+### Variable Name vs Value
 
 Variable name: `filename` (the name)
 
@@ -163,7 +160,7 @@ echo ${filename}.bak    # Shows: basilisk.dat.bak
 echo $filename.bak      # Looks for variable "filename.bak"!
 ```
 
-## Variable Naming Tips
+### Variable Naming Tips
 
 - Use **meaningful names**: `filename`, not `x`
 - Helps others (and future you) understand code
@@ -461,7 +458,7 @@ It is simpler to **avoid using spaces** (or other special characters) in filenam
 
 ## What Happens Without Quotes?
 
-The files `red dragon.dat` and `purple unicorn.dat` don't exist, so if we run the code without quotes around `$filename`, we get errors:
+- Since `red dragon.dat` and `purple unicorn.dat` do not exist, running without quotes around `$filename` gives errors:
 
 ```error
 head: cannot open 'red' for reading: No such file or directory
@@ -476,7 +473,7 @@ head: cannot open 'red dragon.dat' for reading: No such file or directory
 head: cannot open 'purple unicorn.dat' for reading: No such file or directory
 ```
 
-## Why Quote Variables?
+### Why Quote Variables?
 
 Without quotes:
 - Shell splits by spaces
@@ -517,7 +514,7 @@ Each iteration:
 - `$filename` = `minotaur.dat` → `cp minotaur.dat original-minotaur.dat`
 - `$filename` = `unicorn.dat` → `cp unicorn.dat original-unicorn.dat`
 
-## Testing Loops with `echo`
+### Testing Loops with `echo`
 
 **Hard to verify** loop did what you want (no output from `cp`).
 
@@ -534,26 +531,27 @@ See what **would** run, verify correctness, then remove `echo`!
 
 The judicious use of `echo` is a good **debugging technique**.
 
-## Loop Flow Chart
+### Loop Flow Chart
 
-The following diagram shows what happens when the modified loop is executed, and demonstrates how the judicious use of `echo` is a good debugging technique.
+- The diagram shows loop execution flow.
+- It also shows why using `echo` is useful for dry-run debugging.
 
 ![](../episodes/fig/shell_script_for_loop_flow_chart.svg){alt='For loop flow chart showing variable assignment and iteration'}
 
 ## Nelle's Pipeline: Processing Files
 
-Nelle is now ready to process her data files using `goostats.sh` --- a shell script written by her supervisor.
-
-This calculates some **statistics from a protein sample file** and takes two arguments:
+- Nelle is ready to process files with `goostats.sh`.
+- The script calculates statistics from a protein sample file.
+- It takes two arguments:
 
 1. an input file (containing the raw data)
 2. an output file (to store the calculated statistics)
 
-Since she's still learning how to use the shell, she decides to **build up the required commands in stages**.
+- Since she is still learning, she builds the commands in stages.
 
 ## Nelle Tests File Selection
 
-Her first step is to make sure that she can select the right input files --- remember, these are ones whose names end in 'A' or 'B', rather than 'Z'.
+- First step: confirm she selects only `A` and `B` files (not `Z`).
 
 Moving to the `north-pacific-gyre` directory, Nelle types:
 
@@ -575,13 +573,12 @@ NENE02040B.txt
 NENE02043B.txt
 ```
 
-Good! Selects correct files.
+- Result: correct files are selected.
 
 ## Nelle Builds Output Filenames
 
-Her next step is to decide what to call the files that the `goostats.sh` analysis program will create.
-
-Prefixing each input file's name with 'stats' seems simple, so she modifies her loop:
+- Next step: decide output filenames for `goostats.sh`.
+- She prefixes each input file with `stats-`.
 
 ```bash
 for datafile in NENE*A.txt NENE*B.txt
@@ -599,9 +596,8 @@ NENE02040B.txt stats-NENE02040B.txt
 NENE02043B.txt stats-NENE02043B.txt
 ```
 
-Perfect! Ready to process.
-
-She hasn't actually run `goostats.sh` yet, but now she's sure she can select the right files and generate the right output filenames.
+- Now she can generate correct output names.
+- She has not run `goostats.sh` yet; this is a dry run.
 
 ## Command History
 
@@ -617,7 +613,7 @@ history
 
 Shows numbered list of previous commands.
 
-## Accessing History
+### Accessing History
 
 | Method | What it does |
 |--------|-------------|
@@ -638,7 +634,7 @@ Entire loop on one line using semicolons `;`
 
 Same as multi-line version!
 
-## Beginning and End
+### Beginning and End
 
 ::: {.callout-note}
 
@@ -648,7 +644,7 @@ We can move to the beginning of a line in the shell by typing <kbd>Ctrl</kbd>+<k
 
 :::
 
-## Those Who Know History
+### Those Who Know History
 
 ::: {.callout-note}
 
@@ -672,11 +668,11 @@ then she can re-run `bash goostats.sh` on all her files by typing `!457`.
 
 :::
 
-## Other history Commands
+### Other history Commands
 
 ::: {.callout-note}
 
-## Other history Commands
+### Other history Commands
 
 There are a number of other shortcut commands for getting at the history:
 

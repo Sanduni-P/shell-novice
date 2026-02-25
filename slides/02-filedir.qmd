@@ -19,36 +19,24 @@
 - Demonstrate the use of tab completion and explain its advantages.
 :::
 
-## The File System
 
-::: {style="text-align: center;"}
-**Files** = store information
+## The File System 
 
-**Directories** (folders) = store files or other directories
-:::
+- **Files** = store information 
+- **Directories** (folders) = store files or other directories
+- The **root directory** is `/` - everything else is inside it.
 
-## The File System Tree
-
-```
+```bash
 / (root)
-├── bin
-├── data
-├── Users
+├── bin            # = built-in programs and commands
+├── data           # = miscellaneous data files
+├── Users          # user home directories (e.g., `/Users/nelle`)
 │   └── nelle
-├── tmp
+├── tmp            # = temporary files that don't need long-term storage
 └── ...
 ```
 
-The **root directory** is `/` - everything else is inside it.
-
 ![](../episodes/fig/filesystem.svg){alt="Nelle's file system tree showing root and sub-directories" fig-align="center" height=250}
-
-## What these folders mean
-
-- `bin` = built-in programs and commands
-- `data` = miscellaneous data files
-- `Users` = user home directories (e.g., `/Users/nelle`)
-- `tmp` = temporary files that don't need long-term storage
 
 ## `pwd` - Print Working Directory
 
@@ -65,7 +53,7 @@ $ pwd
 This shows your **current working directory** (your current location).
 
 
-## Your Home Directory
+### Your Home Directory
 
 The shell usually starts in your **home directory**:
 
@@ -187,13 +175,13 @@ Mandatory arguments to long options are mandatory for short options, too.
 
 ## Short vs Long Options
 
-Use **short options** when typing commands into the shell to minimize keystrokes and get your task done faster:
+- Use **short options** for quick interactive work:
 
 ```bash
 ls -F
 ```
 
-Use **long options** in scripts for clarity:
+- Use **long options** in scripts for clarity:
 
 ```bash
 ls --classify
@@ -202,7 +190,7 @@ ls --classify
 
 ## Unsupported Command Options
 
-If you use an option the command doesn't support, you'll see an error:
+- Unsupported options return an error message:
 
 ```bash
 ls -j
@@ -215,8 +203,7 @@ Try 'ls --help' for more information.
 
 ## The `man` command
 
-This command will turn your terminal into a page with a description
-of the `ls` command and its options.
+- `man ls` opens the manual page for `ls` and its options.
 
 ```bash
 man ls
@@ -305,8 +292,7 @@ $ ls -F Desktop
 shell-lesson-data/
 ```
 
-Note that if a directory named `Desktop` does not exist in your current working directory,
-this command will return an error.
+- If `Desktop` does not exist in your current working directory, this command returns an error.
 
 
 ## `cd` - Change Directory
@@ -338,8 +324,6 @@ $ pwd
 /Users/nelle/Desktop/shell-lesson-data/exercise-data
 ```
 
-## Listing Current Directory
-
 Check what's here:
 
 ```bash
@@ -350,7 +334,9 @@ $ ls -F
 alkanes/  animal-counts/  creatures/  numbers.txt  writing/
 ```
 
-## Moving Up One Level: `..`
+## `..` vs `.`
+
+### Moving Up One Level: `..`
 
 To go to the **parent directory** (one level up):
 
@@ -365,7 +351,7 @@ $ pwd
 
 `..` = "the directory containing this one"
 
-## Current Directory: `.`
+### Current Directory: `.`
 
 To refer to the **current directory**:
 
@@ -400,9 +386,10 @@ $ ls -F -a
 ```
 
 
-## Other Hidden Files
 
 ::: {.callout-note icon="true" .nonincremental}
+
+### Other Hidden Files
 
 In addition to `..` and `.`, you may see files like `.bash_profile` or `.gitignore`.
 
@@ -415,23 +402,24 @@ In addition to `..` and `.`, you may see files like `.bash_profile` or `.gitigno
 
 ## Two Types of Paths {.nonincremental}
 
-::: {.fragment}
+
 ### Absolute Path 
 - Starts with `/`
 - Works from **anywhere** on the computer
 - Example: `/Users/nelle/Desktop/shell-lesson-data`
 
-:::
 
-::: {.fragment}
+
 ### Relative Path 
 - Does **not** start with `/`
 - Depends on **where you are now**
 - Example: `Desktop/shell-lesson-data`
 
-:::
 
-## Home Directory Shortcut
+
+## Home Directory 
+
+### Shortcut
 
 Use `~` to mean your home directory:
 
@@ -444,7 +432,7 @@ $ pwd
 /Users/nelle/Desktop
 ```
 
-## Return to Home
+### Return to Home
 
 `cd` with no arguments returns to home:
 
@@ -617,12 +605,11 @@ pnas_sub/ pnas_final/ original/
 
 Nelle is ready to organize the files from the protein assay machine.
 
-::: {.incremental}
 - Creates directory `north-pacific-gyre` for her data
 - Each sample has a unique 10-character ID (e.g., `NENE01729A`)
 - Files named like `NENE01729A.txt`, `NENE01812A.txt`, etc.
 - All 1520 files in the same directory
-:::
+
 
 ## Using Tab Completion
 
@@ -634,9 +621,8 @@ $ ls north-pacific-gyre/
 
 But that's a lot to type! She can use **tab completion**:
 
-::: {.incremental}
 1. Type `ls nor` and press <kbd>Tab</kbd>
 2. Shell completes to `ls north-pacific-gyre/`
 3. Pressing <kbd>Tab</kbd> again shows multiple files
 4. Type `ls north-pacific-gyre/goo` and press <kbd>Tab</kbd> for files starting with "goo"
-:::
+

@@ -28,9 +28,7 @@ Three permission categories:
 - **group** - applies only to assigned group
 - **all users** - applies to all other users (watch this closely!)
 
-## Permission Example
-
-For example, if a file had the following set of permissions:
+### Permission Example
 
 <table class="table table-striped">
 <tr><td></td><th>user</th><th>group</th><th>all</th></tr>
@@ -52,11 +50,8 @@ ls -l methane.pdb
 -rw-r--r--  1 nelle  bio   422B  8 Aug  2019 methane.pdb
 ```
 
-## Understanding `ls -l` Output {.nonincremental}
+### Understanding `ls -l` Output {.nonincremental}
 
-```output
--rw-r--r--  1 nelle  bio   422B  8 Aug  2019 methane.pdb
-```
 
 1. A set of ten permission flags
 2. Link count (which is irrelevant to this course)
@@ -74,14 +69,16 @@ Three basic permission types:
 - **Write (w)** - capability to write/modify files or directories
 - **Execute (x)** - capability to execute files or view directory contents
 
-## Permission String Structure
+### Permission String Structure
 
-`_rwxrwxrwx` breakdown:
+```output
+-rw-r--r--  1 nelle  bio   422B  8 Aug  2019 methane.pdb
+```
 
 - **First character** - special permission flag (e.g., `d` = directory)
-- **First `rwx`** - owner permissions
-- **Second `rwx`** - group permissions
-- **Third `rwx`** - all users permissions
+- **First `rw-`** - owner permissions
+- **Second `r--`** - group permissions
+- **Third `r--`** - all users permissions
 
 ## Users and Groups
 
@@ -185,13 +182,11 @@ The `d` indicates whether the file has any special type associated with it. In t
 
 ## Modifying Permissions
 
-Let's say we want to modify who can access some of the files in the `alkanes/` directory.
+- We want to modify access to files in the `alkanes/` directory.
+- Assume we are members of the `bio` group on this system.
+- On clusters, groups are commonly used to share files within a lab.
 
-We'll assume here that we're members of the `bio` group on our system.
-
-On the cluster, all users must be members of cluster group to run jobs on the system. Each lab has a group associated with it, so we can use this method to share files with other members of the same lab.
-
-## Groups Note
+### Groups Note
 
 ::: {.callout-note icon="true"}
 
@@ -222,16 +217,12 @@ cd Desktop/shell-lesson-data/exercise-data/alkanes
 chown nelle:compbio methane.pdb
 ```
 
-`chown` breakdown:
-
 - **chown** - command
 - **nelle** - user
 - **compbio** - group
 - **methane.pdb** - filename
 
-## After `chown`
-
-When we list the contents of the directory again, we would see the change reflected like so:
+Re-running `ls -l` shows the ownership change:
 
 ```output
 total 48
@@ -249,24 +240,35 @@ total 48
 - Allow members of the group to make changes to `methane.pdb`, but not others.
 - To explicitly define permissions, reference the **Permission Group** and **Permission Types**.
 
-## Permission Groups
+:::: {.columns}
 
-The Permission Groups used are:
+::: {.column width="50%"}
 
-- **u** - Owner
+### Permission Groups
+
+- **u** - User/Owner
 - **g** - Group
 - **o** - Other / All Users
-- **a** - All (Owner, Group and All Users)
+- **a** - All Groups (Owner, Group and All Users)
 
-## Permission Types
+:::
 
-The Permission Types that are used are:
+
+
+::: {.column width="50%"}
+
+### Permission Types
 
 - **r** - Read
 - **w** - Write
 - **x** - Execute
 
-The potential Assignment Operators are **+** (plus) and **-** (minus); these are used to tell the system whether to add or remove the specific permissions.
+- Assignment operators:
+	- `+` adds permissions
+	- `-` removes permissions
+:::
+
+::::
 
 ## `chmod` - Remove - Other Read {.nonincremental}
 
@@ -413,7 +415,7 @@ The fact that something is marked as executable doesn't actually mean it contain
 
 ## Directory Permissions
 
-Let's run `ls -a -l` to get a long-form listing that includes directories that are hidden:
+- Run `ls -a -l` to show a long listing, including hidden directories:
 
 ```bash
 ls -a -l
@@ -442,24 +444,25 @@ Nelle's home directory has three subdirectories called `venus`, `mars`, and `plu
 
 ![](../episodes/fig/x-for-directories.png){width="500" fig-align="center"}
 
-Each of these has a subdirectory in turn called `notes`, and those sub-subdirectories contain various files.
+- Each has a `notes` subdirectory, and those contain files.
 
-## Scenario 1: r-x on venus
-
-![](../episodes/fig/x-for-directories.png){height="400" fig-align="center"}
-
-If a user's permissions on `venus` are **'r-x'**, then if she tries to see the contents of `venus` and `venus/notes` using `ls`, the computer lets her see both.
-
-## Scenario 2: r-- on mars
+## Scenario 1: `r-x` on venus
 
 ![](../episodes/fig/x-for-directories.png){height="400" fig-align="center"}
 
-If her permissions on `mars` are just **'r--'**, then she is allowed to read the contents of both `mars` and `mars/notes`.
+- With `venus` permissions set to **`r-x`**, she can list both `venus` and `venus/notes`.
 
-## Scenario 3: --x on pluto
+## Scenario 2: `r--` on mars
 
 ![](../episodes/fig/x-for-directories.png){height="400" fig-align="center"}
 
-But if her permissions on `pluto` are only **'--x'**, she cannot see what's in the `pluto` directory: `ls pluto` will tell her she doesn't have permission to view its contents.
+- With `mars` permissions set to **`r--`**, she can read both `mars` and `mars/notes`.
 
-If she tries to look in `pluto/notes`, though, the computer will let her do that. She's allowed to go **through** `pluto`, but not to look at what's there.
+## Scenario 3: `--x` on pluto
+
+![](../episodes/fig/x-for-directories.png){height="400" fig-align="center"}
+
+- With `pluto` permissions set to **`--x`**, `ls pluto` fails because she cannot view its contents.
+
+- She can still access `pluto/notes` by traversing `pluto`.
+- `--x` allows **traversal** but not directory listing.
