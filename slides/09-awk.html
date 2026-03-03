@@ -4906,39 +4906,61 @@ padding-top: 4px !important;
   <ul>
   <li><a href="#episode-9-awk-for-text-processing" id="toc-episode-9-awk-for-text-processing" class="nav-link active" data-scroll-target="#episode-9-awk-for-text-processing">Episode 9: AWK for Text Processing</a>
   <ul class="collapse">
-  <li><a href="#counting-lines-the-problem" id="toc-counting-lines-the-problem" class="nav-link" data-scroll-target="#counting-lines-the-problem">Counting Lines: The Problem</a></li>
+  <li><a href="#counting-lines-the-problem" id="toc-counting-lines-the-problem" class="nav-link" data-scroll-target="#counting-lines-the-problem">Counting Lines: The Problem</a>
+  <ul class="collapse">
   <li><a href="#awk-a-better-solution" id="toc-awk-a-better-solution" class="nav-link" data-scroll-target="#awk-a-better-solution"><code>awk</code>: A Better Solution</a></li>
-  <li><a href="#basic-awk-syntax" id="toc-basic-awk-syntax" class="nav-link" data-scroll-target="#basic-awk-syntax">Basic <code>awk</code> Syntax</a></li>
+  </ul></li>
+  <li><a href="#basic-awk-syntax" id="toc-basic-awk-syntax" class="nav-link" data-scroll-target="#basic-awk-syntax">Basic <code>awk</code> Syntax</a>
+  <ul class="collapse">
   <li><a href="#how-awk-works" id="toc-how-awk-works" class="nav-link" data-scroll-target="#how-awk-works">How <code>awk</code> Works</a></li>
   <li><a href="#printing-entire-line" id="toc-printing-entire-line" class="nav-link" data-scroll-target="#printing-entire-line">Printing Entire Line</a></li>
-  <li><a href="#printing-specific-columns" id="toc-printing-specific-columns" class="nav-link" data-scroll-target="#printing-specific-columns">Printing Specific Columns</a></li>
+  </ul></li>
+  <li><a href="#printing-specific-columns" id="toc-printing-specific-columns" class="nav-link" data-scroll-target="#printing-specific-columns">Printing Specific Columns</a>
+  <ul class="collapse">
   <li><a href="#adding-text-to-output" id="toc-adding-text-to-output" class="nav-link" data-scroll-target="#adding-text-to-output">Adding Text to Output</a></li>
-  <li><a href="#the-nf-variable" id="toc-the-nf-variable" class="nav-link" data-scroll-target="#the-nf-variable">The NF Variable</a></li>
+  </ul></li>
+  <li><a href="#the-nf-variable" id="toc-the-nf-variable" class="nav-link" data-scroll-target="#the-nf-variable">The NF Variable</a>
+  <ul class="collapse">
   <li><a href="#example-lines-with-different-columns" id="toc-example-lines-with-different-columns" class="nav-link" data-scroll-target="#example-lines-with-different-columns">Example: Lines with Different Columns</a></li>
   <li><a href="#the-last-column-nf" id="toc-the-last-column-nf" class="nav-link" data-scroll-target="#the-last-column-nf">The Last Column: <code>$NF</code></a></li>
-  <li><a href="#field-separator-formats" id="toc-field-separator-formats" class="nav-link" data-scroll-target="#field-separator-formats">Field Separator Formats</a></li>
+  </ul></li>
+  <li><a href="#field-separator-formats" id="toc-field-separator-formats" class="nav-link" data-scroll-target="#field-separator-formats">Field Separator Formats</a>
+  <ul class="collapse">
   <li><a href="#field-separators-default-behavior" id="toc-field-separators-default-behavior" class="nav-link" data-scroll-target="#field-separators-default-behavior">Field Separators: Default Behavior</a></li>
-  <li><a href="#field-separator-comma--f" id="toc-field-separator-comma--f" class="nav-link" data-scroll-target="#field-separator-comma--f">Field Separator: Comma (-F “,”)</a></li>
+  </ul></li>
+  <li><a href="#field-separator-comma--f" id="toc-field-separator-comma--f" class="nav-link" data-scroll-target="#field-separator-comma--f">Field Separator: Comma (-F “,”)</a>
+  <ul class="collapse">
   <li><a href="#field-separator-other-examples" id="toc-field-separator-other-examples" class="nav-link" data-scroll-target="#field-separator-other-examples">Field Separator: Other Examples</a></li>
+  </ul></li>
   <li><a href="#pattern-action-model" id="toc-pattern-action-model" class="nav-link" data-scroll-target="#pattern-action-model">Pattern-Action Model</a></li>
-  <li><a href="#regex-pattern-start-of-line" id="toc-regex-pattern-start-of-line" class="nav-link" data-scroll-target="#regex-pattern-start-of-line">Regex Pattern: Start of Line (^)</a></li>
+  <li><a href="#regex-pattern-start-of-line" id="toc-regex-pattern-start-of-line" class="nav-link" data-scroll-target="#regex-pattern-start-of-line">Regex Pattern: Start of Line (^)</a>
+  <ul class="collapse">
   <li><a href="#multiple-patterns" id="toc-multiple-patterns" class="nav-link" data-scroll-target="#multiple-patterns">Multiple Patterns</a></li>
+  </ul></li>
   <li><a href="#the-end-block" id="toc-the-end-block" class="nav-link" data-scroll-target="#the-end-block">The END Block</a></li>
-  <li><a href="#the-nr-variable" id="toc-the-nr-variable" class="nav-link" data-scroll-target="#the-nr-variable">The NR Variable</a></li>
+  <li><a href="#the-nr-variable" id="toc-the-nr-variable" class="nav-link" data-scroll-target="#the-nr-variable">The NR Variable</a>
+  <ul class="collapse">
   <li><a href="#comparing-line-counting-methods" id="toc-comparing-line-counting-methods" class="nav-link" data-scroll-target="#comparing-line-counting-methods">Comparing Line Counting Methods</a></li>
-  <li><a href="#counting-matching-lines" id="toc-counting-matching-lines" class="nav-link" data-scroll-target="#counting-matching-lines">Counting Matching Lines</a></li>
+  </ul></li>
+  <li><a href="#counting-matching-lines" id="toc-counting-matching-lines" class="nav-link" data-scroll-target="#counting-matching-lines">Counting Matching Lines</a>
+  <ul class="collapse">
   <li><a href="#safe-counter-initialization" id="toc-safe-counter-initialization" class="nav-link" data-scroll-target="#safe-counter-initialization">Safe Counter Initialization</a></li>
   <li><a href="#multiple-counters-in-a-pattern" id="toc-multiple-counters-in-a-pattern" class="nav-link" data-scroll-target="#multiple-counters-in-a-pattern">Multiple Counters in a Pattern</a></li>
+  </ul></li>
   <li><a href="#challenge-counting-and-selecting-simple" id="toc-challenge-counting-and-selecting-simple" class="nav-link" data-scroll-target="#challenge-counting-and-selecting-simple">Challenge: Counting and Selecting (Simple)</a></li>
   <li><a href="#solution-counting-and-selecting" id="toc-solution-counting-and-selecting" class="nav-link" data-scroll-target="#solution-counting-and-selecting">Solution: Counting and Selecting</a></li>
   <li><a href="#built-in-functions" id="toc-built-in-functions" class="nav-link" data-scroll-target="#built-in-functions">Built-in Functions</a></li>
-  <li><a href="#arithmetic-and-aggregation" id="toc-arithmetic-and-aggregation" class="nav-link" data-scroll-target="#arithmetic-and-aggregation">Arithmetic and Aggregation</a></li>
+  <li><a href="#arithmetic-and-aggregation" id="toc-arithmetic-and-aggregation" class="nav-link" data-scroll-target="#arithmetic-and-aggregation">Arithmetic and Aggregation</a>
+  <ul class="collapse">
   <li><a href="#variable-assignment" id="toc-variable-assignment" class="nav-link" data-scroll-target="#variable-assignment">Variable Assignment</a></li>
   <li><a href="#begin-block-advanced" id="toc-begin-block-advanced" class="nav-link" data-scroll-target="#begin-block-advanced">BEGIN Block (Advanced)</a></li>
+  </ul></li>
   <li><a href="#awk-programs-from-files" id="toc-awk-programs-from-files" class="nav-link" data-scroll-target="#awk-programs-from-files"><code>awk</code> Programs from Files</a></li>
-  <li><a href="#real-world-example-1" id="toc-real-world-example-1" class="nav-link" data-scroll-target="#real-world-example-1">Real-World Example 1</a></li>
+  <li><a href="#real-world-example-1" id="toc-real-world-example-1" class="nav-link" data-scroll-target="#real-world-example-1">Real-World Example 1</a>
+  <ul class="collapse">
   <li><a href="#real-world-example-2" id="toc-real-world-example-2" class="nav-link" data-scroll-target="#real-world-example-2">Real-World Example 2</a></li>
   <li><a href="#real-world-example-3" id="toc-real-world-example-3" class="nav-link" data-scroll-target="#real-world-example-3">Real-World Example 3</a></li>
+  </ul></li>
   <li><a href="#key-concepts-summary" id="toc-key-concepts-summary" class="nav-link" data-scroll-target="#key-concepts-summary">Key Concepts Summary</a></li>
   <li><a href="#youve-completed-the-unix-shell-workshop" id="toc-youve-completed-the-unix-shell-workshop" class="nav-link" data-scroll-target="#youve-completed-the-unix-shell-workshop">You’ve Completed the Unix Shell Workshop!</a></li>
   </ul></li>
@@ -4995,9 +5017,8 @@ Objectives
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>The issue</strong>: <code>wc</code> counts newlines only.</p>
 <p>If last line has <strong>no carriage return</strong>, result is <strong>off by one</strong>.</p>
-</section>
-<section id="awk-a-better-solution" class="level2">
-<h2 class="anchored" data-anchor-id="awk-a-better-solution"><code>awk</code>: A Better Solution</h2>
+<section id="awk-a-better-solution" class="level3">
+<h3 class="anchored" data-anchor-id="awk-a-better-solution"><code>awk</code>: A Better Solution</h3>
 <p><strong>AWK</strong> = command-line program for text processing.</p>
 <ul>
 <li>Takes instructions and one or more files</li>
@@ -5005,22 +5026,23 @@ Objectives
 <li>Instructions in single quotes or from file</li>
 </ul>
 </section>
+</section>
 <section id="basic-awk-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="basic-awk-syntax">Basic <code>awk</code> Syntax</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print $0}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Same output as <code>cat example.txt</code>.</p>
 <p>Structure: - <code>{}</code> surrounds instructions - <code>print</code> sends output to terminal - <code>$0</code> = <strong>entire current line</strong> (variable)</p>
-</section>
-<section id="how-awk-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-awk-works">How <code>awk</code> Works</h2>
+<section id="how-awk-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-awk-works">How <code>awk</code> Works</h3>
 <p>AWK <strong>automatically splits</strong> each line by spaces.</p>
 <p>Columns stored in variables: - <code>$1</code> = first column - <code>$2</code> = second column - <code>$3</code> = third column - And so on…</p>
 </section>
-<section id="printing-entire-line" class="level2">
-<h2 class="anchored" data-anchor-id="printing-entire-line">Printing Entire Line</h2>
+<section id="printing-entire-line" class="level3">
+<h3 class="anchored" data-anchor-id="printing-entire-line">Printing Entire Line</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print $0}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>$0</code> means “the whole line”.</p>
 <p>Same as <code>cat</code> but using AWK!</p>
+</section>
 </section>
 <section id="printing-specific-columns" class="level2">
 <h2 class="anchored" data-anchor-id="printing-specific-columns">Printing Specific Columns</h2>
@@ -5029,9 +5051,8 @@ Objectives
 <p>Print multiple columns (second and fourth):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print $2, $4}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Commas add spaces</strong> between output values.</p>
-</section>
-<section id="adding-text-to-output" class="level2">
-<h2 class="anchored" data-anchor-id="adding-text-to-output">Adding Text to Output</h2>
+<section id="adding-text-to-output" class="level3">
+<h3 class="anchored" data-anchor-id="adding-text-to-output">Adding Text to Output</h3>
 <p>Print with custom text:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print &quot;chr&quot;, $2, $4}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>chr value2 value4
@@ -5039,24 +5060,25 @@ chr value2 value4
 chr value2 value4</code></pre>
 <p><strong>Text must be in quotes</strong>.</p>
 </section>
+</section>
 <section id="the-nf-variable" class="level2">
 <h2 class="anchored" data-anchor-id="the-nf-variable">The NF Variable</h2>
 <p><strong>NF</strong> = Number of Fields (columns)</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print NF}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Shows how many columns in each row.</p>
 <p>Useful when files have <strong>variable column counts</strong>.</p>
-</section>
-<section id="example-lines-with-different-columns" class="level2">
-<h2 class="anchored" data-anchor-id="example-lines-with-different-columns">Example: Lines with Different Columns</h2>
+<section id="example-lines-with-different-columns" class="level3">
+<h3 class="anchored" data-anchor-id="example-lines-with-different-columns">Example: Lines with Different Columns</h3>
 <p>Some lines have 6 fields, others have 7:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print &quot;This line has&quot;, NF, &quot;columns. The last one contains&quot;, $NF}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>NF</code> gives column count for <strong>current line</strong>.</p>
 </section>
-<section id="the-last-column-nf" class="level2">
-<h2 class="anchored" data-anchor-id="the-last-column-nf">The Last Column: <code>$NF</code></h2>
+<section id="the-last-column-nf" class="level3">
+<h3 class="anchored" data-anchor-id="the-last-column-nf">The Last Column: <code>$NF</code></h3>
 <p>Print the <strong>last column</strong> without knowing its number:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print $NF}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Perfect when: - Files are huge - Lines have different column counts - You only need the final value</p>
+</section>
 </section>
 <section id="field-separator-formats" class="level2">
 <h2 class="anchored" data-anchor-id="field-separator-formats">Field Separator Formats</h2>
@@ -5073,11 +5095,11 @@ Note
 <p>Out there we have different file formats: our data may be comma separated (CSV), tab separated (TSV), by semicolon or by any other character.</p>
 </div>
 </div>
-</section>
-<section id="field-separators-default-behavior" class="level2">
-<h2 class="anchored" data-anchor-id="field-separators-default-behavior">Field Separators: Default Behavior</h2>
+<section id="field-separators-default-behavior" class="level3">
+<h3 class="anchored" data-anchor-id="field-separators-default-behavior">Field Separators: Default Behavior</h3>
 <p>By default, AWK splits on <strong>spaces and tabs</strong>.</p>
 <p>For other separators, use <code>-F</code> flag.</p>
+</section>
 </section>
 <section id="field-separator-comma--f" class="level2">
 <h2 class="anchored" data-anchor-id="field-separator-comma--f">Field Separator: Comma (-F “,”)</h2>
@@ -5085,13 +5107,13 @@ Note
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">&quot;,&quot;</span> <span class="st">&#39;{print $2}&#39;</span> example.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note: comma becomes the <strong>separator</strong>, not part of field!</p>
 <p>Spaces in fields are now <strong>part of the value</strong>.</p>
-</section>
-<section id="field-separator-other-examples" class="level2">
-<h2 class="anchored" data-anchor-id="field-separator-other-examples">Field Separator: Other Examples</h2>
+<section id="field-separator-other-examples" class="level3">
+<h3 class="anchored" data-anchor-id="field-separator-other-examples">Field Separator: Other Examples</h3>
 <p><strong>Colon separator:</strong></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">&quot;:&quot;</span> <span class="st">&#39;{print $1}&#39;</span> /etc/passwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Tab separator:</strong></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">&quot;\t&quot;</span> <span class="st">&#39;{print $2}&#39;</span> file.tsv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="pattern-action-model" class="level2">
 <h2 class="anchored" data-anchor-id="pattern-action-model">Pattern-Action Model</h2>
@@ -5107,9 +5129,8 @@ Note
 <p>Print only lines starting with “ATOM”:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/^ATOM/ {print $0}&#39;</span> example.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>^</code> means <strong>beginning of line</strong>.</p>
-</section>
-<section id="multiple-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-patterns">Multiple Patterns</h2>
+<section id="multiple-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-patterns">Multiple Patterns</h3>
 <p>Apply different actions to different patterns:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/^ATOM/ {count1++} /^HEADER/ {count2++}&#39;</span> file.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or print specific fields from matching lines:</p>
@@ -5117,6 +5138,7 @@ Note
 <p><strong>Example</strong>: Print x, y, z coordinates of atoms.</p>
 <p>Combined patterns printing fields and header last field (from episode example):</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/^ATOM/ {print $7,$8,$9} /^HEADER/ {print $NF}&#39;</span> example.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="the-end-block" class="level2">
 <h2 class="anchored" data-anchor-id="the-end-block">The END Block</h2>
@@ -5131,15 +5153,15 @@ Note
 <p>After file is read, <code>NR</code> = <strong>line count</strong>:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;END {print NR}&#39;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>More <strong>robust than <code>wc -l</code></strong> (handles missing final newline).</p>
-</section>
-<section id="comparing-line-counting-methods" class="level2">
-<h2 class="anchored" data-anchor-id="comparing-line-counting-methods">Comparing Line Counting Methods</h2>
+<section id="comparing-line-counting-methods" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-line-counting-methods">Comparing Line Counting Methods</h3>
 <p><strong>Using wc:</strong></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>May undercount if last line lacks newline!</p>
 <p><strong>Using AWK:</strong></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;END {print NR}&#39;</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Always counts correctly!</p>
+</section>
 </section>
 <section id="counting-matching-lines" class="level2">
 <h2 class="anchored" data-anchor-id="counting-matching-lines">Counting Matching Lines</h2>
@@ -5150,15 +5172,14 @@ Note
 <li><code>count++</code> = increment counter</li>
 <li><code>END</code> = print final count</li>
 </ul>
-</section>
-<section id="safe-counter-initialization" class="level2">
-<h2 class="anchored" data-anchor-id="safe-counter-initialization">Safe Counter Initialization</h2>
+<section id="safe-counter-initialization" class="level3">
+<h3 class="anchored" data-anchor-id="safe-counter-initialization">Safe Counter Initialization</h3>
 <p>Avoid errors if no lines match:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/^ATOM/ {c++} END {print c+0}&#39;</span> file.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Adding <code>+0</code> safely prints <strong>0 if no matches</strong>.</p>
 </section>
-<section id="multiple-counters-in-a-pattern" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-counters-in-a-pattern">Multiple Counters in a Pattern</h2>
+<section id="multiple-counters-in-a-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-counters-in-a-pattern">Multiple Counters in a Pattern</h3>
 <p>Count atoms and sum their coordinates:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/^ATOM/ {count++; x += $7; y += $8; z += $9} \</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="st">    END {print count, x, y, z}&#39;</span> file.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5167,6 +5188,7 @@ Note
 <li><code>x += $7</code> = sum x coordinates</li>
 <li><code>END</code> = print all totals</li>
 </ul>
+</section>
 </section>
 <section id="challenge-counting-and-selecting-simple" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-counting-and-selecting-simple">Challenge: Counting and Selecting (Simple)</h2>
@@ -5231,15 +5253,14 @@ Solution
 <div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{sum += $1} END {print sum}&#39;</span> numbers.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Calculate average:</strong></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{sum += $1; count++} END {print sum/count}&#39;</span> numbers.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="variable-assignment" class="level2">
-<h2 class="anchored" data-anchor-id="variable-assignment">Variable Assignment</h2>
+<section id="variable-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="variable-assignment">Variable Assignment</h3>
 <p>Set variables in AWK:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{x = $2 * 2; print x}&#39;</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Use variables in calculations throughout.</p>
 </section>
-<section id="begin-block-advanced" class="level2">
-<h2 class="anchored" data-anchor-id="begin-block-advanced">BEGIN Block (Advanced)</h2>
+<section id="begin-block-advanced" class="level3">
+<h3 class="anchored" data-anchor-id="begin-block-advanced">BEGIN Block (Advanced)</h3>
 <p>Initialize variables <strong>before processing</strong>:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;BEGIN {total=0} {total += $1} END {print total}&#39;</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -5247,6 +5268,7 @@ Solution
 <li><code>{total += $1}</code> processes each line</li>
 <li><code>END</code> prints result</li>
 </ul>
+</section>
 </section>
 <section id="awk-programs-from-files" class="level2">
 <h2 class="anchored" data-anchor-id="awk-programs-from-files"><code>awk</code> Programs from Files</h2>
@@ -5274,17 +5296,17 @@ Solution
 <h2 class="anchored" data-anchor-id="real-world-example-1">Real-World Example 1</h2>
 <p>Extract chromosome and position from BED file:</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span> <span class="st">&quot;\t&quot;</span> <span class="st">&#39;{print $1, $2, $3}&#39;</span> file.bed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="real-world-example-2" class="level2">
-<h2 class="anchored" data-anchor-id="real-world-example-2">Real-World Example 2</h2>
+<section id="real-world-example-2" class="level3">
+<h3 class="anchored" data-anchor-id="real-world-example-2">Real-World Example 2</h3>
 <p>Count records by type:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{type[$1]++} END {for (t in type) print t, type[t]}&#39;</span> data.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="real-world-example-3" class="level2">
-<h2 class="anchored" data-anchor-id="real-world-example-3">Real-World Example 3</h2>
+<section id="real-world-example-3" class="level3">
+<h3 class="anchored" data-anchor-id="real-world-example-3">Real-World Example 3</h3>
 <p>Filter and sum:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;$3 &gt; 1000 {sum += $3} END {print sum}&#39;</span> file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Only sum values in column 3 greater than 1000.</p>
+</section>
 </section>
 <section id="key-concepts-summary" class="level2">
 <h2 class="anchored" data-anchor-id="key-concepts-summary">Key Concepts Summary</h2>
@@ -5438,7 +5460,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("git@github-work:Sanduni-P\/shell-novice\.git");
+      var filterRegex = new RegExp("https:\/\/Sanduni-P\.github\.io\/shell-novice\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

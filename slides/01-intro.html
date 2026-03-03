@@ -4906,12 +4906,11 @@ padding-top: 4px !important;
   <ul>
   <li><a href="#episode-1-introducing-the-shell" id="toc-episode-1-introducing-the-shell" class="nav-link active" data-scroll-target="#episode-1-introducing-the-shell">Episode 1: Introducing the Shell</a>
   <ul class="collapse">
-  <li><a href="#why-use-the-shell" id="toc-why-use-the-shell" class="nav-link" data-scroll-target="#why-use-the-shell">Why Use the Shell?</a>
+  <li><a href="#why-use-the-shell" id="toc-why-use-the-shell" class="nav-link" data-scroll-target="#why-use-the-shell">Why Use the Shell?</a></li>
+  <li><a href="#what-is-the-shell" id="toc-what-is-the-shell" class="nav-link" data-scroll-target="#what-is-the-shell">What is the Shell?</a>
   <ul class="collapse">
-  <li><a href="#the-problem-with-guis" id="toc-the-problem-with-guis" class="nav-link" data-scroll-target="#the-problem-with-guis">The Problem with GUIs</a></li>
-  </ul></li>
-  <li><a href="#what-is-the-shell" id="toc-what-is-the-shell" class="nav-link" data-scroll-target="#what-is-the-shell">What is the Shell?</a></li>
   <li><a href="#bash-the-shell-were-using" id="toc-bash-the-shell-were-using" class="nav-link" data-scroll-target="#bash-the-shell-were-using"><code>Bash</code>: The Shell We’re Using</a></li>
+  </ul></li>
   <li><a href="#the-prompt" id="toc-the-prompt" class="nav-link" data-scroll-target="#the-prompt">The Prompt</a></li>
   <li><a href="#typing-commands" id="toc-typing-commands" class="nav-link" data-scroll-target="#typing-commands">Typing Commands</a></li>
   <li><a href="#example-your-first-command" id="toc-example-your-first-command" class="nav-link" data-scroll-target="#example-your-first-command">Example: Your First Command</a></li>
@@ -4926,10 +4925,6 @@ padding-top: 4px !important;
   <li><a href="#nelles-pipeline-a-typical-problem-2" id="toc-nelles-pipeline-a-typical-problem-2" class="nav-link" data-scroll-target="#nelles-pipeline-a-typical-problem-2">Nelle’s Pipeline: A Typical Problem</a>
   <ul class="collapse">
   <li><a href="#the-solution-use-the-shell" id="toc-the-solution-use-the-shell" class="nav-link" data-scroll-target="#the-solution-use-the-shell">💡 The Solution: Use the Shell</a></li>
-  </ul></li>
-  <li><a href="#nelles-pipeline-a-typical-problem-3" id="toc-nelles-pipeline-a-typical-problem-3" class="nav-link" data-scroll-target="#nelles-pipeline-a-typical-problem-3">Nelle’s Pipeline: A Typical Problem</a>
-  <ul class="collapse">
-  <li><a href="#skills-nelle-needs" id="toc-skills-nelle-needs" class="nav-link" data-scroll-target="#skills-nelle-needs">🛠 Skills Nelle Needs</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -4976,50 +4971,38 @@ Objectives
 </div>
 <section id="why-use-the-shell" class="level2">
 <h2 class="anchored" data-anchor-id="why-use-the-shell">Why Use the Shell?</h2>
-<section id="the-problem-with-guis" class="level3">
-<h3 class="anchored" data-anchor-id="the-problem-with-guis">The Problem with GUIs</h3>
 <p>Imagine: Copy the 3rd line from 1,000 text files across 1,000 folders into one file.</p>
-<div class="fragment">
 <p><strong>Using a GUI:</strong></p>
 <ul>
 <li>Hours of clicking</li>
 <li>High chance of error</li>
 <li>Repetitive and tedious</li>
 </ul>
-</div>
-<div class="fragment">
 <p><strong>Using the Shell:</strong></p>
 <ul>
 <li>A few commands</li>
 <li>Repeatable</li>
 <li>Fast and accurate (seconds!)</li>
 </ul>
-</div>
-</section>
 </section>
 <section id="what-is-the-shell" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-shell">What is the Shell?</h2>
-<div class="incremental">
-<ul class="incremental">
+<ul>
 <li>A <strong>program</strong> that reads commands you type</li>
 <li>A <strong>command-line interface (CLI)</strong> - text-based</li>
 <li>Also a <strong>scripting language</strong> for automation</li>
 <li>Allows combining simple programs into powerful workflows</li>
 <li>The default way to interact with servers and supercomputers</li>
 </ul>
-</div>
-</section>
-<section id="bash-the-shell-were-using" class="level2">
-<h2 class="anchored" data-anchor-id="bash-the-shell-were-using"><code>Bash</code>: The Shell We’re Using</h2>
+<section id="bash-the-shell-were-using" class="level3">
+<h3 class="anchored" data-anchor-id="bash-the-shell-were-using"><code>Bash</code>: The Shell We’re Using</h3>
 <p><strong>Bash</strong> = <strong>B</strong>ourne <strong>A</strong>gain <strong>S</strong>Hell</p>
-<div class="incremental">
-<ul class="incremental">
+<ul>
 <li>Most popular Unix shell</li>
 <li>Default on macOS, Linux, and Windows (via Git Bash)</li>
 <li>The standard for shell scripting</li>
-<li>Small number of “words” (commands) gets you far!</li>
 </ul>
-</div>
+</section>
 </section>
 <section id="the-prompt" class="level2">
 <h2 class="anchored" data-anchor-id="the-prompt">The Prompt</h2>
@@ -5048,23 +5031,19 @@ Note
 </section>
 <section id="typing-commands" class="level2">
 <h2 class="anchored" data-anchor-id="typing-commands">Typing Commands</h2>
-<div class="incremental">
-<ul class="incremental">
+<ul>
 <li><strong>Type</strong> a command after the <code>$</code>/<code>%</code></li>
 <li><strong>Press Enter</strong> to execute</li>
 <li>Results appear below</li>
 <li><strong>Never type the <code>$</code>/<code>%</code></strong> - it’s just the prompt!</li>
 </ul>
-</div>
 </section>
 <section id="example-your-first-command" class="level2">
 <h2 class="anchored" data-anchor-id="example-your-first-command">Example: Your First Command</h2>
-<div class="nonincremental">
 <ul>
 <li><code>ls</code> is short for listing.</li>
 <li>This command will list the contents of the current directory:</li>
 </ul>
-</div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Desktop     Downloads   Movies      Pictures
 Documents   Library     Music       Public</code></pre>
@@ -5124,22 +5103,6 @@ Command not found
 <li>Use loops to iterate over files</li>
 <li>Run the pipeline once and reuse it</li>
 <li>Let the computer work while she writes</li>
-</ul>
-</section>
-</section>
-<section id="nelles-pipeline-a-typical-problem-3" class="level2">
-<h2 class="anchored" data-anchor-id="nelles-pipeline-a-typical-problem-3">Nelle’s Pipeline: A Typical Problem</h2>
-<section id="skills-nelle-needs" class="level3">
-<h3 class="anchored" data-anchor-id="skills-nelle-needs">🛠 Skills Nelle Needs</h3>
-<p>To build her pipeline, she must know how to:</p>
-<ul>
-<li>Navigate to a file/directory</li>
-<li>Create a file/directory</li>
-<li>Check the length of a file</li>
-<li>Chain commands together</li>
-<li>Retrieve a set of files</li>
-<li>Iterate over files</li>
-<li>Run a shell script containing her pipeline</li>
 </ul>
 
 
@@ -5238,7 +5201,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("git@github-work:Sanduni-P\/shell-novice\.git");
+      var filterRegex = new RegExp("https:\/\/Sanduni-P\.github\.io\/shell-novice\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

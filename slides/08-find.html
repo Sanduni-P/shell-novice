@@ -4906,51 +4906,77 @@ padding-top: 4px !important;
   <ul>
   <li><a href="#episode-8-finding-things" id="toc-episode-8-finding-things" class="nav-link active" data-scroll-target="#episode-8-finding-things">Episode 8: Finding Things</a>
   <ul class="collapse">
-  <li><a href="#why-grep" id="toc-why-grep" class="nav-link" data-scroll-target="#why-grep">Why “<code>grep</code>”?</a></li>
+  <li><a href="#why-grep" id="toc-why-grep" class="nav-link" data-scroll-target="#why-grep">Why “<code>grep</code>”?</a>
+  <ul class="collapse">
   <li><a href="#what-grep-does" id="toc-what-grep-does" class="nav-link" data-scroll-target="#what-grep-does">What <code>grep</code> Does</a></li>
-  <li><a href="#sample-haiku-file" id="toc-sample-haiku-file" class="nav-link" data-scroll-target="#sample-haiku-file">Sample Haiku File</a></li>
+  </ul></li>
+  <li><a href="#sample-haiku-file" id="toc-sample-haiku-file" class="nav-link" data-scroll-target="#sample-haiku-file">Sample Haiku File</a>
+  <ul class="collapse">
   <li><a href="#finding-lines-with-not" id="toc-finding-lines-with-not" class="nav-link" data-scroll-target="#finding-lines-with-not">Finding Lines with “not”</a></li>
+  </ul></li>
   <li><a href="#understanding-grep-syntax" id="toc-understanding-grep-syntax" class="nav-link" data-scroll-target="#understanding-grep-syntax">Understanding <code>grep</code> Syntax</a></li>
-  <li><a href="#grep-is-case-sensitive" id="toc-grep-is-case-sensitive" class="nav-link" data-scroll-target="#grep-is-case-sensitive"><code>grep</code> is Case-Sensitive</a></li>
+  <li><a href="#grep-is-case-sensitive" id="toc-grep-is-case-sensitive" class="nav-link" data-scroll-target="#grep-is-case-sensitive"><code>grep</code> is Case-Sensitive</a>
+  <ul class="collapse">
   <li><a href="#case-matters" id="toc-case-matters" class="nav-link" data-scroll-target="#case-matters">Case Matters</a></li>
+  </ul></li>
   <li><a href="#searching-phrases" id="toc-searching-phrases" class="nav-link" data-scroll-target="#searching-phrases">Searching Phrases</a></li>
-  <li><a href="#option--w-word-boundaries" id="toc-option--w-word-boundaries" class="nav-link" data-scroll-target="#option--w-word-boundaries">Option: -w (Word Boundaries)</a></li>
+  <li><a href="#option--w-word-boundaries" id="toc-option--w-word-boundaries" class="nav-link" data-scroll-target="#option--w-word-boundaries">Option: -w (Word Boundaries)</a>
+  <ul class="collapse">
   <li><a href="#option--i-ignore-case" id="toc-option--i-ignore-case" class="nav-link" data-scroll-target="#option--i-ignore-case">Option: -i (Ignore Case)</a></li>
+  </ul></li>
   <li><a href="#option--n-line-numbers" id="toc-option--n-line-numbers" class="nav-link" data-scroll-target="#option--n-line-numbers">Option: -n (Line Numbers)</a></li>
-  <li><a href="#combining-options" id="toc-combining-options" class="nav-link" data-scroll-target="#combining-options">Combining Options</a></li>
+  <li><a href="#combining-options" id="toc-combining-options" class="nav-link" data-scroll-target="#combining-options">Combining Options</a>
+  <ul class="collapse">
   <li><a href="#more-option-combinations" id="toc-more-option-combinations" class="nav-link" data-scroll-target="#more-option-combinations">More Option Combinations</a></li>
+  </ul></li>
   <li><a href="#option--v-invert-match" id="toc-option--v-invert-match" class="nav-link" data-scroll-target="#option--v-invert-match">Option: -v (Invert Match)</a></li>
   <li><a href="#option--r-recursive" id="toc-option--r-recursive" class="nav-link" data-scroll-target="#option--r-recursive">Option: -r (Recursive)</a></li>
   <li><a href="#getting-help-with-grep" id="toc-getting-help-with-grep" class="nav-link" data-scroll-target="#getting-help-with-grep">Getting Help with <code>grep</code></a></li>
   <li><a href="#wildcards-and-regular-expressions" id="toc-wildcards-and-regular-expressions" class="nav-link" data-scroll-target="#wildcards-and-regular-expressions">Wildcards and Regular Expressions</a></li>
-  <li><a href="#regex-start-of-line" id="toc-regex-start-of-line" class="nav-link" data-scroll-target="#regex-start-of-line">Regex: Start of Line (^)</a></li>
+  <li><a href="#regex-start-of-line" id="toc-regex-start-of-line" class="nav-link" data-scroll-target="#regex-start-of-line">Regex: Start of Line (^)</a>
+  <ul class="collapse">
   <li><a href="#option--e-extended-regex" id="toc-option--e-extended-regex" class="nav-link" data-scroll-target="#option--e-extended-regex">Option: -E (Extended Regex)</a></li>
-  <li><a href="#text-vs-binary-files" id="toc-text-vs-binary-files" class="nav-link" data-scroll-target="#text-vs-binary-files">Text vs Binary Files</a></li>
+  </ul></li>
+  <li><a href="#text-vs-binary-files" id="toc-text-vs-binary-files" class="nav-link" data-scroll-target="#text-vs-binary-files">Text vs Binary Files</a>
+  <ul class="collapse">
   <li><a href="#using-grep-on-binary" id="toc-using-grep-on-binary" class="nav-link" data-scroll-target="#using-grep-on-binary">Using <code>grep</code> on Binary</a></li>
-  <li><a href="#option--c-count-matches" id="toc-option--c-count-matches" class="nav-link" data-scroll-target="#option--c-count-matches">Option: -c (Count Matches)</a></li>
+  </ul></li>
+  <li><a href="#option--c-count-matches" id="toc-option--c-count-matches" class="nav-link" data-scroll-target="#option--c-count-matches">Option: -c (Count Matches)</a>
+  <ul class="collapse">
   <li><a href="#finding-files-with-find" id="toc-finding-files-with-find" class="nav-link" data-scroll-target="#finding-files-with-find">Finding Files with <code>find</code></a></li>
+  </ul></li>
   <li><a href="#find-basic-syntax" id="toc-find-basic-syntax" class="nav-link" data-scroll-target="#find-basic-syntax"><code>find</code> Basic Syntax</a></li>
   <li><a href="#option--type" id="toc-option--type" class="nav-link" data-scroll-target="#option--type">Option: -type</a></li>
   <li><a href="#option--name" id="toc-option--name" class="nav-link" data-scroll-target="#option--name">Option: -name</a></li>
-  <li><a href="#option--size" id="toc-option--size" class="nav-link" data-scroll-target="#option--size">Option: -size</a></li>
+  <li><a href="#option--size" id="toc-option--size" class="nav-link" data-scroll-target="#option--size">Option: -size</a>
+  <ul class="collapse">
   <li><a href="#option--mtime" id="toc-option--mtime" class="nav-link" data-scroll-target="#option--mtime">Option: -mtime</a></li>
-  <li><a href="#option--perm-permissions" id="toc-option--perm-permissions" class="nav-link" data-scroll-target="#option--perm-permissions">Option: -perm (Permissions)</a></li>
+  </ul></li>
+  <li><a href="#option--perm-permissions" id="toc-option--perm-permissions" class="nav-link" data-scroll-target="#option--perm-permissions">Option: -perm (Permissions)</a>
+  <ul class="collapse">
   <li><a href="#combining-find-options" id="toc-combining-find-options" class="nav-link" data-scroll-target="#combining-find-options">Combining <code>find</code> Options</a></li>
+  </ul></li>
   <li><a href="#using-find-output-with-other-commands" id="toc-using-find-output-with-other-commands" class="nav-link" data-scroll-target="#using-find-output-with-other-commands">Using <code>find</code> Output with Other Commands</a></li>
-  <li><a href="#command-substitution" id="toc-command-substitution" class="nav-link" data-scroll-target="#command-substitution">Command Substitution: $()</a></li>
+  <li><a href="#command-substitution" id="toc-command-substitution" class="nav-link" data-scroll-target="#command-substitution">Command Substitution: $()</a>
+  <ul class="collapse">
   <li><a href="#practical-example" id="toc-practical-example" class="nav-link" data-scroll-target="#practical-example">Practical Example</a></li>
+  </ul></li>
   <li><a href="#challenge-using-grep" id="toc-challenge-using-grep" class="nav-link" data-scroll-target="#challenge-using-grep">Challenge: Using <code>grep</code></a></li>
   <li><a href="#solution-using-grep" id="toc-solution-using-grep" class="nav-link" data-scroll-target="#solution-using-grep">Solution: Using <code>grep</code></a></li>
   <li><a href="#challenge-tracking-a-species" id="toc-challenge-tracking-a-species" class="nav-link" data-scroll-target="#challenge-tracking-a-species">Challenge: Tracking a Species</a></li>
   <li><a href="#solution-tracking-a-species" id="toc-solution-tracking-a-species" class="nav-link" data-scroll-target="#solution-tracking-a-species">Solution: Tracking a Species</a></li>
   <li><a href="#challenge-little-women" id="toc-challenge-little-women" class="nav-link" data-scroll-target="#challenge-little-women">Challenge: Little Women</a></li>
-  <li><a href="#solution-little-women" id="toc-solution-little-women" class="nav-link" data-scroll-target="#solution-little-women">Solution: Little Women</a></li>
+  <li><a href="#solution-little-women" id="toc-solution-little-women" class="nav-link" data-scroll-target="#solution-little-women">Solution: Little Women</a>
+  <ul class="collapse">
   <li><a href="#listing-vs.-finding" id="toc-listing-vs.-finding" class="nav-link" data-scroll-target="#listing-vs.-finding">Listing vs. Finding</a></li>
+  </ul></li>
   <li><a href="#challenge-matching-and-subtracting" id="toc-challenge-matching-and-subtracting" class="nav-link" data-scroll-target="#challenge-matching-and-subtracting">Challenge: Matching and Subtracting</a></li>
   <li><a href="#solution-matching-and-subtracting" id="toc-solution-matching-and-subtracting" class="nav-link" data-scroll-target="#solution-matching-and-subtracting">Solution: Matching and Subtracting</a></li>
   <li><a href="#challenge-find-pipeline-reading-comprehension" id="toc-challenge-find-pipeline-reading-comprehension" class="nav-link" data-scroll-target="#challenge-find-pipeline-reading-comprehension">Challenge: find Pipeline Reading Comprehension</a></li>
-  <li><a href="#solution-find-pipeline-reading-comprehension" id="toc-solution-find-pipeline-reading-comprehension" class="nav-link" data-scroll-target="#solution-find-pipeline-reading-comprehension">Solution: find Pipeline Reading Comprehension</a></li>
+  <li><a href="#solution-find-pipeline-reading-comprehension" id="toc-solution-find-pipeline-reading-comprehension" class="nav-link" data-scroll-target="#solution-find-pipeline-reading-comprehension">Solution: find Pipeline Reading Comprehension</a>
+  <ul class="collapse">
   <li><a href="#binary-files" id="toc-binary-files" class="nav-link" data-scroll-target="#binary-files">Binary Files</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -5001,11 +5027,11 @@ Objectives
 <p>“grep” is a contraction of <strong>global/regular expression/print</strong>.</p>
 <p>Common sequence in early Unix text editors.</p>
 <p>Now a very useful command-line program.</p>
-</section>
-<section id="what-grep-does" class="level2">
-<h2 class="anchored" data-anchor-id="what-grep-does">What <code>grep</code> Does</h2>
+<section id="what-grep-does" class="level3">
+<h3 class="anchored" data-anchor-id="what-grep-does">What <code>grep</code> Does</h3>
 <p><code>grep</code> <strong>finds and prints lines</strong> in files that match a pattern.</p>
 <p>Works on any text file you can think of.</p>
+</section>
 </section>
 <section id="sample-haiku-file" class="level2">
 <h2 class="anchored" data-anchor-id="sample-haiku-file">Sample Haiku File</h2>
@@ -5022,15 +5048,15 @@ and the presence of absence:
 Yesterday it worked
 Today it is not working
 Software is like that.</code></pre>
-</section>
-<section id="finding-lines-with-not" class="level2">
-<h2 class="anchored" data-anchor-id="finding-lines-with-not">Finding Lines with “not”</h2>
+<section id="finding-lines-with-not" class="level3">
+<h3 class="anchored" data-anchor-id="finding-lines-with-not">Finding Lines with “not”</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> not haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Is not the true Tao, until
 &quot;My Thesis&quot; not found
 Today it is not working</code></pre>
 <p><strong>Pattern</strong>: <code>not</code></p>
 <p><strong>Result</strong>: All lines containing the word “not”</p>
+</section>
 </section>
 <section id="understanding-grep-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="understanding-grep-syntax">Understanding <code>grep</code> Syntax</h2>
@@ -5050,14 +5076,14 @@ Today it is not working</code></pre>
 &quot;My Thesis&quot; not found.</code></pre>
 <p>Matched “The” at start AND “The” inside “Thesis”.</p>
 <p>Didn’t match lowercase “the”.</p>
-</section>
-<section id="case-matters" class="level2">
-<h2 class="anchored" data-anchor-id="case-matters">Case Matters</h2>
+<section id="case-matters" class="level3">
+<h3 class="anchored" data-anchor-id="case-matters">Case Matters</h3>
 <p>By default: <strong>case-sensitive</strong></p>
 <ul>
 <li>“The” ≠ “the” ≠ “THE”</li>
 <li>Search pattern must match exactly</li>
 </ul>
+</section>
 </section>
 <section id="searching-phrases" class="level2">
 <h2 class="anchored" data-anchor-id="searching-phrases">Searching Phrases</h2>
@@ -5077,15 +5103,15 @@ Today it is not working</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-w</span> The haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>The Tao that is seen</code></pre>
 <p>Only “The” as complete word (not part of “Thesis”).</p>
-</section>
-<section id="option--i-ignore-case" class="level2">
-<h2 class="anchored" data-anchor-id="option--i-ignore-case">Option: -i (Ignore Case)</h2>
+<section id="option--i-ignore-case" class="level3">
+<h3 class="anchored" data-anchor-id="option--i-ignore-case">Option: -i (Ignore Case)</h3>
 <p><strong>Case-insensitive search:</strong></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> the haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Matches “The”, “the”, “THE”, etc.</p>
 <pre class="output"><code>The Tao that is seen
 Is not the true Tao, until
 and the presence of absence:</code></pre>
+</section>
 </section>
 <section id="option--n-line-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="option--n-line-numbers">Option: -n (Line Numbers)</h2>
@@ -5103,14 +5129,14 @@ and the presence of absence:</code></pre>
 <pre class="output"><code>2:Is not the true Tao, until
 6:and the presence of absence:</code></pre>
 <p><strong>Or shorter form</strong>: <code>grep -nw &quot;the&quot; haiku.txt</code></p>
-</section>
-<section id="more-option-combinations" class="level2">
-<h2 class="anchored" data-anchor-id="more-option-combinations">More Option Combinations</h2>
+<section id="more-option-combinations" class="level3">
+<h3 class="anchored" data-anchor-id="more-option-combinations">More Option Combinations</h3>
 <p>Find whole word “the” case-insensitive:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> <span class="at">-w</span> <span class="at">-i</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>1:The Tao that is seen
 2:Is not the true Tao, until
 6:and the presence of absence:</code></pre>
+</section>
 </section>
 <section id="option--v-invert-match" class="level2">
 <h2 class="anchored" data-anchor-id="option--v-invert-match">Option: -v (Invert Match)</h2>
@@ -5163,23 +5189,22 @@ Software is like that.</code></pre>
 <li><code>o</code> = literal letter o</li>
 </ul>
 <p>So: any line with ‘o’ in second position.</p>
-</section>
-<section id="option--e-extended-regex" class="level2">
-<h2 class="anchored" data-anchor-id="option--e-extended-regex">Option: -E (Extended Regex)</h2>
+<section id="option--e-extended-regex" class="level3">
+<h3 class="anchored" data-anchor-id="option--e-extended-regex">Option: -E (Extended Regex)</h3>
 <p><strong>Use more powerful pattern syntax:</strong></p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-E</span> <span class="st">&quot;^The&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Lines starting with “The”.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-E</span> <span class="st">&quot;.aw|.ew&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Lines containing “aw” or “ew”.</p>
 </section>
+</section>
 <section id="text-vs-binary-files" class="level2">
 <h2 class="anchored" data-anchor-id="text-vs-binary-files">Text vs Binary Files</h2>
 <p><strong>Text files</strong>: human-readable - <code>.txt</code>, <code>.csv</code>, <code>.py</code>, <code>.json</code>, <code>.sh</code></p>
 <p><strong>Binary files</strong>: encoded/compiled - <code>.pdf</code>, <code>.jpg</code>, <code>.png</code>, <code>.exe</code>, <code>.so</code></p>
 <p><strong><code>grep</code> works on text, not binary!</strong></p>
-</section>
-<section id="using-grep-on-binary" class="level2">
-<h2 class="anchored" data-anchor-id="using-grep-on-binary">Using <code>grep</code> on Binary</h2>
+<section id="using-grep-on-binary" class="level3">
+<h3 class="anchored" data-anchor-id="using-grep-on-binary">Using <code>grep</code> on Binary</h3>
 <p>Binary files cause issues:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> pattern document.pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>May show garbage or “binary file matches”.</p>
@@ -5187,17 +5212,18 @@ Software is like that.</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-a</span> pattern document.pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Results usually useless (binary format gibberish).</p>
 </section>
+</section>
 <section id="option--c-count-matches" class="level2">
 <h2 class="anchored" data-anchor-id="option--c-count-matches">Option: -c (Count Matches)</h2>
 <p><strong>Count matching lines instead of showing them:</strong></p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&quot;not&quot;</span> haiku.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>3</code></pre>
 <p>Three lines contain “not”.</p>
-</section>
-<section id="finding-files-with-find" class="level2">
-<h2 class="anchored" data-anchor-id="finding-files-with-find">Finding Files with <code>find</code></h2>
+<section id="finding-files-with-find" class="level3">
+<h3 class="anchored" data-anchor-id="finding-files-with-find">Finding Files with <code>find</code></h3>
 <p><strong>Two types of searching:</strong> 1. Find <strong>text</strong> in files → use <code>grep</code> 2. Find <strong>files themselves</strong> → use <code>find</code></p>
 <p><code>find</code> searches by: name, type, size, date, permissions.</p>
+</section>
 </section>
 <section id="find-basic-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="find-basic-syntax"><code>find</code> Basic Syntax</h2>
@@ -5233,15 +5259,15 @@ Software is like that.</code></pre>
 <p>Files <strong>smaller than</strong> 100 kilobytes.</p>
 <p>Units: <code>k</code> (kilobyte), <code>M</code> (megabyte), <code>G</code> (gigabyte).</p>
 <p><code>+</code> means “larger than”, <code>-</code> means “smaller than”.</p>
-</section>
-<section id="option--mtime" class="level2">
-<h2 class="anchored" data-anchor-id="option--mtime">Option: -mtime</h2>
+<section id="option--mtime" class="level3">
+<h3 class="anchored" data-anchor-id="option--mtime">Option: -mtime</h3>
 <p><strong>Search by modification date:</strong></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-mtime</span> <span class="at">-7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Modified in <strong>last 7 days</strong>.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-mtime</span> <span class="at">-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Modified <strong>last 24 hours</strong>.</p>
 <p><code>-</code> means “less than” (more recent).</p>
+</section>
 </section>
 <section id="option--perm-permissions" class="level2">
 <h2 class="anchored" data-anchor-id="option--perm-permissions">Option: -perm (Permissions)</h2>
@@ -5253,13 +5279,13 @@ Software is like that.</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-perm</span> <span class="at">-o</span><span class="op">=</span>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Files where others can read.</p>
 <p><code>-</code> before permission means “bits are set”.</p>
-</section>
-<section id="combining-find-options" class="level2">
-<h2 class="anchored" data-anchor-id="combining-find-options">Combining <code>find</code> Options</h2>
+<section id="combining-find-options" class="level3">
+<h3 class="anchored" data-anchor-id="combining-find-options">Combining <code>find</code> Options</h3>
 <p><strong>Filter by multiple criteria:</strong></p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-name</span> <span class="st">&quot;*.log&quot;</span> <span class="at">-mtime</span> <span class="at">-3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>All <code>.log</code> files modified in last 3 days.</p>
 <p>Options work together (AND logic).</p>
+</section>
 </section>
 <section id="using-find-output-with-other-commands" class="level2">
 <h2 class="anchored" data-anchor-id="using-find-output-with-other-commands">Using <code>find</code> Output with Other Commands</h2>
@@ -5279,15 +5305,15 @@ Software is like that.</code></pre>
 <p>Output:</p>
 <pre><code>Files found: haiku.txt notes.txt</code></pre>
 <p>Replace <code>$()</code> with command’s output.</p>
-</section>
-<section id="practical-example" class="level2">
-<h2 class="anchored" data-anchor-id="practical-example">Practical Example</h2>
+<section id="practical-example" class="level3">
+<h3 class="anchored" data-anchor-id="practical-example">Practical Example</h3>
 <p>Count all “ATOM” lines in all PDB files:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&quot;^ATOM&quot;</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.pdb&quot;</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Lists count for each file:</p>
 <pre class="output"><code>file1.pdb:1523
 file2.pdb:2104
 file3.pdb:1876</code></pre>
+</section>
 </section>
 <section id="challenge-using-grep" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-using-grep">Challenge: Using <code>grep</code></h2>
@@ -5454,14 +5480,14 @@ Solution
 </div>
 </div>
 </div>
-</section>
-<section id="listing-vs.-finding" class="level2">
-<h2 class="anchored" data-anchor-id="listing-vs.-finding">Listing vs. Finding</h2>
-<p><code>ls</code> and <code>find</code> can be made to do similar things given the right options, but under normal circumstances:</p>
+<section id="listing-vs.-finding" class="level3">
+<h3 class="anchored" data-anchor-id="listing-vs.-finding">Listing vs. Finding</h3>
 <ul>
-<li><code>ls</code> <strong>lists</strong> everything it can</li>
-<li><code>find</code> <strong>searches</strong> for things with certain properties and shows them</li>
+<li><p><code>ls</code> and <code>find</code> can overlap with the right options, but typically:</p></li>
+<li><p><code>ls</code> <strong>lists</strong> everything it can</p></li>
+<li><p><code>find</code> <strong>searches</strong> for things with certain properties and shows them</p></li>
 </ul>
+</section>
 </section>
 <section id="challenge-matching-and-subtracting" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-matching-and-subtracting">Challenge: Matching and Subtracting</h2>
@@ -5548,16 +5574,24 @@ Solution
 </div>
 </div>
 </div>
+<section id="binary-files" class="level3">
+<h3 class="anchored" data-anchor-id="binary-files">Binary Files</h3>
+<ul>
+<li><p>So far, we focused on text files.</p></li>
+<li><p>If data is in images, databases, or other formats:</p>
+<ul>
+<li>some tools extend <code>grep</code> to a few non-text formats</li>
+<li>a general approach is to convert data to text first</li>
+</ul></li>
+<li><p>Text extraction has tradeoffs:</p></li>
+<li><p><strong>Easy</strong>: Write a program that extracts X and Y dimensions from image files for <code>grep</code> to use</p></li>
+<li><p><strong>Hard</strong>: Find values in a spreadsheet whose cells contained formulas</p></li>
+<li><p>Another option: use another programming language when shell/text tools are not enough.</p></li>
+<li><p>Many modern languages borrow core ideas from the shell.</p></li>
+</ul>
+
+
 </section>
-<section id="binary-files" class="level2">
-<h2 class="anchored" data-anchor-id="binary-files">Binary Files</h2>
-<p>We have focused exclusively on finding patterns in text files. What if your data is stored as images, in databases, or in some other format?</p>
-<p>A handful of tools extend <code>grep</code> to handle a few non-text formats. But a more generalizable approach is to convert the data to text or extract the text-like elements from the data.</p>
-<p>On one hand, it makes simple things easy to do. On the other hand, complex things are usually impossible. For example: - <strong>Easy</strong>: Write a program that extracts X and Y dimensions from image files for <code>grep</code> to use - <strong>Hard</strong>: Find values in a spreadsheet whose cells contained formulas</p>
-<p>A last option: recognize that the shell and text processing have their limits, and use another programming language.</p>
-<p>Many modern programming languages have borrowed ideas from the shell, and imitation is the sincerest form of praise.</p>
-
-
 </section>
 </section>
 
@@ -5652,7 +5686,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("git@github-work:Sanduni-P\/shell-novice\.git");
+      var filterRegex = new RegExp("https:\/\/Sanduni-P\.github\.io\/shell-novice\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

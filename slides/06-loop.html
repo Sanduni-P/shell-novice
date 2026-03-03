@@ -4906,19 +4906,27 @@ padding-top: 4px !important;
   <ul>
   <li><a href="#episode-6-loops" id="toc-episode-6-loops" class="nav-link active" data-scroll-target="#episode-6-loops">Episode 6: Loops</a>
   <ul class="collapse">
-  <li><a href="#what-are-loops" id="toc-what-are-loops" class="nav-link" data-scroll-target="#what-are-loops">What Are Loops?</a></li>
+  <li><a href="#what-are-loops" id="toc-what-are-loops" class="nav-link" data-scroll-target="#what-are-loops">What Are Loops?</a>
+  <ul class="collapse">
   <li><a href="#loop-structure" id="toc-loop-structure" class="nav-link" data-scroll-target="#loop-structure">Loop Structure</a></li>
-  <li><a href="#example-files" id="toc-example-files" class="nav-link" data-scroll-target="#example-files">Example Files</a></li>
+  </ul></li>
+  <li><a href="#example-files" id="toc-example-files" class="nav-link" data-scroll-target="#example-files">Example Files</a>
+  <ul class="collapse">
   <li><a href="#looking-at-the-files" id="toc-looking-at-the-files" class="nav-link" data-scroll-target="#looking-at-the-files">Looking at the Files</a></li>
+  </ul></li>
   <li><a href="#general-form-of-a-loop" id="toc-general-form-of-a-loop" class="nav-link" data-scroll-target="#general-form-of-a-loop">General Form of a Loop</a></li>
-  <li><a href="#follow-the-prompt" id="toc-follow-the-prompt" class="nav-link" data-scroll-target="#follow-the-prompt">Follow the Prompt</a></li>
-  <li><a href="#same-symbols-different-meanings" id="toc-same-symbols-different-meanings" class="nav-link" data-scroll-target="#same-symbols-different-meanings">Same Symbols, Different Meanings</a></li>
-  <li><a href="#loop-iteration" id="toc-loop-iteration" class="nav-link" data-scroll-target="#loop-iteration">Loop Iteration</a></li>
+  <li><a href="#loop-iteration" id="toc-loop-iteration" class="nav-link" data-scroll-target="#loop-iteration">Loop Iteration</a>
+  <ul class="collapse">
   <li><a href="#variable-substitution" id="toc-variable-substitution" class="nav-link" data-scroll-target="#variable-substitution">Variable Substitution</a></li>
-  <li><a href="#practical-loop-example" id="toc-practical-loop-example" class="nav-link" data-scroll-target="#practical-loop-example">Practical Loop Example</a></li>
+  </ul></li>
+  <li><a href="#practical-loop-example" id="toc-practical-loop-example" class="nav-link" data-scroll-target="#practical-loop-example">Practical Loop Example</a>
+  <ul class="collapse">
   <li><a href="#variable-name-vs-value" id="toc-variable-name-vs-value" class="nav-link" data-scroll-target="#variable-name-vs-value">Variable Name vs Value</a></li>
-  <li><a href="#variable-naming" id="toc-variable-naming" class="nav-link" data-scroll-target="#variable-naming">Variable Naming</a></li>
+  </ul></li>
+  <li><a href="#variable-naming" id="toc-variable-naming" class="nav-link" data-scroll-target="#variable-naming">Variable Naming</a>
+  <ul class="collapse">
   <li><a href="#variable-naming-tips" id="toc-variable-naming-tips" class="nav-link" data-scroll-target="#variable-naming-tips">Variable Naming Tips</a></li>
+  </ul></li>
   <li><a href="#loops-with-numbers" id="toc-loops-with-numbers" class="nav-link" data-scroll-target="#loops-with-numbers">Loops with Numbers</a></li>
   <li><a href="#challenge-write-your-own-loop" id="toc-challenge-write-your-own-loop" class="nav-link" data-scroll-target="#challenge-write-your-own-loop">Challenge: Write Your Own Loop</a></li>
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
@@ -4935,7 +4943,6 @@ padding-top: 4px !important;
   <li><a href="#another-practical-example" id="toc-another-practical-example" class="nav-link" data-scroll-target="#another-practical-example">Another Practical Example</a></li>
   <li><a href="#spaces-in-filenames" id="toc-spaces-in-filenames" class="nav-link" data-scroll-target="#spaces-in-filenames">Spaces in Filenames</a></li>
   <li><a href="#what-happens-without-quotes" id="toc-what-happens-without-quotes" class="nav-link" data-scroll-target="#what-happens-without-quotes">What Happens Without Quotes?</a></li>
-  <li><a href="#why-quote-variables" id="toc-why-quote-variables" class="nav-link" data-scroll-target="#why-quote-variables">Why Quote Variables?</a></li>
   <li><a href="#backing-up-files-in-a-loop" id="toc-backing-up-files-in-a-loop" class="nav-link" data-scroll-target="#backing-up-files-in-a-loop">Backing Up Files in a Loop</a></li>
   <li><a href="#solution-use-a-loop" id="toc-solution-use-a-loop" class="nav-link" data-scroll-target="#solution-use-a-loop">Solution: Use a Loop</a></li>
   <li><a href="#testing-loops-with-echo" id="toc-testing-loops-with-echo" class="nav-link" data-scroll-target="#testing-loops-with-echo">Testing Loops with <code>echo</code></a></li>
@@ -4943,12 +4950,15 @@ padding-top: 4px !important;
   <li><a href="#nelles-pipeline-processing-files" id="toc-nelles-pipeline-processing-files" class="nav-link" data-scroll-target="#nelles-pipeline-processing-files">Nelle’s Pipeline: Processing Files</a></li>
   <li><a href="#nelle-tests-file-selection" id="toc-nelle-tests-file-selection" class="nav-link" data-scroll-target="#nelle-tests-file-selection">Nelle Tests File Selection</a></li>
   <li><a href="#nelle-builds-output-filenames" id="toc-nelle-builds-output-filenames" class="nav-link" data-scroll-target="#nelle-builds-output-filenames">Nelle Builds Output Filenames</a></li>
-  <li><a href="#command-history" id="toc-command-history" class="nav-link" data-scroll-target="#command-history">Command History</a></li>
+  <li><a href="#command-history" id="toc-command-history" class="nav-link" data-scroll-target="#command-history">Command History</a>
+  <ul class="collapse">
   <li><a href="#accessing-history" id="toc-accessing-history" class="nav-link" data-scroll-target="#accessing-history">Accessing History</a></li>
-  <li><a href="#one-liner-loop" id="toc-one-liner-loop" class="nav-link" data-scroll-target="#one-liner-loop">One-Liner Loop</a></li>
+  </ul></li>
+  <li><a href="#one-liner-loop" id="toc-one-liner-loop" class="nav-link" data-scroll-target="#one-liner-loop">One-Liner Loop</a>
+  <ul class="collapse">
   <li><a href="#beginning-and-end" id="toc-beginning-and-end" class="nav-link" data-scroll-target="#beginning-and-end">Beginning and End</a></li>
-  <li><a href="#those-who-know-history" id="toc-those-who-know-history" class="nav-link" data-scroll-target="#those-who-know-history">Those Who Know History</a></li>
-  <li><a href="#other-history-commands" id="toc-other-history-commands" class="nav-link" data-scroll-target="#other-history-commands">Other history Commands</a></li>
+  </ul></li>
+  <li><a href="#nelle-runs-the-pipeline" id="toc-nelle-runs-the-pipeline" class="nav-link" data-scroll-target="#nelle-runs-the-pipeline">Nelle Runs the Pipeline</a></li>
   <li><a href="#challenge-doing-a-dry-run" id="toc-challenge-doing-a-dry-run" class="nav-link" data-scroll-target="#challenge-doing-a-dry-run">Challenge: Doing a Dry Run</a></li>
   <li><a href="#solution-12" id="toc-solution-12" class="nav-link" data-scroll-target="#solution-12">Solution</a></li>
   <li><a href="#challenge-nested-loops" id="toc-challenge-nested-loops" class="nav-link" data-scroll-target="#challenge-nested-loops">Challenge: Nested Loops</a></li>
@@ -5002,12 +5012,13 @@ Objectives
 </div>
 <section id="what-are-loops" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-loops">What Are Loops?</h2>
-<p><strong>Loops</strong> are a programming construct which allow us to repeat a command or set of commands for each item in a list.</p>
-<p>As such they are key to productivity improvements through automation.</p>
-<p>Similar to wildcards and tab completion, using loops also reduces the amount of typing required (and hence reduces the number of typing mistakes).</p>
-</section>
-<section id="loop-structure" class="level2">
-<h2 class="anchored" data-anchor-id="loop-structure">Loop Structure</h2>
+<ul>
+<li><strong>Loops</strong> repeat commands for each item in a list.</li>
+<li>They improve productivity through automation.</li>
+<li>Like wildcards and tab completion, loops reduce typing and mistakes.</li>
+</ul>
+<section id="loop-structure" class="level3">
+<h3 class="anchored" data-anchor-id="loop-structure">Loop Structure</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The word &quot;for&quot; indicates the start of a &quot;For-loop&quot; command</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> thing <span class="kw">in</span> list_of_things</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The word &quot;do&quot; indicates the start of job execution list</span></span>
@@ -5018,22 +5029,31 @@ Objectives
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Three keywords: <code>for</code>, <code>do</code>, <code>done</code></p>
 </section>
+</section>
 <section id="example-files" class="level2">
 <h2 class="anchored" data-anchor-id="example-files">Example Files</h2>
-<p>Suppose we have several hundred genome data files named <code>basilisk.dat</code>, <code>minotaur.dat</code>, and <code>unicorn.dat</code>.</p>
-<p>For this example, we’ll use the <code>exercise-data/creatures</code> directory which only has three example files, but the principles can be applied to many many more files at once.</p>
-<p>The structure of these files is the same: the common name, classification, and updated date are presented on the first three lines, with DNA sequences on the following lines.</p>
-</section>
-<section id="looking-at-the-files" class="level2">
-<h2 class="anchored" data-anchor-id="looking-at-the-files">Looking at the Files</h2>
+<ul>
+<li>Imagine hundreds of genome files like <code>basilisk.dat</code>, <code>minotaur.dat</code>, and <code>unicorn.dat</code>.</li>
+<li>We use <code>exercise-data/creatures</code> (three files) for a small demonstration.</li>
+<li>The same approach scales to many files.</li>
+<li>Each file has common name, classification, and update date at the top.</li>
+</ul>
+<section id="looking-at-the-files" class="level3">
+<h3 class="anchored" data-anchor-id="looking-at-the-files">Looking at the Files</h3>
 <p>Let’s look at the files:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 basilisk.dat minotaur.dat unicorn.dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We would like to print out the classification for each species, which is given on the second line of each file.</p>
-<p>For each file, we would need to execute the command <code>head -n 2</code> and pipe this to <code>tail -n 1</code>.</p>
+<ul>
+<li>Goal: print the classification (line 2) for each species.</li>
+<li>Per file, use <code>head -n 2</code> piped to <code>tail -n 1</code>.</li>
+</ul>
+</section>
 </section>
 <section id="general-form-of-a-loop" class="level2">
 <h2 class="anchored" data-anchor-id="general-form-of-a-loop">General Form of a Loop</h2>
-<p>We’ll use a loop to solve this problem, but first let’s look at the general form of a loop:</p>
+<ul>
+<li>We’ll solve this with a loop.</li>
+<li>First, look at the general loop form:</li>
+</ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> basilisk.dat minotaur.dat unicorn.dat</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$filename</span></span>
@@ -5041,24 +5061,15 @@ Objectives
 <pre class="output"><code>basilisk.dat
 minotaur.dat
 unicorn.dat</code></pre>
-</section>
-<section id="follow-the-prompt" class="level2">
-<h2 class="anchored" data-anchor-id="follow-the-prompt">Follow the Prompt</h2>
 <p>When typing a loop, shell prompt changes:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> for filename in basilisk.dat minotaur.dat unicorn.dat</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="va">$filename</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The <code>&gt;</code> prompt reminds you the command isn’t complete yet.</p>
-<p>A semicolon <code>;</code> can separate commands on one line.</p>
-</section>
-<section id="same-symbols-different-meanings" class="level2">
-<h2 class="anchored" data-anchor-id="same-symbols-different-meanings">Same Symbols, Different Meanings</h2>
 <ul>
-<li><strong>Shell prints <code>&gt;</code> or <code>$</code></strong>: it’s a prompt (expects input)</li>
-<li><strong>You type <code>&gt;</code> or <code>$</code></strong>: it’s an instruction (redirect or variable)</li>
+<li>The <code>&gt;</code> prompt reminds you the command isn’t complete yet.</li>
+<li>A semicolon <code>;</code> can separate commands on one line.</li>
 </ul>
-<p>Context matters!</p>
 </section>
 <section id="loop-iteration" class="level2">
 <h2 class="anchored" data-anchor-id="loop-iteration">Loop Iteration</h2>
@@ -5069,12 +5080,12 @@ unicorn.dat</code></pre>
 <li><strong>Third</strong>: <code>$filename</code> = <code>unicorn.dat</code></li>
 </ul>
 <p>Then shell exits loop (no more items).</p>
-</section>
-<section id="variable-substitution" class="level2">
-<h2 class="anchored" data-anchor-id="variable-substitution">Variable Substitution</h2>
+<section id="variable-substitution" class="level3">
+<h3 class="anchored" data-anchor-id="variable-substitution">Variable Substitution</h3>
 <p>Use <code>$varname</code> to access the value.</p>
 <p>The <code>$</code> tells shell: <strong>treat this as a variable, not literal text</strong>.</p>
 <p>Replace with actual value before executing command.</p>
+</section>
 </section>
 <section id="practical-loop-example" class="level2">
 <h2 class="anchored" data-anchor-id="practical-loop-example">Practical Loop Example</h2>
@@ -5090,12 +5101,12 @@ minotaur.dat
 CLASSIFICATION: bos hominus
 unicorn.dat
 CLASSIFICATION: equus monoceros</code></pre>
-</section>
-<section id="variable-name-vs-value" class="level2">
-<h2 class="anchored" data-anchor-id="variable-name-vs-value">Variable Name vs Value</h2>
+<section id="variable-name-vs-value" class="level3">
+<h3 class="anchored" data-anchor-id="variable-name-vs-value">Variable Name vs Value</h3>
 <p>Variable name: <code>filename</code> (the name)</p>
 <p>Variable value: <code>basilisk.dat</code> (the data)</p>
 <p>Use <code>$filename</code> to get the <strong>value</strong>, not the name.</p>
+</section>
 </section>
 <section id="variable-naming" class="level2">
 <h2 class="anchored" data-anchor-id="variable-naming">Variable Naming</h2>
@@ -5105,15 +5116,15 @@ CLASSIFICATION: equus monoceros</code></pre>
 <p>Braces useful when variable next to text:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${filename}</span>.bak    <span class="co"># Shows: basilisk.dat.bak</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$filename</span>.bak      <span class="co"># Looks for variable &quot;filename.bak&quot;!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="variable-naming-tips" class="level2">
-<h2 class="anchored" data-anchor-id="variable-naming-tips">Variable Naming Tips</h2>
+<section id="variable-naming-tips" class="level3">
+<h3 class="anchored" data-anchor-id="variable-naming-tips">Variable Naming Tips</h3>
 <ul>
 <li>Use <strong>meaningful names</strong>: <code>filename</code>, not <code>x</code></li>
 <li>Helps others (and future you) understand code</li>
 <li>Increases odds people interpret it correctly</li>
 </ul>
 <p>The shell doesn’t care—only we do!</p>
+</section>
 </section>
 <section id="loops-with-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="loops-with-numbers">Loops with Numbers</h2>
@@ -5184,19 +5195,19 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In <code>shell-lesson-data/exercise-data/alkanes</code>, <code>ls *.pdb</code> gives:</p>
+<p>This exercise refers to the <code>shell-lesson-data/exercise-data/alkanes</code> directory. <code>ls *.pdb</code> gives the following output:</p>
 <pre class="output"><code>cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb</code></pre>
-<p><strong>First code:</strong></p>
+<p>What is the output of the following code?</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ls</span> <span class="pp">*</span>.pdb</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Second code:</strong></p>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="ex">*.pdb</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, what is the output of the following code?</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ls</span> <span class="va">$datafile</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>What’s the difference?</p>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$datafile</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Why do these two loops give different outputs?</p>
 </div>
 </div>
 </section>
@@ -5214,11 +5225,24 @@ Solution
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>First code:</strong> lists ALL <code>.pdb</code> files <strong>each iteration</strong> (6 times total).</p>
-<p>Shell expands <code>*.pdb</code> in loop body for each iteration.</p>
-<p><strong>Second code:</strong> lists ONE file <strong>per iteration</strong> (6 different files).</p>
-<p>Variable <code>$datafile</code> evaluates to current file each time.</p>
-<p>Second code is cleaner and what we usually want!</p>
+<p>The first code block gives the same output on each iteration through the loop. Bash expands the wildcard <code>*.pdb</code> within the loop body (as well as before the loop starts) to match all files ending in <code>.pdb</code> and then lists them using <code>ls</code>. The expanded loop would look like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="ex">cubane.pdb</span>  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb</code></pre>
+<p>The second code block lists a different file on each loop iteration. The value of the <code>datafile</code> variable is evaluated using <code>$datafile</code>, and then listed using <code>ls</code>.</p>
+<pre class="output"><code>cubane.pdb
+ethane.pdb
+methane.pdb
+octane.pdb
+pentane.pdb
+propane.pdb</code></pre>
 </div>
 </div>
 </div>
@@ -5235,16 +5259,16 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In <code>shell-lesson-data/exercise-data/alkanes</code>, what does this loop output?</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> c<span class="pp">*</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ls</span> <span class="va">$filename</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What would be the output of running the following loop in the <code>shell-lesson-data/exercise-data/alkanes</code> directory?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> c<span class="pp">*</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$filename</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>No files listed</li>
-<li>All files are listed</li>
-<li>Only <code>cubane.pdb</code>, <code>octane.pdb</code>, <code>pentane.pdb</code></li>
-<li>Only <code>cubane.pdb</code></li>
+<li>No files are listed.</li>
+<li>All files are listed.</li>
+<li>Only <code>cubane.pdb</code>, <code>octane.pdb</code> and <code>pentane.pdb</code> are listed.</li>
+<li>Only <code>cubane.pdb</code> is listed.</li>
 </ol>
 </div>
 </div>
@@ -5264,8 +5288,7 @@ Solution
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Option 4 is correct.</strong></p>
-<p><code>*</code> matches zero or more characters.</p>
-<p><code>c*</code> matches any filename <strong>starting with ‘c’</strong> (only <code>cubane.pdb</code>).</p>
+<p><code>*</code> matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.</p>
 </div>
 </div>
 </div>
@@ -5282,17 +5305,17 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>How different is this loop?</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>c<span class="pp">*</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ls</span> <span class="va">$filename</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>How would the output differ from using this command instead?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>c<span class="pp">*</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$filename</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>Same files listed</li>
-<li>All files are listed now</li>
-<li>No files listed now</li>
-<li><code>cubane.pdb</code> and <code>octane.pdb</code></li>
-<li>Only <code>octane.pdb</code></li>
+<li>The same files would be listed.</li>
+<li>All the files are listed this time.</li>
+<li>No files are listed this time.</li>
+<li>The files <code>cubane.pdb</code> and <code>octane.pdb</code> will be listed.</li>
+<li>Only the file <code>octane.pdb</code> will be listed.</li>
 </ol>
 </div>
 </div>
@@ -5312,8 +5335,7 @@ Solution
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Option 4 is correct.</strong></p>
-<p><code>*c*</code> matches filename with ‘c’ <strong>anywhere in name</strong> (before or after).</p>
-<p>Matches: <code>cubane.pdb</code> (c at start) and <code>octane.pdb</code> (c in middle).</p>
+<p><code>*</code> matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.</p>
 </div>
 </div>
 </div>
@@ -5330,17 +5352,17 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In <code>shell-lesson-data/exercise-data/alkanes</code>, what does this loop do?</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> alkanes <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$alkanes</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span> <span class="va">$alkanes</span> <span class="op">&gt;</span> alkanes.pdb</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the <code>shell-lesson-data/exercise-data/alkanes</code> directory, what is the effect of this loop?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> alkanes <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$alkanes</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span> <span class="va">$alkanes</span> <span class="op">&gt;</span> alkanes.pdb</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>Prints all 6 files; only <code>propane.pdb</code> saved to <code>alkanes.pdb</code></li>
-<li>Prints 3 files; all concatenated and saved to <code>alkanes.pdb</code></li>
-<li>Prints 5 files; only <code>propane.pdb</code> saved to <code>alkanes.pdb</code></li>
-<li>None of the above</li>
+<li>Prints <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, <code>pentane.pdb</code> and <code>propane.pdb</code>, and the text from <code>propane.pdb</code> will be saved to a file called <code>alkanes.pdb</code>.</li>
+<li>Prints <code>cubane.pdb</code>, <code>ethane.pdb</code>, and <code>methane.pdb</code>, and the text from all three files would be concatenated and saved to a file called <code>alkanes.pdb</code>.</li>
+<li>Prints <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, and <code>pentane.pdb</code>, and the text from <code>propane.pdb</code> will be saved to a file called <code>alkanes.pdb</code>.</li>
+<li>None of the above.</li>
 </ol>
 </div>
 </div>
@@ -5360,9 +5382,7 @@ Solution
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Option 1 is correct.</strong></p>
-<p>Each iteration: <code>&gt;</code> <strong>overwrites</strong> (not appends).</p>
-<p>Last file processed (<code>propane.pdb</code>) is final content.</p>
-<p>Use <code>&gt;&gt;</code> to append instead!</p>
+<p>The text from each file in turn gets written to the <code>alkanes.pdb</code> file. However, the file gets overwritten on each loop iteration, so the final content of <code>alkanes.pdb</code> is the text from the <code>propane.pdb</code> file.</p>
 </div>
 </div>
 </div>
@@ -5379,16 +5399,16 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In <code>shell-lesson-data/exercise-data/alkanes</code>, what does this loop do?</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span> <span class="va">$datafile</span> <span class="op">&gt;&gt;</span> all.pdb</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Also in the <code>shell-lesson-data/exercise-data/alkanes</code> directory, what would be the output of the following loop?</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span> <span class="va">$datafile</span> <span class="op">&gt;&gt;</span> all.pdb</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>All files up to <code>pentane.pdb</code> concatenated</li>
-<li>Only <code>ethane.pdb</code> saved</li>
-<li>All 6 files concatenated to <code>all.pdb</code></li>
-<li>All 5 files concatenated</li>
+<li>All of the text from <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, and <code>pentane.pdb</code> would be concatenated and saved to a file called <code>all.pdb</code>.</li>
+<li>The text from <code>ethane.pdb</code> will be saved to a file called <code>all.pdb</code>.</li>
+<li>All of the text from <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, <code>pentane.pdb</code> and <code>propane.pdb</code> would be concatenated and saved to a file called <code>all.pdb</code>.</li>
+<li>All of the text from <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, <code>pentane.pdb</code> and <code>propane.pdb</code> would be printed to the screen and saved to a file called <code>all.pdb</code>.</li>
 </ol>
 </div>
 </div>
@@ -5408,9 +5428,7 @@ Solution
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Option 3 is correct.</strong></p>
-<p><code>&gt;&gt;</code> <strong>appends</strong> each file (doesn’t overwrite).</p>
-<p>All 6 files concatenated to <code>all.pdb</code>.</p>
-<p>Nothing printed (output redirected to file).</p>
+<p><code>&gt;&gt;</code> appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the <code>cat</code> command has been redirected, nothing is printed to the screen.</p>
 </div>
 </div>
 </div>
@@ -5418,128 +5436,148 @@ Solution
 <section id="another-practical-example" class="level2">
 <h2 class="anchored" data-anchor-id="another-practical-example">Another Practical Example</h2>
 <p>In <code>shell-lesson-data/exercise-data/creatures</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>.dat</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$filename</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span> <span class="at">-n</span> 100 <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 20</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Loop body:</strong> two commands - Echo filename - Select lines 81-100 (or all if fewer than 100)</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>.dat</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$filename</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span> <span class="at">-n</span> 100 <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 20</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Loop body:</strong> two commands</p>
+<ul>
+<li>Echo filename</li>
+<li>Select lines 81-100 (or all if fewer than 100)</li>
+</ul>
 </section>
 <section id="spaces-in-filenames" class="level2">
 <h2 class="anchored" data-anchor-id="spaces-in-filenames">Spaces in Filenames</h2>
 <p>Shell uses spaces to <strong>separate items</strong>!</p>
 <p>Filenames with spaces: <code>red dragon.dat</code>, <code>purple unicorn.dat</code></p>
 <p>Must quote them:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="st">&quot;red dragon.dat&quot;</span> <span class="st">&quot;purple unicorn.dat&quot;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span> <span class="at">-n</span> 100 <span class="st">&quot;</span><span class="va">$filename</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 20</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="st">&quot;red dragon.dat&quot;</span> <span class="st">&quot;purple unicorn.dat&quot;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span> <span class="at">-n</span> 100 <span class="st">&quot;</span><span class="va">$filename</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 20</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Always quote variables</strong> to be safe: <code>&quot;$filename&quot;</code></p>
 <p>It is simpler to <strong>avoid using spaces</strong> (or other special characters) in filenames.</p>
 </section>
 <section id="what-happens-without-quotes" class="level2">
 <h2 class="anchored" data-anchor-id="what-happens-without-quotes">What Happens Without Quotes?</h2>
-<p>The files <code>red dragon.dat</code> and <code>purple unicorn.dat</code> don’t exist, so if we run the code without quotes around <code>$filename</code>, we get errors:</p>
+<ul>
+<li>Since <code>red dragon.dat</code> and <code>purple unicorn.dat</code> do not exist, running without quotes around <code>$filename</code> gives errors:</li>
+</ul>
 <pre class="error"><code>head: cannot open &#39;red&#39; for reading: No such file or directory
 head: cannot open &#39;dragon.dat&#39; for reading: No such file or directory
 head: cannot open &#39;purple&#39; for reading: No such file or directory</code></pre>
 <p>With quotes, we’d see:</p>
 <pre class="error"><code>head: cannot open &#39;red dragon.dat&#39; for reading: No such file or directory
 head: cannot open &#39;purple unicorn.dat&#39; for reading: No such file or directory</code></pre>
-</section>
-<section id="why-quote-variables" class="level2">
-<h2 class="anchored" data-anchor-id="why-quote-variables">Why Quote Variables?</h2>
-<p>Without quotes: - Shell splits by spaces - <code>&quot;red dragon.dat&quot;</code> becomes two items: <code>red</code>, <code>dragon.dat</code> - Commands fail</p>
-<p>With quotes: - Treated as single item - Commands work correctly</p>
 <p><strong>Best practice</strong>: Avoid spaces in filenames entirely (use <code>-</code> or <code>_</code>).</p>
 </section>
 <section id="backing-up-files-in-a-loop" class="level2">
 <h2 class="anchored" data-anchor-id="backing-up-files-in-a-loop">Backing Up Files in a Loop</h2>
 <p><strong>Problem</strong>: Copy all <code>.dat</code> files to <code>original-</code> versions.</p>
 <p><strong>Can’t do this:</strong></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="pp">*</span>.dat original-<span class="pp">*</span>.dat  <span class="co"># ERROR!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="pp">*</span>.dat original-<span class="pp">*</span>.dat  <span class="co"># ERROR!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expands to: <code>cp basilisk.dat minotaur.dat unicorn.dat original-*.dat</code></p>
 <p>Shell sees 4 arguments, expects last to be directory!</p>
+<pre class="error"><code>cp: target `original-*.dat&#39; is not a directory</code></pre>
 </section>
 <section id="solution-use-a-loop" class="level2">
 <h2 class="anchored" data-anchor-id="solution-use-a-loop">Solution: Use a Loop</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>.dat</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="va">$filename</span> original-<span class="va">$filename</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Each iteration: - <code>$filename</code> = <code>basilisk.dat</code> → <code>cp basilisk.dat original-basilisk.dat</code> - <code>$filename</code> = <code>minotaur.dat</code> → <code>cp minotaur.dat original-minotaur.dat</code> - <code>$filename</code> = <code>unicorn.dat</code> → <code>cp unicorn.dat original-unicorn.dat</code></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>.dat</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> <span class="va">$filename</span> original-<span class="va">$filename</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Each iteration:</p>
+<ul>
+<li><code>$filename</code> = <code>basilisk.dat</code> → <code>cp basilisk.dat original-basilisk.dat</code></li>
+<li><code>$filename</code> = <code>minotaur.dat</code> → <code>cp minotaur.dat original-minotaur.dat</code></li>
+<li><code>$filename</code> = <code>unicorn.dat</code> → <code>cp unicorn.dat original-unicorn.dat</code></li>
+</ul>
 </section>
 <section id="testing-loops-with-echo" class="level2">
 <h2 class="anchored" data-anchor-id="testing-loops-with-echo">Testing Loops with <code>echo</code></h2>
 <p><strong>Hard to verify</strong> loop did what you want (no output from <code>cp</code>).</p>
 <p><strong>Solution</strong>: Use <code>echo</code> to print commands without executing:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>.dat</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> cp <span class="va">$filename</span> original-<span class="va">$filename</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="pp">*</span>.dat</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> cp <span class="va">$filename</span> original-<span class="va">$filename</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>See what <strong>would</strong> run, verify correctness, then remove <code>echo</code>!</p>
 <p>The judicious use of <code>echo</code> is a good <strong>debugging technique</strong>.</p>
 </section>
 <section id="loop-flow-chart" class="level2">
 <h2 class="anchored" data-anchor-id="loop-flow-chart">Loop Flow Chart</h2>
-<p>The following diagram shows what happens when the modified loop is executed, and demonstrates how the judicious use of <code>echo</code> is a good debugging technique.</p>
+<ul>
+<li>The diagram shows loop execution flow.</li>
+<li>It also shows why using <code>echo</code> is useful for dry-run debugging.</li>
+</ul>
 <p><img role="img" aria-label="For loop flow chart showing variable assignment and iteration" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gR2VuZXJhdGVkIGJ5IE1pY3Jvc29mdCBWaXNpbyAxMS4wLCBTVkcgRXhwb3J0LCB2MS4wIFNoZWxsIFNjcmlwdCBGb3IgTG9vcCBGbG93IENoYXJ0LnN2ZyBQYWdlLTEgLS0+Cgo8c3ZnCiAgIHhtbG5zOnY9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vdmlzaW8vMjAwMy9TVkdFeHRlbnNpb25zLyIKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHdpZHRoPSIxMC42Mzk5MjlpbiIKICAgaGVpZ2h0PSI1LjE0NzgxMTRpbiIKICAgdmlld0JveD0iMCAwIDc2Ni4wNzQxIDM3MC42NDE5OSIKICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgY2xhc3M9InN0MTgiCiAgIGlkPSJzdmcxNDIxOCIKICAgdmVyc2lvbj0iMS4xIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIwLjkxIHIxMzcyNSIKICAgc29kaXBvZGk6ZG9jbmFtZT0ic2hlbGxfc2NyaXB0X2Zvcl9sb29wX2Zsb3dfY2hhcnQuc3ZnIgogICBzdHlsZT0iZm9udC1zaXplOjEycHg7b3ZlcmZsb3c6dmlzaWJsZTtjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM6c1JHQjtmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlLWxpbmVjYXA6c3F1YXJlO3N0cm9rZS1taXRlcmxpbWl0OjMiPjxtZXRhZGF0YQogICAgIGlkPSJtZXRhZGF0YTE0NjA1Ij48cmRmOlJERj48Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+PGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+PGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPjxkYzp0aXRsZSAvPjwvY2M6V29yaz48L3JkZjpSREY+PC9tZXRhZGF0YT48c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjEwODAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTg5NiIKICAgICBpZD0ibmFtZWR2aWV3MTQ2MDMiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjUuNjE1MDQwNyIKICAgICBpbmtzY2FwZTpjeD0iNjc3Ljk4MTgxIgogICAgIGlua3NjYXBlOmN5PSI4MS40MjY3NyIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMTkyMCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzE0MjE4IgogICAgIGZpdC1tYXJnaW4tdG9wPSIwIgogICAgIGZpdC1tYXJnaW4tbGVmdD0iMCIKICAgICBmaXQtbWFyZ2luLXJpZ2h0PSIwIgogICAgIGZpdC1tYXJnaW4tYm90dG9tPSIwIgogICAgIHNob3dndWlkZXM9ImZhbHNlIiAvPjx2OmRvY3VtZW50UHJvcGVydGllcwogICAgIHY6bGFuZ0lEPSIxMDMzIgogICAgIHY6bWV0cmljPSJ0cnVlIgogICAgIHY6dmlld01hcmt1cD0iZmFsc2UiIC8+PHN0eWxlCiAgICAgdHlwZT0idGV4dC9jc3MiCiAgICAgaWQ9InN0eWxlMTQyMjAiPjwhW0NEQVRBWwoJCS5zdDEge2ZpbGw6dXJsKCNncmFkMzAtNSk7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDowLjcyfQoJCS5zdDIge2ZpbGw6dXJsKCNncmFkMzAtOSk7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDowLjcyfQoJCS5zdDMge2ZpbGw6IzAwMDAwMDtmb250LWZhbWlseTpDYWxpYnJpO2ZvbnQtc2l6ZToxLjAwMDAxZW07Zm9udC13ZWlnaHQ6Ym9sZH0KCQkuc3Q0IHtmaWxsOiMyNjI2MjY7Zm9udC1zaXplOjEuMDgzMzRlbTtmb250LXdlaWdodDpub3JtYWx9CgkJLnN0NSB7ZmlsbDp1cmwoI2dyYWQzMC01KX0KCQkuc3Q2IHtzdHJva2U6IzQwNDA0MDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjAuMjU7dmlzaWJpbGl0eTpoaWRkZW59CgkJLnN0NyB7ZmlsbDojMDAwMDAwO2ZvbnQtZmFtaWx5OkNhbGlicmk7Zm9udC1zaXplOjEuMDAwMDFlbX0KCQkuc3Q4IHt2aXNpYmlsaXR5OnZpc2libGV9CgkJLnN0OSB7ZmlsbDojY2RjZGNkO2ZpbGwtb3BhY2l0eTowLjU7c3Ryb2tlOiNjZGNkY2Q7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1vcGFjaXR5OjAuNTtzdHJva2Utd2lkdGg6MC4yNTt2aXNpYmlsaXR5OmhpZGRlbn0KCQkuc3QxMCB7ZmlsbDp1cmwoI2dyYWQzMC05KTtzdHJva2U6IzQwNDA0MDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjAuMjU7dmlzaWJpbGl0eTpoaWRkZW59CgkJLnN0MTEge2ZpbGw6IzAwMDAwMDtmb250LWZhbWlseTpDYWxpYnJpO2ZvbnQtc2l6ZTowLjY2NjY2NGVtfQoJCS5zdDEyIHtmaWxsOiNjZGNkY2Q7ZmlsbC1vcGFjaXR5OjAuNTtzdHJva2U6I2NkY2RjZDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW9wYWNpdHk6MC41O3N0cm9rZS13aWR0aDowLjI1fQoJCS5zdDEzIHtmaWxsOnVybCgjZ3JhZDMwLTkpO3N0cm9rZTojNDA0MDQwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MC4yNX0KCQkuc3QxNCB7Zm9udC1zaXplOjFlbX0KCQkuc3QxNSB7bWFya2VyLWVuZDp1cmwoI21ya3I1LTEyMSk7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDoxfQoJCS5zdDE2IHtmaWxsOiM0MDQwNDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2Utd2lkdGg6MC4yODQwOTA5MDkwOTA5MX0KCQkuc3QxNyB7ZmlsbDojZmZmZmZmO3N0cm9rZTpub25lO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLXdpZHRoOjcuMn0KCQkuc3QxOCB7ZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO2ZvbnQtc2l6ZToxMnB4O292ZXJmbG93OnZpc2libGU7c3Ryb2tlLWxpbmVjYXA6c3F1YXJlO3N0cm9rZS1taXRlcmxpbWl0OjN9CgldXT48L3N0eWxlPjxwYXRoCiAgICAgZD0ibSAyMTEuNTAxODgsMjgzLjE1ODU5IDg5LjI4NTQ1LDAgMTIuOTg5MDYsLTIyLjY2MjU2IC04OS4yODU0NSwwIC0xMi45ODkwNiwyMi42NjI1NiB6IgogICAgIGNsYXNzPSJzdDEzIgogICAgIGlkPSJwYXRoMTQ1MTQtNSIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIHN0eWxlPSJmb250LXNpemU6MTJweDtvdmVyZmxvdzp2aXNpYmxlO2NvbG9yLWludGVycG9sYXRpb24tZmlsdGVyczpzUkdCO2ZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2Mjg4LTMpO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjI2NzQ1NzYzO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDozO2ZpbGwtb3BhY2l0eToxLjAiIC8+PGRlZnMKICAgICBpZD0iUGF0dGVybnNfQW5kX0dyYWRpZW50cyI+PGxpbmVhckdyYWRpZW50CiAgICAgICB5Mj0iMCIKICAgICAgIHgyPSIwIgogICAgICAgeTE9IjEiCiAgICAgICB4MT0iMCIKICAgICAgIHY6YmFja2dyb3VuZE9wYWNpdHk9IjAiCiAgICAgICB2OmJhY2tncm91bmQ9IiNmZmZmZmYiCiAgICAgICB2OmZvcmVncm91bmRPcGFjaXR5PSIwIgogICAgICAgdjpmb3JlZ3JvdW5kPSIjZjBmMGYwIgogICAgICAgdjpmaWxsUGF0dGVybj0iMzAiCiAgICAgICBpZD0iZ3JhZDMwLTUtMiI+PHN0b3AKICAgICAgICAgaWQ9InN0b3A2MzcyIgogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojZjBmMGYwO3N0b3Atb3BhY2l0eTowIgogICAgICAgICBvZmZzZXQ9IjAiIC8+PHN0b3AKICAgICAgICAgaWQ9InN0b3A2Mzc0IgogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eTowIgogICAgICAgICBvZmZzZXQ9IjEiIC8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQKICAgICAgIGlkPSJncmFkMzAtNSIKICAgICAgIHY6ZmlsbFBhdHRlcm49IjMwIgogICAgICAgdjpmb3JlZ3JvdW5kPSIjZjBmMGYwIgogICAgICAgdjpmb3JlZ3JvdW5kT3BhY2l0eT0iMCIKICAgICAgIHY6YmFja2dyb3VuZD0iI2ZmZmZmZiIKICAgICAgIHY6YmFja2dyb3VuZE9wYWNpdHk9IjAiCiAgICAgICB4MT0iMCIKICAgICAgIHkxPSIxIgogICAgICAgeDI9IjAiCiAgICAgICB5Mj0iMCI+PHN0b3AKICAgICAgICAgb2Zmc2V0PSIwIgogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojZjBmMGYwO3N0b3Atb3BhY2l0eTowIgogICAgICAgICBpZD0ic3RvcDE0MjI0IiAvPjxzdG9wCiAgICAgICAgIG9mZnNldD0iMSIKICAgICAgICAgc3R5bGU9InN0b3AtY29sb3I6I2ZmZmZmZjtzdG9wLW9wYWNpdHk6MCIKICAgICAgICAgaWQ9InN0b3AxNDIyNiIgLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudAogICAgICAgaWQ9ImdyYWQzMC05IgogICAgICAgdjpmaWxsUGF0dGVybj0iMzAiCiAgICAgICB2OmZvcmVncm91bmQ9IiNmMGYwZjAiCiAgICAgICB2OmJhY2tncm91bmQ9IiNmZmZmZmYiCiAgICAgICB4MT0iMCIKICAgICAgIHkxPSIxIgogICAgICAgeDI9IjAiCiAgICAgICB5Mj0iMCI+PHN0b3AKICAgICAgICAgb2Zmc2V0PSIwIgogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojZjBmMGYwO3N0b3Atb3BhY2l0eToxIgogICAgICAgICBpZD0ic3RvcDE0MjI5IiAvPjxzdG9wCiAgICAgICAgIG9mZnNldD0iMSIKICAgICAgICAgc3R5bGU9InN0b3AtY29sb3I6I2ZmZmZmZjtzdG9wLW9wYWNpdHk6MSIKICAgICAgICAgaWQ9InN0b3AxNDIzMSIgLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudAogICAgICAgaW5rc2NhcGU6Y29sbGVjdD0iYWx3YXlzIgogICAgICAgeGxpbms6aHJlZj0iI2dyYWQzMC01IgogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MTYyNDgiCiAgICAgICB4MT0iLTAuMjUwNDA1NTIiCiAgICAgICB5MT0iNTM1LjgwNTk3IgogICAgICAgeDI9Ii0wLjI1MDQwNTUyIgogICAgICAgeTI9IjIuOTQ3MjE5NiIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS40Mzc2NjgxLDAsMCwwLjY5NTU3MDgzLDAuMzYwMDM1NDQsLTIuMDUwMDI0NSkiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2MjUwIgogICAgICAgeDE9Ii0wLjEzMDAyMTgzIgogICAgICAgeTE9IjEwMzEuODkxNSIKICAgICAgIHgyPSItMC4xMzAwMjE4MyIKICAgICAgIHkyPSI3NTUuMjA4NjgiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDIuNzY4NzY2MiwwLDAsMC4zNjExNzE3LDAuMzYwMDM1NDQsLTI3Mi43NTkwMikiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtNSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2MjUyIgogICAgICAgeDE9IjAiCiAgICAgICB5MT0iNjIwLjIyNzk3IgogICAgICAgeDI9IjAiCiAgICAgICB5Mj0iMTY5LjI4Mjg1IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjY2NTc5MjcsMCwwLDAuNjAwMzE0OCwxNC41MzMyMzYsLTIuMDUwMDI0NSkiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtNSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2MjU0IgogICAgICAgeDE9Ii0wLjQ1MzgyNDU1IgogICAgICAgeTE9IjI5NS42NDA5NiIKICAgICAgIHgyPSItMC40NTM4MjQ1NSIKICAgICAgIHkyPSI4MC4zMjc2OTgiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDAuNzkzMjU4MTEsMCwwLDEuMjYwNjIzNywzMjYuMzQ0MDMsLTIuMDUwMDI0NSkiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2MjU2IgogICAgICAgeDE9Ii0wLjE0ODUxODciCiAgICAgICB5MT0iOTAzLjM3NzI2IgogICAgICAgeDI9Ii0wLjE0ODUxODciCiAgICAgICB5Mj0iODMyLjkxMzM5IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgyLjQyMzkzNzUsMCwwLDAuNDEyNTUxODksMzI2LjM0NDAzLC0yNDQuNDEyMDIpIgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTUiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI1OCIKICAgICAgIHgxPSItMC40MzYwOTE1NCIKICAgICAgIHkxPSIzMDcuNjYyNzgiCiAgICAgICB4Mj0iLTAuNDM2MDkxNTQiCiAgICAgICB5Mj0iODMuNTk0MTA5IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgwLjgyNTUxNDc5LDAsMCwxLjIxMTM2NTMsMTQuNTMzMjM2LC0yLjA1MDAyNDUpIgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTkiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI2MCIKICAgICAgIHgxPSItMC4xNDI3MTY1NyIKICAgICAgIHkxPSI5NDAuMTAzOTQiCiAgICAgICB4Mj0iLTAuMTQyNzE2NTciCiAgICAgICB5Mj0iODY2Ljc3NTM5IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgyLjUyMjQ4MjMsMCwwLDAuMzk2NDM0ODksMTQuNTMzMjM2LC0yNDQuNDEyMDIpIgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTUiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI2MiIKICAgICAgIHgxPSItMC4zNjA5NDQwOSIKICAgICAgIHkxPSIzNzEuNzE3MjIiCiAgICAgICB4Mj0iLTAuMzYwOTQ0MDkiCiAgICAgICB5Mj0iMTAwLjk5ODE0IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgwLjk5NzM4NDQyLDAsMCwxLjAwMjYyMjQsNDk2LjQyMzAzLC0yLjA1MDAyNDUpIgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTkiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI2NCIKICAgICAgIHgxPSItMC4xMTgxMjMxNyIKICAgICAgIHkxPSIxMTM1LjgzNDciCiAgICAgICB4Mj0iLTAuMTE4MTIzMTciCiAgICAgICB5Mj0iMTA0Ny4yMzkxIgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgzLjA0NzY2NjMsMCwwLDAuMzI4MTE5OTIsNDk2LjQyMzAzLC0yNDQuNDEyMDIpIgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTUiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI2NiIKICAgICAgIHgxPSItMC41MjM2NjQxOCIKICAgICAgIHkxPSIyNTYuMjEyMTYiCiAgICAgICB4Mj0iLTAuNTIzNjY0MTgiCiAgICAgICB5Mj0iNjkuNjE0NjE2IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgwLjY4NzQ2MzUsMCwwLDEuNDU0NjIyNywxOTguNzg1MDMsLTIuMDUwMDI0NSkiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2MjY4IgogICAgICAgeDE9Ii0wLjE3MTM3NDI1IgogICAgICAgeTE9Ijc4Mi44OTcxNiIKICAgICAgIHgyPSItMC4xNzEzNzQyNSIKICAgICAgIHkyPSI3MjEuODMwNzUiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDIuMTAwNjY1OCwwLDAsMC40NzYwMzk1NSwxOTguNzg1MDMsLTI0NC40MTIwMikiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2MjcyIgogICAgICAgeDE9Ii0wLjA4NDMyNzM0IgogICAgICAgeTE9IjE1OTEuMDQ3OSIKICAgICAgIHgyPSItMC4wODQzMjczNCIKICAgICAgIHkyPSIxNTI3LjQ2NzciCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDQuMjY5MDc4NCwwLDAsMC4yMzQyNDI2LC0zNzAuMjgwOTgsLTM1Ny43OTc5NykiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2Mjc0IgogICAgICAgeDE9Ii0wLjA4MjQzNDY4NCIKICAgICAgIHkxPSI1ODcuMzM2IgogICAgICAgeDI9Ii0wLjA4MjQzNDY4NCIKICAgICAgIHkyPSI1NDIuMjM1NzgiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuNTc2OTMxNSwwLDAsMC42MzQxNDI5Nyw0OS45NjYzMzYsLTIwNy41NjIwMikiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2Mjc2IgogICAgICAgeDE9Ii0wLjA5NjkyNjU3IgogICAgICAgeTE9IjQ4MC4yODYxIgogICAgICAgeDI9Ii0wLjA5NjkyNjU3IgogICAgICAgeTI9IjQyNS4xMzM1NCIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS4yODk1MTQ0LDAsMCwwLjc3NTQ4NTcxLDQ5Ljk2NjMzNiwtMTQ1LjIwMDAyKSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPjxsaW5lYXJHcmFkaWVudAogICAgICAgaW5rc2NhcGU6Y29sbGVjdD0iYWx3YXlzIgogICAgICAgeGxpbms6aHJlZj0iI2dyYWQzMC05IgogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MTYyNzgiCiAgICAgICB4MT0iLTAuMDkwODEwMzUxIgogICAgICAgeTE9IjUxMi42ODQ4MSIKICAgICAgIHgyPSItMC4wOTA4MTAzNTEiCiAgICAgICB5Mj0iNDUzLjgxMjUzIgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjM3NjQ5NSwwLDAsMC43MjY0ODI4Miw0OS45NjYzMzYsLTgyLjgzNzQyNCkiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2MjgyIgogICAgICAgeDE9Ii0wLjA3MDk3NDM3MiIKICAgICAgIHkxPSI2NTUuOTY5NDgiCiAgICAgICB4Mj0iLTAuMDcwOTc0MzcyIgogICAgICAgeTI9IjYxNS41OTAxNSIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS43NjExOTkxLDAsMCwwLjU2Nzc5NDk5LDM3My4xMTYwMywtODguNTA2NzI0KSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPjxsaW5lYXJHcmFkaWVudAogICAgICAgaW5rc2NhcGU6Y29sbGVjdD0iYWx3YXlzIgogICAgICAgeGxpbms6aHJlZj0iI2dyYWQzMC05IgogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MTYyODQiCiAgICAgICB4MT0iLTEuOTAyMDMzMSIKICAgICAgIHkxPSIxMTM0Ljc3MiIKICAgICAgIHgyPSItMS45MDIwMzMxIgogICAgICAgeTI9IjEwNjQuOTEwMyIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMy4yNjI3NTI5LDAsMCwwLjMyODA5NDc5LDUyOS4zNjQyMSwtODcuODQ4Nzg4KSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPjxsaW5lYXJHcmFkaWVudAogICAgICAgaW5rc2NhcGU6Y29sbGVjdD0iYWx3YXlzIgogICAgICAgeGxpbms6aHJlZj0iI2dyYWQzMC05IgogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MTYyODYiCiAgICAgICB4MT0iLTAuMDgyNDM0Njg0IgogICAgICAgeTE9IjU4Ny4zMzYiCiAgICAgICB4Mj0iLTAuMDgyNDM0Njg0IgogICAgICAgeTI9IjU0Mi4yMzU3OCIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS41NzY5MzE1LDAsMCwwLjYzNDE0Mjk3LDQ5Ljk2NjMzNiwtMTQuODA1OTI0KSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPjxsaW5lYXJHcmFkaWVudAogICAgICAgaW5rc2NhcGU6Y29sbGVjdD0iYWx3YXlzIgogICAgICAgeGxpbms6aHJlZj0iI2dyYWQzMC05IgogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MTYyODgiCiAgICAgICB4MT0iLTIuOTMyNTU2NCIKICAgICAgIHkxPSI3MzYuMDA0MjEiCiAgICAgICB4Mj0iLTIuOTMyNTU2NCIKICAgICAgIHkyPSI2OTAuNjkyNSIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMi4yNjM0NSwwLDAsMC41MDU2NjA2LDIxNy44NDkxOSwtNTcuNTY3ODQ0KSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPjxsaW5lYXJHcmFkaWVudAogICAgICAgaW5rc2NhcGU6Y29sbGVjdD0iYWx3YXlzIgogICAgICAgeGxpbms6aHJlZj0iI2dyYWQzMC05IgogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MTYyOTAiCiAgICAgICB4MT0iLTAuMDcwOTc0MzcyIgogICAgICAgeTE9IjY1NS45Njk0OCIKICAgICAgIHgyPSItMC4wNzA5NzQzNzIiCiAgICAgICB5Mj0iNjE1LjU5MDE1IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjc2MTE5OTEsMCwwLDAuNTY3Nzk0OTksMzczLjExNjAzLC01Ny4zMjU2MjQpIgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTkiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI5MiIKICAgICAgIHgxPSItMS45MDIwMzMxIgogICAgICAgeTE9IjExMzQuNzcyIgogICAgICAgeDI9Ii0xLjkwMjAzMzEiCiAgICAgICB5Mj0iMTA2NC45MTAzIgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgzLjI4NTA5OTUsMCwwLDAuMzI4MDgyMDYsNTI5LjQwNjIsLTU2LjY1MzY5NCkiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2Mjk2IgogICAgICAgeDE9Ii0wLjA3MDk3NDM3MiIKICAgICAgIHkxPSI2NTUuOTY5NDgiCiAgICAgICB4Mj0iLTAuMDcwOTc0MzcyIgogICAgICAgeTI9IjYxNS41OTAxNSIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS43NjExOTkxLDAsMCwwLjU2Nzc5NDk5LDM3Mi4wMzAxOCwtMjYuMTQ0NTI0KSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPjxsaW5lYXJHcmFkaWVudAogICAgICAgaW5rc2NhcGU6Y29sbGVjdD0iYWx3YXlzIgogICAgICAgeGxpbms6aHJlZj0iI2dyYWQzMC05IgogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MTYyOTgiCiAgICAgICB4MT0iLTEuODkyNTg3MSIKICAgICAgIHkxPSIxMTQwLjQzNTciCiAgICAgICB4Mj0iLTEuODkyNTg3MSIKICAgICAgIHkyPSIxMDcwLjIyNTMiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDMuMjg0Mjk3MSwwLDAsMC4zMjY0NjI0MSw1MjcuMjQ4MDMsLTI1LjQ4MzMwNykiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgLz48bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNncmFkMzAtOSIKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDE2NzA4IgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuNTYxMDYzNSwwLDAsMC4yMzg4NzU2MSwtOTkuMjA5MzQxLC0zNjUuMDIyMDYpIgogICAgICAgeDE9Ii0wLjA4NDMyNzM0IgogICAgICAgeTE9IjE1OTEuMDQ3OSIKICAgICAgIHgyPSItMC4wODQzMjczNCIKICAgICAgIHkyPSIxNTI3LjQ2NzciIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTkiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI4OC0zIgogICAgICAgeDE9Ii0yLjkzMjU1NjQiCiAgICAgICB5MT0iNzM2LjAwNDIxIgogICAgICAgeDI9Ii0yLjkzMjU1NjQiCiAgICAgICB5Mj0iNjkwLjY5MjUiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDIuMjYzNDUsMCwwLDAuNTA1NjYwNjEsMjE3Ljk5NjQxLC04OC44ODQ4MzYpIgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjZ3JhZDMwLTkiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQxNjI4OC0zNSIKICAgICAgIHgxPSItMi45MzI1NTY0IgogICAgICAgeTE9IjczNi4wMDQyMSIKICAgICAgIHgyPSItMi45MzI1NTY0IgogICAgICAgeTI9IjY5MC42OTI1IgogICAgICAgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgyLjI2MzQ1LDAsMCwwLjUwNTY2MDYxLDIxNC44NzU5NSwtMjYuOTk1NjExKSIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiAvPjwvZGVmcz48cGF0aAogICAgIGQ9Im0gMjA4LjM4MTQyLDM0NS4wNDc4MSA4OS4yODU0NSwwIDEyLjk4OTA1LC0yMi42NjI1NiAtODkuMjg1NDQsMCAtMTIuOTg5MDYsMjIuNjYyNTYgeiIKICAgICBjbGFzcz0ic3QxMyIKICAgICBpZD0icGF0aDE0NTE0LTkiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBzdHlsZT0iZm9udC1zaXplOjEycHg7b3ZlcmZsb3c6dmlzaWJsZTtjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM6c1JHQjtmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI4OC0zNSk7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuMjY3NDU3NjM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjM7ZmlsbC1vcGFjaXR5OjEuMCIgLz48ZGVmcwogICAgIGlkPSJNYXJrZXJzIj48ZwogICAgICAgaWQ9ImxlbmQ1Ij48cGF0aAogICAgICAgICBkPSJNIDIsMSAwLDAgMS45ODExNywtMC45OTMzODcgQyAxLjY3MTczLC0wLjM2NDUxNSAxLjY3MzAxLDAuMzcyNjQxIDEuOTg0NjUsMS4wMDA0MyIKICAgICAgICAgc3R5bGU9InN0cm9rZTpub25lIgogICAgICAgICBpZD0icGF0aDE0MjM1IgogICAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiAvPjwvZz48bWFya2VyCiAgICAgICBpZD0ibXJrcjUtMTIxIgogICAgICAgY2xhc3M9InN0MTYiCiAgICAgICB2OmFycm93VHlwZT0iNSIKICAgICAgIHY6YXJyb3dTaXplPSIyIgogICAgICAgdjpzZXRiYWNrPSI2LjE2IgogICAgICAgcmVmWD0iLTYuMTU5OTk5OCIKICAgICAgIG9yaWVudD0iYXV0byIKICAgICAgIG1hcmtlclVuaXRzPSJzdHJva2VXaWR0aCIKICAgICAgIG92ZXJmbG93PSJ2aXNpYmxlIgogICAgICAgc3R5bGU9Im92ZXJmbG93OnZpc2libGU7ZmlsbDojNDA0MDQwO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjI4NDA5MDkxO3N0cm9rZS1vcGFjaXR5OjEiPjx1c2UKICAgICAgICAgeGxpbms6aHJlZj0iI2xlbmQ1IgogICAgICAgICB0cmFuc2Zvcm09InNjYWxlKC0zLjUyLC0zLjUyKSIKICAgICAgICAgaWQ9InVzZTE0MjM4IgogICAgICAgICB4PSIwIgogICAgICAgICB5PSIwIgogICAgICAgICB3aWR0aD0iMTAwJSIKICAgICAgICAgaGVpZ2h0PSIxMDAlIiAvPjwvbWFya2VyPjwvZGVmcz48cmVjdAogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI0OCk7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuNzIwMDAwMDM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIgogICAgIGlkPSJyZWN0MTQyNTAiCiAgICAgY2xhc3M9InN0MSIKICAgICBoZWlnaHQ9IjM2OS45MjA5OSIKICAgICB3aWR0aD0iNzY1LjM1NCIKICAgICB5PSIwLjM1OTk3NTU4IgogICAgIHg9IjAuMzYwMDM1NDUiIC8+PHBhdGgKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTYyNTApO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjcyMDAwMDAzO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIGlkPSJwYXRoMTQyNTciCiAgICAgY2xhc3M9InN0MiIKICAgICBkPSJtIDAuMzYwMDM1NDQsOTkuNTcwOTggNzY1LjM1MDAwNDU2LDAgMCwtOTkuMjEgLTc2NS4zNTAwMDQ1NiwwIDAsOTkuMjEgeiIgLz48cmVjdAogICAgIHg9IjE0LjUzMzIzNiIKICAgICB5PSI5OS41NzI5NzUiCiAgICAgd2lkdGg9Ijc1MS4xODEwMyIKICAgICBoZWlnaHQ9IjI3MC43MDkwMSIKICAgICBjbGFzcz0ic3Q1IgogICAgIGlkPSJyZWN0MTQyODYiCiAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2MjUyKSIgLz48cmVjdAogICAgIHg9IjE0LjUzMzIzNiIKICAgICB5PSI5OS41NzI5NzUiCiAgICAgd2lkdGg9Ijc1MS4xODEwMyIKICAgICBoZWlnaHQ9IjI3MC43MDkwMSIKICAgICBjbGFzcz0ic3Q2IgogICAgIGlkPSJyZWN0MTQyODgiCiAgICAgc3R5bGU9InZpc2liaWxpdHk6aGlkZGVuO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIgLz48cmVjdAogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI1NCk7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuNzIwMDAwMDM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIgogICAgIGlkPSJyZWN0MTQyOTYiCiAgICAgY2xhc3M9InN0MSIKICAgICBoZWlnaHQ9IjI3MC43MDkwMSIKICAgICB3aWR0aD0iMTcwLjA3ODk5IgogICAgIHk9Ijk5LjU3Mjk3NSIKICAgICB4PSIzMjYuMzQ0MDIiIC8+PHBhdGgKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTYyNTYpO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjcyMDAwMDAzO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIGlkPSJwYXRoMTQzMDMiCiAgICAgY2xhc3M9InN0MiIKICAgICBkPSJtIDMyNi4zNDQwMywxMjcuOTE3OTggMTcwLjA4LDAgMCwtMjguMzUgLTE3MC4wOCwwIDAsMjguMzUgeiIgLz48cmVjdAogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI1OCk7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuNzIwMDAwMDM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIgogICAgIGlkPSJyZWN0MTQzMTMiCiAgICAgY2xhc3M9InN0MSIKICAgICBoZWlnaHQ9IjI3MC43MDkwMSIKICAgICB3aWR0aD0iMTg0LjI1MiIKICAgICB5PSI5OS41NzI5NzUiCiAgICAgeD0iMTQuNTMzMjM2IiAvPjxwYXRoCiAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2MjYwKTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC43MjAwMDAwMztzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBpZD0icGF0aDE0MzIwIgogICAgIGNsYXNzPSJzdDIiCiAgICAgZD0ibSAxNC41MzMyMzYsMTI3LjkxNzk4IDE4NC4yNTAwMDQsMCAwLC0yOC4zNSAtMTg0LjI1MDAwNCwwIDAsMjguMzUgeiIgLz48cmVjdAogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI2Mik7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuNzIwMDAwMDM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIgogICAgIGlkPSJyZWN0MTQzMzAiCiAgICAgY2xhc3M9InN0MSIKICAgICBoZWlnaHQ9IjI3MC43MDkwMSIKICAgICB3aWR0aD0iMjY5LjI5MDk5IgogICAgIHk9Ijk5LjU3Mjk3NSIKICAgICB4PSI0OTYuNDIzMDMiIC8+PHBhdGgKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTYyNjQpO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjcyMDAwMDAzO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIGlkPSJwYXRoMTQzMzciCiAgICAgY2xhc3M9InN0MiIKICAgICBkPSJtIDQ5Ni40MjMwMywxMjcuOTE3OTggMjY5LjI5LDAgMCwtMjguMzUgLTI2OS4yOSwwIDAsMjguMzUgeiIgLz48cmVjdAogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI2Nik7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuNzIwMDAwMDM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIgogICAgIGlkPSJyZWN0MTQzNDciCiAgICAgY2xhc3M9InN0MSIKICAgICBoZWlnaHQ9IjI3MC43MDkwMSIKICAgICB3aWR0aD0iMTI3LjU1OSIKICAgICB5PSI5OS41NzI5NzUiCiAgICAgeD0iMTk4Ljc4NTAzIiAvPjxwYXRoCiAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2MjY4KTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC43MjAwMDAwMztzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBpZD0icGF0aDE0MzU0IgogICAgIGNsYXNzPSJzdDIiCiAgICAgZD0ibSAxOTguNzg1MDMsMTI3LjkxNzk4IDEyNy41NiwwIDAsLTI4LjM1IC0xMjcuNTYsMCAwLDI4LjM1IHoiIC8+PHJlY3QKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTYyNzIpO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjcyMDAwMDAzO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIKICAgICBpZD0icmVjdDE0Mzc3IgogICAgIGNsYXNzPSJzdDIiCiAgICAgaGVpZ2h0PSIxNC4xNzMyIgogICAgIHdpZHRoPSIyNzAuNzA5MDEiCiAgICAgeT0iMC4zNjAwMTk1MSIKICAgICB4PSItMzcwLjI4MDk4IgogICAgIHRyYW5zZm9ybT0ibWF0cml4KDAsLTEsMSwwLDAsMCkiIC8+PHBhdGgKICAgICBzdHlsZT0idmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6I2NkY2RjZDtmaWxsLW9wYWNpdHk6MC41O3N0cm9rZTojY2RjZGNkO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utb3BhY2l0eTowLjUiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBpZD0icGF0aDE0Mzg3IgogICAgIGNsYXNzPSJzdDEyIgogICAgIGQ9Im0gNjUuNTc2MzM2LDE2Ni4yMDc5OCA0Mi41MjAwMDQsMCBhIDE0LjE3NSwxNC4xNzUgMCAwIDAgMCwtMjguMzUgbCAtNDIuNTIwMDA0LDAgYSAxNC4xNzUsMTQuMTc1IDAgMSAwIDAsMjguMzUgeiIgLz48cGF0aAogICAgIGQ9Im0gNjQuMTM2MzM2LDE2NC43Njc5OCA0Mi41MTk5OTQsMCBhIDE0LjE3NSwxNC4xNzUgMCAwIDAgMCwtMjguMzUgbCAtNDIuNTE5OTk0LDAgYSAxNC4xNzUsMTQuMTc1IDAgMSAwIDAsMjguMzUgeiIKICAgICBjbGFzcz0ic3QxMyIKICAgICBpZD0icGF0aDE0Mzg5IgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2Mjc0KTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC4yNTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQiIC8+PHBhdGgKICAgICBzdHlsZT0idmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6I2NkY2RjZDtmaWxsLW9wYWNpdHk6MC41O3N0cm9rZTojY2RjZGNkO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utb3BhY2l0eTowLjUiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBpZD0icGF0aDE0Mzk5IgogICAgIGNsYXNzPSJzdDEyIgogICAgIGQ9Im0gNTEuNDA2MzM2LDIwNy4zMDk5OCAzNS40MywtMjEuMjYgMzUuNDQwMDA0LDIxLjI2IC0zNS40NDAwMDQsMjEuMjYgLTM1LjQzLC0yMS4yNiB6IiAvPjxwYXRoCiAgICAgZD0ibSA0OS45NjYzMzYsMjA1Ljg2OTk4IDM1LjQzLC0yMS4yNiAzNS40Mzk5OTQsMjEuMjYgLTM1LjQzOTk5NCwyMS4yNiAtMzUuNDMsLTIxLjI2IHoiCiAgICAgY2xhc3M9InN0MTMiCiAgICAgaWQ9InBhdGgxNDQwMSIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI3Nik7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuMjU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIiAvPjxyZWN0CiAgICAgc3R5bGU9InZpc2liaWxpdHk6dmlzaWJsZTtmaWxsOiNjZGNkY2Q7ZmlsbC1vcGFjaXR5OjAuNTtzdHJva2U6I2NkY2RjZDtzdHJva2Utd2lkdGg6MC4yNTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW9wYWNpdHk6MC41IgogICAgIGlkPSJyZWN0MTQ0MTMiCiAgICAgY2xhc3M9InN0MTIiCiAgICAgaGVpZ2h0PSI0Mi41MTk2OTkiCiAgICAgd2lkdGg9IjgwLjc4NzM5OSIKICAgICB5PSIyNDguNDE0NTgiCiAgICAgeD0iNTEuNDA2MzM4IiAvPjxyZWN0CiAgICAgeD0iNDkuOTY2MzM5IgogICAgIHk9IjI0Ni45NzQ1OCIKICAgICB3aWR0aD0iODAuNzg3Mzk5IgogICAgIGhlaWdodD0iNDIuNTE5Njk5IgogICAgIGNsYXNzPSJzdDEzIgogICAgIGlkPSJyZWN0MTQ0MTUiCiAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2Mjc4KTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC4yNTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQiIC8+PHJlY3QKICAgICBzdHlsZT0idmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6I2NkY2RjZDtmaWxsLW9wYWNpdHk6MC41O3N0cm9rZTojY2RjZGNkO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utb3BhY2l0eTowLjUiCiAgICAgaWQ9InJlY3QxNDQzOSIKICAgICBjbGFzcz0ic3QxMiIKICAgICBoZWlnaHQ9IjIyLjY3NzIiCiAgICAgd2lkdGg9IjcwLjg2NjA5NiIKICAgICB5PSIyNjIuNTg3MjgiCiAgICAgeD0iMzc0LjU1NjAzIiAvPjxyZWN0CiAgICAgeD0iMzczLjExNjAzIgogICAgIHk9IjI2MS4xNDcyOCIKICAgICB3aWR0aD0iNzAuODY2MDk2IgogICAgIGhlaWdodD0iMjIuNjc3MiIKICAgICBjbGFzcz0ic3QxMyIKICAgICBpZD0icmVjdDE0NDQxIgogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI4Mik7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuMjU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO2ZpbGwtb3BhY2l0eToxLjAiIC8+PHBhdGgKICAgICBkPSJtIDUyMy4yOTIxOCwyODQuMzM5MDIgMjE1LjUyOTU3LDAgMTIuMTQ0MDIsLTIyLjY3MTM0IC0yMTUuNTI5NTcsMCAtMTIuMTQ0MDIsMjIuNjcxMzQgeiIKICAgICBjbGFzcz0ic3QxMyIKICAgICBpZD0icGF0aDE0NDUzIgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2Mjg0KTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC4yNTg2NjE0ODtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQiIC8+PHBhdGgKICAgICBzdHlsZT0idmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6I2NkY2RjZDtmaWxsLW9wYWNpdHk6MC41O3N0cm9rZTojY2RjZGNkO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utb3BhY2l0eTowLjUiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBpZD0icGF0aDE0NDYzIgogICAgIGNsYXNzPSJzdDEyIgogICAgIGQ9Im0gNjUuNTc2MzM2LDM1OC45NjQwOCA0Mi41MjAwMDQsMCBhIDE0LjE3NSwxNC4xNzUgMCAwIDAgMCwtMjguMzUgbCAtNDIuNTIwMDA0LDAgYSAxNC4xNzUsMTQuMTc1IDAgMSAwIDAsMjguMzUgeiIgLz48cGF0aAogICAgIGQ9Im0gNjQuMTM2MzM2LDM1Ny41MjQwOCA0Mi41MTk5OTQsMCBhIDE0LjE3NSwxNC4xNzUgMCAwIDAgMCwtMjguMzUgbCAtNDIuNTE5OTk0LDAgYSAxNC4xNzUsMTQuMTc1IDAgMSAwIDAsMjguMzUgeiIKICAgICBjbGFzcz0ic3QxMyIKICAgICBpZD0icGF0aDE0NDY1IgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE2Mjg2KTtzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC4yNTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQiIC8+PHBhdGgKICAgICBkPSJtIDEyMC44MzYwMywyMDUuODcwOTggMjQuMDksMCAwLDEzNy40OCAtMTcuOTMsMCIKICAgICBjbGFzcz0ic3QxNSIKICAgICBpZD0icGF0aDE0NDc0IgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9InN0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDttYXJrZXItZW5kOnVybCgjbXJrcjUtMTIxKSIgLz48cGF0aAogICAgIGQ9Im0gODUuNDAzMTM2LDIyNy4xMjk5OCAwLDEwLjYzIDQuOTYsMCAwLDMuMDUiCiAgICAgY2xhc3M9InN0MTUiCiAgICAgaWQ9InBhdGgxNDQ4NSIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIHN0eWxlPSJzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7bWFya2VyLWVuZDp1cmwoI21ya3I1LTEyMSkiIC8+PHBhdGgKICAgICBkPSJtIDg1LjQwMjgzNiwxNjQuNzY3OTggMCwxMy42OCIKICAgICBjbGFzcz0ic3QxNSIKICAgICBpZD0icGF0aDE0NDk0IgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9InN0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDttYXJrZXItZW5kOnVybCgjbXJrcjUtMTIxKSIgLz48cGF0aAogICAgIGQ9Im0gMzA3LjQxMzg1LDI3Mi40ODEyOCA1OS45OTUwMiwwIgogICAgIGNsYXNzPSJzdDE1IgogICAgIGlkPSJwYXRoMTQ0OTkiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBzdHlsZT0ic3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuOTYyODc5MzY7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO21hcmtlci1lbmQ6dXJsKCNtcmtyNS0xMjEpIiAvPjxwYXRoCiAgICAgZD0ibSA0NDMuODgzMjYsMjczLjUyMTQzIDgwLjYzNTQ3LDAiCiAgICAgY2xhc3M9InN0MTUiCiAgICAgaWQ9InBhdGgxNDUwNCIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIHN0eWxlPSJzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC44OTczNDQ2NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7bWFya2VyLWVuZDp1cmwoI21ya3I1LTEyMSkiIC8+PHBhdGgKICAgICBkPSJtIDIxMS4zNTQ2NiwzMTQuNDc1NTggODkuMjg1NDQsMCAxMi45ODkwNiwtMjIuNjYyNTYgLTg5LjI4NTQ0LDAgLTEyLjk4OTA2LDIyLjY2MjU2IHoiCiAgICAgY2xhc3M9InN0MTMiCiAgICAgaWQ9InBhdGgxNDUxNCIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI4OCk7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuMjY3NDU3NjM7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIiAvPjxyZWN0CiAgICAgc3R5bGU9InZpc2liaWxpdHk6dmlzaWJsZTtmaWxsOiNjZGNkY2Q7ZmlsbC1vcGFjaXR5OjAuNTtzdHJva2U6I2NkY2RjZDtzdHJva2Utd2lkdGg6MC4yNTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW9wYWNpdHk6MC41IgogICAgIGlkPSJyZWN0MTQ1MjQiCiAgICAgY2xhc3M9InN0MTIiCiAgICAgaGVpZ2h0PSIyMi42NzcyIgogICAgIHdpZHRoPSI3MC44NjYwOTYiCiAgICAgeT0iMjkzLjc2ODM3IgogICAgIHg9IjM3NC41NTYwMyIgLz48cmVjdAogICAgIHg9IjM3My4xMTYwMyIKICAgICB5PSIyOTIuMzI4MzciCiAgICAgd2lkdGg9IjcwLjg2NjA5NiIKICAgICBoZWlnaHQ9IjIyLjY3NzIiCiAgICAgY2xhc3M9InN0MTMiCiAgICAgaWQ9InJlY3QxNDUyNiIKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTYyOTApO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIgLz48cGF0aAogICAgIGQ9Im0gNTIzLjI5MjYyLDMxNS41MTk2OCAyMTcuMDA1NzUsMCAxMi4yMjcxOSwtMjIuNjcwNDYgLTIxNy4wMDU3NSwwIC0xMi4yMjcxOSwyMi42NzA0NiB6IgogICAgIGNsYXNzPSJzdDEzIgogICAgIGlkPSJwYXRoMTQ1MzgiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTYyOTIpO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjI1OTU0MDc0O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIgLz48cGF0aAogICAgIGQ9Im0gMzA3LjkzMDI0LDMwMy42NjIzOCA1OS41MjM1MSwwIgogICAgIGNsYXNzPSJzdDE1IgogICAgIGlkPSJwYXRoMTQ1NDUiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBzdHlsZT0ic3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuOTU5MDg4Mjc7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO21hcmtlci1lbmQ6dXJsKCNtcmtyNS0xMjEpIiAvPjxwYXRoCiAgICAgZD0ibSA0NDQuNDA1ODEsMzAzLjY2MjM4IDgxLjEyMzA4LDAiCiAgICAgY2xhc3M9InN0MTUiCiAgICAgaWQ9InBhdGgxNDU1MCIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIHN0eWxlPSJzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC45MDAwNTM3NDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7bWFya2VyLWVuZDp1cmwoI21ya3I1LTEyMSkiIC8+PHJlY3QKICAgICBzdHlsZT0idmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6I2NkY2RjZDtmaWxsLW9wYWNpdHk6MC41O3N0cm9rZTojY2RjZGNkO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utb3BhY2l0eTowLjUiCiAgICAgaWQ9InJlY3QxNDU3MCIKICAgICBjbGFzcz0ic3QxMiIKICAgICBoZWlnaHQ9IjIyLjY3NzIiCiAgICAgd2lkdGg9IjcwLjg2NjA5NiIKICAgICB5PSIzMjQuOTQ5NDYiCiAgICAgeD0iMzcyLjQzMDAyIiAvPjxyZWN0CiAgICAgeD0iMzcyLjAzMDIxIgogICAgIHk9IjMyMy41MDk0OSIKICAgICB3aWR0aD0iNzAuODY2MDk2IgogICAgIGhlaWdodD0iMjIuNjc3MiIKICAgICBjbGFzcz0ic3QxMyIKICAgICBpZD0icmVjdDE0NTcyIgogICAgIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNjI5Nik7c3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuMjU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIiAvPjxwYXRoCiAgICAgZD0ibSA1MjEuMTY2MjgsMzQ2LjcwMTEyIDIxOC4xNTk5NiwwIDEyLjE2MzUsLTIyLjY3MTE0IC0yMTguMTU5OTYsMCAtMTIuMTYzNSwyMi42NzExNCB6IgogICAgIGNsYXNzPSJzdDEzIgogICAgIGlkPSJwYXRoMTQ1ODQiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTYyOTgpO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjI1ODg2NzY4O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZCIgLz48cGF0aAogICAgIGQ9Im0gMzA0LjI1NTA5LDMzNC44NDM0OCA2MC45MzgwMSwwIgogICAgIGNsYXNzPSJzdDE1IgogICAgIGlkPSJwYXRoMTQ1OTEiCiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICBzdHlsZT0ic3Ryb2tlOiM0MDQwNDA7c3Ryb2tlLXdpZHRoOjAuOTcwNDE3MDg7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO21hcmtlci1lbmQ6dXJsKCNtcmtyNS0xMjEpIiAvPjxwYXRoCiAgICAgZD0ibSA0NDIuNzkxNzEsMzM1LjM2MzU2IDc5LjY3MDMxLDAiCiAgICAgY2xhc3M9InN0MTUiCiAgICAgaWQ9InBhdGgxNDU5NiIKICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgIHN0eWxlPSJzdHJva2U6IzQwNDA0MDtzdHJva2Utd2lkdGg6MC44OTE5NTgxODtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7bWFya2VyLWVuZDp1cmwoI21ya3I1LTEyMSkiIC8+PHBhdGgKICAgICBkPSJtIDQ5Ljk2NjMzNiwyNjguMjMyOTggLTIxLjI2LDAgMCwtOTcuNzkgNTAuNTMsMCIKICAgICBjbGFzcz0ic3QxNSIKICAgICBpZD0icGF0aDE0NjAxIgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9InN0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDttYXJrZXItZW5kOnVybCgjbXJrcjUtMTIxKSIgLz48dGV4dAogICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6ODkuOTk5OTE2MDhweDtsaW5lLWhlaWdodDoxMjUlO2ZvbnQtZmFtaWx5OnNhbnMtc2VyaWY7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lO3N0cm9rZS13aWR0aDoxcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICB4PSIyOC4xMjQwMzkiCiAgICAgeT0iMzMuNDQxODI2IgogICAgIGlkPSJ0ZXh0MTY2OTIiCiAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEyNSUiPjx0c3BhbgogICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgIGlkPSJ0c3BhbjE2Njk0IgogICAgICAgeD0iMjguMTI0MDM5IgogICAgICAgeT0iMzMuNDQxODI2IgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4Ij5mb3IgZmlsZW5hbWUgaW4gKi5kYXQ8L3RzcGFuPjx0c3BhbgogICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgIHg9IjI4LjEyNDAzOSIKICAgICAgIHk9IjQ3LjE5MTgxNCIKICAgICAgIHN0eWxlPSJmb250LXNpemU6MTAuOTk5OTg5NTFweCIKICAgICAgIGlkPSJ0c3BhbjE2Njk2Ij5kbzwvdHNwYW4+PHRzcGFuCiAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgeD0iMjguMTI0MDM5IgogICAgICAgeT0iNjAuOTQxNzk5IgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4IgogICAgICAgaWQ9InRzcGFuMTY2OTgiPiAgICBlY2hvIGNwICRmaWxlbmFtZSBvcmlnaW5hbC0kZmlsZW5hbWU8L3RzcGFuPjx0c3BhbgogICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgIHg9IjI4LjEyNDAzOSIKICAgICAgIHk9Ijc0LjY5MTc4OCIKICAgICAgIHN0eWxlPSJmb250LXNpemU6MTAuOTk5OTg5NTFweCIKICAgICAgIGlkPSJ0c3BhbjE2NzAwIj5kb25lPC90c3Bhbj48L3RleHQ+CjxyZWN0CiAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMCwtMSwxLDAsMCwwKSIKICAgICB4PSItOTkuMjA5MzA1IgogICAgIHk9IjAuMjE5ODM1OTUiCiAgICAgd2lkdGg9Ijk4Ljk4OTUxIgogICAgIGhlaWdodD0iMTQuNDUzNTI3IgogICAgIGNsYXNzPSJzdDIiCiAgICAgaWQ9InJlY3QxNjcwNiIKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTY3MDgpO3N0cm9rZTojNDA0MDQwO3N0cm9rZS13aWR0aDowLjQzOTY3MTk7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kIiAvPjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjcxLjE2MDcxMyIKICAgICB5PSIxMTcuODQzOCIKICAgICBpZD0idGV4dDE2NzEyIgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjcxNCIKICAgICAgIHg9IjcxLjE2MDcxMyIKICAgICAgIHk9IjExNy44NDM4IgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4Ij5Qcm9jZXNzIEZsb3c8L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjExLjk5OTk4ODU2cHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeD0iMjIzLjc2Njk3IgogICAgIHk9IjExNy44NDM4IgogICAgIGlkPSJ0ZXh0MTY3MTYiCiAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEyNSUiPjx0c3BhbgogICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgIGlkPSJ0c3BhbjE2NzE4IgogICAgICAgeD0iMjIzLjc2Njk3IgogICAgICAgeT0iMTE3Ljg0MzgiCiAgICAgICBzdHlsZT0iZm9udC1zaXplOjEwLjk5OTk4OTUxcHgiPlZhcmlhYmxlIHZhbHVlPC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjM5MC4yMzI3IgogICAgIHk9IjExNy42NzQ2MSIKICAgICBpZD0idGV4dDE2NzIwIgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjcyMiIKICAgICAgIHg9IjM5MC4yMzI3IgogICAgICAgeT0iMTE3LjY3NDYxIgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4Ij5Qcm9jZXNzPC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjYxMi42ODU0OSIKICAgICB5PSIxMTcuODQzOCIKICAgICBpZD0idGV4dDE2NzI0IgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjcyNiIKICAgICAgIHg9IjYxMi42ODU0OSIKICAgICAgIHk9IjExNy44NDM4IgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4Ij5TdGRvdXQ8L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjExLjk5OTk4ODU2cHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeD0iMjMyLjQ2NjE2IgogICAgIHk9IjI3NS41MTc5NCIKICAgICBpZD0idGV4dDE2NzI4IgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjczMCIKICAgICAgIHg9IjIzMi40NjYxNiIKICAgICAgIHk9IjI3NS41MTc5NCIKICAgICAgIHN0eWxlPSJmb250LXNpemU6MTAuOTk5OTg5NTFweCI+YmFzaWxpc2suZGF0PC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjM5NS4yNzcxMyIKICAgICB5PSIyNzYuNTg2NyIKICAgICBpZD0idGV4dDE2NzMyIgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjczNCIKICAgICAgIHg9IjM5NS4yNzcxMyIKICAgICAgIHk9IjI3Ni41ODY3IgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4Ij5lY2hvPC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjUzNi4wMDQ3IgogICAgIHk9IjI3Ni4wMzgwMiIKICAgICBpZD0idGV4dDE2NzM2IgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjczOCIKICAgICAgIHg9IjUzNi4wMDQ3IgogICAgICAgeT0iMjc2LjAzODAyIgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4Ij5jcCBiYXNpbGlzay5kYXQgb3JpZ2luYWwtYmFzaWxpc2suZGF0PC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEyNSUiCiAgICAgaWQ9InRleHQxNjc0MCIKICAgICB5PSIzMDYuNjk5MDQiCiAgICAgeD0iMjMyLjQ2NjE2IgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjExLjk5OTk4ODU2cHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuCiAgICAgICBzdHlsZT0iZm9udC1zaXplOjEwLjk5OTk4OTUxcHgiCiAgICAgICB5PSIzMDYuNjk5MDQiCiAgICAgICB4PSIyMzIuNDY2MTYiCiAgICAgICBpZD0idHNwYW4xNjc0MiIKICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiPm1pbm90YXVyLmRhdDwvdHNwYW4+PC90ZXh0Pgo8dGV4dAogICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MTEuOTk5OTg4NTZweDtsaW5lLWhlaWdodDoxMjUlO2ZvbnQtZmFtaWx5OnNhbnMtc2VyaWY7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lO3N0cm9rZS13aWR0aDoxcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICB4PSIyMzAuMzQwMTUiCiAgICAgeT0iMzM3Ljg4MDE2IgogICAgIGlkPSJ0ZXh0MTY3NDQiCiAgICAgc29kaXBvZGk6bGluZXNwYWNpbmc9IjEyNSUiPjx0c3BhbgogICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgIGlkPSJ0c3BhbjE2NzQ2IgogICAgICAgeD0iMjMwLjM0MDE1IgogICAgICAgeT0iMzM3Ljg4MDE2IgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4Ij51bmljb3JuLmRhdDwvdHNwYW4+PC90ZXh0Pgo8dGV4dAogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIgogICAgIGlkPSJ0ZXh0MTY3NDgiCiAgICAgeT0iMzA3Ljc2Nzc5IgogICAgIHg9IjM5NS4yNzcxMyIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4IgogICAgICAgeT0iMzA3Ljc2Nzc5IgogICAgICAgeD0iMzk1LjI3NzEzIgogICAgICAgaWQ9InRzcGFuMTY3NTAiCiAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIj5lY2hvPC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjM5My4xNTExNSIKICAgICB5PSIzMzguOTQ4OTEiCiAgICAgaWQ9InRleHQxNjc1MiIKICAgICBzb2RpcG9kaTpsaW5lc3BhY2luZz0iMTI1JSI+PHRzcGFuCiAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgaWQ9InRzcGFuMTY3NTQiCiAgICAgICB4PSIzOTMuMTUxMTUiCiAgICAgICB5PSIzMzguOTQ4OTEiCiAgICAgICBzdHlsZT0iZm9udC1zaXplOjEwLjk5OTk4OTUxcHgiPmVjaG88L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICBzb2RpcG9kaTpsaW5lc3BhY2luZz0iMTI1JSIKICAgICBpZD0idGV4dDE2NzYwIgogICAgIHk9IjMwNy4yMTkxMiIKICAgICB4PSI1MzYuMDA0NyIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMS45OTk5ODg1NnB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbgogICAgICAgc3R5bGU9ImZvbnQtc2l6ZToxMC45OTk5ODk1MXB4IgogICAgICAgeT0iMzA3LjIxOTEyIgogICAgICAgeD0iNTM2LjAwNDciCiAgICAgICBpZD0idHNwYW4xNjc2MiIKICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiPmNwIG1pbm90YXVyLmRhdCBvcmlnaW5hbC1taW5vdGF1ci5kYXQ8L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjExLjk5OTk4ODU2cHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeD0iNTM0Ljk0MzY2IgogICAgIHk9IjMzOC40MDAyNCIKICAgICBpZD0idGV4dDE2NzY0IgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjc2NiIKICAgICAgIHg9IjUzNC45NDM2NiIKICAgICAgIHk9IjMzOC40MDAyNCIKICAgICAgIHN0eWxlPSJmb250LXNpemU6MTAuOTk5OTg5NTFweCI+Y3AgdW5pY29ybi5kYXQgb3JpZ2luYWwtdW5pY29ybi5kYXQ8L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjEwLjk5OTk4OTUxcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeD0iNzEuNzE4ODU3IgogICAgIHk9IjE1NC41OTcxMiIKICAgICBpZD0idGV4dDE2NzY4IgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjc3MCIKICAgICAgIHg9IjcxLjcxODg1NyIKICAgICAgIHk9IjE1NC41OTcxMiI+U3RhcnQ8L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjEwLjk5OTk4OTUxcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeD0iODUuNjI0MjI5IgogICAgIHk9IjIwMi45MjY2MiIKICAgICBpZD0idGV4dDE2NzcyIgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICB4PSI4NS42MjQyMjkiCiAgICAgICB5PSIyMDIuOTI2NjIiCiAgICAgICBpZD0idHNwYW4xNjc3NiIKICAgICAgIHN0eWxlPSJ0ZXh0LWFsaWduOmNlbnRlcjt0ZXh0LWFuY2hvcjptaWRkbGUiPk5ldzwvdHNwYW4+PHRzcGFuCiAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgeD0iODUuNjI0MjI5IgogICAgICAgeT0iMjE2LjY3NjYxIgogICAgICAgaWQ9InRzcGFuMTY4MDQiCiAgICAgICBzdHlsZT0idGV4dC1hbGlnbjpjZW50ZXI7dGV4dC1hbmNob3I6bWlkZGxlIj52YWx1ZT88L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjEwLjk5OTk4OTUxcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeD0iNjQuMzgyNjk4IgogICAgIHk9IjI0MC43MjgwNiIKICAgICBpZD0idGV4dDE2Nzc4IgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjc4MCIKICAgICAgIHg9IjY0LjM4MjY5OCIKICAgICAgIHk9IjI0MC43MjgwNiI+WWVzPC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMC45OTk5ODk1MXB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjE0OS4zNDkxMiIKICAgICB5PSIyODAuMDUzMzQiCiAgICAgaWQ9InRleHQxNjc4MiIKICAgICBzb2RpcG9kaTpsaW5lc3BhY2luZz0iMTI1JSI+PHRzcGFuCiAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgaWQ9InRzcGFuMTY3ODQiCiAgICAgICB4PSIxNDkuMzQ5MTIiCiAgICAgICB5PSIyODAuMDUzMzQiPk5vPC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMC45OTk5ODk1MXB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9IjU2LjYyOTYwMSIKICAgICB5PSIyNzEuMDk5OTEiCiAgICAgaWQ9InRleHQxNjc4NiIKICAgICBzb2RpcG9kaTpsaW5lc3BhY2luZz0iMTI1JSI+PHRzcGFuCiAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgaWQ9InRzcGFuMTY3ODgiCiAgICAgICB4PSI1Ni42Mjk2MDEiCiAgICAgICB5PSIyNzEuMDk5OTEiPlJ1biBwcm9jZXNzPC90c3Bhbj48L3RleHQ+Cjx0ZXh0CiAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToxMC45OTk5ODk1MXB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjFweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIgogICAgIHg9Ijc0Ljg5MzE2NiIKICAgICB5PSIzNDcuNDQ5OTIiCiAgICAgaWQ9InRleHQxNjc5MCIKICAgICBzb2RpcG9kaTpsaW5lc3BhY2luZz0iMTI1JSI+PHRzcGFuCiAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgaWQ9InRzcGFuMTY3OTIiCiAgICAgICB4PSI3NC44OTMxNjYiCiAgICAgICB5PSIzNDcuNDQ5OTIiPkVuZDwvdHNwYW4+PC90ZXh0Pgo8dGV4dAogICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MTAuOTk5OTg5NTFweDtsaW5lLWhlaWdodDoxMjUlO2ZvbnQtZmFtaWx5OnNhbnMtc2VyaWY7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lO3N0cm9rZS13aWR0aDoxcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICB4PSItMjUxLjYwOTA3IgogICAgIHk9IjExLjU0NzQ0NSIKICAgICBpZD0idGV4dDE2Nzk0IgogICAgIHNvZGlwb2RpOmxpbmVzcGFjaW5nPSIxMjUlIgogICAgIHRyYW5zZm9ybT0ibWF0cml4KDAsLTEsMSwwLDAsMCkiPjx0c3BhbgogICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgIGlkPSJ0c3BhbjE2Nzk2IgogICAgICAgeD0iLTI1MS42MDkwNyIKICAgICAgIHk9IjExLjU0NzQ0NSI+UGhhc2U8L3RzcGFuPjwvdGV4dD4KPHRleHQKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjEwLjk5OTk4OTUxcHg7bGluZS1oZWlnaHQ6MTI1JTtmb250LWZhbWlseTpzYW5zLXNlcmlmO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MXB4O3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgeD0iLTgwLjQ1MDYwNyIKICAgICB5PSIxMC40ODEyNjUiCiAgICAgaWQ9InRleHQxNjc5OCIKICAgICBzb2RpcG9kaTpsaW5lc3BhY2luZz0iMTI1JSIKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLC0xLDEsMCwwLDApIj48dHNwYW4KICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICBpZD0idHNwYW4xNjgwMCIKICAgICAgIHg9Ii04MC40NTA2MDciCiAgICAgICB5PSIxMC40ODEyNjUiPlNoZWxsIHNjcmlwdDwvdHNwYW4+PC90ZXh0Pgo8L3N2Zz4=" class="img-fluid" alt="For loop flow chart showing variable assignment and iteration"></p>
 </section>
 <section id="nelles-pipeline-processing-files" class="level2">
 <h2 class="anchored" data-anchor-id="nelles-pipeline-processing-files">Nelle’s Pipeline: Processing Files</h2>
-<p>Nelle is now ready to process her data files using <code>goostats.sh</code> — a shell script written by her supervisor.</p>
-<p>This calculates some <strong>statistics from a protein sample file</strong> and takes two arguments:</p>
+<ul>
+<li><p>Nelle is ready to process files with <code>goostats.sh</code>.</p></li>
+<li><p>The script calculates statistics from a protein sample file.</p></li>
+<li><p>It takes two arguments:</p>
 <ol type="1">
 <li>an input file (containing the raw data)</li>
 <li>an output file (to store the calculated statistics)</li>
-</ol>
-<p>Since she’s still learning how to use the shell, she decides to <strong>build up the required commands in stages</strong>.</p>
+</ol></li>
+<li><p>Since she is still learning, she builds the commands in stages.</p></li>
+</ul>
 </section>
 <section id="nelle-tests-file-selection" class="level2">
 <h2 class="anchored" data-anchor-id="nelle-tests-file-selection">Nelle Tests File Selection</h2>
-<p>Her first step is to make sure that she can select the right input files — remember, these are ones whose names end in ‘A’ or ‘B’, rather than ‘Z’.</p>
+<ul>
+<li>First step: confirm she selects only <code>A</code> and <code>B</code> files (not <code>Z</code>).</li>
+</ul>
 <p>Moving to the <code>north-pacific-gyre</code> directory, Nelle types:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/shell-lesson-data/north-pacific-gyre</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$datafile</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/shell-lesson-data/north-pacific-gyre</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$datafile</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>NENE01729A.txt
 NENE01736A.txt
 NENE01751A.txt
 ...
 NENE02040B.txt
 NENE02043B.txt</code></pre>
-<p>Good! Selects correct files.</p>
+<ul>
+<li>Result: correct files are selected.</li>
+</ul>
 </section>
 <section id="nelle-builds-output-filenames" class="level2">
 <h2 class="anchored" data-anchor-id="nelle-builds-output-filenames">Nelle Builds Output Filenames</h2>
-<p>Her next step is to decide what to call the files that the <code>goostats.sh</code> analysis program will create.</p>
-<p>Prefixing each input file’s name with ‘stats’ seems simple, so she modifies her loop:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$datafile</span> stats-<span class="va">$datafile</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Next step: decide output filenames for <code>goostats.sh</code>.</li>
+<li>She prefixes each input file with <code>stats-</code>.</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$datafile</span> stats-<span class="va">$datafile</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>NENE01729A.txt stats-NENE01729A.txt
 NENE01736A.txt stats-NENE01736A.txt
 NENE01751A.txt stats-NENE01751A.txt
 ...
 NENE02040B.txt stats-NENE02040B.txt
 NENE02043B.txt stats-NENE02043B.txt</code></pre>
-<p>Perfect! Ready to process.</p>
-<p>She hasn’t actually run <code>goostats.sh</code> yet, but now she’s sure she can select the right files and generate the right output filenames.</p>
+<ul>
+<li>Now she can generate correct output names.</li>
+<li>She has not run <code>goostats.sh</code> yet; this is a dry run.</li>
+</ul>
 </section>
 <section id="command-history" class="level2">
 <h2 class="anchored" data-anchor-id="command-history">Command History</h2>
 <p><strong>Typing same command repeatedly is tedious!</strong></p>
 <p>Shell remembers recent commands.</p>
 <p><strong>View history:</strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Shows numbered list of previous commands.</p>
-</section>
-<section id="accessing-history" class="level2">
-<h2 class="anchored" data-anchor-id="accessing-history">Accessing History</h2>
+<section id="accessing-history" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-history">Accessing History</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -5567,15 +5605,15 @@ NENE02043B.txt stats-NENE02043B.txt</code></pre>
 </tbody>
 </table>
 </section>
+</section>
 <section id="one-liner-loop" class="level2">
 <h2 class="anchored" data-anchor-id="one-liner-loop">One-Liner Loop</h2>
 <p>Press <strong>Up arrow</strong>:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt<span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> <span class="va">$datafile</span> stats-<span class="va">$datafile</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt<span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> <span class="va">$datafile</span> stats-<span class="va">$datafile</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Entire loop on one line using semicolons <code>;</code></p>
 <p>Same as multi-line version!</p>
-</section>
-<section id="beginning-and-end" class="level2">
-<h2 class="anchored" data-anchor-id="beginning-and-end">Beginning and End</h2>
+<section id="beginning-and-end" class="level3">
+<h3 class="anchored" data-anchor-id="beginning-and-end">Beginning and End</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -5590,49 +5628,25 @@ Beginning and End
 </div>
 </div>
 </section>
-<section id="those-who-know-history" class="level2">
-<h2 class="anchored" data-anchor-id="those-who-know-history">Those Who Know History</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Those Who Know History Can Choose to Repeat It
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Another way to repeat previous work is to use the <code>history</code> command to get a list of the last few hundred commands that have been executed, and then to use <code>!123</code> (where <code>123</code> is replaced by the command number) to repeat one of those commands. For example, if Nelle types this:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>  456  for datafile in NENE*A.txt NENE*B.txt; do echo $datafile stats-$datafile; done
-  457  for datafile in NENE*A.txt NENE*B.txt; do bash goostats.sh $datafile stats-$datafile; done
-  458  for datafile in NENE*A.txt NENE*B.txt; do echo $datafile; done
-  459  cd ..
-  460  history | tail -n 5</code></pre>
-<p>then she can re-run <code>bash goostats.sh</code> on all her files by typing <code>!457</code>.</p>
-</div>
-</div>
 </section>
-<section id="other-history-commands" class="level2">
-<h2 class="anchored" data-anchor-id="other-history-commands">Other history Commands</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Other history Commands
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>There are a number of other shortcut commands for getting at the history:</p>
+<section id="nelle-runs-the-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="nelle-runs-the-pipeline">Nelle Runs the Pipeline</h2>
 <ul>
-<li><kbd>Ctrl</kbd>+<kbd>R</kbd> enters a history search mode ‘reverse-i-search’ and finds the most recent command in your history that matches the text you enter next. Press <kbd>Ctrl</kbd>+<kbd>R</kbd> one or more additional times to search for earlier matches. You can then use the left and right arrow keys to choose that line and edit it then hit <kbd>Return</kbd> to run the command.</li>
-<li><code>!!</code> retrieves the immediately preceding command (you may or may not find this more convenient than using <kbd>↑</kbd>)</li>
-<li><code>!$</code> retrieves the last word of the last command. That’s useful more often than you might expect: after <code>bash goostats.sh NENE01729B.txt stats-NENE01729B.txt</code>, you can type <code>less !$</code> to look at the file <code>stats-NENE01729B.txt</code>, which is quicker than doing <kbd>↑</kbd> and editing the command-line.</li>
+<li>Nelle edits the one-liner and runs the actual script:</li>
 </ul>
-</div>
-</div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt<span class="kw">;</span> <span class="cf">do</span> <span class="fu">bash</span> goostats.sh <span class="va">$datafile</span> stats-<span class="va">$datafile</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Nothing appears on screen because <code>goostats.sh</code> writes output files but does not print progress.</li>
+<li>She stops it with <kbd>Ctrl</kbd>+<kbd>C</kbd>, reuses <kbd>↑</kbd>, and adds <code>echo</code> to show progress:</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt<span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> <span class="va">$datafile</span><span class="kw">;</span> <span class="fu">bash</span> goostats.sh <span class="va">$datafile</span> stats-<span class="va">$datafile</span><span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>NENE01729A.txt
+NENE01736A.txt
+NENE01751A.txt
+...</code></pre>
+<ul>
+<li>With one file about every 5 seconds, she estimates total runtime and lets it continue.</li>
+</ul>
 </section>
 <section id="challenge-doing-a-dry-run" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-doing-a-dry-run">Challenge: Doing a Dry Run</h2>
@@ -5648,28 +5662,28 @@ Challenge
 <div class="callout-body-container callout-body">
 <p>A loop is a way to do many things at once — or to make many mistakes at once if it does the wrong thing. One way to check what a loop <em>would</em> do is to <code>echo</code> the commands it would run instead of actually running them.</p>
 <p>Suppose we want to preview the commands the following loop will execute without actually running those commands:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span> <span class="va">$datafile</span> <span class="op">&gt;&gt;</span> all.pdb</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span> <span class="va">$datafile</span> <span class="op">&gt;&gt;</span> all.pdb</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>What is the difference between the two loops below, and which one would we want to run?</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Version 1</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> cat <span class="va">$datafile</span> <span class="op">&gt;&gt;</span> all.pdb</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Version 2</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;cat </span><span class="va">$datafile</span><span class="st"> &gt;&gt; all.pdb&quot;</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Version 1</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> cat <span class="va">$datafile</span> <span class="op">&gt;&gt;</span> all.pdb</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Version 2</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="pp">*</span>.pdb</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;cat </span><span class="va">$datafile</span><span class="st"> &gt;&gt; all.pdb&quot;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="solution-12" class="level2">
 <h2 class="anchored" data-anchor-id="solution-12">Solution</h2>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled" style="border-left: 4px solid #ffc107;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -5678,7 +5692,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The second version is the one we want to run. This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign. It also <em>does not</em> modify nor create the file <code>all.pdb</code>, as the <code>&gt;&gt;</code> is treated literally as part of a string rather than as a redirection instruction.</p>
 <p>The first version appends the output from the command <code>echo cat $datafile</code> to the file, <code>all.pdb</code>. This file will just contain the list; <code>cat cubane.pdb</code>, <code>cat ethane.pdb</code>, <code>cat methane.pdb</code> etc.</p>
@@ -5700,20 +5714,20 @@ Challenge
 </div>
 <div class="callout-body-container callout-body">
 <p>Suppose we want to set up a directory structure to organize some experiments measuring reaction rate constants with different compounds <em>and</em> different temperatures. What would be the result of the following code:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> species <span class="kw">in</span> cubane ethane methane</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> temperature <span class="kw">in</span> 25 30 37 40</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">do</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mkdir</span> <span class="va">$species</span>-<span class="va">$temperature</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> species <span class="kw">in</span> cubane ethane methane</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> temperature <span class="kw">in</span> 25 30 37 40</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">do</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mkdir</span> <span class="va">$species</span>-<span class="va">$temperature</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="solution-14" class="level2">
 <h2 class="anchored" data-anchor-id="solution-14">Solution</h2>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled" style="border-left: 4px solid #ffc107;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -5722,7 +5736,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We have a nested loop, i.e. contained within another loop, so for each species in the outer loop, the inner loop (the nested loop) iterates over the list of temperatures, and creates a new directory for each combination.</p>
 <p>Try running the code for yourself to see which directories are created!</p>
@@ -5825,7 +5839,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("git@github-work:Sanduni-P\/shell-novice\.git");
+      var filterRegex = new RegExp("https:\/\/Sanduni-P\.github\.io\/shell-novice\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

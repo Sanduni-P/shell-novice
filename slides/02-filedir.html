@@ -4907,10 +4907,10 @@ padding-top: 4px !important;
   <li><a href="#episode-2-navigating-files-and-directories" id="toc-episode-2-navigating-files-and-directories" class="nav-link active" data-scroll-target="#episode-2-navigating-files-and-directories">Episode 2: Navigating Files and Directories</a>
   <ul class="collapse">
   <li><a href="#the-file-system" id="toc-the-file-system" class="nav-link" data-scroll-target="#the-file-system">The File System</a></li>
-  <li><a href="#the-file-system-tree" id="toc-the-file-system-tree" class="nav-link" data-scroll-target="#the-file-system-tree">The File System Tree</a></li>
-  <li><a href="#what-these-folders-mean" id="toc-what-these-folders-mean" class="nav-link" data-scroll-target="#what-these-folders-mean">What these folders mean</a></li>
-  <li><a href="#pwd---print-working-directory" id="toc-pwd---print-working-directory" class="nav-link" data-scroll-target="#pwd---print-working-directory"><code>pwd</code> - Print Working Directory</a></li>
+  <li><a href="#pwd---print-working-directory" id="toc-pwd---print-working-directory" class="nav-link" data-scroll-target="#pwd---print-working-directory"><code>pwd</code> - Print Working Directory</a>
+  <ul class="collapse">
   <li><a href="#your-home-directory" id="toc-your-home-directory" class="nav-link" data-scroll-target="#your-home-directory">Your Home Directory</a></li>
+  </ul></li>
   <li><a href="#ls---list-files-and-directories" id="toc-ls---list-files-and-directories" class="nav-link" data-scroll-target="#ls---list-files-and-directories"><code>ls</code> - List Files and Directories</a></li>
   <li><a href="#making-ls-output-clearer" id="toc-making-ls-output-clearer" class="nav-link" data-scroll-target="#making-ls-output-clearer">Making <code>ls</code> Output Clearer</a></li>
   <li><a href="#clearing-your-terminal" id="toc-clearing-your-terminal" class="nav-link" data-scroll-target="#clearing-your-terminal">Clearing Your Terminal</a></li>
@@ -4927,19 +4927,23 @@ padding-top: 4px !important;
   <li><a href="#exploring-other-directories" id="toc-exploring-other-directories" class="nav-link" data-scroll-target="#exploring-other-directories">Exploring Other Directories</a></li>
   <li><a href="#cd---change-directory" id="toc-cd---change-directory" class="nav-link" data-scroll-target="#cd---change-directory"><code>cd</code> - Change Directory</a></li>
   <li><a href="#moving-into-subdirectories" id="toc-moving-into-subdirectories" class="nav-link" data-scroll-target="#moving-into-subdirectories">Moving Into Subdirectories</a></li>
-  <li><a href="#listing-current-directory" id="toc-listing-current-directory" class="nav-link" data-scroll-target="#listing-current-directory">Listing Current Directory</a></li>
+  <li><a href="#vs-." id="toc-vs-." class="nav-link" data-scroll-target="#vs-."><code>..</code> vs <code>.</code></a>
+  <ul class="collapse">
   <li><a href="#moving-up-one-level-.." id="toc-moving-up-one-level-.." class="nav-link" data-scroll-target="#moving-up-one-level-..">Moving Up One Level: <code>..</code></a></li>
   <li><a href="#current-directory-." id="toc-current-directory-." class="nav-link" data-scroll-target="#current-directory-.">Current Directory: <code>.</code></a></li>
+  </ul></li>
   <li><a href="#special-symbols-in-paths" id="toc-special-symbols-in-paths" class="nav-link" data-scroll-target="#special-symbols-in-paths">Special Symbols in Paths</a></li>
   <li><a href="#hidden-files-and-directories" id="toc-hidden-files-and-directories" class="nav-link" data-scroll-target="#hidden-files-and-directories">Hidden Files and Directories</a></li>
-  <li><a href="#other-hidden-files" id="toc-other-hidden-files" class="nav-link" data-scroll-target="#other-hidden-files">Other Hidden Files</a></li>
   <li><a href="#two-types-of-paths" id="toc-two-types-of-paths" class="nav-link" data-scroll-target="#two-types-of-paths">Two Types of Paths</a>
   <ul class="collapse">
   <li><a href="#absolute-path" id="toc-absolute-path" class="nav-link" data-scroll-target="#absolute-path">Absolute Path</a></li>
   <li><a href="#relative-path" id="toc-relative-path" class="nav-link" data-scroll-target="#relative-path">Relative Path</a></li>
   </ul></li>
-  <li><a href="#home-directory-shortcut" id="toc-home-directory-shortcut" class="nav-link" data-scroll-target="#home-directory-shortcut">Home Directory Shortcut</a></li>
+  <li><a href="#home-directory" id="toc-home-directory" class="nav-link" data-scroll-target="#home-directory">Home Directory</a>
+  <ul class="collapse">
+  <li><a href="#shortcut" id="toc-shortcut" class="nav-link" data-scroll-target="#shortcut">Shortcut</a></li>
   <li><a href="#return-to-home" id="toc-return-to-home" class="nav-link" data-scroll-target="#return-to-home">Return to Home</a></li>
+  </ul></li>
   <li><a href="#navigate-back-and-forth" id="toc-navigate-back-and-forth" class="nav-link" data-scroll-target="#navigate-back-and-forth">Navigate Back and Forth</a></li>
   <li><a href="#tab-completion" id="toc-tab-completion" class="nav-link" data-scroll-target="#tab-completion">Tab Completion</a></li>
   <li><a href="#general-syntax-of-a-shell-command" id="toc-general-syntax-of-a-shell-command" class="nav-link" data-scroll-target="#general-syntax-of-a-shell-command">General Syntax of a Shell Command</a></li>
@@ -5001,35 +5005,23 @@ Objectives
 </div>
 <section id="the-file-system" class="level2">
 <h2 class="anchored" data-anchor-id="the-file-system">The File System</h2>
-<div style="text-align: center;">
-<p><strong>Files</strong> = store information</p>
-<p><strong>Directories</strong> (folders) = store files or other directories</p>
-</div>
-</section>
-<section id="the-file-system-tree" class="level2">
-<h2 class="anchored" data-anchor-id="the-file-system-tree">The File System Tree</h2>
-<pre><code>/ (root)
-├── bin
-├── data
-├── Users
-│   └── nelle
-├── tmp
-└── ...</code></pre>
-<p>The <strong>root directory</strong> is <code>/</code> - everything else is inside it.</p>
+<ul>
+<li><strong>Files</strong> = store information</li>
+<li><strong>Directories</strong> (folders) = store files or other directories</li>
+<li>The <strong>root directory</strong> is <code>/</code> - everything else is inside it.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/</span> <span class="er">(</span><span class="ex">root</span><span class="kw">)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> bin            <span class="co"># = built-in programs and commands</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data           <span class="co"># = miscellaneous data files</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Users          <span class="co"># user home directories (e.g., `/Users/nelle`)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── nelle</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> tmp            <span class="co"># = temporary files that don&#39;t need long-term storage</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img role="img" aria-label="Nelle&#39;s file system tree showing root and sub-directories" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgd2lkdGg9IjU0Ljk5OTU0Mm1tIgogICBoZWlnaHQ9IjI5LjI3MW1tIgogICB2ZXJzaW9uPSIxLjEiCiAgIHZpZXdCb3g9IjAgMCA1NC45OTkwMiAyOS4yNzAxMDEiCiAgIGlkPSJzdmc2NiIKICAgc29kaXBvZGk6ZG9jbmFtZT0iZmlsZXN5c3RlbS5zdmciCiAgIGlua3NjYXBlOnZlcnNpb249IjAuOTIuMiA1YzNlODBkLCAyMDE3LTA4LTA2Ij4KICA8ZGVmcwogICAgIGlkPSJkZWZzNzAiIC8+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzY2NjY2NiIKICAgICBib3JkZXJvcGFjaXR5PSIxIgogICAgIG9iamVjdHRvbGVyYW5jZT0iMTAiCiAgICAgZ3JpZHRvbGVyYW5jZT0iMTAiCiAgICAgZ3VpZGV0b2xlcmFuY2U9IjEwIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwIgogICAgIGlua3NjYXBlOnBhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxNTQ1IgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjkxNCIKICAgICBpZD0ibmFtZWR2aWV3NjgiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuOTQ1NTY1NDYiCiAgICAgaW5rc2NhcGU6Y3g9Ii00LjUwMzY2MzciCiAgICAgaW5rc2NhcGU6Y3k9IjUzLjkwMjg4OSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMTUyMiIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iNjEiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMCIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmc2NiIgLz4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyIj4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8dGV4dAogICAgIGlkPSJ0ZXh0NiIKICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgIHN0eWxlPSJmb250LXNpemU6OS44Nzc3OTk5OXB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6J0NvdXJpZXIgTmV3JztsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjY0NTgwMDFweCIKICAgICB3b3JkLXNwYWNpbmc9IjBweCIKICAgICBsZXR0ZXItc3BhY2luZz0iMHB4IgogICAgIGZvbnQtc2l6ZT0iOS44Nzc4cHgiCiAgICAgeT0iLTIxLjI0NzA3IgogICAgIHg9IjE2LjE2Mzg5NSI+PHRzcGFuCiAgICAgICBzdHlsZT0iZm9udC1zaXplOjkuODc3Nzk5OTlweDtmb250LWZhbWlseTonQ291cmllciBOZXcnO3N0cm9rZS13aWR0aDowLjI2NDU4MDAxcHgiCiAgICAgICBpZD0idHNwYW40IgogICAgICAgZm9udC1zaXplPSI5Ljg3NzhweCIKICAgICAgIHk9Ii0xMi40NTgwNDUiCiAgICAgICB4PSIxNi4xNjM4OTUiIC8+PC90ZXh0PgogIDxnCiAgICAgaWQ9Imc1MTY4IgogICAgIHRyYW5zZm9ybT0ibWF0cml4KDAuMjc0MTAzODEsMCwwLDAuMjc0MTAzODEsLTIuMDQ0NzMyOWUtNSwtMC4wMDExMzM5NykiPgogICAgPGcKICAgICAgIGlkPSJnNTEzNiI+CiAgICAgIDxpbWFnZQogICAgICAgICBpZD0iaW1hZ2U1NCIKICAgICAgICAgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFLVUFBQUNDQ0FJQUFBQ280SjhEQUFBQUEzTkNTVlFJQ0FqYjRVL2dBQUFEMTBsRVFWUjQgbk8zYnoyc1VkeHpHOGVmN21kM0p1cnV1TVViVW1xVFJ0R0FGVWFoM2hRUXFYc1NMdFBUU2cxNmtwLzRQS3FYUWkwZHZCVzhlS25qbyB5WU9nK0tQUVlpU0lsbUxGcURRYWs3cHhON3N6OCswaE1VYWFWcEhNZnVzK3orczJzME40NE0zTXpoN2l2UGNBQUxRYmswOG1UdnoxIDhNZGtmZ28rQVFGblBYRjFlKysyb3h0R2pydW9GSHBPSjdpRjNzOGZubjl3N1V1ZnRYM1dDajJwMDZ4UWllTCs0ZjBYNDhyMjBGdHkgNTd6M2phZFg3MTBhelpJWG9jY0U0NXhGcFMwZmZ6Wmh4VnJvTGZreUFKTTN2bUtPRGNEN0xHMU5UOTArRlhwSTdxdzVPOTV1VElhZSBFWjVQRzg5K1B4TjZSZTZzT2ZPckN6M2lmeUpMNXRMVzA5QXI4bVZaZXliTEtON0czOGhaTVcwOUM3MGlYK2E5ZDdyQlgvR2hCK1RMIHRYOFpUSnNQbG42RnYvckF3UndjNE95dC9sQ2ppVFJiL1gyZDVGeWh1dm1BRmFxaGg3d1RLNkZuR1BFd2FtTW9idjIzcTV6L3VaT2ogSkZjR0t3TUo0bUZzUFluZXcvKzhRcjI3VkZSRnp3aEd6aVArY1BucHQzdFl5M3NucmFNeGpvbmRxRjllZmxxOXU1ZlBrTTdpN2dFMCBKNWJPcVhlM3krWndad3haZmVGSXZidWVSektEeDk4dUhPaDlqWU5Wc09zK0NuMjZ2ems0aDlrTDBQT2NSVnJIOUZtb041SEdMYWczIGtYUWE2azNFdCtBVDlhYmhBWGoxNXFMZVhOU2JpM3B6VVc4dTZzMUZ2Ym1vTnhmMTVxTGVYTlNiaThHNi9EOWdaVGxEcE41RTlEem4gb3Q1YzFKdUxlbk5SYnk3cXpVVzl1YWczRi9YbW90NWMxSnVMZW5OUmJ5N3F6VVc5dWFnM0YvWG1vdDVjMUp1TGVuTlJieTdxelVXOSB1YWczRi9YbW90NWMxSnVMZW5OUmJ5N3F6VVc5dWFnM0YvWG1vdDVjMUp1TGVuTlJieTdxelVXOXVhZzNGL1htb3Q1YzFKdUxlbk5SIGJ5N3F6VVc5dWFnM0YvWG1vdDVjMUp1TGVuTlJieTdxelVXOXVhZzNGL1htb3Q1YzFKdUxlbk5SYnk3cXpVVzl1YWczRi9YbW90NWMgMUp1TGVuTlJieTdxelVXOXVhZzNGL1htb3Q1YzFKdUxlbk5SYnk3cXpVVzl1YWczRi9YbW90NWNERTdKT1RnQVppajBoeDRpSGVISyBjSkdoT0JoNmlIUkVvUitBb1RhS3FCSjZpK1ROWWUwK0FJYmVROGl5MEdza1o5RmFyRDhDd0JBUG9mS3BYdFM3bkpWUUc4Tmk1c0hUIHNGTGdRWklmcTJMZ2U3Z1lpNzNMZTlCL1ROL2kzY24xb0xJWGZWOHNIbm52QWNDbnVEdUsrblg0UnNoeHNycGNqT0lXN0x5SnFMWncgNHVYWHRvdncwVTlZZHhDbXU3eGJSR1dzMllWUGJpekZ4bXV2YVZiQ3lEa01mSWRvSGF3Y1lKK3NGbGVFcmNIR3I3SGpDZ29iWC90ayA4WG0rWFBvY2Y1N0c5QTlvL1FFcjZkZmErOEVCTVBnV292WG8reHlidmtIeGd4V3VXcUgza21RSzg3K2gvUWpKay94Mnl1cXdHdUlCIHhFT0loLzdqcXI4QkFmckpUZk1CL2gwQUFBQUFTVVZPUks1Q1lJST0gIgogICAgICAgICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIgogICAgICAgICBoZWlnaHQ9IjM0LjM5NiIKICAgICAgICAgd2lkdGg9IjQzLjY1NTk5OCIKICAgICAgICAgeT0iMS41MjU4Nzg4ZS0wOCIKICAgICAgICAgeD0iNzguNDk1Mzk5IiAvPgogICAgICA8dGV4dAogICAgICAgICBpZD0idGV4dDU4IgogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTppdGFsaWM7Zm9udC1zaXplOjMuNDM5NTk5OTlweDtsaW5lLWhlaWdodDoxMjUlO2ZvbnQtZmFtaWx5OkFyaWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODAwMXB4IgogICAgICAgICB3b3JkLXNwYWNpbmc9IjBweCIKICAgICAgICAgbGV0dGVyLXNwYWNpbmc9IjBweCIKICAgICAgICAgZm9udC1zdHlsZT0iaXRhbGljIgogICAgICAgICBmb250LXNpemU9IjMuNDM5NnB4IgogICAgICAgICB5PSIyMC45ODA1MDkiCiAgICAgICAgIHg9Ijk2LjUwNDA3NCI+PHRzcGFuCiAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtc2l6ZToxMi42OTk5OTk4MXB4O2ZvbnQtZmFtaWx5OidDb3VyaWVyIE5ldyc7c3Ryb2tlLXdpZHRoOjAuMjY0NTgwMDFweCIKICAgICAgICAgICBpZD0idHNwYW41NiIKICAgICAgICAgICBmb250LXN0eWxlPSJub3JtYWwiCiAgICAgICAgICAgZm9udC1zaXplPSIxMi43cHgiCiAgICAgICAgICAgeT0iMjAuOTgwNTA5IgogICAgICAgICAgIHg9Ijk2LjUwNDA3NCI+LzwvdHNwYW4+PC90ZXh0PgogICAgPC9nPgogICAgPGcKICAgICAgIGlkPSJnNTEzMSI+CiAgICAgIDxnCiAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMS43OTA2LC05LjEyNTAwMykiCiAgICAgICAgIGlkPSJnMTQiPgogICAgICAgIDxyZWN0CiAgICAgICAgICAgeD0iMjIuMDczOTk5IgogICAgICAgICAgIHk9IjgxLjY0ODAwMyIKICAgICAgICAgICB3aWR0aD0iMjMuNDM0OTk5IgogICAgICAgICAgIGhlaWdodD0iNC4wNjMyIgogICAgICAgICAgIHJ4PSIxLjUiCiAgICAgICAgICAgaWQ9InJlY3Q4IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNkNGFhMDA7c3Ryb2tlOiNkNGFhMDA7c3Ryb2tlLXdpZHRoOjAuMjY0NTgwMDEiIC8+CiAgICAgICAgPHJlY3QKICAgICAgICAgICB4PSIyMS45NjYiCiAgICAgICAgICAgeT0iODMuODYzOTk4IgogICAgICAgICAgIHdpZHRoPSI2LjA1NjAwMDIiCiAgICAgICAgICAgaGVpZ2h0PSI2LjMzOTUiCiAgICAgICAgICAgaWQ9InJlY3QxMCIKICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZjYzAwO3N0cm9rZTojZmZjYzAwO3N0cm9rZS13aWR0aDowLjM1MDY1MDAxIiAvPgogICAgICAgIDxyZWN0CiAgICAgICAgICAgeD0iMjEuOTY2IgogICAgICAgICAgIHk9IjgzLjg2Mzk5OCIKICAgICAgICAgICB3aWR0aD0iNDMuMDg5MDAxIgogICAgICAgICAgIGhlaWdodD0iMzEuNzUiCiAgICAgICAgICAgcng9IjMiCiAgICAgICAgICAgaWQ9InJlY3QxMiIKICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZjYzAwO3N0cm9rZTojZmZjYzAwO3N0cm9rZS13aWR0aDowLjI2NDU4MDAxIiAvPgogICAgICA8L2c+CiAgICAgIDx0ZXh0CiAgICAgICAgIGlkPSJ0ZXh0NjIiCiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOml0YWxpYztmb250LXNpemU6My40Mzk1OTk5OXB4O2xpbmUtaGVpZ2h0OjEyNSU7Zm9udC1mYW1pbHk6QXJpYWw7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7ZmlsbDojMDAwMDAwO3N0cm9rZS13aWR0aDowLjI2NDU4MDAxcHgiCiAgICAgICAgIHdvcmQtc3BhY2luZz0iMHB4IgogICAgICAgICBsZXR0ZXItc3BhY2luZz0iMHB4IgogICAgICAgICBmb250LXN0eWxlPSJpdGFsaWMiCiAgICAgICAgIGZvbnQtc2l6ZT0iMy40Mzk2cHgiCiAgICAgICAgIHk9IjkyLjk4OTk0NCIKICAgICAgICAgeD0iMTEuNzQzNDY0Ij48dHNwYW4KICAgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC1zaXplOjExLjI4ODk5OTU2cHg7Zm9udC1mYW1pbHk6J0NvdXJpZXIgTmV3JztzdHJva2Utd2lkdGg6MC4yNjQ1ODAwMXB4IgogICAgICAgICAgIGlkPSJ0c3BhbjYwIgogICAgICAgICAgIGZvbnQtc3R5bGU9Im5vcm1hbCIKICAgICAgICAgICBmb250LXNpemU9IjExLjI4OXB4IgogICAgICAgICAgIHk9IjkyLjk4OTk0NCIKICAgICAgICAgICB4PSIxMS43NDM0NjQiPmJpbjwvdHNwYW4+PC90ZXh0PgogICAgPC9nPgogICAgPGcKICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjk0NTYwMDksLTE3LjExNTQxKSIKICAgICAgIGlkPSJnMjQiPgogICAgICA8aW1hZ2UKICAgICAgICAgeD0iNTQuMTAzMDAxIgogICAgICAgICB5PSI4OS41MDU5OTciCiAgICAgICAgIHdpZHRoPSI0My42NTU5OTgiCiAgICAgICAgIGhlaWdodD0iMzQuMzk2IgogICAgICAgICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIgogICAgICAgICB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUtVQUFBQ0NDQVlBQUFBbmdnaFVBQUFBQkhOQ1NWUUlDQWdJZkFoa2lBQUFCRlJKUkVGVSBlSnp0M010clhHVVlnUEhuK3lZelNYUHJ4WlphMjlyWUtLZ2dGblN2a0lMRmpiZ1J4VTBYdWhGWC9SOVVSTENMTGwwcHVITmh3WVVyIEY0cWlWcWhZQ1dKQktyUkZyVTF2cVpOT1pzN25Zbm92cGJZMU9lK2t6MjgxK2M0NU0rL2l5YmtNSWFtVVVyaG9zWDJNdjJmZjR1enggVCtsZU9BR2xpMjVQeXNPMHhyZXo1cUhYdUcvNkRWSmpwTzZSQmswclhZcnkzUEg5SFAzdVZVcTFTS2s2ZFE4MjhQTFFHSTNXZXFhZSAvWUxXMlBhNnh4a2svU2piSjcvbHlKY3pWTjEvNmg1b1JVa3AweGpaeENQUHpaS2JrM1dQTXloYUdlRFlnZDBHdVFSS3FlaDE1amp4IHl6dDFqekpROHNLWlF5eTJqOVU5eDRwVmVtMU8vZlpCM1dNTWxMeHcra2RTM1ZPc2NGWDNQTDNPeWJySEdCaTVXanhOVmZtVXZaUlMgYnRMcm5LcDdqSUdSU3lra1Q1WExvTng2RndHUUZnOXVMYjJGbzF6MWRlVzFPeVRJQ1JLUTh1MS9RSHNCZXRYZERUbm9VaHBpL1A1ZCA1S0h4dWtkWmZua0VocWVnTlFXVE82RzUrVlpIdEZMNXdWOWhMYlVNZVJUbzl1UGMvRGFzZWZGbU94dWxhdEFZaCtGcG1ONFByVzNYIGIyM2R3UVZadWt1OWVXZ2ZndGtuWWY3ckd6WWJwZXBSS3VpZGdjTzdZR0gybWsxR3FYcFY1K0hYblZETlgxNHlTdFdzUVBjMC9QSHUgNVJXalZQMUtHLzdjQzkwNXdDZ1ZSVXB3NWpQQUtCVkZieDdtUGdhTVVwRzBmd2FNVXBIMHZLZFVOS1VEUi9jT0dhWGlLRURqN0ozOCAzWSswdEl4UzRSaWx3akZLaFdPVUNzY29GWTVSS2h5alZEaEdxWENNVXVFWXBjTEpaUDlGbldMSk5JeFNzWGo1VmpoR3FYQ01VdUVZIHBjSXhTb1ZqbEFySEtCV09VU29jbzFRNFJxbHdqRkxoR0tYQ01VcUZZNVFLeHlnVmpsRXFIS05VT0VhcGNJeFM0Umlsd2pGS2hXT1UgQ3Njb0ZZNVJLaHlqVkRoR3FYQ01VdUVZcGNJeFNvVmpsQXJIS0JXT1VTb2NvMVE0UnFsd2pGTGhHS1hDTVVxRlk1UUt4eWdWamxFcSBIS05VT0VhcGNJeFM0Umlsd2pGS2hXT1VDc2NvRlk1UktoeWpWRGhHcVhDTVV1RVlwY0l4U29WamxBckhLQldPVVNvY28xUTRScWx3IGpGTGhHS1hDTVVxRlk1UUt4eWdWamxFcUhLTlVPRWFwY0l4UzRSaWx3akZLaFdPVUNzY29GWTVSS2h5alZEaEdxWENNVXVFWXBjSXggU29WamxBckhLQldPVVNvY28xUTRScWx3TXNrdUZVUUNMbXlyTWtQcjZ4NUY2a3VqTUxXN2wybHVyWHNVcWUvaUNUSXpPUU9Oc1pxbiBrUkpNUEFOQVpzMExVRlUxRDZSN1htTUMxcjRFUUtiMUlJdzloUS9pcWxVZWdjbWQvWmNBYk4zWFg1VHFrTWRoeS91UVd2MGZBUmpkIEFldGY5OTVTeXk4Tnc5alRzTzZWSzB1bGxBSkE2Y0hoR1pqL0hrcTdyaEYxTDBrdGFHNkN4MytDeHVTbDFkYVZHOG5VZ0ljL2g5WFAgUS9hTXFTWFdHSVZWVDhCakI2NE9FcmorNlNhUHdQUW5zT1U5YUt5R1BMcWNZK3Bla0pxUVY4R0dOK0hSYjJCb3c0MjdYTDU4WDY5MyBEdjdhQjNNZlFlZjNmckIrZGFUYmxRQXlsQTQwMXNLNmwySGpIbWcrY0xNaldxbVVzdnVXYjl3K09NSDhWeHU1Y0dRMTNSTVQvOS9FIFd2SHlaSnZoN1hPTTdwaGpZdWJrZnpqaXczOEJrZGpiMG9VdGl2MEFBQUFBU1VWT1JLNUNZSUk9ICIKICAgICAgICAgaWQ9ImltYWdlMTgiIC8+CiAgICAgIDx0ZXh0CiAgICAgICAgIHg9IjYyLjM3MTUwMiIKICAgICAgICAgeT0iMTEwLjA3MjAyIgogICAgICAgICBmb250LXNpemU9IjMuNDM5NnB4IgogICAgICAgICBmb250LXN0eWxlPSJpdGFsaWMiCiAgICAgICAgIGxldHRlci1zcGFjaW5nPSIwcHgiCiAgICAgICAgIHdvcmQtc3BhY2luZz0iMHB4IgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTppdGFsaWM7Zm9udC1zaXplOjMuNDM5NTk5OTlweDtsaW5lLWhlaWdodDoxMjUlO2ZvbnQtZmFtaWx5OkFyaWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODAwMXB4IgogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBpZD0idGV4dDIyIj48dHNwYW4KICAgICAgICAgICB4PSI2Mi4zNzE1MDIiCiAgICAgICAgICAgeT0iMTEwLjA3MjAyIgogICAgICAgICAgIGZvbnQtc2l6ZT0iMTEuMjg5cHgiCiAgICAgICAgICAgZm9udC1zdHlsZT0ibm9ybWFsIgogICAgICAgICAgIGlkPSJ0c3BhbjIwIgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXNpemU6MTEuMjg4OTk5NTZweDtmb250LWZhbWlseTonQ291cmllciBOZXcnO3N0cm9rZS13aWR0aDowLjI2NDU4MDAxcHgiPmRhdGE8L3RzcGFuPjwvdGV4dD4KICAgIDwvZz4KICAgIDxnCiAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMi45Mzk3OCwtMTYuODA5KSIKICAgICAgIGlkPSJnMzIiPgogICAgICA8aW1hZ2UKICAgICAgICAgeD0iMTA3LjUxIgogICAgICAgICB5PSI4OS4xOTk5OTciCiAgICAgICAgIHdpZHRoPSI0My42NTU5OTgiCiAgICAgICAgIGhlaWdodD0iMzQuMzk2IgogICAgICAgICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIgogICAgICAgICB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUtVQUFBQ0NDQVlBQUFBbmdnaFVBQUFBQkhOQ1NWUUlDQWdJZkFoa2lBQUFCRlJKUkVGVSBlSnp0M010clhHVVlnUEhuK3lZelNYUHJ4WlphMjlyWUtLZ2dGblN2a0lMRmpiZ1J4VTBYdWhGWC9SOVVSTENMTGwwcHVITmh3WVVyIEY0cWlWcWhZQ1dKQktyUkZyVTF2cVpOT1pzN25Zbm92cGJZMU9lK2t6MjgxK2M0NU0rL2l5YmtNSWFtVVVyaG9zWDJNdjJmZjR1enggVCtsZU9BR2xpMjVQeXNPMHhyZXo1cUhYdUcvNkRWSmpwTzZSQmswclhZcnkzUEg5SFAzdVZVcTFTS2s2ZFE4MjhQTFFHSTNXZXFhZSAvWUxXMlBhNnh4a2svU2piSjcvbHlKY3pWTjEvNmg1b1JVa3AweGpaeENQUHpaS2JrM1dQTXloYUdlRFlnZDBHdVFSS3FlaDE1amp4IHl6dDFqekpROHNLWlF5eTJqOVU5eDRwVmVtMU8vZlpCM1dNTWxMeHcra2RTM1ZPc2NGWDNQTDNPeWJySEdCaTVXanhOVmZtVXZaUlMgYnRMcm5LcDdqSUdSU3lra1Q1WExvTng2RndHUUZnOXVMYjJGbzF6MWRlVzFPeVRJQ1JLUTh1MS9RSHNCZXRYZERUbm9VaHBpL1A1ZCA1S0h4dWtkWmZua0VocWVnTlFXVE82RzUrVlpIdEZMNXdWOWhMYlVNZVJUbzl1UGMvRGFzZWZGbU94dWxhdEFZaCtGcG1ONFByVzNYIGIyM2R3UVZadWt1OWVXZ2ZndGtuWWY3ckd6WWJwZXBSS3VpZGdjTzdZR0gybWsxR3FYcFY1K0hYblZETlgxNHlTdFdzUVBjMC9QSHUgNVJXalZQMUtHLzdjQzkwNXdDZ1ZSVXB3NWpQQUtCVkZieDdtUGdhTVVwRzBmd2FNVXBIMHZLZFVOS1VEUi9jT0dhWGlLRURqN0ozOCAzWSswdEl4UzRSaWx3akZLaFdPVUNzY29GWTVSS2h5alZEaEdxWENNVXVFWXBjTEpaUDlGbldMSk5JeFNzWGo1VmpoR3FYQ01VdUVZIHBjSXhTb1ZqbEFySEtCV09VU29jbzFRNFJxbHdqRkxoR0tYQ01VcUZZNVFLeHlnVmpsRXFIS05VT0VhcGNJeFM0Umlsd2pGS2hXT1UgQ3Njb0ZZNVJLaHlqVkRoR3FYQ01VdUVZcGNJeFNvVmpsQXJIS0JXT1VTb2NvMVE0UnFsd2pGTGhHS1hDTVVxRlk1UUt4eWdWamxFcSBIS05VT0VhcGNJeFM0Umlsd2pGS2hXT1VDc2NvRlk1UktoeWpWRGhHcVhDTVV1RVlwY0l4U29WamxBckhLQldPVVNvY28xUTRScWx3IGpGTGhHS1hDTVVxRlk1UUt4eWdWamxFcUhLTlVPRWFwY0l4UzRSaWx3akZLaFdPVUNzY29GWTVSS2h5alZEaEdxWENNVXVFWXBjSXggU29WamxBckhLQldPVVNvY28xUTRScWx3TXNrdUZVUUNMbXlyTWtQcjZ4NUY2a3VqTUxXN2wybHVyWHNVcWUvaUNUSXpPUU9Oc1pxbiBrUkpNUEFOQVpzMExVRlUxRDZSN1htTUMxcjRFUUtiMUlJdzloUS9pcWxVZWdjbWQvWmNBYk4zWFg1VHFrTWRoeS91UVd2MGZBUmpkIEFldGY5OTVTeXk4Tnc5alRzTzZWSzB1bGxBSkE2Y0hoR1pqL0hrcTdyaEYxTDBrdGFHNkN4MytDeHVTbDFkYVZHOG5VZ0ljL2g5WFAgUS9hTXFTWFdHSVZWVDhCakI2NE9FcmorNlNhUHdQUW5zT1U5YUt5R1BMcWNZK3Bla0pxUVY4R0dOK0hSYjJCb3c0MjdYTDU4WDY5MyBEdjdhQjNNZlFlZjNmckIrZGFUYmxRQXlsQTQwMXNLNmwySGpIbWcrY0xNaldxbVVzdnVXYjl3K09NSDhWeHU1Y0dRMTNSTVQvOS9FIFd2SHlaSnZoN1hPTTdwaGpZdWJrZnpqaXczOEJrZGpiMG9VdGl2MEFBQUFBU1VWT1JLNUNZSUk9ICIKICAgICAgICAgaWQ9ImltYWdlMjYiIC8+CiAgICAgIDx0ZXh0CiAgICAgICAgIHg9IjExMi43NTkzMiIKICAgICAgICAgeT0iMTA5LjUzMTM0IgogICAgICAgICBmb250LXNpemU9IjMuNDM5NnB4IgogICAgICAgICBmb250LXN0eWxlPSJpdGFsaWMiCiAgICAgICAgIGxldHRlci1zcGFjaW5nPSIwcHgiCiAgICAgICAgIHdvcmQtc3BhY2luZz0iMHB4IgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTppdGFsaWM7Zm9udC1zaXplOjMuNDM5NTk5OTlweDtsaW5lLWhlaWdodDoxMjUlO2ZvbnQtZmFtaWx5OkFyaWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODAwMXB4IgogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBpZD0idGV4dDMwIj48dHNwYW4KICAgICAgICAgICB4PSIxMTIuNzU5MzIiCiAgICAgICAgICAgeT0iMTA5LjUzMTM0IgogICAgICAgICAgIGZvbnQtc2l6ZT0iMTEuMjg5cHgiCiAgICAgICAgICAgZm9udC1zdHlsZT0ibm9ybWFsIgogICAgICAgICAgIGlkPSJ0c3BhbjI4IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXNpemU6MTEuMjg4OTk5NTZweDtmb250LWZhbWlseTonQ291cmllciBOZXcnO3N0cm9rZS13aWR0aDowLjI2NDU4MDAxcHgiPlVzZXJzPC90c3Bhbj48L3RleHQ+CiAgICA8L2c+CiAgICA8ZwogICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuOTQ1NjAxNSwtMTYuODA5KSIKICAgICAgIGlkPSJnNDAiPgogICAgICA8aW1hZ2UKICAgICAgICAgeD0iMTU4Ljk0IgogICAgICAgICB5PSI4OS4xOTk5OTciCiAgICAgICAgIHdpZHRoPSI0My42NTU5OTgiCiAgICAgICAgIGhlaWdodD0iMzQuMzk2IgogICAgICAgICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIgogICAgICAgICB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUtVQUFBQ0NDQVlBQUFBbmdnaFVBQUFBQkhOQ1NWUUlDQWdJZkFoa2lBQUFCRlJKUkVGVSBlSnp0M010clhHVVlnUEhuK3lZelNYUHJ4WlphMjlyWUtLZ2dGblN2a0lMRmpiZ1J4VTBYdWhGWC9SOVVSTENMTGwwcHVITmh3WVVyIEY0cWlWcWhZQ1dKQktyUkZyVTF2cVpOT1pzN25Zbm92cGJZMU9lK2t6MjgxK2M0NU0rL2l5YmtNSWFtVVVyaG9zWDJNdjJmZjR1enggVCtsZU9BR2xpMjVQeXNPMHhyZXo1cUhYdUcvNkRWSmpwTzZSQmswclhZcnkzUEg5SFAzdVZVcTFTS2s2ZFE4MjhQTFFHSTNXZXFhZSAvWUxXMlBhNnh4a2svU2piSjcvbHlKY3pWTjEvNmg1b1JVa3AweGpaeENQUHpaS2JrM1dQTXloYUdlRFlnZDBHdVFSS3FlaDE1amp4IHl6dDFqekpROHNLWlF5eTJqOVU5eDRwVmVtMU8vZlpCM1dNTWxMeHcra2RTM1ZPc2NGWDNQTDNPeWJySEdCaTVXanhOVmZtVXZaUlMgYnRMcm5LcDdqSUdSU3lra1Q1WExvTng2RndHUUZnOXVMYjJGbzF6MWRlVzFPeVRJQ1JLUTh1MS9RSHNCZXRYZERUbm9VaHBpL1A1ZCA1S0h4dWtkWmZua0VocWVnTlFXVE82RzUrVlpIdEZMNXdWOWhMYlVNZVJUbzl1UGMvRGFzZWZGbU94dWxhdEFZaCtGcG1ONFByVzNYIGIyM2R3UVZadWt1OWVXZ2ZndGtuWWY3ckd6WWJwZXBSS3VpZGdjTzdZR0gybWsxR3FYcFY1K0hYblZETlgxNHlTdFdzUVBjMC9QSHUgNVJXalZQMUtHLzdjQzkwNXdDZ1ZSVXB3NWpQQUtCVkZieDdtUGdhTVVwRzBmd2FNVXBIMHZLZFVOS1VEUi9jT0dhWGlLRURqN0ozOCAzWSswdEl4UzRSaWx3akZLaFdPVUNzY29GWTVSS2h5alZEaEdxWENNVXVFWXBjTEpaUDlGbldMSk5JeFNzWGo1VmpoR3FYQ01VdUVZIHBjSXhTb1ZqbEFySEtCV09VU29jbzFRNFJxbHdqRkxoR0tYQ01VcUZZNVFLeHlnVmpsRXFIS05VT0VhcGNJeFM0Umlsd2pGS2hXT1UgQ3Njb0ZZNVJLaHlqVkRoR3FYQ01VdUVZcGNJeFNvVmpsQXJIS0JXT1VTb2NvMVE0UnFsd2pGTGhHS1hDTVVxRlk1UUt4eWdWamxFcSBIS05VT0VhcGNJeFM0Umlsd2pGS2hXT1VDc2NvRlk1UktoeWpWRGhHcVhDTVV1RVlwY0l4U29WamxBckhLQldPVVNvY28xUTRScWx3IGpGTGhHS1hDTVVxRlk1UUt4eWdWamxFcUhLTlVPRWFwY0l4UzRSaWx3akZLaFdPVUNzY29GWTVSS2h5alZEaEdxWENNVXVFWXBjSXggU29WamxBckhLQldPVVNvY28xUTRScWx3TXNrdUZVUUNMbXlyTWtQcjZ4NUY2a3VqTUxXN2wybHVyWHNVcWUvaUNUSXpPUU9Oc1pxbiBrUkpNUEFOQVpzMExVRlUxRDZSN1htTUMxcjRFUUtiMUlJdzloUS9pcWxVZWdjbWQvWmNBYk4zWFg1VHFrTWRoeS91UVd2MGZBUmpkIEFldGY5OTVTeXk4Tnc5alRzTzZWSzB1bGxBSkE2Y0hoR1pqL0hrcTdyaEYxTDBrdGFHNkN4MytDeHVTbDFkYVZHOG5VZ0ljL2g5WFAgUS9hTXFTWFdHSVZWVDhCakI2NE9FcmorNlNhUHdQUW5zT1U5YUt5R1BMcWNZK3Bla0pxUVY4R0dOK0hSYjJCb3c0MjdYTDU4WDY5MyBEdjdhQjNNZlFlZjNmckIrZGFUYmxRQXlsQTQwMXNLNmwySGpIbWcrY0xNaldxbVVzdnVXYjl3K09NSDhWeHU1Y0dRMTNSTVQvOS9FIFd2SHlaSnZoN1hPTTdwaGpZdWJrZnpqaXczOEJrZGpiMG9VdGl2MEFBQUFBU1VWT1JLNUNZSUk9ICIKICAgICAgICAgaWQ9ImltYWdlMzQiIC8+CiAgICAgIDx0ZXh0CiAgICAgICAgIHg9IjE3MC41MzIyMSIKICAgICAgICAgeT0iMTA4LjU1ODQ1IgogICAgICAgICBmb250LXNpemU9IjMuNDM5NnB4IgogICAgICAgICBmb250LXN0eWxlPSJpdGFsaWMiCiAgICAgICAgIGxldHRlci1zcGFjaW5nPSIwcHgiCiAgICAgICAgIHdvcmQtc3BhY2luZz0iMHB4IgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTppdGFsaWM7Zm9udC1zaXplOjMuNDM5NTk5OTlweDtsaW5lLWhlaWdodDoxMjUlO2ZvbnQtZmFtaWx5OkFyaWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O2ZpbGw6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODAwMXB4IgogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBpZD0idGV4dDM4Ij48dHNwYW4KICAgICAgICAgICB4PSIxNzAuNTMyMjEiCiAgICAgICAgICAgeT0iMTA4LjU1ODQ1IgogICAgICAgICAgIGZvbnQtc2l6ZT0iMTEuMjg5cHgiCiAgICAgICAgICAgZm9udC1zdHlsZT0ibm9ybWFsIgogICAgICAgICAgIGlkPSJ0c3BhbjM2IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXNpemU6MTEuMjg4OTk5NTZweDtmb250LWZhbWlseTonQ291cmllciBOZXcnO3N0cm9rZS13aWR0aDowLjI2NDU4MDAxcHgiPnRtcDwvdHNwYW4+PC90ZXh0PgogICAgPC9nPgogICAgPGcKICAgICAgIGlkPSJnNDcwOCI+CiAgICAgIDxpbWFnZQogICAgICAgICBpZD0iaW1hZ2U1MCIKICAgICAgICAgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCSUFBQUJQQ0FJQUFBQnB2QUlwQUFBQUEzTkNTVlFJQ0FqYjRVL2dBQUFBNDBsRVFWUlkgaGUyVnZRM0NNQkNGUHp1MnlVOUpTY2tJakFDRE1BdVRNQUN6c0FwVmdoUkVRZ0ZWakJSOGtZd1MyVjJLNSsvbDd0NVpIUy85K1FwUSBPVnpHTCtkMHdMVFB6MGZkVWdOUVdsWUdvTERrQmlBM0ZCYkFaVlNXZFlucCt1Rmx6WVBtQVhDN2Y2ZnR0K2plazQwZXBkQStiVndHIE9seUZWakZOYWlVeXFZUW1TU2FITkxsSklhM3JnbVhTZjBNOHlrS2FKS2F5QnN5akpCT1dRdFNaVERIMWFOSVhKMTY3b3ljZ1lydm4gc0xtMFhtNU1oWlZNbTh1blRTaEppdW1RSmh6bGNOZ2Zsa0t3NkEyY3hXdTZaRnE0Q29UQm1VdEpaRFN6MndUTFhNWUxrMHVIM2lqRiBnUGdBQUFBQVNVVk9SSzVDWUlJPSAiCiAgICAgICAgIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiCiAgICAgICAgIGhlaWdodD0iMjEuMDk5ODU3IgogICAgICAgICB3aWR0aD0iNC43NjI0OTk4IgogICAgICAgICB5PSI1My43MDg0MTIiCiAgICAgICAgIHg9IjI1Ljc2NDk2OSIgLz4KICAgICAgPGltYWdlCiAgICAgICAgIGlkPSJpbWFnZTQ0IgogICAgICAgICB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUJJQUFBQlBDQVlBQUFEbTNwVitBQUFBQkhOQ1NWUUlDQWdJZkFoa2lBQUFBVDVKUkVGVSBXSVhkbUVGT3cwQU1SWitkcEMyRUJSdmdFajBPQitCb0hJQWw1K0FlckZpVlNrVmtXRXlsYmlnUTVTMUdqQlJwa29YSDMyUC9ieWNlIG5rcDVmQUdBY1FXcmp0bnJmc3R6Zi9nOGZkZ2RZSGZjWHc2dzd1ditZb0ROY2IvcDZ6dlVROGNCYmtiMi9WUytQK1g5b3o0QWIvdWYgUGJxOTRqckxHVU56VmdRbHozazB5eENRZ2gwU1NsdlFNaWdLdEVod29KWFdvQkhTclNYd242RnBIazNUY2p0YWpDbzBwVVpNajR3OCAwcTYvMDJnRWkwWlVZak9DM1ZuQkJpdVB3c3BzSk03MjhzaUNGbXF3bGFLMW1nZ3RJYXYyTDdkVHRWK1JJNnRvSTVqYVVoR1AyTENJIHJiUHl5S28xdC9xbGpzMHBrUzZ0WUpmbU92L21WQ1RWb1VhajJxWmlGSlljcGFZaWF0RXVOMk5tdGtXMWlRUU5yRnV6aUUwYlJhTzUgNGJqUkdBbDJnT1lhZG92OHN6bWxUU2o5OW81Zi9zVCt3U040L1FJQ2c3M01SQTgxRXdBQUFBQkpSVTVFcmtKZ2dnPT0gIgogICAgICAgICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIgogICAgICAgICBoZWlnaHQ9IjIwLjY5NSIKICAgICAgICAgd2lkdGg9IjQuNzYyNDk5OCIKICAgICAgICAgeT0iNTMuOTA2MjY5IgogICAgICAgICB4PSI3Ny40NDU5NjkiCiAgICAgICAgIHN0eWxlPSJzdHJva2U6IzAwMDAwMDtzdHJva2Utb3BhY2l0eToxIiAvPgogICAgICA8aW1hZ2UKICAgICAgICAgaWQ9ImltYWdlNTIiCiAgICAgICAgIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQklBQUFCUENBSUFBQUJwdkFJcEFBQUFBM05DU1ZRSUNBamI0VS9nQUFBQTQwbEVRVlJZIGhlMlZ2UTNDTUJDRlB6dTJ5VTlKU2NrSWpBQ0RNQXVUTUFDenNBcFZnaFJFUWdGVmpCUjhrWXdTMlYySzUrL2w3dDVaSFMvOStRcFEgT1Z6R0wrZDB3TFRQejBmZFVnTlFXbFlHb0xEa0JpQTNGQmJBWlZTV2RZbnArdUZsellQbUFYQzdmNmZ0dCtqZWs0MGVwZEErYlZ3RyBPbHlGVmpGTmFpVXlxWVFtU1NhSE5MbEpJYTNyZ21YU2YwTTh5a0thSktheUJzeWpKQk9XUXRTWlRESDFhTklYSjE2N295Y2dZcnZuIHNMbTBYbTVNaFpWTW04dW5UU2hKaXVtUUpoemxjTmdmbGtLdzZBMmN4V3U2WkZxNENvVEJtVXRKWkRTejJ3VExYTVlMazB1SDNpakYgZ1BnQUFBQUFTVVZPUks1Q1lJST0gIgogICAgICAgICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIgogICAgICAgICBoZWlnaHQ9IjIwLjkwMiIKICAgICAgICAgd2lkdGg9IjQuNzYyNDk5OCIKICAgICAgICAgeT0iMzQuMTY5MjciCiAgICAgICAgIHg9Ijk3Ljk5Njk2NCIgLz4KICAgICAgPGltYWdlCiAgICAgICAgIHN0eWxlPSJzdHJva2Utd2lkdGg6NCIKICAgICAgICAgaWQ9ImltYWdlNDYiCiAgICAgICAgIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQklBQUFCUENBWUFBQURtM3BWK0FBQUFCSE5DU1ZRSUNBZ0lmQWhraUFBQUFUNUpSRUZVIFdJWGRtRUZPdzBBTVJaK2RwQzJFQlJ2Z0VqME9CK0JvSElBbDUrQWVyRmlWU2tWa1dFeWxiaWdRNVMxR2pCUnBrb1hIMzJQL2J5Y2UgbmtwNWZBR0FjUVdyanRucmZzdHpmL2c4ZmRnZFlIZmNYdzZ3N3V2K1lvRE5jYi9wNnp2VVE4Y0Jia2IyL1ZTK1ArWDlvejRBYi91ZiBQYnE5NGpyTEdVTnpWZ1FsejNrMHl4Q1FnaDBTU2x2UU1pZ0t0RWh3b0pYV29CSFNyU1h3bjZGcEhrM1RjanRhakNvMHBVWk1qNHc4IDBxNi8wMmdFaTBaVVlqT0MzVm5CQml1UHdzcHNKTTcyOHNpQ0ZtcXdsYUsxbWdndElhdjJMN2RUdFYrUkk2dG9JNWphVWhHUDJMQ0kgcmJQeXlLbzF0L3FsanMwcGtTNnRZSmZtT3YvbVZDVFZvVWFqMnFaaUZKWWNwYVlpYXRFdU4yTm10a1cxaVFRTnJGdXppRTBiUmFPNSA0YmpSR0FsMmdPWWFkb3Y4c3ptbFRTajk5bzVmL3NUK3dTTjQvUUlDZzczTVJBODFFd0FBQUFCSlJVNUVya0pnZ2c9PSAiCiAgICAgICAgIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiCiAgICAgICAgIGhlaWdodD0iMjAuMzg1IgogICAgICAgICB3aWR0aD0iNC43NjI0OTk4IgogICAgICAgICB5PSI1NC4yMDQyNjYiCiAgICAgICAgIHg9IjEyOS42MjU5OCIgLz4KICAgICAgPGltYWdlCiAgICAgICAgIHk9IjUzLjk1MTk2MiIKICAgICAgICAgeD0iMTgyLjU5ODQ2IgogICAgICAgICBpZD0iaW1hZ2U0Njk5IgogICAgICAgICB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUJNQUFBQk9DQVlBQUFEQ1FDM2xBQUFBQkhOQ1NWUUlDQWdJZkFoa2lBQUFBVDVKUkVGVQpXSVhsbUVGS3hUQVFociswYVhuUHJsd0lIc0MxKzdjVzhSb2V3QU80OVNxdXZZdFhFUVRscWUvRlJUS05DRVZ4cGpEUERwU210UDA2CmZ5WXpTUnF1SDFLNmZ3U0FvWWUrNVVjTG9iWlRncnNMdU5tRUVOOTJzRS81eHZPMlBuVFVRUjl6ZTkzQnFueGtGZk0xUU5mQzBNSHgKT2w5SEFYMjNsL2Q4QUR5OVRyaFkzcjA4SzdBMEFmdVZGYmtpdTVueTdBOU1HZ01XalhpbWtsbk1WR2IxVE0rcW5wbklMR2ZITW0zSAptVnVaN3FJNVR3Ym9VY2JSckRMMXJKa0NZQ0d6dFJ5MFlqYnAxQWhNei9vU0FJTncrazEwbWRsTnhsbHJHb0JaNnRsU0poVFRxcUZuCnpWVnAzVTNDQXZVYkFKTStHeFBkYlc3NlhRWDUyNkVJZENuRlVjODZpSEcya0Q3VHN3NWlyV0dnYzF5NjYxSFZITzREL081US9LZVQKcVdjR3JORWN5L3pmbm9uRjgxTTlSUDZIeDlzclRyU3dZYzhId0NlVG80NWE3THkzYlFBQUFBQkpSVTVFcmtKZ2dnPT0KIgogICAgICAgICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIgogICAgICAgICBoZWlnaHQ9IjIwLjYzNzMwNCIKICAgICAgICAgd2lkdGg9IjUuMDI3MDM1NyIgLz4KICAgICAgPHBhdGgKICAgICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwN2FmZjtzdHJva2Utd2lkdGg6My45NTY3NzI1NztzdHJva2UtbGluZWNhcDpzcXVhcmU7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjA7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgICAgICBpZD0icGF0aDQyIgogICAgICAgICBkPSJtIDc0LjgzMDg0Niw1NS44NTQyNjggYyAtMTA5LjYzMDMzNSwtMC4wNDg3MSAwLjU5Mzk1NywwIDU1LjU1OTA5NCwwLjAyNDM2IDU0Ljk2NTE3LDAuMDI0MzYgNTQuNjY4MTksMC4wMjQzNiA1NC40NzAyLDAuMDI0MzYgaCAtMC41NDQwMiAwLjE0Nzc0IGMgLTEwOS44MzAzMTYsLTAuMDQ4NzEgMCwwIC0xMDkuNjMwMzM0LC0wLjA0ODcxIHoiIC8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K" class="quarto-figure quarto-figure-center figure-img" alt="Nelle&#39;s file system tree showing root and sub-directories" height="250"></p>
 </figure>
 </div>
-</section>
-<section id="what-these-folders-mean" class="level2">
-<h2 class="anchored" data-anchor-id="what-these-folders-mean">What these folders mean</h2>
-<ul>
-<li><code>bin</code> = built-in programs and commands</li>
-<li><code>data</code> = miscellaneous data files</li>
-<li><code>Users</code> = user home directories (e.g., <code>/Users/nelle</code>)</li>
-<li><code>tmp</code> = temporary files that don’t need long-term storage</li>
-</ul>
 </section>
 <section id="pwd---print-working-directory" class="level2">
 <h2 class="anchored" data-anchor-id="pwd---print-working-directory"><code>pwd</code> - Print Working Directory</h2>
@@ -5037,15 +5029,15 @@ Objectives
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>/Users/nelle</code></pre>
 <p>This shows your <strong>current working directory</strong> (your current location).</p>
-</section>
-<section id="your-home-directory" class="level2">
-<h2 class="anchored" data-anchor-id="your-home-directory">Your Home Directory</h2>
+<section id="your-home-directory" class="level3">
+<h3 class="anchored" data-anchor-id="your-home-directory">Your Home Directory</h3>
 <p>The shell usually starts in your <strong>home directory</strong>:</p>
 <ul>
 <li><strong>macOS</strong>: <code>/Users/username</code></li>
 <li><strong>Linux</strong>: <code>/home/username</code></li>
 <li><strong>Windows</strong>: <code>C:\Users\username</code></li>
 </ul>
+</section>
 </section>
 <section id="ls---list-files-and-directories" class="level2">
 <h2 class="anchored" data-anchor-id="ls---list-files-and-directories"><code>ls</code> - List Files and Directories</h2>
@@ -5157,21 +5149,29 @@ Mandatory arguments to long options are mandatory for short options, too.
 </section>
 <section id="short-vs-long-options" class="level2">
 <h2 class="anchored" data-anchor-id="short-vs-long-options">Short vs Long Options</h2>
-<p>Use <strong>short options</strong> when typing commands into the shell to minimize keystrokes and get your task done faster:</p>
+<ul>
+<li>Use <strong>short options</strong> for quick interactive work:</li>
+</ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Use <strong>long options</strong> in scripts for clarity:</p>
+<ul>
+<li>Use <strong>long options</strong> in scripts for clarity:</li>
+</ul>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">--classify</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="unsupported-command-options" class="level2">
 <h2 class="anchored" data-anchor-id="unsupported-command-options">Unsupported Command Options</h2>
-<p>If you use an option the command doesn’t support, you’ll see an error:</p>
+<ul>
+<li>Unsupported options return an error message:</li>
+</ul>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-j</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="error"><code>ls: invalid option -- &#39;j&#39;
 Try &#39;ls --help&#39; for more information.</code></pre>
 </section>
 <section id="the-man-command" class="level2">
 <h2 class="anchored" data-anchor-id="the-man-command">The <code>man</code> command</h2>
-<p>This command will turn your terminal into a page with a description of the <code>ls</code> command and its options.</p>
+<ul>
+<li><code>man ls</code> opens the manual page for <code>ls</code> and its options.</li>
+</ul>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To navigate through the <code>man</code> pages,</p>
 <ul>
@@ -5264,7 +5264,9 @@ Solution
 <p>List contents of the Desktop directory:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> Desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>shell-lesson-data/</code></pre>
-<p>Note that if a directory named <code>Desktop</code> does not exist in your current working directory, this command will return an error.</p>
+<ul>
+<li>If <code>Desktop</code> does not exist in your current working directory, this command returns an error.</li>
+</ul>
 </section>
 <section id="cd---change-directory" class="level2">
 <h2 class="anchored" data-anchor-id="cd---change-directory"><code>cd</code> - Change Directory</h2>
@@ -5281,26 +5283,26 @@ Solution
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd exercise-data</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>/Users/nelle/Desktop/shell-lesson-data/exercise-data</code></pre>
-</section>
-<section id="listing-current-directory" class="level2">
-<h2 class="anchored" data-anchor-id="listing-current-directory">Listing Current Directory</h2>
 <p>Check what’s here:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>alkanes/  animal-counts/  creatures/  numbers.txt  writing/</code></pre>
 </section>
-<section id="moving-up-one-level-.." class="level2">
-<h2 class="anchored" data-anchor-id="moving-up-one-level-..">Moving Up One Level: <code>..</code></h2>
+<section id="vs-." class="level2">
+<h2 class="anchored" data-anchor-id="vs-."><code>..</code> vs <code>.</code></h2>
+<section id="moving-up-one-level-.." class="level3">
+<h3 class="anchored" data-anchor-id="moving-up-one-level-..">Moving Up One Level: <code>..</code></h3>
 <p>To go to the <strong>parent directory</strong> (one level up):</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>/Users/nelle/Desktop/shell-lesson-data</code></pre>
 <p><code>..</code> = “the directory containing this one”</p>
 </section>
-<section id="current-directory-." class="level2">
-<h2 class="anchored" data-anchor-id="current-directory-.">Current Directory: <code>.</code></h2>
+<section id="current-directory-." class="level3">
+<h3 class="anchored" data-anchor-id="current-directory-.">Current Directory: <code>.</code></h3>
 <p>To refer to the <strong>current directory</strong>:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This lists the current directory (same as just <code>ls -F</code>).</p>
+</section>
 </section>
 <section id="special-symbols-in-paths" class="level2">
 <h2 class="anchored" data-anchor-id="special-symbols-in-paths">Special Symbols in Paths</h2>
@@ -5344,16 +5346,13 @@ Solution
 <p>The special directory <code>..</code> doesn’t usually show up when we run <code>ls</code>. To display it, add the <code>-a</code> option:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span> <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>./  ../  exercise-data/  north-pacific-gyre/</code></pre>
-</section>
-<section id="other-hidden-files" class="level2">
-<h2 class="anchored" data-anchor-id="other-hidden-files">Other Hidden Files</h2>
 <div class="nonincremental callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Other Hidden Files
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5369,7 +5368,6 @@ Note
 </section>
 <section id="two-types-of-paths" class="level2 nonincremental">
 <h2 class="nonincremental anchored" data-anchor-id="two-types-of-paths">Two Types of Paths</h2>
-<div class="fragment">
 <section id="absolute-path" class="level3">
 <h3 class="anchored" data-anchor-id="absolute-path">Absolute Path</h3>
 <ul>
@@ -5378,8 +5376,6 @@ Note
 <li>Example: <code>/Users/nelle/Desktop/shell-lesson-data</code></li>
 </ul>
 </section>
-</div>
-<div class="fragment">
 <section id="relative-path" class="level3">
 <h3 class="anchored" data-anchor-id="relative-path">Relative Path</h3>
 <ul>
@@ -5388,21 +5384,23 @@ Note
 <li>Example: <code>Desktop/shell-lesson-data</code></li>
 </ul>
 </section>
-</div>
 </section>
-<section id="home-directory-shortcut" class="level2">
-<h2 class="anchored" data-anchor-id="home-directory-shortcut">Home Directory Shortcut</h2>
+<section id="home-directory" class="level2">
+<h2 class="anchored" data-anchor-id="home-directory">Home Directory</h2>
+<section id="shortcut" class="level3">
+<h3 class="anchored" data-anchor-id="shortcut">Shortcut</h3>
 <p>Use <code>~</code> to mean your home directory:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/Desktop</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>/Users/nelle/Desktop</code></pre>
 </section>
-<section id="return-to-home" class="level2">
-<h2 class="anchored" data-anchor-id="return-to-home">Return to Home</h2>
+<section id="return-to-home" class="level3">
+<h3 class="anchored" data-anchor-id="return-to-home">Return to Home</h3>
 <p><code>cd</code> with no arguments returns to home:</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>/Users/nelle</code></pre>
+</section>
 </section>
 <section id="navigate-back-and-forth" class="level2">
 <h2 class="anchored" data-anchor-id="navigate-back-and-forth">Navigate Back and Forth</h2>
@@ -5584,28 +5582,24 @@ Solution
 <section id="nelles-pipeline-organizing-files" class="level2">
 <h2 class="anchored" data-anchor-id="nelles-pipeline-organizing-files">Nelle’s Pipeline: Organizing Files</h2>
 <p>Nelle is ready to organize the files from the protein assay machine.</p>
-<div class="incremental">
-<ul class="incremental">
+<ul>
 <li>Creates directory <code>north-pacific-gyre</code> for her data</li>
 <li>Each sample has a unique 10-character ID (e.g., <code>NENE01729A</code>)</li>
 <li>Files named like <code>NENE01729A.txt</code>, <code>NENE01812A.txt</code>, etc.</li>
 <li>All 1520 files in the same directory</li>
 </ul>
-</div>
 </section>
 <section id="using-tab-completion" class="level2">
 <h2 class="anchored" data-anchor-id="using-tab-completion">Using Tab Completion</h2>
 <p>Nelle can see her files:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls north-pacific-gyre/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But that’s a lot to type! She can use <strong>tab completion</strong>:</p>
-<div class="incremental">
-<ol class="incremental" type="1">
+<ol type="1">
 <li>Type <code>ls nor</code> and press <kbd>Tab</kbd></li>
 <li>Shell completes to <code>ls north-pacific-gyre/</code></li>
 <li>Pressing <kbd>Tab</kbd> again shows multiple files</li>
 <li>Type <code>ls north-pacific-gyre/goo</code> and press <kbd>Tab</kbd> for files starting with “goo”</li>
 </ol>
-</div>
 
 
 </section>
@@ -5702,7 +5696,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("git@github-work:Sanduni-P\/shell-novice\.git");
+      var filterRegex = new RegExp("https:\/\/Sanduni-P\.github\.io\/shell-novice\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
